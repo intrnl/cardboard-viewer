@@ -14,6 +14,7 @@ import { GET_MAX_PAGE } from '~/src/api/enums.js';
 
 import { useSearchParams } from '~/src/utils/useSearchParams.js';
 import { useFactoryMemo } from '~/src/utils/useFactoryMemo.js';
+import { qss } from '~/src/utils/qss.js';
 
 
 const DEFAULT_SEARCH_PARAMS = {
@@ -32,6 +33,8 @@ export default function PostsListingPage () {
 	const posts = asset.postList.get({ tags, page: pageNum, limit: limitNum });
 	const count = asset.postCount.get(tags);
 
+	const search = qss({ query });
+
 	const handlePageChange = (page) => {
 		setParams({ page });
 	};
@@ -41,7 +44,10 @@ export default function PostsListingPage () {
 		<MainLayout>
 			<div class={styles.container}>
 				<Suspense fallback={<PostsListingFallback />}>
-					<PostsListing resource={posts} />
+					<PostsListing
+						resource={posts}
+						search={search}
+					/>
 				</Suspense>
 				<Suspense fallback={<PostsPaginationFallback />}>
 					<PostsPagination
@@ -62,7 +68,7 @@ function normalizeTags (tags) {
 
 
 function PostsListing (props) {
-	const { resource } = props;
+	const { resource, search } = props;
 
 	const data = resource.read();
 
@@ -74,6 +80,7 @@ function PostsListing (props) {
 					key={item.created_at}
 					resource={createMappedResource(item)}
 					className={styles.postItem}
+					search={search}
 				/>
 			))}
 		</div>

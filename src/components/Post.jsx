@@ -15,18 +15,15 @@ import * as asset from '~/src/api/assets.js';
 import { setFavorite } from '~/src/api/mutations.js';
 import { POST_IMAGE_SMALL_SIZE, GET_IMAGE_SIZE } from '~/src/api/enums.js';
 
-import { qss } from '~/src/utils/qss.js';
 import { useSuspense } from '~/src/utils/useSuspense.js';
-import { useSearchParams } from '~/src/utils/useSearchParams.js';
 
 
 export function Post (props) {
-	const { resource, className } = props;
+	const { resource, className, search } = props;
 
 	const data = resource.read();
 
 	const auth = useStore(AuthStore);
-	const [{ query }] = useSearchParams();
 
 	if (!data.id) {
 		return null;
@@ -44,7 +41,7 @@ export function Post (props) {
 				[styles.isParent]: data.has_active_children,
 			})}
 		>
-			<Link to={`/posts/${data.id}?${qss({ query })}`}>
+			<Link to={`/posts/${data.id}${search ? `?${search}` : ''}`}>
 				<img
 					width={width}
 					height={height}

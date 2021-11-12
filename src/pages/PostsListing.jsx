@@ -4,6 +4,7 @@ import { createMappedResource } from '~/lib/use-asset';
 import { useStore } from '~/lib/global-store';
 
 import * as styles from '~/src/styles/pages/PostsListing.module.css';
+import MainLayout from '~/src/layouts/MainLayout.jsx';
 import { Post } from '~/src/components/Post.jsx';
 import { Pagination } from '~/src/components/Pagination.jsx';
 
@@ -37,19 +38,21 @@ export default function PostsListingPage () {
 
 
 	return (
-		<div class={styles.container}>
-			<Suspense fallback={<PostsListingFallback />}>
-				<PostsListing resource={posts} />
-			</Suspense>
-			<Suspense fallback={<PostsPaginationFallback />}>
-				<PostsPagination
-					resource={count}
-					page={pageNum}
-					limit={limitNum}
-					onChangePage={handlePageChange}
-				/>
-			</Suspense>
-		</div>
+		<MainLayout>
+			<div class={styles.container}>
+				<Suspense fallback={<PostsListingFallback />}>
+					<PostsListing resource={posts} />
+				</Suspense>
+				<Suspense fallback={<PostsPaginationFallback />}>
+					<PostsPagination
+						resource={count}
+						page={pageNum}
+						limit={limitNum}
+						onChangePage={handlePageChange}
+					/>
+				</Suspense>
+			</div>
+		</MainLayout>
 	);
 }
 

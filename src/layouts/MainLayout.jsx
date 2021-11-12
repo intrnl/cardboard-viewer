@@ -17,19 +17,19 @@ import { useDerivedState } from '~/src/utils/useDerivedState.js';
 import { qss } from '~/src/utils/qss.js';
 
 
-export default function MainLayout () {
+export default function MainLayout (props) {
 	return (
 		<div className={styles.container}>
-			<div className={styles.header}>
+			<header className={styles.header}>
 				<HeaderBar />
-			</div>
-			<div className={styles.main}>
-				<Outlet />
-			</div>
-			<div className={styles.aside}>
+			</header>
+			<main className={styles.main}>
+				{props.children}
+			</main>
+			<aside className={styles.aside}>
 				<Search />
-				<div id='' />
-			</div>
+				{props.aside}
+			</aside>
 		</div>
 	);
 }

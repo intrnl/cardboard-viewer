@@ -3,6 +3,7 @@ import { Suspense } from 'preact/compat';
 import { useParams, Navigate } from 'react-router-dom';
 
 import * as styles from '~/src/styles/pages/PostDetails.module.css';
+import MainLayout from '~/src/layouts/MainLayout.jsx';
 
 import * as asset from '~/src/api/assets.js';
 import { POST_IMAGE_LARGE_SIZE, GET_IMAGE_CEIL } from '~/src/api/enums.js';
@@ -20,9 +21,11 @@ export default function PostDetailsPage () {
 	}
 
 	return (
-		<Suspense fallback={<PostDetailsFallback />}>
-			<PostDetails resource={post} />
-		</Suspense>
+		<MainLayout>
+			<Suspense fallback={<PostDetailsFallback />}>
+				<PostDetails resource={post} />
+			</Suspense>
+		</MainLayout>
 	);
 }
 

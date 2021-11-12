@@ -12,7 +12,7 @@ import RefreshIcon from '~/src/icons/refresh.svg?url';
 
 import { AuthStore, STATUS_LOGGED_IN } from '~/src/globals/auth';
 import * as asset from '~/src/api/assets.js';
-import { setFavorite } from '~/src/api/mutation.js';
+import { setFavorite } from '~/src/api/mutations.js';
 import { POST_IMAGE_SMALL_SIZE, GET_IMAGE_SIZE } from '~/src/api/enums.js';
 
 import { qss } from '~/src/utils/qss.js';

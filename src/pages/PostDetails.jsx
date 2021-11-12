@@ -11,11 +11,11 @@ import { POST_IMAGE_LARGE_SIZE, GET_IMAGE_CEIL } from '~/src/api/enums.js';
 export default function PostDetailsPage () {
 	const { id } = useParams();
 
-	const parsedId = parseInt(id);
-	const post = asset.posts.get(parsedId);
+	const idNum = parseInt(id);
+	const post = asset.posts.get(idNum);
 
 
-	if (Number.isNaN(parsedId) || Math.sign(parsedId) !== 1) {
+	if (Number.isNaN(idNum) || Math.sign(idNum) !== 1) {
 		return <Navigate to='/' replace />
 	}
 

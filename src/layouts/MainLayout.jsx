@@ -50,7 +50,7 @@ function Search () {
 		let url = '/';
 
 		if (input) {
-			url += '?' + new URLSearchParams({ query: input });
+			url += '?' + qss({ query: input });
 		}
 
 		navigate(url);

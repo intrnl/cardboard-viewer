@@ -48,10 +48,11 @@ export const postCount = createAsset(async (tags) => {
 export const tags = createAsset(createBatchedFetch({
 	// We don't want to use its actual ID, only the name.
 	id: (x) => x.name,
+
 	fetch: (tags) => {
 		const params = { search: { name: tags } };
 		return fetcher(`/tags.json`, params);
-	}
+	},
 }), 30000)
 
 export const relatedTags = createAsset((query) => {
@@ -110,5 +111,5 @@ export const favorites = createAsset(createBatchedFetch({
 		}
 
 		return requests;
-	}
+	},
 }), 30000);

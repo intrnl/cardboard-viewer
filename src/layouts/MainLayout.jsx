@@ -14,7 +14,7 @@ import { AuthStore, logout, STATUS_VERIFYING, STATUS_LOGGED_IN, STATUS_LOGGED_OU
 
 import { useSearchParams } from '~/src/utils/useSearchParams.js';
 import { useDerivedState } from '~/src/utils/useDerivedState.js';
-import { qss } from '~/src/utils/qss';
+import { qss } from '~/src/utils/qss.js';
 
 
 export default function MainLayout () {

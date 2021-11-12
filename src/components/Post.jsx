@@ -16,8 +16,8 @@ import { setFavorite } from '~/src/api/mutation.js';
 import { POST_IMAGE_SMALL_SIZE, GET_IMAGE_SIZE } from '~/src/api/enums.js';
 
 import { qss } from '~/src/utils/qss.js';
-import { useSuspense } from '~/src/utils/useSuspense';
-import { useSearchParams } from '~/src/utils/useSearchParams';
+import { useSuspense } from '~/src/utils/useSuspense.js';
+import { useSearchParams } from '~/src/utils/useSearchParams.js';
 
 
 export function Post (props) {

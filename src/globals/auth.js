@@ -1,6 +1,6 @@
 import { Store } from '~/lib/global-store';
 
-import { BASE_URL, ResponseError } from '~/src/api/base';
+import { BASE_URL, ResponseError } from '~/src/api/base.js';
 
 import { qss } from '~/src/utils/qss.js';
 

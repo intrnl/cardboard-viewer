@@ -2,7 +2,7 @@ import { h } from 'preact';
 import { Suspense } from 'preact/compat';
 
 import { Router } from '~/src/components/Router.jsx';
-import { AppRouter } from '~/src/components/AppRouter';
+import { AppRouter } from '~/src/components/AppRouter.jsx';
 
 import { history } from '~/src/globals/history.js';
 

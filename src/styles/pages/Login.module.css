@@ -1,0 +1,49 @@
+.container {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 16px;
+}
+
+.login-form {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	max-width: 500px
+}
+
+.login-form fieldset {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding: 16px;
+	margin-inline: 0;
+}
+
+.login-form legend {
+	padding-inline: 4px;
+	margin-inline-start: -4px;
+	margin-block-end: -4px;
+}
+
+.login-form p {
+	margin: 0;
+}
+
+.login-form label {
+	font-weight: bold;
+	display: block;
+}
+
+.login-form label input {
+	width: 100%;
+	display: block;
+	margin-block-start: 4px;
+}
+
+.login-form div {
+	display: flex;
+	justify-content: center;
+	margin-block-start: 8px;
+}

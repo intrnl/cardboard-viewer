@@ -1,0 +1,52 @@
+.post {
+	position: relative;
+}
+
+@media (max-width: 530px) {
+	.post.listing {
+		height: unset;
+		width: calc(100vw / 3);
+		aspect-ratio: 1;
+	}
+
+	.post.listing img {
+		object-fit: cover;
+		height: 100%;
+		width: 100%;
+	}
+}
+
+.post.is-parent {
+	border: 3px solid green;	
+}
+
+.post.is-child {
+	border: 3px solid yellow;
+}
+
+
+.favorite {
+	all: unset;
+	appearance: none;
+	color: #fff;
+	display: flex;
+	background-color: transparent;
+	padding: 4px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 2;
+}
+
+.favorite:hover .favorite-icon {
+	color: lightcoral;
+}
+
+.favorite.is-favorited .favorite-icon {
+	color: red;
+}
+
+.favorite-icon {
+	stroke: #000;
+	stroke-width: 2px;
+}

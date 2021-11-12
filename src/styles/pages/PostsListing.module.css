@@ -1,0 +1,20 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.post-listing {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	justify-content: center;
+	justify-items: center;
+	align-items: center;
+}
+
+@media (min-width: 530px) {
+	.post-listing {
+		grid-gap: 16px;
+		grid-template-columns: repeat(auto-fit, 154px);
+	}
+}

@@ -1,0 +1,110 @@
+:where(*, *::before, *::after) {
+	box-sizing: border-box;
+	background-repeat: no-repeat;
+}
+
+:where(*::before, *::after) {
+	text-decoration: inherit;
+	vertical-align: inherit;
+}
+
+:where(:root) {
+	-webkit-tap-highlight-color: transparent;
+	font-family: sans-serif;
+	font-size: 0.875em;
+	line-height: 1.5;
+	text-size-adjust: 100%;
+	tab-size: 4;
+	overflow-wrap: break-word;
+}
+
+:where(body) {
+	margin: 0;
+}
+
+:where(h1) {
+	font-size: 2em;
+	margin: 0.67em 0;
+}
+
+:where(small) {
+	font-size: 80%;
+}
+
+:where(pre, code, kbd, samp) {
+	font-family: monospace;
+	font-size: 1em;
+}
+
+:where(pre) {
+	overflow: auto;
+}
+
+:where(hr) {
+	color: inherit;
+	height: 0;
+}
+
+:where(dl, ol, ul) :where(dl, ol, ul) {
+  margin: 0;
+}
+
+:where(audio, canvas, iframe, img, svg, video) {
+  vertical-align: middle;
+}
+
+:where(iframe) {
+	border-style: none;
+}
+
+:where(svg:not([fill])) {
+	fill: currentColor;
+}
+
+:where(table) {
+  border-collapse: collapse;
+  border-color: currentColor;
+  text-indent: 0;
+}
+
+:where(button, input, select, textarea) {
+	margin: 0;
+}
+
+:where(button, [type="button" i], [type="reset" i], [type="submit" i]) {
+  -webkit-appearance: button;
+}
+
+:where([type="search" i]) {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+
+:where(fieldset) {
+  border: 1px solid #a0a0a0;
+}
+
+:where(progress) {
+  vertical-align: baseline;
+}
+
+:where(textarea) {
+  resize: vertical;
+}
+
+:where(*::placeholder) {
+	color: inherit;
+	opacity: 0.5;
+}
+
+:where(*::-webkit-inner-spin-button, *::-webkit-outer-spin-button) {
+  height: auto;
+}
+
+:where(*::-webkit-search-decoration) {
+  -webkit-appearance: none;
+}
+
+:where(*::-webkit-file-upload-button) {
+  -webkit-appearance: button;
+}

@@ -1,0 +1,37 @@
+.container {
+	width: 100%;
+	position: relative;
+}
+
+.input {
+	display: inline;
+	width: inherit;
+}
+
+.container:not(:focus-within) .autocomplete-item {
+	display: none;
+}
+
+.autocomplete-popup {
+	background-color: lightgray;
+	width: max-content;
+	display: block;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+}
+
+.autocomplete-item-container {
+	display: block;
+}
+
+.autocomplete-item {
+	color: inherit;
+	text-decoration: unset;
+	display: block;
+	padding: 1px 4px;
+}
+
+.autocomplete-item.is-active {
+	background-color: lightsalmon;
+}

@@ -1,0 +1,18 @@
+{
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"clsx": "^1.1.1",
+		"history": "^5.1.0",
+		"preact": "https://pkg.csb.dev/preactjs/preact/commit/96082866/preact",
+		"react-router-dom": "^6.0.2"
+	},
+	"devDependencies": {
+		"@prefresh/vite": "^2.2.3",
+		"vite": "^2.6.14"
+	}
+}

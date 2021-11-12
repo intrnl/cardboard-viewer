@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"target": "esnext",
+		"lib": ["dom", "esnext"],
+		"types": ["vite/client"],
+		"moduleResolution": "node",
+		"jsx": "react",
+		"jsxFactory": "h",
+		"jsxFragmentFactory": "Fragment",
+		"paths": {
+			"~/*": ["./*"],
+    }
+	}
+}

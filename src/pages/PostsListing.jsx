@@ -35,6 +35,7 @@ export default function PostsListingPage () {
 		setParams({ page });
 	}
 
+
 	return (
 		<div class={styles.container}>
 			<Suspense fallback={<PostsListingFallback />}>
@@ -49,7 +50,7 @@ export default function PostsListingPage () {
 				/>
 			</Suspense>
 		</div>
-	)
+	);
 }
 
 function normalizeTags (tags) {
@@ -59,7 +60,9 @@ function normalizeTags (tags) {
 
 function PostsListing (props) {
 	const { resource } = props;
+
 	const data = resource.read();
+
 
 	return (
 		<div className={styles.postListing}>
@@ -86,6 +89,7 @@ function PostsPagination (props) {
 
 	const currentPage = page;
 	const totalPage = Math.max(Math.min(Math.floor(count / limit), GET_MAX_PAGE(auth.profile?.level)), 1);
+
 
 	return (
 		<Pagination

@@ -31,7 +31,7 @@ export default function MainLayout () {
 				<div id='' />
 			</div>
 		</div>
-	)
+	);
 }
 
 
@@ -68,7 +68,7 @@ function Search () {
 				<Icon src={SearchIcon} />
 			</button>
 		</form>
-	)
+	);
 }
 
 
@@ -91,7 +91,7 @@ function HeaderBar () {
 				</div>
 			)}
 		</>
-	)
+	);
 }
 
 function Login () {

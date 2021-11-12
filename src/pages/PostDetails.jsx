@@ -48,7 +48,7 @@ function PostDetails (props) {
 				src={data.large_file_url}
 			/>
 		</div>
-	)
+	);
 }
 
 

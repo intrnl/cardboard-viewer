@@ -18,8 +18,6 @@ export const AuthStore = new Store({
 	profile: null,
 });
 
-window._AuthStore = AuthStore;
-
 login(JSON.parse(localStorage.getItem(localKey) || '{}'), false)
 	.catch((error) => console.log(`Not logged in: ${error.message}`));
 

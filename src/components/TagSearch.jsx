@@ -7,7 +7,8 @@ import clsx from 'clsx';
 import * as styles from '~/src/styles/components/TagSearch.module.css';
 
 import { autocompleteTags } from '~/src/api/assets.js';
-import { useDebouncedState } from '~/src/utils/useDebouncedState';
+
+import { useDebouncedState } from '~/src/utils/useDebouncedState.js';
 
 
 export function SearchInput (props) {

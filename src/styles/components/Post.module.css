@@ -10,6 +10,10 @@
 	border: 3px solid yellow;
 }
 
+.post img {
+	color: transparent;
+}
+
 
 .favorite {
 	all: unset;

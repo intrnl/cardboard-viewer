@@ -23,9 +23,12 @@ const DEFAULT_SEARCH_PARAMS = {
 
 export default function PostsListingPage () {
 	const [{ query, page, limit }, setParams] = useSearchParams(DEFAULT_SEARCH_PARAMS);
-	const tags = useFactoryMemo(normalizeTags, [query]);
 
-	const posts = asset.postList.get({ tags, page, limit });
+	const tags = useFactoryMemo(normalizeTags, [query]);
+	const pageNum = parseInt(page);
+	const limitNum = parseInt(limit);
+
+	const posts = asset.postList.get({ tags, page: pageNum, limit: limitNum });
 	const count = asset.postCount.get(tags);
 
 	const handlePageChange = (page) => {
@@ -40,8 +43,8 @@ export default function PostsListingPage () {
 			<Suspense fallback={<PostsPaginationFallback />}>
 				<PostsPagination
 					resource={count}
-					limit={parseInt(limit)}
-					page={parseInt(page)}
+					page={pageNum}
+					limit={limitNum}
 					onChangePage={handlePageChange}
 				/>
 			</Suspense>

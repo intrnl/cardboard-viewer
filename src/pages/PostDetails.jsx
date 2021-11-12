@@ -4,7 +4,7 @@ import { useParams, Navigate } from 'react-router-dom';
 
 import * as styles from '~/src/styles/pages/PostDetails.module.css';
 
-import * as asset from '~/src/api/asset.js';
+import * as asset from '~/src/api/assets.js';
 import { POST_IMAGE_LARGE_SIZE, GET_IMAGE_CEIL } from '~/src/api/enums.js';
 
 

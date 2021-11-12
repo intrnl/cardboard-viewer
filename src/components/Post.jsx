@@ -11,7 +11,7 @@ import HeartIcon from '~/src/icons/heart.svg?url';
 import RefreshIcon from '~/src/icons/refresh.svg?url';
 
 import { AuthStore, STATUS_LOGGED_IN } from '~/src/globals/auth';
-import * as asset from '~/src/api/asset.js';
+import * as asset from '~/src/api/assets.js';
 import { setFavorite } from '~/src/api/mutation.js';
 import { POST_IMAGE_SMALL_SIZE, GET_IMAGE_SIZE } from '~/src/api/enums.js';
 

@@ -1,6 +1,6 @@
 import { AuthStore } from '~/src/globals/auth.js';
 import { BASE_URL, ResponseError } from '~/src/api/base.js';
-import { favorites } from '~/src/api/asset.js';
+import { favorites } from '~/src/api/assets.js';
 
 import { qss } from '~/src/utils/qss.js';
 

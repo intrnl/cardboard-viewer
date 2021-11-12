@@ -8,7 +8,7 @@ import { Post } from '~/src/components/Post.jsx';
 import { Pagination } from '~/src/components/Pagination.jsx';
 
 import { AuthStore } from '~/src/globals/auth.js';
-import * as asset from '~/src/api/asset.js';
+import * as asset from '~/src/api/assets.js';
 import { GET_MAX_PAGE } from '~/src/api/enums.js';
 
 import { useSearchParams } from '~/src/utils/useSearchParams.js';

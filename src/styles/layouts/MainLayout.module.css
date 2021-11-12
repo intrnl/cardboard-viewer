@@ -19,15 +19,18 @@
 
 .header {
 	grid-area: header;
+	overflow: auto;
 }
 
 .aside {
 	grid-area: aside;
 	width: 250px;
+	overflow: auto;
 }
 
 .main {
 	grid-area: main;
+	overflow: auto;
 }
 
 

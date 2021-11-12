@@ -57,6 +57,7 @@ function Search () {
 		navigate(url);
 	};
 
+
 	return (
 		<form onSubmit={handleSubmit} className={styles.search}>
 			<SearchInput
@@ -75,6 +76,7 @@ function Search () {
 function HeaderBar () {
 	const auth = useStore(AuthStore);
 	const authStatus = auth.status;
+
 
 	return (
 		<>
@@ -101,6 +103,7 @@ function Login () {
 		qss({ to: location.pathname + location.search })
 	), [location]);
 
+
 	return (
 		<Link to={`/login?${params}`}>
 			Login
@@ -113,6 +116,7 @@ function Logout () {
 		event.preventDefault();
 		logout();
 	};
+
 
 	return (
 		<Link to='/logout' onClick={handleLogout}>

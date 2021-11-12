@@ -42,6 +42,7 @@ export function Pagination (props) {
 		onChangePage?.(value);
 	};
 
+
 	return (
 		<div className={styles.pagination}>
 			{pagination.map((value) => {
@@ -72,6 +73,7 @@ export function PaginationButton (props) {
 	const { value, active, disabled, onClick } = props;
 
 	const isNumber = typeof value === 'number';
+
 
 	return (
 		<button

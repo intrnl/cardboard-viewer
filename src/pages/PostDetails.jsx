@@ -35,6 +35,7 @@ function PostDetails (props) {
 	const originalHeight = data.image_height;
 	const [width, height, ratio] = GET_IMAGE_CEIL(originalWidth, originalHeight, POST_IMAGE_LARGE_SIZE);
 
+
 	return (
 		<div>
 			{ratio < 1 && (

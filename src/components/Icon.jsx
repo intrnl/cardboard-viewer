@@ -9,6 +9,7 @@ export function Icon (props) {
 
 	const cn = clsx(styles.icon, className);
 
+
 	return (
 		<svg height={size} width={size} className={cn}>
 			<use href={src + '#icon'} />

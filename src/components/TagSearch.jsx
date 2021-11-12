@@ -104,7 +104,7 @@ export function SearchInput (props) {
 		setPendingInput(input);
 
 		onChange?.(value);
-	}
+	};
 
 
 	return (

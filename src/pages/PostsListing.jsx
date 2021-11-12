@@ -33,7 +33,7 @@ export default function PostsListingPage () {
 
 	const handlePageChange = (page) => {
 		setParams({ page });
-	}
+	};
 
 
 	return (

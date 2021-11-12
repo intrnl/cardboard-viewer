@@ -36,6 +36,7 @@ export function Post (props) {
 	const originalHeight = data.image_height;
 	const [width, height] = GET_IMAGE_SIZE(originalWidth, originalHeight, POST_IMAGE_SMALL_SIZE);
 
+
 	return (
 		<article
 			className={clsx(styles.post, className, {
@@ -77,7 +78,8 @@ function Favorite (props) {
 		});
 
 		suspend(promise);
-	}
+	};
+
 
 	return (
 		<button

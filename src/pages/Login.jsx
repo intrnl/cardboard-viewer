@@ -69,6 +69,7 @@ export default function LoginPage () {
 		catch {}
 	}, [tokenUrl]);
 
+
 	return (
 		<div className={styles.container}>
 			<form onSubmit={submit} className={styles.loginForm}>

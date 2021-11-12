@@ -20,7 +20,7 @@ import { useSearchParams } from '~/src/utils/useSearchParams';
 
 
 export function Post (props) {
-	const { resource, listing } = props;
+	const { resource, className } = props;
 
 	const data = resource.read();
 
@@ -33,8 +33,7 @@ export function Post (props) {
 
 	return (
 		<article
-			className={clsx(styles.post, {
-				[styles.listing]: listing,
+			className={clsx(styles.post, className, {
 				[styles.isChild]: data.parent_id,
 				[styles.isParent]: data.has_active_children,
 			})}

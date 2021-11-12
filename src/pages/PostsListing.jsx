@@ -64,7 +64,7 @@ function PostsListing (props) {
 				<Post
 					key={item.created_at}
 					resource={createMappedResource(item)}
-					listing
+					className={styles.postItem}
 				/>
 			))}
 		</div>

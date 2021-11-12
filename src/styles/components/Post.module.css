@@ -2,20 +2,6 @@
 	position: relative;
 }
 
-@media (max-width: 530px) {
-	.post.listing {
-		height: unset;
-		width: calc(100vw / 3);
-		aspect-ratio: 1;
-	}
-
-	.post.listing img {
-		object-fit: cover;
-		height: 100%;
-		width: 100%;
-	}
-}
-
 .post.is-parent {
 	border: 3px solid green;
 }

@@ -29,6 +29,14 @@ export const TAG_CATEGORY_META = 5;
 export const POST_IMAGE_SMALL_SIZE = 150;
 export const POST_IMAGE_LARGE_SIZE = 850;
 
+export function GET_IMAGE_CEIL (width, height, next) {
+	if (width <= next && height <= next) {
+		return [width, height, 1];
+	}
+
+	return GET_IMAGE_SIZE(width, height, next);
+}
+
 export function GET_IMAGE_SIZE (width, height, next) {
 	const ratio = Math.min((next / width), (next / height));
 

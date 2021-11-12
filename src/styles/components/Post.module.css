@@ -3,13 +3,23 @@
 	position: relative;
 }
 
+
+.post.is-parent, .post.is-child {
+	border: 2px solid;
+}
+
 .post.is-parent {
-	border: 2px solid #35c64a;
+	border-color: #35c64a;
 }
 
 .post.is-child {
-	border: 2px solid #ccaa00;
+	border-color: #ccaa00;
 }
+
+.post.is-parent.is-child {
+	border-color: #35c64a #ccaa00 #ccaa00 #35c64a;
+}
+
 
 .post img {
 	color: transparent;

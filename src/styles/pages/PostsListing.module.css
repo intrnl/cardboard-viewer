@@ -15,7 +15,7 @@
 @media (min-width: 530px) {
 	.post-listing {
 		grid-gap: 16px;
-		grid-template-columns: repeat(auto-fit, 154px);
+		grid-template-columns: repeat(auto-fit, 150px);
 	}
 }
 

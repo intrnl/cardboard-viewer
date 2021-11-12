@@ -3,8 +3,9 @@ import { lazy } from 'preact/compat';
 import { Routes, Route } from 'react-router-dom';
 
 
-const Login = lazy(() => import('~/src/pages/Login.jsx'));
 const MainLayout = lazy(() => import('~/src/layouts/MainLayout.jsx'));
+
+const Login = lazy(() => import('~/src/pages/Login.jsx'));
 const PostsListing = lazy(() => import('~/src/pages/PostsListing.jsx'));
 
 export function AppRouter () {

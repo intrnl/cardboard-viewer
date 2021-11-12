@@ -21,7 +21,6 @@
 
 @media (max-width: 530px) {
 	.post-item {
-		height: unset;
 		width: calc(100vw / 3);
 		aspect-ratio: 1;
 	}

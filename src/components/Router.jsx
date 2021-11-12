@@ -10,7 +10,7 @@ export function Router (props) {
 		action: history.action,
 		location: history.location,
 	});
-	
+
 	useLayoutEffect(() => history.listen(setState), [history]);
 
 	return (

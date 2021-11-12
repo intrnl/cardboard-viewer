@@ -20,7 +20,7 @@ export default function LoginPage () {
 	const [{ to }] = useSearchParams(DEFAULT_SEARCH_PARAMS);
 
 	const [dispatching, setDispatching] = useState(false);
-	const [error, setError] = useState(); 
+	const [error, setError] = useState();
 
 	const [key, handleKeyInput] = useInputState('');
 	const [user, handleUserInput] = useInputState('');
@@ -83,7 +83,7 @@ export default function LoginPage () {
 					<legend>Quick login</legend>
 
 					<p>Copy-paste the example usage URL during API key creation.</p>
-					
+
 					<label>
 						Token URL
 
@@ -97,7 +97,7 @@ export default function LoginPage () {
 
 				<fieldset disabled={dispatching}>
 					<legend>Login information</legend>
-					
+
 					<label>
 						User
 

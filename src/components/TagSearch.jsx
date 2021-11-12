@@ -70,7 +70,7 @@ export function SearchInput (props) {
 		else if (event.keyCode === 38) {
 			// Up arrow
 			event.preventDefault();
-			
+
 			setSelection((selection <= -1 ? autocompleteList.length : selection) - 1);
 		}
 		else if (event.keyCode === 40) {
@@ -95,7 +95,7 @@ export function SearchInput (props) {
 		const start = target.selectionStart;
 
 		const space = value.lastIndexOf(' ', start - 1);
-		
+
 		const index = space < 0 ? 0 : space + 1;
 		const input = value.slice(index, start);
 

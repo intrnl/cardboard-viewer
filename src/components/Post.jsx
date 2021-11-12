@@ -21,7 +21,7 @@ import { useSearchParams } from '~/src/utils/useSearchParams';
 
 export function Post (props) {
 	const { resource, listing } = props;
-	
+
 	const data = resource.read();
 
 	const auth = useStore(AuthStore);

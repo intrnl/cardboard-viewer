@@ -104,9 +104,9 @@ export const favorites = createAsset(createBatchedFetch({
 		}
 
 		for (const data of requests) {
-			data.favorited = favorited_set.has(data.post_id); 
+			data.favorited = favorited_set.has(data.post_id);
 		}
 
 		return requests;
 	}
-}), 30000); 
+}), 30000);

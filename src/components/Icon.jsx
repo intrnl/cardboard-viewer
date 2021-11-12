@@ -1,6 +1,7 @@
 import { h } from 'preact';
+
 import clsx from 'clsx';
-import * as styles from '~/src/styles/components/Icon.module.css'; 
+import * as styles from '~/src/styles/components/Icon.module.css';
 
 
 export function Icon (props) {
@@ -13,4 +14,4 @@ export function Icon (props) {
 			<use href={src + '#icon'} />
 		</svg>
 	)
-} 
+}

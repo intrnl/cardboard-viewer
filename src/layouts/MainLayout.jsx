@@ -48,7 +48,7 @@ function Search () {
 		event.preventDefault();
 
 		let url = '/';
-		
+
 		if (input) {
 			url += '?' + new URLSearchParams({ query: input });
 		}

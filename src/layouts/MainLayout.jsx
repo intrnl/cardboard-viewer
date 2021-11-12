@@ -10,10 +10,11 @@ import { SearchInput } from '~/src/components/TagSearch.jsx';
 
 import SearchIcon from '~/src/icons/search.svg?url';
 
-import { qss } from '~/src/api/base.js';
 import { AuthStore, logout, STATUS_VERIFYING, STATUS_LOGGED_IN, STATUS_LOGGED_OUT } from '~/src/globals/auth.js';
+
 import { useSearchParams } from '~/src/utils/useSearchParams.js';
 import { useDerivedState } from '~/src/utils/useDerivedState.js';
+import { qss } from '~/src/utils/qss';
 
 
 export default function MainLayout () {

@@ -1,6 +1,8 @@
 import { AuthStore } from '~/src/globals/auth.js';
-import { BASE_URL, ResponseError, qss } from '~/src/api/base.js';
+import { BASE_URL, ResponseError } from '~/src/api/base.js';
 import { favorites } from '~/src/api/asset.js';
+
+import { qss } from '~/src/utils/qss.js';
 
 
 function request ({ method = 'POST', url, params, body }) {

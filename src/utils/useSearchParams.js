@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { qss } from '~/src/api/base.js';
+import { qss } from '~/src/utils/qss.js';
 import { useFactoryMemo } from '~/src/utils/useFactoryMemo.js';
 
 /**

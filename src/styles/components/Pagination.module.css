@@ -7,6 +7,7 @@
 .pagination-button {
 	all: unset;
 	appearance: none;
+	user-select: none;
 	height: 32px;
 	min-width: 32px;
 	display: flex;

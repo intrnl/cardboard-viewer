@@ -10,10 +10,11 @@ import { Icon } from '~/src/components/Icon.jsx';
 import HeartIcon from '~/src/icons/heart.svg?url';
 import RefreshIcon from '~/src/icons/refresh.svg?url';
 
+import { AuthStore, STATUS_LOGGED_IN } from '~/src/globals/auth';
 import { qss } from '~/src/api/base.js';
 import * as asset from '~/src/api/asset.js';
 import { setFavorite } from '~/src/api/mutation.js';
-import { AuthStore, STATUS_LOGGED_IN } from '~/src/globals/auth';
+import { POST_IMAGE_SMALL_SIZE, GET_IMAGE_SIZE } from '~/src/api/enums.js';
 
 import { useSuspense } from '~/src/utils/useSuspense';
 import { useSearchParams } from '~/src/utils/useSearchParams';
@@ -31,6 +32,10 @@ export function Post (props) {
 		return null;
 	}
 
+	const originalWidth = data.image_width;
+	const originalHeight = data.image_height;
+	const [width, height] = GET_IMAGE_SIZE(originalWidth, originalHeight, POST_IMAGE_SMALL_SIZE);
+
 	return (
 		<article
 			className={clsx(styles.post, className, {
@@ -39,7 +44,12 @@ export function Post (props) {
 			})}
 		>
 			<Link to={`/posts/${data.id}?${qss({ query })}`}>
-				<img alt={`post #${data.id}`} src={data.preview_file_url} />
+				<img
+					width={width}
+					height={height}
+					alt={`post #${data.id}`}
+					src={data.preview_file_url}
+				/>
 			</Link>
 
 			{auth.status === STATUS_LOGGED_IN && (

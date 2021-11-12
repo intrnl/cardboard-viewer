@@ -24,3 +24,13 @@ export const TAG_CATEGORY_ARTIST = 1;
 export const TAG_CATEGORY_COPYRIGHT = 3;
 export const TAG_CATEGORY_CHARACTER = 4;
 export const TAG_CATEGORY_META = 5;
+
+// Post image constraints
+export const POST_IMAGE_SMALL_SIZE = 150;
+export const POST_IMAGE_LARGE_SIZE = 850;
+
+export function GET_IMAGE_SIZE (width, height, next) {
+	const ratio = Math.min((next / width), (next / height));
+
+	return [(width * ratio), (height * ratio), ratio];
+}

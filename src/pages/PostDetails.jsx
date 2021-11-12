@@ -4,6 +4,7 @@ import { useParams, Navigate } from 'react-router-dom';
 
 import * as styles from '~/src/styles/pages/PostDetails.module.css';
 import MainLayout from '~/src/layouts/MainLayout.jsx';
+import { PostsRelationship } from '~/src/components/PostsRelationship.jsx';
 
 import * as asset from '~/src/api/assets.js';
 import { POST_IMAGE_LARGE_SIZE, GET_IMAGE_CEIL } from '~/src/api/enums.js';
@@ -29,6 +30,7 @@ export default function PostDetailsPage () {
 	);
 }
 
+
 function PostDetails (props) {
 	const { resource } = props;
 
@@ -40,7 +42,19 @@ function PostDetails (props) {
 
 
 	return (
-		<div>
+		<div className={styles.container}>
+			{data.parent_id && (
+				<Suspense fallback={<div>Fetching child to parent relationship</div>}>
+					<PostsRelationship parent={data.parent_id}  id={data.id} />
+				</Suspense>
+			)}
+
+			{data.has_active_children && (
+				<Suspense fallback={<div>Fetching parent to child relationship</div>}>
+					<PostsRelationship parent={data.id} />
+				</Suspense>
+			)}
+
 			{ratio < 1 && (
 				<div>Resized to {convertToPercentage(ratio)} of original</div>
 			)}
@@ -61,6 +75,7 @@ function PostDetailsFallback () {
 		<div>Loading post</div>
 	);
 }
+
 
 function convertToPercentage (number) {
 	return number.toLocaleString(undefined, {

@@ -44,22 +44,20 @@ export default function PostsListingPage () {
 
 	return (
 		<MainLayout aside={<PostsListingAside tags={tags} />}>
-			<div class={styles.container}>
-				<Suspense fallback={<PostsListingFallback size={limit} />}>
-					<PostsListing
-						resource={posts}
-						search={search}
-					/>
-				</Suspense>
-				<Suspense fallback={<PostsPaginationFallback />}>
-					<PostsPagination
-						resource={count}
-						page={pageNum}
-						limit={limitNum}
-						onChangePage={handlePageChange}
-					/>
-				</Suspense>
-			</div>
+			<Suspense fallback={<PostsListingFallback size={limit} />}>
+				<PostsListing
+					resource={posts}
+					search={search}
+				/>
+			</Suspense>
+			<Suspense fallback={<PostsPaginationFallback />}>
+				<PostsPagination
+					resource={count}
+					page={pageNum}
+					limit={limitNum}
+					onChangePage={handlePageChange}
+				/>
+			</Suspense>
 		</MainLayout>
 	);
 }

@@ -24,13 +24,15 @@ export function MainLayout (props) {
 			<header className={styles.header}>
 				<HeaderBar />
 			</header>
-			<main className={styles.main}>
-				{props.children}
-			</main>
-			<aside className={styles.aside}>
-				<Search />
-				{props.aside}
-			</aside>
+			<div className={styles.body}>
+				<main className={styles.main}>
+					{props.children}
+				</main>
+				<aside className={styles.aside}>
+					<Search />
+					{props.aside}
+				</aside>
+			</div>
 		</div>
 	);
 }

@@ -10,8 +10,9 @@ import {
 	TAG_CATEGORY_COPYRIGHT,
 	TAG_CATEGORY_CHARACTER,
 	TAG_CATEGORY_META,
-} from '../api/enums';
-import { qss } from '../utils/qss';
+} from '~/src/api/enums.js';
+
+import { qss } from '~/src/utils/qss.js';
 
 
 const countFormatter = new Intl.NumberFormat(undefined, {

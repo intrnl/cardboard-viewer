@@ -6,6 +6,9 @@
 
 .tag a {
 	text-decoration: none;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 .tag a:hover {

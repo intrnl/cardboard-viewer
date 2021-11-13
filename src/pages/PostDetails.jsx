@@ -155,7 +155,7 @@ function PostDetails (props) {
 
 
 	return (
-		<div className={styles.container}>
+		<>
 			{data.parent_id && (
 				<Suspense fallback={<div>Fetching child to parent relationship</div>}>
 					<PostsRelationship parent={data.parent_id}  id={data.id} />
@@ -192,7 +192,7 @@ function PostDetails (props) {
 					<div>Post has unsupported file format</div>
 				)}
 			</div>
-		</div>
+		</>
 	);
 }
 

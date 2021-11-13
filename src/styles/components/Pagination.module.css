@@ -33,3 +33,10 @@
 	background-color: transparent;
 	opacity: 0.35;
 }
+
+@media (max-width: 530px) {
+	.pagination-button.is-page:not(.is-active),
+	.pagination-button.is-ellipsis {
+		display: none;
+	}
+}

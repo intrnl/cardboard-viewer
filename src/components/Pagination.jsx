@@ -73,11 +73,16 @@ export function PaginationButton (props) {
 	const { value, active, disabled, onClick } = props;
 
 	const isNumber = typeof value === 'number';
+	const isEllipsis = value === PAGINATION_DOT_START || value === PAGINATION_DOT_END;
 
 
 	return (
 		<button
-			className={clsx(styles.paginationButton, active && styles.isActive)}
+			className={clsx(styles.paginationButton, {
+				[styles.isActive]: active,
+				[styles.isPage]: isNumber,
+				[styles.isEllipsis]: isEllipsis,
+			})}
 			disabled={disabled}
 			onClick={onClick}
 			value={value}

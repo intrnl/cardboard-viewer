@@ -2,12 +2,7 @@
 	display: grid;
 	grid-template-areas: 'header' 'main' 'aside';
 	gap: 16px;
-}
-
-@media (min-width: 530px) {
-	.container {
-		padding: 16px;
-	}
+	padding: 16px;
 }
 
 @media (min-width: 800px) {
@@ -32,7 +27,6 @@
 
 .main {
 	grid-area: main;
-	overflow: auto;
 }
 
 

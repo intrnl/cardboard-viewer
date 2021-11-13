@@ -172,17 +172,17 @@ function PostDetails (props) {
 				<div>Resized to {convertToPercentage(ratio)} of original</div>
 			)}
 
-			<div key={data.large_file_url}>
+			<div key={data.large_file_url} className={styles.mediaContainer}>
 				{RE_EXT_IMAGE.test(data.large_file_url) ? (
 					<img
-						className={styles.postMedia}
+						className={styles.media}
 						width={width}
 						height={height}
 						src={data.large_file_url}
 					/>
 				) : RE_EXT_VIDEO.test(data.large_file_url) ? (
 					<video
-						className={styles.postMedia}
+						className={styles.media}
 						controls
 						width={width}
 						height={height}

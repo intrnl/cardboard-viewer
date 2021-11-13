@@ -4,6 +4,12 @@
 	gap: 16px;
 }
 
+@media (max-width: 530px) {
+	.container {
+		margin-inline: -16px;
+	}
+}
+
 .post-listing {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);

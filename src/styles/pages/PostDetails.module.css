@@ -4,11 +4,21 @@
 	gap: 16px;
 }
 
-.post-media {
+.media-container {
+
+}
+
+.media {
 	height: auto;
 	max-width: 100%;
 	color: transparent;
 	background-color: lightgray;
+}
+
+@media (max-width: 530px) {
+	.media-container {
+		margin-inline: -16px;
+	}
 }
 
 .tag-container {

@@ -1,9 +1,10 @@
 import { h, Fragment } from 'preact';
 import { useMemo } from 'preact/hooks';
-import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useStore } from '~/lib/global-store';
 
 import * as styles from '~/src/styles/layouts/MainLayout.module.css';
+import { Link } from '~/src/components/Link.jsx';
 
 import { Icon } from '~/src/components/Icon.jsx';
 import { SearchInput } from '~/src/components/TagSearch.jsx';
@@ -55,6 +56,7 @@ function Search () {
 		}
 
 		navigate(url);
+		window.scrollTo({ top: 0, behavior: 'smooth' });
 	};
 
 

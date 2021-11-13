@@ -1,11 +1,11 @@
 import { h } from 'preact';
 import { Suspense } from 'preact/compat';
 import { useMemo } from 'preact/hooks';
-import { Link } from 'react-router-dom';
 import { useStore } from '~/lib/global-store';
 
 import clsx from 'clsx';
 import * as styles from '~/src/styles/components/Post.module.css';
+import { Link } from '~/src/components/Link.jsx';
 import { Icon } from '~/src/components/Icon.jsx';
 
 import HeartIcon from '~/src/icons/heart.svg?url';

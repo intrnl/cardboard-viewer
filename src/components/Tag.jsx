@@ -1,8 +1,8 @@
 import { h } from 'preact';
-import { Link } from 'react-router-dom';
 
 import clsx from 'clsx';
 import * as styles from '~/src/styles/components/Tag.module.css';
+import { Link } from '~/src/components/Link.jsx';
 
 import {
 	TAG_CATEGORY_GENERAL,

@@ -1,10 +1,10 @@
 import { h } from 'preact';
 import { Suspense } from 'preact/compat';
 import { useState, useRef,  useLayoutEffect } from 'preact/hooks';
-import { Link } from 'react-router-dom';
 
 import clsx from 'clsx';
 import * as styles from '~/src/styles/components/TagSearch.module.css';
+import { Link } from '~/src/components/Link.jsx';
 
 import { autocompleteTags } from '~/src/api/assets.js';
 

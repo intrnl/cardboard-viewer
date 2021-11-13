@@ -38,6 +38,7 @@ export default function PostsListingPage () {
 
 	const handlePageChange = (page) => {
 		setParams({ page });
+		window.scrollTo({ top: 0, behavior: 'smooth' });
 	};
 
 

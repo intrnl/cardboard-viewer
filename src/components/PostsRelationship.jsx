@@ -1,11 +1,11 @@
 // Ha, ha, call me when there are more than 18 siblings in a relationship
 
 import { h } from 'preact';
-import { Link } from 'react-router-dom';
 import { createMappedResource } from '~/lib/use-asset';
 
 import clsx from 'clsx';
 import * as styles from '~/src/styles/components/PostsRelationship.module.css';
+import { Link } from '~/src/components/Link.jsx';
 import { Post } from '~/src/components/Post.jsx';
 
 import * as asset from '~/src/api/assets.js';

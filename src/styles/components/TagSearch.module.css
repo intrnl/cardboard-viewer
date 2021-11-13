@@ -15,6 +15,7 @@
 .autocomplete-popup {
 	background-color: lightgray;
 	width: max-content;
+	max-width: calc(100vw - (16px * 2));
 	display: block;
 	margin: 0;
 	padding: 0;

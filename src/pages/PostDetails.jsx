@@ -53,46 +53,68 @@ function PostTags (props) {
 
 	const data = resource.read();
 
-	const artists = data.tag_string_artist.split(RE_TAG_DELIMITER);
-	const copyrights = data.tag_string_copyright.split(RE_TAG_DELIMITER);
-	const characters = data.tag_string_character.split(RE_TAG_DELIMITER);
+	const artists = data.tag_string_artist
+		? data.tag_string_artist.split(RE_TAG_DELIMITER)
+		: false;
 
-	const general = data.tag_string_general.split(RE_TAG_DELIMITER);
-	const meta = data.tag_string_meta.split(RE_TAG_DELIMITER);
+	const copyrights = data.tag_string_copyright
+		? data.tag_string_copyright.split(RE_TAG_DELIMITER)
+		: false;
 
+	const characters = data.tag_string_character
+		? data.tag_string_character.split(RE_TAG_DELIMITER)
+		: false;
+
+	const general = data.tag_string_general
+		? data.tag_string_general.split(RE_TAG_DELIMITER)
+		: false;
+
+	const meta = data.tag_string_meta
+		? data.tag_string_meta.split(RE_TAG_DELIMITER)
+		: false;
 
 	return (
 		<SuspenseList>
-			<Suspense fallback={null}>
-				<TagsList
-					header='Artists'
-					tags={artists}
-				/>
-			</Suspense>
-			<Suspense fallback={null}>
-				<TagsList
-					header='Copyrights'
-					tags={copyrights}
-				/>
-			</Suspense>
-			<Suspense fallback={null}>
-				<TagsList
-					header='Characters'
-					tags={characters}
-				/>
-			</Suspense>
-			<Suspense fallback={null}>
-				<TagsList
-					header='General'
-					tags={general}
-				/>
-			</Suspense>
-			<Suspense fallback={null}>
-				<TagsList
-					header='Meta'
-					tags={meta}
-				/>
-			</Suspense>
+			{artists && (
+				<Suspense fallback={null}>
+					<TagsList
+						header='Artists'
+						tags={artists}
+					/>
+				</Suspense>
+			)}
+			{copyrights && (
+				<Suspense fallback={null}>
+					<TagsList
+						header='Copyrights'
+						tags={copyrights}
+					/>
+				</Suspense>
+			)}
+			{characters && (
+				<Suspense fallback={null}>
+					<TagsList
+						header='Characters'
+						tags={characters}
+					/>
+				</Suspense>
+			)}
+			{general && (
+				<Suspense fallback={null}>
+					<TagsList
+						header='General'
+						tags={general}
+					/>
+				</Suspense>
+			)}
+			{meta && (
+				<Suspense fallback={null}>
+					<TagsList
+						header='Meta'
+						tags={meta}
+					/>
+				</Suspense>
+			)}
 		</SuspenseList>
 	);
 }

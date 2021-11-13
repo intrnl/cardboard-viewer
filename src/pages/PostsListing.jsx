@@ -1,12 +1,13 @@
-import { h } from 'preact';
+import { h, Fragment } from 'preact';
 import { Suspense } from 'preact/compat';
-import { createMappedResource } from '~/lib/use-asset';
+import { createMappedResource, createResource } from '~/lib/use-asset';
 import { useStore } from '~/lib/global-store';
 
 import * as styles from '~/src/styles/pages/PostsListing.module.css';
 import MainLayout from '~/src/layouts/MainLayout.jsx';
 import { Post, PostFallback } from '~/src/components/Post.jsx';
 import { Pagination } from '~/src/components/Pagination.jsx';
+import { Tag } from '~/src/components/Tag.jsx';
 
 import { AuthStore } from '~/src/globals/auth.js';
 import * as asset from '~/src/api/assets.js';
@@ -41,7 +42,7 @@ export default function PostsListingPage () {
 
 
 	return (
-		<MainLayout>
+		<MainLayout aside={<PostsListingAside tags={tags} />}>
 			<div class={styles.container}>
 				<Suspense fallback={<PostsListingFallback size={limit} />}>
 					<PostsListing
@@ -66,7 +67,45 @@ function normalizeTags (tags) {
 	return tags.trim().split(/ +/).sort((a, b) => a.localeCompare(b)).join(' ');
 }
 
+// <PostsListingAside />
+function PostsListingAside (props) {
+	const { tags } = props;
 
+	const list = tags ? asset.relatedTags.get(tags) : asset.popularTags.get();
+
+	return (
+		<>
+			<Suspense fallback={null}>
+				<TagsList resource={list} />
+			</Suspense>
+		</>
+	);
+}
+
+function TagsList (props) {
+	const { resource } = props;
+
+	const data = resource.read();
+
+	return (
+		<div className={styles.tagContainer}>
+			<h3 className={styles.tagHeader}>
+				Tags
+			</h3>
+			<ul className={styles.tagListing}>
+				{data.slice(0, 20).map(([tag]) => (
+					<Tag
+						key={tag}
+						component='li'
+						resource={createResource(() => asset.tags.read(tag))}
+					/>
+				))}
+			</ul>
+		</div>
+	);
+}
+
+// <PostsListing />
 function PostsListing (props) {
 	const { resource, search } = props;
 
@@ -100,6 +139,7 @@ function PostsListingFallback (props) {
 	);
 }
 
+// <PostsPagination />
 function PostsPagination (props) {
 	const { resource, page, limit, onChangePage } = props
 

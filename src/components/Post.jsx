@@ -1,5 +1,6 @@
 import { h } from 'preact';
 import { Suspense } from 'preact/compat';
+import { useMemo } from 'preact/hooks';
 import { Link } from 'react-router-dom';
 import { useStore } from '~/lib/global-store';
 
@@ -18,6 +19,7 @@ import { POST_IMAGE_SMALL_SIZE, GET_IMAGE_SIZE } from '~/src/api/enums.js';
 import { useSuspense } from '~/src/utils/useSuspense.js';
 
 
+// <Post />
 export function Post (props) {
 	const { resource, className, search } = props;
 
@@ -59,6 +61,32 @@ export function Post (props) {
 	);
 }
 
+export function PostFallback () {
+	const [width, height] = useMemo(retrieveRandomSize, []);
+
+	return (
+		<article className={styles.post}>
+			<div style={{ width, height }} />
+		</article>
+	);
+}
+
+function retrieveRandomSize () {
+	const max = POST_IMAGE_SMALL_SIZE;
+	const min = POST_IMAGE_SMALL_SIZE / 2;
+
+	const width = getRandomInclusive(min, max);
+	const height = getRandomInclusive(min, max);
+
+	return GET_IMAGE_SIZE(width, height, POST_IMAGE_SMALL_SIZE);
+}
+
+function getRandomInclusive (min, max) {
+	return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+
+// <Favorite />
 function Favorite (props) {
 	const { postId, userId } = props;
 

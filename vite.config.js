@@ -5,6 +5,7 @@ import prefresh from '@prefresh/vite'
 
 
 export default defineConfig({
+	envPrefix: ['VITE_', 'CF_PAGES_'],
 	build: {
 		target: 'esnext',
 		sourcemap: true,

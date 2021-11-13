@@ -20,6 +20,10 @@
 }
 
 @media (max-width: 530px) {
+	.post-listing {
+		overflow: hidden;
+	}
+
 	.post-item {
 		width: calc(100vw / 3);
 		aspect-ratio: 1;

@@ -48,6 +48,7 @@ export const postCount = createAsset(async (tags) => {
 export const tags = createAsset(createBatchedFetch({
 	// We don't want to use its actual ID, only the name.
 	id: (x) => x.name,
+	limit: 20,
 
 	fetch: (tags) => {
 		const params = { search: { name: tags } };

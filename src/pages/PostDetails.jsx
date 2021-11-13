@@ -141,7 +141,7 @@ function TagsList (props) {
 }
 
 // <PostDetails />
-const RE_EXT_IMAGE = /\.(png|jpe?g|webp)$/i;
+const RE_EXT_IMAGE = /\.(png|jpe?g|gif|webp)$/i;
 const RE_EXT_VIDEO = /\.(mp4|webm)$/i;
 
 function PostDetails (props) {

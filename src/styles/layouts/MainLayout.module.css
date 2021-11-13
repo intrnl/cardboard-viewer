@@ -28,7 +28,6 @@
 	flex-direction: column;
 	gap: 16px;
 	width: 250px;
-	overflow: auto;
 }
 
 .main {

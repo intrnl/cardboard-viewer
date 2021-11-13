@@ -5,6 +5,8 @@
 }
 
 .post-image {
+	height: auto;
+	max-width: 100%;
 	color: transparent;
 	background-color: lightgray;
 }

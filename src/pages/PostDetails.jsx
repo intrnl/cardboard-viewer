@@ -4,7 +4,7 @@ import { useParams, Navigate } from 'react-router-dom';
 import { createResource } from '~/lib/use-asset';
 
 import * as styles from '~/src/styles/pages/PostDetails.module.css';
-import MainLayout from '~/src/layouts/MainLayout.jsx';
+import { MainLayout } from '~/src/layouts/MainLayout.jsx';
 import { PostsRelationship } from '~/src/components/PostsRelationship.jsx';
 import { Tag } from '~/src/components/Tag.jsx';
 

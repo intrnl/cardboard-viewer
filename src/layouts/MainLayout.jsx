@@ -17,7 +17,7 @@ import { useDerivedState } from '~/src/utils/useDerivedState.js';
 import { qss } from '~/src/utils/qss.js';
 
 
-export default function MainLayout (props) {
+export function MainLayout (props) {
 	return (
 		<div className={styles.container}>
 			<header className={styles.header}>

@@ -1,10 +1,12 @@
-import { h } from 'preact';
-import { Suspense } from 'preact/compat';
+import { h, Fragment } from 'preact';
+import { Suspense, SuspenseList } from 'preact/compat';
 import { useParams, Navigate } from 'react-router-dom';
+import { createResource } from '~/lib/use-asset';
 
 import * as styles from '~/src/styles/pages/PostDetails.module.css';
 import MainLayout from '~/src/layouts/MainLayout.jsx';
 import { PostsRelationship } from '~/src/components/PostsRelationship.jsx';
+import { Tag } from '~/src/components/Tag.jsx';
 
 import * as asset from '~/src/api/assets.js';
 import { POST_IMAGE_LARGE_SIZE, GET_IMAGE_CEIL } from '~/src/api/enums.js';
@@ -22,7 +24,7 @@ export default function PostDetailsPage () {
 	}
 
 	return (
-		<MainLayout>
+		<MainLayout aside={<PostDetailsAside resource={post} />}>
 			<Suspense fallback={<PostDetailsFallback />}>
 				<PostDetails resource={post} />
 			</Suspense>
@@ -30,7 +32,93 @@ export default function PostDetailsPage () {
 	);
 }
 
+// <PostDetailsAside />
+const RE_TAG_DELIMITER = / +/g;
 
+function PostDetailsAside (props) {
+	const { resource } = props;
+
+
+	return (
+		<>
+			<Suspense fallback={null}>
+				<PostTags resource={resource} />
+			</Suspense>
+		</>
+	);
+}
+
+function PostTags (props) {
+	const { resource } = props;
+
+	const data = resource.read();
+
+	const artists = data.tag_string_artist.split(RE_TAG_DELIMITER);
+	const copyrights = data.tag_string_copyright.split(RE_TAG_DELIMITER);
+	const characters = data.tag_string_character.split(RE_TAG_DELIMITER);
+
+	const general = data.tag_string_general.split(RE_TAG_DELIMITER);
+	const meta = data.tag_string_meta.split(RE_TAG_DELIMITER);
+
+
+	return (
+		<SuspenseList>
+			<Suspense fallback={null}>
+				<TagsList
+					header='Artists'
+					tags={artists}
+				/>
+			</Suspense>
+			<Suspense fallback={null}>
+				<TagsList
+					header='Copyrights'
+					tags={copyrights}
+				/>
+			</Suspense>
+			<Suspense fallback={null}>
+				<TagsList
+					header='Characters'
+					tags={characters}
+				/>
+			</Suspense>
+			<Suspense fallback={null}>
+				<TagsList
+					header='General'
+					tags={general}
+				/>
+			</Suspense>
+			<Suspense fallback={null}>
+				<TagsList
+					header='Meta'
+					tags={meta}
+				/>
+			</Suspense>
+		</SuspenseList>
+	);
+}
+
+function TagsList (props) {
+	const { tags, header } = props;
+
+	return (
+		<div className={styles.tagContainer}>
+			<h3 className={styles.tagHeader}>
+				{header}
+			</h3>
+			<ul className={styles.tagListing}>
+				{tags.map((tag) => (
+					<Tag
+						key={tag}
+						component='li'
+						resource={createResource(() => asset.tags.read(tag))}
+					/>
+				))}
+			</ul>
+		</div>
+	);
+}
+
+// <PostDetails />
 const RE_EXT_IMAGE = /\.(png|jpe?g|webp)$/i;
 const RE_EXT_VIDEO = /\.(mp4|webm)$/i;
 
@@ -99,3 +187,5 @@ function convertToPercentage (number) {
 		maximumFractionDigits: 2,
 	});
 }
+
+

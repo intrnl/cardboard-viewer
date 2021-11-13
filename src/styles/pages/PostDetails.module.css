@@ -10,3 +10,20 @@
 	color: transparent;
 	background-color: lightgray;
 }
+
+.tag-container {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.tag-header {
+	font-size: 14px;
+	margin: 0;
+}
+
+.tag-listing {
+	margin: 0;
+	padding: 0;
+}
+

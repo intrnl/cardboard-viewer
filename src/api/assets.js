@@ -55,17 +55,22 @@ export const tags = createAsset(createBatchedFetch({
 	},
 }), 30000)
 
-export const relatedTags = createAsset((query) => {
-	const params = { query };
-	return fetcher(`/related_tags.json`, params);
-}, 15000);
-
 export const autocompleteTags = createAsset((query) => {
 	const params = { search: { query, type: 'tag_query' }, limit: 10 };
+
 	return fetcher(`/autocomplete.json`, params);
 }, 5000);
 
+export const relatedTags = createAsset(async (query) => {
+	const params = { query };
+	const response = await fetcher(`/related_tag.json`, params);
+
+	// Array<[tag: string, type: TagType]>
+	return response.tags;
+}, 15000);
+
 export const popularTags = createAsset(() => {
+	// Array<[tag: string, popularity: number]>
 	return fetcher(`/explore/posts/searches.json`);
 }, 30000);
 

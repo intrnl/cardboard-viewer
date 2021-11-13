@@ -133,7 +133,7 @@ function PostsListingFallback (props) {
 	return (
 		<div className={styles.postListing}>
 			{Array.from({ length: size }, () => (
-				<PostFallback />
+				<PostFallback className={styles.postItem} />
 			))}
 		</div>
 	);

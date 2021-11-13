@@ -61,11 +61,13 @@ export function Post (props) {
 	);
 }
 
-export function PostFallback () {
+export function PostFallback (props) {
+	const { className } = props;
+
 	const [width, height] = useMemo(retrieveRandomSize, []);
 
 	return (
-		<article className={styles.post}>
+		<article className={clsx(styles.post, className)}>
 			<div style={{ width, height }} />
 		</article>
 	);

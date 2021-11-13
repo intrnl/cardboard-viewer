@@ -19,12 +19,12 @@ const fetcher = async (url, params) => {
 
 export const users = createAsset((id) => {
 	return fetcher(`/users/${id}.json`);
-}, 30000);
+}, 90000);
 
 
 export const posts = createAsset((id) => {
 	return fetcher(`/posts/${id}.json`);
-}, 30000);
+}, 90000);
 
 export const postList = createAsset(async (params) => {
 	const result = await fetcher(`/posts.json`, params);
@@ -36,14 +36,14 @@ export const postList = createAsset(async (params) => {
 	}
 
 	return result;
-}, 30000);
+}, 90000);
 
 export const postCount = createAsset(async (tags) => {
 	const params = { tags };
 	const result = await fetcher(`/counts/posts.json`, params);
 
 	return result.counts.posts
-}, 30000);
+}, 90000);
 
 export const tags = createAsset(createBatchedFetch({
 	// We don't want to use its actual ID, only the name.
@@ -54,7 +54,7 @@ export const tags = createAsset(createBatchedFetch({
 		const params = { search: { name: tags } };
 		return fetcher(`/tags.json`, params);
 	},
-}), 30000);
+}), 90000);
 
 export const autocompleteTags = createAsset((query) => {
 	const params = { search: { query, type: 'tag_query' }, limit: 10 };
@@ -68,12 +68,12 @@ export const relatedTags = createAsset(async (query) => {
 
 	// Array<[tag: string, type: TagType]>
 	return response.tags;
-}, 30000);
+}, 90000);
 
 export const popularTags = createAsset(() => {
 	// Array<[tag: string, popularity: number]>
 	return fetcher(`/explore/posts/searches.json`);
-}, 30000);
+}, 90000);
 
 export const favorites = createAsset(createBatchedFetch({
 	id: ({ user_id, post_id }) => ({ user_id, post_id }),
@@ -118,4 +118,4 @@ export const favorites = createAsset(createBatchedFetch({
 
 		return requests;
 	},
-}), 30000);
+}), 90000);

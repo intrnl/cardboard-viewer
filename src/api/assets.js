@@ -53,7 +53,7 @@ export const tags = createAsset(createBatchedFetch({
 		const params = { search: { name: tags } };
 		return fetcher(`/tags.json`, params);
 	},
-}), 30000)
+}), 30000);
 
 export const autocompleteTags = createAsset((query) => {
 	const params = { search: { query, type: 'tag_query' }, limit: 10 };
@@ -67,7 +67,7 @@ export const relatedTags = createAsset(async (query) => {
 
 	// Array<[tag: string, type: TagType]>
 	return response.tags;
-}, 15000);
+}, 30000);
 
 export const popularTags = createAsset(() => {
 	// Array<[tag: string, popularity: number]>

@@ -21,6 +21,7 @@ export function Link (props) {
 
 			const repl = replace || createPath(location) === createPath(path);
 			navigate(to, { replace: repl });
+			window.scrollTo({ top: 0, behavior: 'smooth' });
 		}
 	}
 
@@ -30,7 +31,7 @@ export function Link (props) {
 }
 
 export function isLinkEvent (event) {
-	const target = event.target;
+	const target = event.target.target;
 
 	return (
 		event.button === 0 &&

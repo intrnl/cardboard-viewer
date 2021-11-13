@@ -31,6 +31,9 @@ export default function PostDetailsPage () {
 }
 
 
+const RE_EXT_IMAGE = /\.(png|jpe?g|webp)$/i;
+const RE_EXT_VIDEO = /\.(mp4|webm)$/i;
+
 function PostDetails (props) {
 	const { resource } = props;
 
@@ -59,12 +62,24 @@ function PostDetails (props) {
 				<div>Resized to {convertToPercentage(ratio)} of original</div>
 			)}
 
-			<img
-				className={styles.postImage}
-				width={width}
-				height={height}
-				src={data.large_file_url}
-			/>
+			{RE_EXT_IMAGE.test(data.large_file_url) ? (
+				<img
+					className={styles.postMedia}
+					width={width}
+					height={height}
+					src={data.large_file_url}
+				/>
+			) : RE_EXT_VIDEO.test(data.large_file_url) ? (
+				<video
+					className={styles.postMedia}
+					controls
+					width={width}
+					height={height}
+					src={data.large_file_url}
+				/>
+			) : (
+				<div>Post has unsupported file format</div>
+			)}
 		</div>
 	);
 }

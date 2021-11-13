@@ -120,5 +120,6 @@ function PostsPagination (props) {
 }
 
 function PostsPaginationFallback () {
-	return <div></div>
+	// I don't think we have an actual need to show placeholders for this.
+	return null;
 }

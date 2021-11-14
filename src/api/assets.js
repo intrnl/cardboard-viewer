@@ -71,8 +71,13 @@ export const relatedTags = createAsset(async (query) => {
 }, 90000);
 
 export const popularTags = createAsset(() => {
+	const date = new Date();
+	date.setDate(date.getDate() - 1);
+
+	const params = { date: date.toISOString() };
+
 	// Array<[tag: string, popularity: number]>
-	return fetcher(`/explore/posts/searches.json`);
+	return fetcher(`/explore/posts/searches.json`, params);
 }, 90000);
 
 export const favorites = createAsset(createBatchedFetch({

@@ -23,7 +23,7 @@ export function Link (props) {
 			navigate(to, { replace: repl });
 			window.scrollTo({ top: 0, behavior: 'smooth' });
 		}
-	}
+	};
 
 	return (
 		<a {...rest} href={href} onClick={handleClick} />

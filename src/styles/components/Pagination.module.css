@@ -19,7 +19,11 @@
 
 .pagination-button:hover {
 	background-color: #0075f8;
-	color: white;
+	color: #fff;
+}
+
+.pagination-button:focus-visible {
+	outline: #000 auto 1px;
 }
 
 .pagination-button.is-active {

@@ -87,6 +87,7 @@ export function PaginationButton (props) {
 			onClick={onClick}
 			value={value}
 			aria-current={active}
+			aria-label={retrieveLabel(value)}
 		>
 			{isNumber ?	value.toString() : <Icon src={retrieveIcon(value)} />}
 		</button>
@@ -99,5 +100,15 @@ function retrieveIcon (value) {
 		case PAGINATION_DOT_END: return DotsHorizIcon;
 		case PAGINATION_PREVIOUS: return ChevronLeftIcon;
 		case PAGINATION_NEXT: return ChevronRightIcon;
+	}
+}
+
+function retrieveLabel (value) {
+	switch (value) {
+		case PAGINATION_DOT_START: return;
+		case PAGINATION_DOT_END: return;
+		case PAGINATION_PREVIOUS: return 'Previous page';
+		case PAGINATION_NEXT: return 'Next page';
+		default: return `Page ${value}`;
 	}
 }

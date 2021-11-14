@@ -11,6 +11,8 @@
 
 @media (max-width: 530px) {
 	.media-container {
+		display: flex;
+		justify-content: center;
 		margin-inline: -16px;
 	}
 }

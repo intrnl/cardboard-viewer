@@ -111,7 +111,6 @@ export function SearchInput (props) {
 		<div className={styles.container}>
 			<input
 				className={styles.input}
-				autoFocus
 				ref={inputRef}
 				value={value}
 				onChange={handleInput}

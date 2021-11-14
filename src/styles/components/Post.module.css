@@ -39,12 +39,12 @@
 	z-index: 2;
 }
 
-.favorite:hover .favorite-icon {
-	color: lightcoral;
-}
-
 .favorite.is-favorited .favorite-icon {
 	color: red;
+}
+
+.favorite:is(:hover, :focus) .favorite-icon {
+	color: lightcoral;
 }
 
 .favorite-icon {

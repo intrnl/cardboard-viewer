@@ -166,6 +166,7 @@ function AutocompleteItem (props) {
 			onMouseEnter={() => onHover?.(index)}
 		>
 			<Link
+				tabIndex={-1}
 				className={clsx(styles.autocompleteItem, selected && styles.isActive)}
 				to={`/?query=${data.value}+`} onClick={handleNavigatePrevent}
 			>

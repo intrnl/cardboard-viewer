@@ -110,6 +110,7 @@ function Favorite (props) {
 
 	return (
 		<button
+			title={favorited ? 'Unfavorite' : 'Favorite'}
 			onClick={handleClick}
 			className={clsx(styles.favorite, favorited && styles.isFavorited)}
 		>

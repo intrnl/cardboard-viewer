@@ -82,6 +82,7 @@ export const popularTags = createAsset(() => {
 
 export const favorites = createAsset(createBatchedFetch({
 	id: ({ user_id, post_id }) => ({ user_id, post_id }),
+	limit: 20,
 
 	// One quirk about the favorites endpoint is that if two users share the same
 	// favorited posts, it would only return one, that means we wouldn't know if

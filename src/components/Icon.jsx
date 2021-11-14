@@ -14,5 +14,5 @@ export function Icon (props) {
 		<svg height={size} width={size} className={cn}>
 			<use href={src + '#icon'} />
 		</svg>
-	)
+	);
 }

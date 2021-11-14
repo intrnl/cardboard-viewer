@@ -34,7 +34,7 @@ export default function PostsListingPage () {
 	const posts = asset.postList.get({ tags, page: pageNum, limit: limitNum });
 	const count = asset.postCount.get(tags);
 
-	const search = qss({ query });
+	const search = query ? qss({ query }) : false;
 
 	const handlePageChange = (page) => {
 		setParams({ page });

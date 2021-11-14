@@ -146,7 +146,7 @@ function PostsPagination (props) {
 	const count = resource.read();
 
 	const currentPage = page;
-	const totalPage = Math.max(Math.min(Math.floor(count / limit), GET_MAX_PAGE(auth.profile?.level)), 1);
+	const totalPage = Math.max(Math.min(Math.ceil(count / limit), GET_MAX_PAGE(auth.profile?.level)), 1);
 
 
 	return (

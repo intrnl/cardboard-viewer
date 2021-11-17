@@ -1,5 +1,5 @@
 import { AuthStore } from '~/src/globals/auth.js';
-import { BASE_MUTATION_URL, ResponseError } from '~/src/api/base.js';
+import { PROXY_URL, ResponseError } from '~/src/api/base.js';
 import { favorites } from '~/src/api/assets.js';
 
 import { qss } from '~/src/utils/qss.js';
@@ -9,7 +9,7 @@ function request ({ method = 'POST', url, params, body }) {
 	const auth = AuthStore.get();
 	const query = qss({ api_key: auth.key, login: auth.user, ...params });
 
-	return fetch(`${BASE_MUTATION_URL}${url}?${query}`, {
+	return fetch(`${PROXY_URL}${url}?${query}`, {
 		method,
 		body: body ? JSON.stringify(body) : undefined,
 		redirect: 'manual',

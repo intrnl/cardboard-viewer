@@ -1,6 +1,6 @@
 import { Store } from '~/lib/global-store';
 
-import { BASE_URL, ResponseError } from '~/src/api/base.js';
+import { API_URL, ResponseError } from '~/src/api/base.js';
 
 import { qss } from '~/src/utils/qss.js';
 
@@ -63,7 +63,7 @@ export async function verify ({ key, user }) {
 	}
 
 	const params = qss({ api_key: key, login: user });
-	const response = await fetch(`${BASE_URL}/profile.json?${params}`);
+	const response = await fetch(`${API_URL}/profile.json?${params}`);
 
 	if (!response.ok) {
 		throw new ResponseError(response);

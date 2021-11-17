@@ -1,5 +1,5 @@
-export const BASE_URL = 'https://danbooru.donmai.us';
-export const BASE_MUTATION_URL = '/proxy';
+export const API_URL = import.meta.env.VITE_API_URL;
+export const PROXY_URL = import.meta.env.VITE_PROXY_URL;
 
 
 export class ResponseError extends Error {

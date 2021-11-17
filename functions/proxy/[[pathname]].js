@@ -6,7 +6,7 @@ export async function onRequest ({ request, params }) {
 
 	const method = request.method;
 
-	const destination = `${BASE_URL}/${pathname}${search}`;
+	const destination = `${BASE_URL}/${pathname.join('/')}${search}`;
 
 	request = new Request(destination, request);
 	request.headers.set('Origin', BASE_URL);
@@ -14,7 +14,7 @@ export async function onRequest ({ request, params }) {
 	let response = await fetch(request);
 
 	response = new Response(response.body, response);
-	response.headers.set('x-proxy-debug', JSON.stringify({ pathname, search, method }))
+	response.headers.set('x-proxy-debug', JSON.stringify({ destination, method }))
 
 	return response;
 }

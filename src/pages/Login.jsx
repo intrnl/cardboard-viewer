@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import * as styles from '~/src/styles/pages/Login.module.css';
 
 import { login } from '~/src/globals/auth.js';
-import { BASE_URL, DEFAULT_BASE_URL, setBaseUrl } from '~/src/api/base.js';
 
 import { useSearchParams } from '~/src/utils/useSearchParams.js';
 import { useInputState } from '~/src/utils/useInputState.js';
@@ -26,14 +25,11 @@ export default function LoginPage () {
 	const [user, handleUserInput] = useInputState('');
 
 	const [tokenUrl, handleTokenUrlInput] = useInputState('');
-	const [baseUrl, handleBaseUrlInput] = useInputState(BASE_URL);
 
 	const submit = async (event) => {
 		event?.preventDefault();
 
 		setDispatching(true);
-
-		setBaseUrl(baseUrl || DEFAULT_BASE_URL);
 
 		login({ key, user }).then(
 			() => {
@@ -118,23 +114,6 @@ export default function LoginPage () {
 							type='password'
 							value={key}
 							onChange={handleKeyInput}
-						/>
-					</label>
-				</fieldset>
-
-				<fieldset disabled={dispatching}>
-					<legend>API</legend>
-
-					<p>Change this if you have issues logging in or interacting with the app.</p>
-
-					<label>
-						Base API URL
-
-						<input
-							type='url'
-							value={baseUrl}
-							placeholder={DEFAULT_BASE_URL}
-							onChange={handleBaseUrlInput}
 						/>
 					</label>
 				</fieldset>

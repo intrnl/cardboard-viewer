@@ -30,7 +30,9 @@ export async function setFavorite ({ user_id, post_id, favorited }) {
 			params: favorited ? { post_id } : null,
 		});
 
-		if (!favorited && response.status === 404) {}
+		if (!favorited && response.status === 404) {
+			// Do nothing, it means that it's already been unfavorited.
+		}
 		else if (!response.ok && response.type !== 'opaqueredirect') {
 			throw new ResponseError(response);
 		}

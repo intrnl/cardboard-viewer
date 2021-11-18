@@ -12,9 +12,7 @@
 		"react-router-dom": "^6.0.2"
 	},
 	"devDependencies": {
-		"@cloudflare/pages-functions-compiler": "^0.3.3",
 		"@prefresh/vite": "^2.2.4",
-		"vite": "^2.6.14",
-		"wrangler": "^0.0.0-fsw-beta.5"
+		"vite": "^2.6.14"
 	}
 }

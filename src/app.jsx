@@ -3,6 +3,7 @@ import { h, render } from 'preact';
 // import 'preact/debug';
 
 import '~/src/styles/reset.css';
+import '~/src/styles/app.css';
 import { App } from '~/src/components/App.jsx';
 
 

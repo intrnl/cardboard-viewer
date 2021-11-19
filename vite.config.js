@@ -1,7 +1,6 @@
 import * as path from 'path';
 
 import { defineConfig } from 'vite';
-import prefresh from '@prefresh/vite'
 
 
 export default defineConfig({
@@ -14,6 +13,9 @@ export default defineConfig({
 				generatedCode: 'es2015',
 			},
 		},
+	},
+	server: {
+		hmr: false,
 	},
 	esbuild: {
 		jsxFactory: 'h',
@@ -33,7 +35,4 @@ export default defineConfig({
 			localsConvention: 'camelCaseOnly',
 		},
 	},
-	plugins: [
-		prefresh(),
-	],
 });

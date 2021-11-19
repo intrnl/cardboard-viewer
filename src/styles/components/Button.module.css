@@ -1,0 +1,51 @@
+.button {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	height: 32px;
+	min-width: 32px;
+	padding: 8px;
+	border: 0;
+	border-radius: 4px;
+}
+
+.button:is(:active, :focus) {
+	outline: 2px solid var(--blue-600);
+	outline-offset: -1px;
+}
+
+
+.is-primary {
+	color: var(--white);
+	background-color: var(--blue-600);
+}
+
+.is-primary:hover {
+	background-color: var(--blue-700);
+}
+
+.is-primary:is(:active, :focus) {
+	outline-offset: 2px;
+}
+
+
+.is-secondary {
+	color: var(--gray-800);
+	background-color: var(--white);
+	border: 1px solid var(--gray-300);
+}
+
+.is-secondary:hover {
+	background-color: var(--gray-50);
+}
+
+
+.is-ghost {
+	color: var(--gray-800);
+	background-color: transparent;
+}
+
+.is-ghost:hover {
+	background-color: var(--gray-300);
+}

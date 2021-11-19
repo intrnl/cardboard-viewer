@@ -1,0 +1,22 @@
+.field {
+	color: var(--black);
+	background-color: var(--white);
+	min-height: 32px;
+	padding-inline: 8px;
+	border: 1px solid var(--gray-300);
+	border-radius: 4px;
+}
+
+.field:focus {
+	outline: 2px solid var(--blue-600);
+	outline-offset: -1px;
+	z-index: 1;
+}
+
+.field::placeholder {
+	color: var(--gray-600);
+}
+
+.field::-webkit-search-cancel-button {
+	display: none;
+}

@@ -5,7 +5,12 @@ import * as styles from '~/src/styles/components/Button.module.css';
 
 
 export function Button (props) {
-	const { className, variant = 'secondary', ...rest } = props;
+	const {
+		as = 'button',
+		variant = 'secondary',
+		className,
+		...rest,
+	} = props;
 
 	const cn = clsx(styles.button, className, {
 		[styles.isPrimary]: variant === 'primary',
@@ -14,7 +19,5 @@ export function Button (props) {
 	});
 
 
-	return (
-		<button className={cn} {...rest} />
-	);
+	return h(as, { className: cn, ...rest });
 }

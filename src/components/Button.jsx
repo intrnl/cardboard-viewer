@@ -9,7 +9,7 @@ export function Button (props) {
 		as = 'button',
 		variant = 'secondary',
 		className,
-		...rest,
+		...rest
 	} = props;
 
 	const cn = clsx(styles.button, className, {

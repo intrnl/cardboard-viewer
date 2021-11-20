@@ -17,6 +17,11 @@
 	z-index: 1;
 }
 
+.button:disabled {
+	color: var(--gray-600);
+	pointer-events: none;
+}
+
 
 .is-primary {
 	color: var(--white);

@@ -1,5 +1,6 @@
 .button {
 	cursor: pointer;
+	font-weight: 500;
 	text-decoration: none;
 	display: flex;
 	align-items: center;
@@ -25,7 +26,6 @@
 
 
 .is-primary {
-	font-weight: 500;
 	color: var(--white);
 	background-color: var(--blue-600);
 	box-shadow: var(--shadow-sm);

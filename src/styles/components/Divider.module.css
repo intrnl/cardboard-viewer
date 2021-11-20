@@ -1,0 +1,11 @@
+.divider {
+	border-color: var(--gray-300);
+}
+
+.is-vertical {
+	border-right-width: 1px;
+}
+
+.is-horizontal {
+	border-top-width: 1px;
+}

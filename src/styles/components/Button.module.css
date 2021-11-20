@@ -34,6 +34,7 @@
 .is-secondary {
 	color: var(--gray-800);
 	background-color: var(--white);
+	box-shadow: var(--shadow-sm);
 	border: 1px solid var(--gray-300);
 }
 

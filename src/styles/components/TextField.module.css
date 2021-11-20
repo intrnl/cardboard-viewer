@@ -1,6 +1,7 @@
 .field {
 	color: var(--black);
 	background-color: var(--white);
+	box-shadow: var(--shadow-sm);
 	min-height: 32px;
 	padding-inline: 8px;
 	border: 1px solid var(--gray-300);

@@ -27,11 +27,35 @@ export const posts = createAsset((id) => {
 }, 90000);
 
 export const postList = createAsset(async (params) => {
+	const auth = AuthStore.get();
 	const result = await fetcher(`/posts.json`, params);
 
 	for (const post of result) {
-		if (post.id) {
-			posts.set(post.id, post);
+		const post_id = post.id;
+
+		if (!post_id) {
+			continue;
+		}
+
+		posts.set(post_id, post);
+	}
+
+	if (auth.profile && params.tags) {
+		const { tags } = params;
+		const { name, id: user_id } = auth.profile;
+
+		const re = auth.profile._re_ordfav ||= new RegExp(`\b(?:ord)?fav:${name}\b`);
+
+		if (re.test(tags)) {
+			for (const post of result) {
+				const post_id = post.id;
+
+				if (!post_id) {
+					continue;
+				}
+
+				favorites.set({ user_id, post_id }, { user_id, post_id, favorited: true });
+			}
 		}
 	}
 

@@ -3,10 +3,10 @@ import { Suspense, SuspenseList } from 'preact/compat';
 import { useParams, Navigate } from 'react-router-dom';
 import { createResource } from '~/lib/use-asset';
 
-import * as styles from '~/src/styles/pages/PostDetails.module.css';
 import { MainLayout } from '~/src/layouts/MainLayout.jsx';
 import { PostsRelationship } from '~/src/components/PostsRelationship.jsx';
 import { Tag } from '~/src/components/Tag.jsx';
+import * as styles from '~/src/styles/pages/PostDetails.module.css';
 
 import * as asset from '~/src/api/assets.js';
 import { POST_IMAGE_LARGE_SIZE, GET_IMAGE_CEIL } from '~/src/api/enums.js';

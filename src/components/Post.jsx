@@ -4,9 +4,9 @@ import { useMemo } from 'preact/hooks';
 import { useStore } from '~/lib/global-store';
 
 import clsx from 'clsx';
-import * as styles from '~/src/styles/components/Post.module.css';
 import { Link } from '~/src/components/Link.jsx';
 import { Icon } from '~/src/components/Icon.jsx';
+import * as styles from '~/src/styles/components/Post.module.css';
 
 import HeartIcon from '~/src/icons/heart.svg?url';
 import RefreshIcon from '~/src/icons/refresh.svg?url';

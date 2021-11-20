@@ -1,9 +1,8 @@
 import { h } from 'preact';
 import { forwardRef } from 'preact/compat';
+
 import clsx from 'clsx';
-
 import { Button } from '~/src/components/Button.jsx';
-
 import * as styles from '~/src/styles/components/Menu.module.css';
 
 

@@ -4,9 +4,9 @@ import { h } from 'preact';
 import { createMappedResource } from '~/lib/use-asset';
 
 import clsx from 'clsx';
-import * as styles from '~/src/styles/components/PostsRelationship.module.css';
 import { Link } from '~/src/components/Link.jsx';
 import { Post } from '~/src/components/Post.jsx';
+import * as styles from '~/src/styles/components/PostsRelationship.module.css';
 
 import * as asset from '~/src/api/assets.js';
 

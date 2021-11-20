@@ -1,8 +1,8 @@
 import { h } from 'preact';
 
 import clsx from 'clsx';
-import * as styles from '~/src/styles/components/Pagination.module.css';
 import { Icon } from '~/src/components/Icon.jsx';
+import * as styles from '~/src/styles/components/Pagination.module.css';
 
 import DotsHorizIcon from '~/src/icons/dots-horizontal.svg?url';
 import ChevronLeftIcon from '~/src/icons/chevron-left.svg?url';

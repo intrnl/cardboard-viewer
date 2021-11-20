@@ -1,8 +1,8 @@
 import { h } from 'preact';
 
 import clsx from 'clsx';
-import * as styles from '~/src/styles/components/Tag.module.css';
 import { Link } from '~/src/components/Link.jsx';
+import * as styles from '~/src/styles/components/Tag.module.css';
 
 import {
 	TAG_CATEGORY_GENERAL,

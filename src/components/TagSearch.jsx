@@ -1,21 +1,20 @@
 import { h } from 'preact';
 import { Suspense } from 'preact/compat';
 import { useState, useRef,  useLayoutEffect } from 'preact/hooks';
-import clsx from 'clsx';
 
+import clsx from 'clsx';
 import { Link, isLinkEvent } from '~/src/components/Link.jsx';
 import { Button } from '~/src/components/Button.jsx';
 import { Menu, MenuItem } from '~/src/components/Menu.jsx';
 import { TextField } from '~/src/components/TextField.jsx';
 import { Icon } from '~/src/components/Icon.jsx';
+import * as styles from '~/src/styles/components/TagSearch.module.css';
 
 import SearchIcon from '~/src/icons/search.svg?url';
 
 import { autocompleteTags } from '~/src/api/assets.js';
 
 import { useDebouncedState } from '~/src/utils/useDebouncedState.js';
-
-import * as styles from '~/src/styles/components/TagSearch.module.css';
 
 
 export function SearchInput (props) {

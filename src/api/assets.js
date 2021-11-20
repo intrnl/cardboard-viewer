@@ -6,7 +6,7 @@ import { AuthStore } from '~/src/globals/auth.js';
 import { qss } from '~/src/utils/qss.js';
 
 
-const fetcher = async (url, params) => {
+export const fetcher = async (url, params) => {
 	const auth = AuthStore.get();
 	const query = qss({ ...params, api_key: auth.key, login: auth.user });
 

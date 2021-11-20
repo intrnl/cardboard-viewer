@@ -143,7 +143,6 @@ export function SearchInput (props) {
 							resource={autocomplete}
 							selection={selection}
 							onSelect={handleSelect}
-							onHover={setSelection}
 						/>
 					</Suspense>
 				)}
@@ -157,7 +156,7 @@ export function SearchInput (props) {
 }
 
 function AutocompleteList (props) {
-	const { resource, selection, onSelect, onHover } = props;
+	const { resource, selection, onSelect } = props;
 
 	const data = resource.read();
 
@@ -173,7 +172,6 @@ function AutocompleteList (props) {
 					index={index}
 					selected={selection === index}
 					onSelect={onSelect}
-					onHover={onHover}
 				/>
 			))}
 		</Menu>
@@ -186,7 +184,7 @@ const countFormatter = new Intl.NumberFormat(undefined, {
 })
 
 function AutocompleteItem (props) {
-	const { data, index, selected, onSelect, onHover } = props;
+	const { data, index, selected, onSelect } = props;
 
 	const handleClick = (event) => {
 		if (isLinkEvent(event)) {

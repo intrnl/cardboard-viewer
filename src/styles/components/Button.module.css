@@ -39,6 +39,11 @@
 	outline-offset: 2px;
 }
 
+.is-primary:disabled {
+	background-color: var(--blue-500);
+	color: var(--blue-200)
+}
+
 
 .is-secondary {
 	color: var(--gray-800);

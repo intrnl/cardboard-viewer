@@ -1,10 +1,13 @@
 import { h } from 'preact';
+import { forwardRef } from 'preact/compat';
 
 import clsx from 'clsx';
 import * as styles from '~/src/styles/components/Button.module.css';
 
 
-export function Button (props) {
+const ButtonRef = forwardRef(Button);
+
+function Button (props, ref) {
 	const {
 		as = 'button',
 		variant = 'secondary',
@@ -19,5 +22,7 @@ export function Button (props) {
 	});
 
 
-	return h(as, { className: cn, ...rest });
+	return h(as, { ref, className: cn, ...rest });
 }
+
+export { ButtonRef as Button };

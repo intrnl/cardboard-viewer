@@ -17,7 +17,7 @@
 	border: 0;
 	border-radius: 0;
 }
-.menu-item:is(:active, :focus) {
+.menu-item:focus-visible {
 	outline: none;
 }
 .menu-item:is(:hover, :active, :focus-visible) {

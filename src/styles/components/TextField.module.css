@@ -8,7 +8,7 @@
 	border-radius: 4px;
 }
 
-.field:focus {
+.field:focus-visible {
 	outline: 2px solid var(--blue-600);
 	outline-offset: -1px;
 	z-index: 1;

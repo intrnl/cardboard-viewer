@@ -10,7 +10,7 @@
 	border-radius: 4px;
 }
 
-.button:is(:active, :focus) {
+.button:focus-visible {
 	outline: 2px solid var(--blue-600);
 	outline-offset: -1px;
 	z-index: 1;
@@ -26,7 +26,7 @@
 	background-color: var(--blue-700);
 }
 
-.is-primary:is(:active, :focus) {
+.is-primary:focus-visible {
 	outline-offset: 2px;
 }
 

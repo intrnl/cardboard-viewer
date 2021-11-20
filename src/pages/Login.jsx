@@ -7,7 +7,7 @@ import { Card } from '~/src/components/Card.jsx';
 import { FieldLabel } from '~/src/components/FieldLabel.jsx';
 import { TextField } from '~/src/components/TextField.jsx';
 import { Button } from '~/src/components/Button.jsx';
-import * as styles from '~/src/styles/pages/NewLogin.module.css';
+import * as styles from '~/src/styles/pages/Login.module.css';
 
 import { AuthStore, login, STATUS_LOGGED_IN, STATUS_VERIFYING } from '~/src/globals/auth.js';
 

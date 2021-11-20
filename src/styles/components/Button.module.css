@@ -25,6 +25,7 @@
 
 
 .is-primary {
+	font-weight: 500;
 	color: var(--white);
 	background-color: var(--blue-600);
 	box-shadow: var(--shadow-sm);

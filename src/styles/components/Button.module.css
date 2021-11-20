@@ -3,6 +3,7 @@
 	text-decoration: none;
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	gap: 4px;
 	height: 32px;
 	min-width: 32px;
@@ -26,6 +27,7 @@
 .is-primary {
 	color: var(--white);
 	background-color: var(--blue-600);
+	box-shadow: var(--shadow-sm);
 }
 
 .is-primary:hover {

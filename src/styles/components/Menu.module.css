@@ -1,0 +1,26 @@
+.menu {
+	background-color: var(--white);
+	box-shadow: var(--shadow-lg);
+	display: flex;
+	flex-direction: column;
+	padding-block: 4px;
+	border: 1px solid var(--gray-300);
+	border-radius: 4px;
+	z-index: 3;
+}
+
+
+.menu-item {
+	color: var(--gray-800);
+	text-decoration: none;
+	outline: 0;
+	border: 0;
+	border-radius: 0;
+}
+.menu-item:is(:active, :focus) {
+	outline: none;
+}
+.menu-item:is(:hover, :active, :focus-visible) {
+	color: var(--white);
+	background-color: var(--blue-600);
+}

@@ -1,11 +1,9 @@
 .divider {
+	border-top: 1px solid;
+	border-right: 1px solid;
 	border-color: var(--gray-300);
 }
 
-.is-vertical {
-	border-right-width: 1px;
-}
-
-.is-horizontal {
-	border-top-width: 1px;
+.is-gap {
+	margin-block: 4px;
 }

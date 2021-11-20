@@ -1,10 +1,15 @@
 import { h } from 'preact';
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect, useLayoutEffect } from 'preact/hooks';
 import { useNavigate } from 'react-router-dom';
+import { useStore } from '~/lib/global-store';
 
-import * as styles from '~/src/styles/pages/Login.module.css';
+import { Card } from '~/src/components/Card.jsx';
+import { FieldLabel } from '~/src/components/FieldLabel.jsx';
+import { TextField } from '~/src/components/TextField.jsx';
+import { Button } from '~/src/components/Button.jsx';
+import * as styles from '~/src/styles/pages/NewLogin.module.css';
 
-import { login } from '~/src/globals/auth.js';
+import { AuthStore, login, STATUS_LOGGED_IN, STATUS_VERIFYING } from '~/src/globals/auth.js';
 
 import { useSearchParams } from '~/src/utils/useSearchParams.js';
 import { useInputState } from '~/src/utils/useInputState.js';
@@ -14,33 +19,33 @@ const DEFAULT_SEARCH_PARAMS = {
 	to: '/',
 };
 
-export default function LoginPage () {
+export default function NewLoginPage () {
+	const auth = useStore(AuthStore);
 	const navigate = useNavigate();
 	const [{ to }] = useSearchParams(DEFAULT_SEARCH_PARAMS);
 
-	const [dispatching, setDispatching] = useState(false);
-	const [error, setError] = useState();
-
-	const [key, handleKeyInput] = useInputState('');
-	const [user, handleUserInput] = useInputState('');
+	const dispatching = auth.status === STATUS_VERIFYING;
 
 	const [tokenUrl, handleTokenUrlInput] = useInputState('');
 
-	const submit = async (event) => {
-		event?.preventDefault();
+	const [user, handleUserInput] = useInputState('');
+	const [key, handleKeyInput] = useInputState('');
 
-		setDispatching(true);
+	const handleSubmit = (event) => {
+		event.preventDefault();
 
-		login({ key, user }).then(
-			() => {
-				navigate(to, { replace: true });
-			},
+		login({ user, key }).catch(
 			(error) => {
-				setError(error);
-				setDispatching(false);
+				console.error('Failed to login', error);
 			},
 		);
 	};
+
+	useLayoutEffect(() => {
+		if (auth.status === STATUS_LOGGED_IN) {
+			navigate(to, { replace: true });
+		}
+	}, [auth.status]);
 
 	useEffect(() => {
 		if (!tokenUrl) {
@@ -67,63 +72,48 @@ export default function LoginPage () {
 
 
 	return (
-		<div className={styles.container}>
-			<form onSubmit={submit} className={styles.loginForm}>
-				{error && (
-					<fieldset>
-						<legend>Login failed</legend>
-						<p>{error?.message || error}</p>
-					</fieldset>
-				)}
+		<form className={styles.container} onSubmit={handleSubmit}>
+			<Card as='fieldset' disabled={dispatching} className={styles.loginCard}>
+				<FieldLabel>
+					User
+					<TextField
+						required
+						autocomplete='username'
+						value={user}
+						onChange={handleUserInput}
+					/>
+				</FieldLabel>
 
-				<fieldset disabled={dispatching}>
-					<legend>Quick login</legend>
+				<FieldLabel>
+					API Key
+					<TextField
+						required
+						type='password'
+						value={key}
+						onChange={handleKeyInput}
+					/>
+				</FieldLabel>
 
-					<p>Copy-paste the example usage URL during API key creation.</p>
+				<Button type='submit' variant='primary'>
+					Login
+				</Button>
+			</Card>
 
-					<label>
-						Token URL
-
-						<input
-							type='url'
-							value={tokenUrl}
-							onChange={handleTokenUrlInput}
-						/>
-					</label>
-				</fieldset>
-
-				<fieldset disabled={dispatching}>
-					<legend>Login information</legend>
-
-					<label>
-						User
-
-						<input
-							required
-							autocomplete='username'
-							value={user}
-							onChange={handleUserInput}
-						/>
-					</label>
-
-					<label>
-						API key
-
-						<input
-							required
-							type='password'
-							value={key}
-							onChange={handleKeyInput}
-						/>
-					</label>
-				</fieldset>
-
-				<div>
-					<button disabled={dispatching} type='submit'>
-						Login
-					</button>
-				</div>
-			</form>
-		</div>
+			<Card as='fieldset' disabled={dispatching} className={styles.loginCard}>
+				<FieldLabel>
+					Token URL
+					<TextField
+						type='url'
+						placeholder='https://danbooru.donmai.us/profile.json?...'
+						value={tokenUrl}
+						onChange={handleTokenUrlInput}
+					/>
+				</FieldLabel>
+				<p className={styles.blurb}>
+					Quickly login by copy-pasting the example usage URL provided after
+					API key creation.
+				</p>
+			</Card>
+		</form>
 	);
 }

@@ -1,18 +1,25 @@
 import { h } from 'preact';
 import { Suspense } from 'preact/compat';
 import { useState, useRef,  useLayoutEffect } from 'preact/hooks';
-
 import clsx from 'clsx';
-import * as styles from '~/src/styles/components/TagSearch.module.css';
-import { Link } from '~/src/components/Link.jsx';
+
+import { Link, isLinkEvent } from '~/src/components/Link.jsx';
+import { Button } from '~/src/components/Button.jsx';
+import { Menu, MenuItem } from '~/src/components/Menu.jsx';
+import { TextField } from '~/src/components/TextField.jsx';
+import { Icon } from '~/src/components/Icon.jsx';
+
+import SearchIcon from '~/src/icons/search.svg?url';
 
 import { autocompleteTags } from '~/src/api/assets.js';
 
 import { useDebouncedState } from '~/src/utils/useDebouncedState.js';
 
+import * as styles from '~/src/styles/components/TagSearch.module.css';
+
 
 export function SearchInput (props) {
-	const { value, onChange } = props;
+	const { value, onChange, onSearch, className } = props;
 
 	const inputRef = useRef();
 
@@ -106,29 +113,47 @@ export function SearchInput (props) {
 		onChange?.(value);
 	};
 
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		onSearch?.(event);
+	};
+
 
 	return (
-		<div className={styles.container}>
-			<input
-				className={styles.input}
-				ref={inputRef}
-				value={value}
-				onChange={handleInput}
-				onKeyDown={handleKeyDown}
-				placeholder='Search'
-			/>
+		<form
+			method='get'
+			className={clsx(styles.container, className)}
+			onSubmit={handleSubmit}
+		>
+			<div className={styles.searchContainer}>
+				<TextField
+					type='search'
+					autocomplete='off'
+					name='query'
+					className={styles.input}
+					ref={inputRef}
+					value={value}
+					onChange={handleInput}
+					onKeyDown={handleKeyDown}
+					placeholder='Search...'
+				/>
 
-			{pendingInput && (
-				<Suspense fallback={<AutocompleteListFallback />}>
-					<AutocompleteList
-						resource={autocomplete}
-						selection={selection}
-						onSelect={handleSelect}
-						onHover={setSelection}
-					/>
-				</Suspense>
-			)}
-		</div>
+				{pendingInput && (
+					<Suspense fallback={<AutocompleteListFallback />}>
+						<AutocompleteList
+							resource={autocomplete}
+							selection={selection}
+							onSelect={handleSelect}
+							onHover={setSelection}
+						/>
+					</Suspense>
+				)}
+			</div>
+
+			<Button title='Search' type='submit' className={styles.button}>
+				<Icon src={SearchIcon} />
+			</Button>
+		</form>
 	);
 }
 
@@ -142,7 +167,7 @@ function AutocompleteList (props) {
 	}
 
 	return (
-		<ul className={styles.autocompletePopup}>
+		<Menu className={styles.autocompleteMenu}>
 			{data.map((item, index) => (
 				<AutocompleteItem
 					data={item}
@@ -152,39 +177,52 @@ function AutocompleteList (props) {
 					onHover={onHover}
 				/>
 			))}
-		</ul>
+		</Menu>
 	)
 }
+
+// <AutocompleteItem />
+const countFormatter = new Intl.NumberFormat(undefined, {
+	notation: 'compact',
+})
 
 function AutocompleteItem (props) {
 	const { data, index, selected, onSelect, onHover } = props;
 
-	return (
-		<li
-			className={styles.autocompleteItemContainer}
-			onClick={() => onSelect?.(index)}
-			onMouseEnter={() => onHover?.(index)}
-		>
-			<Link
-				tabIndex={-1}
-				className={clsx(styles.autocompleteItem, selected && styles.isActive)}
-				to={`/?query=${data.value}+`} onClick={handleNavigatePrevent}
-			>
+	const handleClick = (event) => {
+		if (isLinkEvent(event)) {
+			event.preventDefault();
+		}
 
-				{data.antecedent && `${data.antecedent} → `}
-				{data.label}
-			</Link>
-		</li>
+		onSelect?.(index);
+	}
+
+	return (
+		<MenuItem
+			as={Link}
+			to={`/?query=${data.value}+`}
+			tabIndex={-1}
+			className={clsx(styles.autocompleteItem, selected && styles.isActive)}
+			onClick={handleClick}
+		>
+			{data.label}
+
+			{data.post_count && (
+				<span className={styles.postCount}>
+					{countFormatter.format(data.post_count)}
+				</span>
+			)}
+		</MenuItem>
 	);
 }
 
 function AutocompleteListFallback () {
 	return (
-		<ul className={styles.autocompletePopup}>
-			<li className={styles.autocompleteItem}>
+		<Menu className={styles.autocompleteMenu}>
+			<MenuItem disabled className={clsx(styles.autocompleteItem)}>
 				loading...
-			</li>
-		</ul>
+			</MenuItem>
+		</Menu>
 	);
 }
 

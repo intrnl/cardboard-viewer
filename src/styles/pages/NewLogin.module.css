@@ -1,0 +1,38 @@
+.container {
+	background-color: var(--gray-100);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 16px;
+	min-height: 100vh;
+	padding-block: 32px;
+}
+
+.login-card {
+	gap: 16px;
+}
+
+@media (max-width: 639px) {
+	.container {
+		align-items: stretch;
+	}
+
+	.login-card {
+		margin-inline: -1px;
+		border-radius: 0;
+	}
+}
+
+@media (min-width: 640px) {
+	.login-card {
+		width: 380px;
+	}
+}
+
+
+.blurb {
+	font-size: 13px;
+	color: var(--gray-600);
+	margin: 0;
+}

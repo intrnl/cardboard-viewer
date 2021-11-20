@@ -44,7 +44,7 @@ export const postList = createAsset(async (params) => {
 		const { tags } = params;
 		const { name, id: user_id } = auth.profile;
 
-		const re = auth.profile._re_ordfav ||= new RegExp(`\b(?:ord)?fav:${name}\b`);
+		const re = auth.profile._re_ordfav ||= new RegExp(`\\b(?:ord)?fav:${name}\\b`);
 
 		if (re.test(tags)) {
 			for (const post of result) {

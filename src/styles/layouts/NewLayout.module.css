@@ -1,11 +1,13 @@
 .container {
+	background-color: var(--gray-100);
+	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
 }
 
 
 .header {
-	background-color: var(--gray-100);
+	background-color: var(--white);
 	display: flex;
 	align-items: center;
 	gap: 8px;

@@ -11,6 +11,7 @@
 		"react-router-dom": "^6.0.2"
 	},
 	"devDependencies": {
+		"@intrnl/fs-cache": "^0.1.4",
 		"dotenv": "^10.0.0",
 		"dotenv-expand": "^5.1.0",
 		"es-module-lexer": "^0.9.3",

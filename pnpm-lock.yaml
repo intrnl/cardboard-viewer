@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@intrnl/fs-cache': ^0.1.4
   clsx: ^1.1.1
   dotenv: ^10.0.0
   dotenv-expand: ^5.1.0
@@ -20,6 +21,7 @@ dependencies:
   react-router-dom: 6.0.2
 
 devDependencies:
+  '@intrnl/fs-cache': 0.1.4
   dotenv: 10.0.0
   dotenv-expand: 5.1.0
   es-module-lexer: 0.9.3
@@ -36,6 +38,17 @@ packages:
     dependencies:
       regenerator-runtime: 0.13.9
     dev: false
+
+  /@intrnl/fs-cache/0.1.4:
+    resolution: {integrity: sha512-KSedqrGzkGDtMaeZqm+xSYT28njxlXCcbZ83rOxzSi/m7zvdtz2kxXDAKxDEg+NmHBlptjoyR8eBSiNVWKTP0A==}
+    dependencies:
+      '@intrnl/xxhash64': 0.1.0
+      escalade: 3.1.1
+    dev: true
+
+  /@intrnl/xxhash64/0.1.0:
+    resolution: {integrity: sha512-U56ebPlxjegnbvYlS3QWrQplSQyM3/m0/8RGBhgtgbOTaD985K/O8Myk3OkyAUm5cXL1h7O9QekhpoQc0qrhaA==}
+    dev: true
 
   /big.js/5.2.2:
     resolution: {integrity: sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==}

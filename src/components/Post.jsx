@@ -8,8 +8,8 @@ import { Link } from '~/src/components/Link.jsx';
 import { Icon } from '~/src/components/Icon.jsx';
 import * as styles from '~/src/styles/components/Post.module.css';
 
-import HeartIcon from '~/src/icons/heart.svg?url';
-import RefreshIcon from '~/src/icons/refresh.svg?url';
+import HeartIcon from '~/src/icons/heart.svg';
+import RefreshIcon from '~/src/icons/refresh.svg';
 
 import { AuthStore, STATUS_LOGGED_IN } from '~/src/globals/auth';
 import * as asset from '~/src/api/assets.js';

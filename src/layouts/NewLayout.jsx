@@ -14,8 +14,8 @@ import { Icon } from '~/src/components/Icon.jsx';
 import { SearchInput } from '~/src/components/TagSearch.jsx';
 import * as styles from '~/src/styles/layouts/NewLayout.module.css';
 
-import ArchiveIcon from '~/src/icons/archive.svg?url';
-import MenuIcon from '~/src/icons/menu.svg?url';
+import ArchiveIcon from '~/src/icons/archive.svg';
+import MenuIcon from '~/src/icons/menu.svg';
 
 import { useSearchParams } from '~/src/utils/useSearchParams.js';
 import { useDerivedState } from '~/src/utils/useDerivedState.js';

@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 
 
 const NewLayout = lazy(() => import('~/src/layouts/NewLayout.jsx'));
+// import NewLayout from '~/src/layouts/NewLayout.jsx';
 
 const Login = lazy(() => import('~/src/pages/Login.jsx'));
 const PostsListing = lazy(() => import('~/src/pages/PostsListing.jsx'));

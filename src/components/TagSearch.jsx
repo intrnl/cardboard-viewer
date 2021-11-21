@@ -10,7 +10,7 @@ import { TextField } from '~/src/components/TextField.jsx';
 import { Icon } from '~/src/components/Icon.jsx';
 import * as styles from '~/src/styles/components/TagSearch.module.css';
 
-import SearchIcon from '~/src/icons/search.svg?url';
+import SearchIcon from '~/src/icons/search.svg';
 
 import { autocompleteTags } from '~/src/api/assets.js';
 

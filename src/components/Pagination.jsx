@@ -4,9 +4,9 @@ import clsx from 'clsx';
 import { Icon } from '~/src/components/Icon.jsx';
 import * as styles from '~/src/styles/components/Pagination.module.css';
 
-import DotsHorizIcon from '~/src/icons/dots-horizontal.svg?url';
-import ChevronLeftIcon from '~/src/icons/chevron-left.svg?url';
-import ChevronRightIcon from '~/src/icons/chevron-right.svg?url';
+import DotsHorizIcon from '~/src/icons/dots-horizontal.svg';
+import ChevronLeftIcon from '~/src/icons/chevron-left.svg';
+import ChevronRightIcon from '~/src/icons/chevron-right.svg';
 
 import { useFactoryMemo } from '~/src/utils/useFactoryMemo.js';
 import {

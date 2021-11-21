@@ -1,4 +1,4 @@
-dist/
+dist/_assets/
 node_modules/
 
 *.local

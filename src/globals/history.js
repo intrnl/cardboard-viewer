@@ -1,4 +1,4 @@
-import { createHashHistory } from 'history';
+import { createBrowserHistory } from 'history';
 
 
-export const history = createHashHistory();
+export const history = createBrowserHistory();

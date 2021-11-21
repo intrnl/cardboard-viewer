@@ -6,7 +6,11 @@ import { config } from '../esbuild.config.js';
 const result = await esbuild.serve({
 	servedir: 'dist/',
 }, {
+	minify: false,
 	...config,
+	format: 'esm',
+	bundle: true,
+	splitting: true,
 	sourcemap: true,
 	define: {
 		...config.define,

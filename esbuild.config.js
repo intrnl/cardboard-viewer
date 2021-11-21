@@ -13,12 +13,6 @@ export let config = {
 	outdir: 'dist/_assets',
 	publicPath: '/_assets/',
 
-	format: 'esm',
-	bundle: true,
-	minify: true,
-	splitting: true,
-	metafile: true,
-
 	jsx: 'transform',
 	jsxFactory: 'h',
 	jsxFragment: 'Fragment',

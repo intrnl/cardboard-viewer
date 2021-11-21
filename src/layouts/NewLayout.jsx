@@ -1,5 +1,5 @@
 import { h, Fragment, cloneElement } from 'preact';
-import { useMemo, useRef } from 'preact/hooks';
+import { useLayoutEffect, useMemo, useRef } from 'preact/hooks';
 import { Suspense } from 'preact/compat';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { useStore } from '~/lib/global-store';
@@ -237,10 +237,10 @@ function NavMenu (props) {
 	const menuRef = useRef();
 
 	const toggleOpen = (value) => {
-		const target = containerRef.current;
+		const container = containerRef.current;
 
-		if (target) {
-			target.open = value?.target ? !target.open : !!value;
+		if (container) {
+			container.open = value?.target ? !container.open : !!value;
 		}
 	};
 
@@ -294,6 +294,19 @@ function NavMenu (props) {
 			toggleOpen(false);
 		}
 	};
+
+	useLayoutEffect(() => {
+		const container = containerRef.current;
+
+		const handleDocumentClick = (event) => {
+			if (container.open && !container.contains(event.target)) {
+				toggleOpen();
+			}
+		};
+
+		document.addEventListener('click', handleDocumentClick);
+		return () => document.removeEventListener('click', handleDocumentClick);
+	}, []);
 
 
 	const cn = clsx(styles.navContainer, className);

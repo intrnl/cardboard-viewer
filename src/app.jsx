@@ -11,7 +11,7 @@ const CF_COMMIT = process.env.CF_PAGES_COMMIT_SHA;
 const CF_BRANCH = process.env.CF_PAGES_BRANCH;
 
 if (CF_COMMIT && CF_BRANCH) {
-	console.debug(`running ${CF_BRANCH}/${CF_COMMIT.slice(0, 7)}`);
+	console.debug(`running ${CF_BRANCH}/${CF_COMMIT}`);
 }
 
 render(<App />, document.getElementById('root'));

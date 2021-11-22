@@ -3,6 +3,15 @@
 	position: relative;
 }
 
+.post a {
+	outline: none;
+}
+
+.post:focus-within {
+	outline: 2px solid var(--blue-600);
+	outline-offset: 2px;
+}
+
 
 .post.is-parent, .post.is-child {
 	border: 2px solid;

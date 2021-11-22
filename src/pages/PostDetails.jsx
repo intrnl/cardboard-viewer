@@ -1,9 +1,10 @@
 import { h, Fragment } from 'preact';
-import { Suspense, SuspenseList } from 'preact/compat';
+import { Suspense } from 'preact/compat';
 import { useParams, Navigate } from 'react-router-dom';
 import { createResource } from '~/lib/use-asset';
 
-import { MainLayout } from '~/src/layouts/MainLayout.jsx';
+import { SideView, Main, Aside } from '~/src/layouts/SideView.jsx';
+import { Card } from '~/src/components/Card.jsx';
 import { PostsRelationship } from '~/src/components/PostsRelationship.jsx';
 import { Tag } from '~/src/components/Tag.jsx';
 import * as styles from '~/src/styles/pages/PostDetails.module.css';
@@ -24,29 +25,24 @@ export default function PostDetailsPage () {
 	}
 
 	return (
-		<MainLayout aside={<PostDetailsAside resource={post} />}>
-			<Suspense fallback={<PostDetailsFallback />}>
-				<PostDetails resource={post} />
-			</Suspense>
-		</MainLayout>
+		<SideView>
+			<Main className={styles.main}>
+				<Suspense fallback={<PostDetailsFallback />}>
+					<PostDetails resource={post} />
+				</Suspense>
+			</Main>
+
+			<Aside>
+				<Suspense fallback={<PostAsideFallback />}>
+					<PostTags resource={post} />
+				</Suspense>
+			</Aside>
+		</SideView>
 	);
 }
 
-// <PostDetailsAside />
+// <PostTags />
 const RE_TAG_DELIMITER = / +/g;
-
-function PostDetailsAside (props) {
-	const { resource } = props;
-
-
-	return (
-		<>
-			<Suspense fallback={null}>
-				<PostTags resource={resource} />
-			</Suspense>
-		</>
-	);
-}
 
 function PostTags (props) {
 	const { resource } = props;
@@ -74,48 +70,38 @@ function PostTags (props) {
 		: false;
 
 	return (
-		<SuspenseList>
+		<Card className={styles.tags}>
 			{artists && (
-				<Suspense fallback={null}>
-					<TagsList
-						header='Artists'
-						tags={artists}
-					/>
-				</Suspense>
+				<TagsList
+					header='Artists'
+					tags={artists}
+				/>
 			)}
 			{copyrights && (
-				<Suspense fallback={null}>
-					<TagsList
-						header='Copyrights'
-						tags={copyrights}
-					/>
-				</Suspense>
+				<TagsList
+					header='Copyrights'
+					tags={copyrights}
+				/>
 			)}
 			{characters && (
-				<Suspense fallback={null}>
-					<TagsList
-						header='Characters'
-						tags={characters}
-					/>
-				</Suspense>
+				<TagsList
+					header='Characters'
+					tags={characters}
+				/>
 			)}
 			{general && (
-				<Suspense fallback={null}>
-					<TagsList
-						header='General'
-						tags={general}
-					/>
-				</Suspense>
+				<TagsList
+					header='General'
+					tags={general}
+				/>
 			)}
 			{meta && (
-				<Suspense fallback={null}>
-					<TagsList
-						header='Meta'
-						tags={meta}
-					/>
-				</Suspense>
+				<TagsList
+					header='Meta'
+					tags={meta}
+				/>
 			)}
-		</SuspenseList>
+		</Card>
 	);
 }
 
@@ -140,6 +126,12 @@ function TagsList (props) {
 	);
 }
 
+function PostAsideFallback () {
+	return (
+		<div></div>
+	);
+}
+
 // <PostDetails />
 const RE_EXT_IMAGE = /\.(png|jpe?g|gif|webp)$/i;
 const RE_EXT_VIDEO = /\.(mp4|webm)$/i;
@@ -151,47 +143,52 @@ function PostDetails (props) {
 
 	const originalWidth = data.image_width;
 	const originalHeight = data.image_height;
-	const [width, height, ratio] = GET_IMAGE_CEIL(originalWidth, originalHeight, POST_IMAGE_LARGE_SIZE);
+	const [width, height] = GET_IMAGE_CEIL(originalWidth, originalHeight, POST_IMAGE_LARGE_SIZE);
 
 
 	return (
 		<>
+			<Card className={styles.post}>
+				<div key={data.large_file_url} className={styles.mediaContainer}>
+					{RE_EXT_IMAGE.test(data.large_file_url) ? (
+						<img
+							className={styles.media}
+							width={width}
+							height={height}
+							src={data.large_file_url}
+						/>
+					) : RE_EXT_VIDEO.test(data.large_file_url) ? (
+						<video
+							className={styles.media}
+							controls
+							width={width}
+							height={height}
+							src={data.large_file_url}
+						/>
+					) : (
+						<div>Post has unsupported file format</div>
+					)}
+				</div>
+			</Card>
+
 			{data.parent_id && (
 				<Suspense fallback={null}>
-					<PostsRelationship parent={data.parent_id} id={data.id} />
+					<PostsRelationship
+						parent={data.parent_id}
+						id={data.id}
+						className={styles.relationship}
+					/>
 				</Suspense>
 			)}
 
 			{data.has_active_children && (
 				<Suspense fallback={null}>
-					<PostsRelationship parent={data.id} />
+					<PostsRelationship
+						parent={data.id}
+						className={styles.relationship}
+					/>
 				</Suspense>
 			)}
-
-			{ratio < 1 && (
-				<div>Resized to {convertToPercentage(ratio)} of original</div>
-			)}
-
-			<div key={data.large_file_url} className={styles.mediaContainer}>
-				{RE_EXT_IMAGE.test(data.large_file_url) ? (
-					<img
-						className={styles.media}
-						width={width}
-						height={height}
-						src={data.large_file_url}
-					/>
-				) : RE_EXT_VIDEO.test(data.large_file_url) ? (
-					<video
-						className={styles.media}
-						controls
-						width={width}
-						height={height}
-						src={data.large_file_url}
-					/>
-				) : (
-					<div>Post has unsupported file format</div>
-				)}
-			</div>
 		</>
 	);
 }
@@ -199,17 +196,8 @@ function PostDetails (props) {
 
 function PostDetailsFallback () {
 	return (
-		<div>Loading post</div>
+		<Card>
+			Loading post
+		</Card>
 	);
 }
-
-
-function convertToPercentage (number) {
-	return number.toLocaleString(undefined, {
-		style: 'percent',
-		minimumFractionDigits: 0,
-		maximumFractionDigits: 2,
-	});
-}
-
-

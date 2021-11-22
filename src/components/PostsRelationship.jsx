@@ -15,7 +15,7 @@ import { qss } from '~/src/utils/qss.js';
 
 
 export function PostsRelationship (props) {
-	const { parent, id = parent } = props;
+	const { parent, id = parent, className } = props;
 
 	const tags = `parent:${parent}`;
 	const count = asset.postCount.read(tags);
@@ -26,7 +26,7 @@ export function PostsRelationship (props) {
 
 
 	return (
-		<Card className={styles.postRelationship}>
+		<Card className={clsx(styles.postRelationship, className)}>
 			{id !== parent ? (
 				<span>
 					This post belongs to a {' '}

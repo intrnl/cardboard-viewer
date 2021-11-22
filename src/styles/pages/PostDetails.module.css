@@ -1,20 +1,45 @@
-.media-container {
+.main {
+	gap: 8px;
+}
 
+@media (min-width: 1024px) {
+	.main {
+		gap: 16px;
+	}
+}
+
+
+.post {
+	padding: 0;
+}
+
+.media-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 4px 4px 4px 4px;
+	overflow: hidden;
 }
 
 .media {
+	background-color: var(--gray-200);
 	height: auto;
 	max-width: 100%;
 	color: transparent;
-	background-color: lightgray;
 }
 
-@media (max-width: 530px) {
-	.media-container {
-		display: flex;
-		justify-content: center;
-		margin-inline: -16px;
-	}
+.actions {
+	background-color: rgba(255, 255, 255, 0.85);
+	display: flex;
+	height: 48px;
+	padding-inline: 16px;
+	position: sticky;
+	bottom: 0;
+}
+
+
+.tags {
+	gap: 16px;
 }
 
 .tag-container {
@@ -32,3 +57,14 @@
 	padding: 0;
 }
 
+
+@media (max-width: 639px) {
+	.post, .tags, .relationship {
+		border-radius: 0;
+		margin-inline: -8px;
+	}
+
+	.media-container {
+		border-radius: 0;
+	}
+}

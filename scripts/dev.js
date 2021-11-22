@@ -21,11 +21,6 @@ const internal = await esbuild.serve({
 	bundle: true,
 	splitting: true,
 	sourcemap: true,
-	define: {
-		...config.define,
-		'import.meta.env.CF_PAGES_COMMIT_SHA': 'undefined',
-		'import.meta.env.CF_PAGES_BRANCH': 'undefined',
-	},
 	plugins: [
 		...config.plugins || [],
 	],

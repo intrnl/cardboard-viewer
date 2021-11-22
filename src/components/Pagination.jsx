@@ -74,6 +74,7 @@ export function PaginationButton (props) {
 	const { value, active, disabled, onClick } = props;
 
 	const isNumber = typeof value === 'number';
+	const isEllipsis = value === PAGINATION_DOT_START || value === PAGINATION_DOT_END;
 
 
 	return (

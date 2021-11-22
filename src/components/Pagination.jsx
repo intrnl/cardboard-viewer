@@ -2,6 +2,7 @@ import { h } from 'preact';
 
 import clsx from 'clsx';
 import { Icon } from '~/src/components/Icon.jsx';
+import { Button } from '~/src/components/Button.jsx';
 import * as styles from '~/src/styles/components/Pagination.module.css';
 
 import DotsHorizIcon from '~/src/icons/dots-horizontal.svg';
@@ -73,15 +74,12 @@ export function PaginationButton (props) {
 	const { value, active, disabled, onClick } = props;
 
 	const isNumber = typeof value === 'number';
-	const isEllipsis = value === PAGINATION_DOT_START || value === PAGINATION_DOT_END;
 
 
 	return (
-		<button
+		<Button
 			className={clsx(styles.paginationButton, {
 				[styles.isActive]: active,
-				[styles.isPage]: isNumber,
-				[styles.isEllipsis]: isEllipsis,
 			})}
 			disabled={disabled}
 			onClick={onClick}
@@ -90,7 +88,7 @@ export function PaginationButton (props) {
 			aria-label={retrieveLabel(value)}
 		>
 			{isNumber ?	value.toString() : <Icon src={retrieveIcon(value)} />}
-		</button>
+		</Button>
 	);
 }
 

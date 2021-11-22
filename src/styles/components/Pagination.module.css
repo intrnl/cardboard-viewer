@@ -4,38 +4,15 @@
 	gap: 8px;
 }
 
+
 .pagination-button {
-	all: unset;
-	appearance: none;
-	user-select: none;
-	height: 32px;
-	min-width: 32px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding-inline: 8px;
-	box-sizing: border-box;
-}
-
-.pagination-button:hover {
-	background-color: #0075f8;
-	color: #fff;
-}
-
-.pagination-button:focus-visible {
-	outline: #000 auto 1px;
+	color: var(--gray-800);
 }
 
 .pagination-button.is-active {
-	color: #000;
-	background-color: transparent;
-	font-weight: bold;
-}
-
-.pagination-button:disabled {
-	color: #000;
-	background-color: transparent;
-	opacity: 0.35;
+	color: var(--black);
+	background-color: var(--blue-100);
+	border-color: var(--blue-300);
 }
 
 @media (max-width: 530px) {

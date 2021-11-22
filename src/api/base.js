@@ -1,5 +1,5 @@
-export const API_URL = process.env.VITE_API_URL;
-export const PROXY_URL = process.env.VITE_PROXY_URL;
+export const API_URL = process.env.APP_API_URL;
+export const PROXY_URL = process.env.APP_PROXY_URL;
 
 
 export class ResponseError extends Error {

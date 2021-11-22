@@ -10,7 +10,8 @@
 }
 
 .pagination-button.is-active {
-	color: var(--blue-800);
+	color: var(--blue-900);
+	font-weight: 700;
 	background-color: var(--blue-100);
 }
 

@@ -1,5 +1,5 @@
 import * as esbuild from 'esbuild';
-import buildAnalysis from '../lib/esbuild-plugin-build-analysis/index.js';
+import buildAnalysis from '@intrnl/esbuild-plugin-build-analysis';
 
 import { config } from '../esbuild.config.js';
 

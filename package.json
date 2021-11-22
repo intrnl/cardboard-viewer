@@ -11,6 +11,7 @@
 		"react-router-dom": "^6.0.2"
 	},
 	"devDependencies": {
+		"@intrnl/esbuild-plugin-alias": "^0.1.0",
 		"@intrnl/esbuild-plugin-build-analysis": "^0.1.0",
 		"@intrnl/esbuild-plugin-env": "^0.1.2",
 		"@intrnl/fs-cache": "^0.1.5",

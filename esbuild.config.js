@@ -3,8 +3,8 @@ import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 import env from '@intrnl/esbuild-plugin-env';
+import alias from '@intrnl/esbuild-plugin-alias';
 import postcss from './lib/esbuild-plugin-postcss/index.js';
-import alias from './lib/esbuild-plugin-alias/index.js';
 
 
 /** @type {esbuild.BuildOptions} */

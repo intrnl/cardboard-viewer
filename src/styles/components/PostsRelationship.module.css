@@ -1,18 +1,13 @@
 .post-relationship {
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
-	border: 1px solid black;
-	border-radius: 2px;
-	padding: 8px;
+	gap: 16px;
 }
 
 .relationship-list {
 	display: flex;
 	align-items: center;
 	gap: 8px;
-	padding: 8px;
-	margin: -8px;
+	padding: 16px;
+	margin: -16px;
 	overflow-x: auto;
 }
 

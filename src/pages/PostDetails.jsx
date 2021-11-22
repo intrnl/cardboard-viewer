@@ -157,13 +157,13 @@ function PostDetails (props) {
 	return (
 		<>
 			{data.parent_id && (
-				<Suspense fallback={<div>Fetching child to parent relationship</div>}>
-					<PostsRelationship parent={data.parent_id}  id={data.id} />
+				<Suspense fallback={null}>
+					<PostsRelationship parent={data.parent_id} id={data.id} />
 				</Suspense>
 			)}
 
 			{data.has_active_children && (
-				<Suspense fallback={<div>Fetching parent to child relationship</div>}>
+				<Suspense fallback={null}>
 					<PostsRelationship parent={data.id} />
 				</Suspense>
 			)}

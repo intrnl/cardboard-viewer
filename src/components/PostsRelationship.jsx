@@ -6,6 +6,7 @@ import { createMappedResource } from '~/lib/use-asset';
 import clsx from 'clsx';
 import { Link } from '~/src/components/Link.jsx';
 import { Post } from '~/src/components/Post.jsx';
+import { Card } from '~/src/components/Card.jsx';
 import * as styles from '~/src/styles/components/PostsRelationship.module.css';
 
 import * as asset from '~/src/api/assets.js';
@@ -14,7 +15,7 @@ import { qss } from '~/src/utils/qss.js';
 
 
 export function PostsRelationship (props) {
-	const { parent, id = parent, className } = props;
+	const { parent, id = parent } = props;
 
 	const tags = `parent:${parent}`;
 	const count = asset.postCount.read(tags);
@@ -25,7 +26,7 @@ export function PostsRelationship (props) {
 
 
 	return (
-		<div className={clsx(styles.postRelationship, className)}>
+		<Card className={styles.postRelationship}>
 			{id !== parent ? (
 				<span>
 					This post belongs to a {' '}
@@ -43,7 +44,7 @@ export function PostsRelationship (props) {
 				current={id}
 				search={search}
 			/>
-		</div>
+		</Card>
 	);
 }
 

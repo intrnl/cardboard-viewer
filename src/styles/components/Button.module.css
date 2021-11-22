@@ -20,7 +20,7 @@
 }
 
 .button:disabled {
-	color: var(--gray-500);
+	color: var(--gray-400);
 	pointer-events: none;
 }
 

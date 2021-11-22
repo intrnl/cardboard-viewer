@@ -57,7 +57,7 @@ printServerInfo(result);
 
 
 function startServer (server, options) {
-	let { host, port } = options;
+	const { host, port } = options;
 
 	return new Promise((resolve, reject) => {
 		const handleError = (error) => {

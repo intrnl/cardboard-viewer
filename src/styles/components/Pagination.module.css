@@ -10,9 +10,8 @@
 }
 
 .pagination-button.is-active {
-	color: var(--black);
+	color: var(--blue-800);
 	background-color: var(--blue-100);
-	border-color: var(--blue-300);
 }
 
 @media (max-width: 530px) {

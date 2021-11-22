@@ -78,6 +78,7 @@ export function PaginationButton (props) {
 
 	return (
 		<Button
+			variant='ghost'
 			className={clsx(styles.paginationButton, {
 				[styles.isActive]: active,
 			})}

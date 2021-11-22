@@ -2,7 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@intrnl/esbuild-plugin-env': ^0.1.2
-  '@intrnl/fs-cache': ^0.1.4
+  '@intrnl/fs-cache': ^0.1.5
   clsx: ^1.1.1
   es-module-lexer: ^0.9.3
   esbuild: ^0.13.15
@@ -20,7 +20,7 @@ dependencies:
 
 devDependencies:
   '@intrnl/esbuild-plugin-env': 0.1.2_esbuild@0.13.15
-  '@intrnl/fs-cache': 0.1.4
+  '@intrnl/fs-cache': 0.1.5
   es-module-lexer: 0.9.3
   esbuild: 0.13.15
   postcss: 8.3.11
@@ -46,15 +46,15 @@ packages:
       escalade: 3.1.1
     dev: true
 
-  /@intrnl/fs-cache/0.1.4:
-    resolution: {integrity: sha512-KSedqrGzkGDtMaeZqm+xSYT28njxlXCcbZ83rOxzSi/m7zvdtz2kxXDAKxDEg+NmHBlptjoyR8eBSiNVWKTP0A==}
+  /@intrnl/fs-cache/0.1.5:
+    resolution: {integrity: sha512-sH2cXYnWKaGunmSNV6tNrFGYkuKsg4Tjbdd1njGELBzD1p5GKoBQuLgDL8exm/FQiB7ytIXCLKJD0wl4p0dtbw==}
     dependencies:
-      '@intrnl/xxhash64': 0.1.0
+      '@intrnl/xxhash64': 0.1.1
       escalade: 3.1.1
     dev: true
 
-  /@intrnl/xxhash64/0.1.0:
-    resolution: {integrity: sha512-U56ebPlxjegnbvYlS3QWrQplSQyM3/m0/8RGBhgtgbOTaD985K/O8Myk3OkyAUm5cXL1h7O9QekhpoQc0qrhaA==}
+  /@intrnl/xxhash64/0.1.1:
+    resolution: {integrity: sha512-iVSVAbt0TQ1hzvUFkFS8n3k1/cNXynyHRAyrNE1lZR2hTfhKQy4saDD+xlVkuTFV5Zjio0wdnKlnSJOMacD/Sg==}
     dev: true
 
   /big.js/5.2.2:

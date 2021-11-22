@@ -63,9 +63,7 @@ function startServer (server, options) {
 		const handleError = (error) => {
 			if (error.code === 'EADDRINUSE') {
 				console.log(`port ${port} already in use, retrying...`);
-
-				port = (port % 65535) + 1;
-				server.listen(port, host);
+				server.listen(0, host);
 			}
 			else {
 				server.removeListener('error', handleError);
@@ -77,6 +75,8 @@ function startServer (server, options) {
 
 		server.listen(port, host, () => {
 			server.removeListener('error', handleError);
+
+			const { address: host, port } = server.address();
 			resolve({ host, port });
 		});
 	});

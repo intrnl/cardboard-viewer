@@ -4,10 +4,11 @@
 }
 
 .post a {
+	display: block;
 	outline: none;
 }
 
-.post:focus-within {
+.post a:focus-visible {
 	outline: 2px solid var(--blue-600);
 	outline-offset: 2px;
 }

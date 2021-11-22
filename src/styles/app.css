@@ -41,6 +41,16 @@
 	--pink-700: #BE185D;
 	--pink-800: #9D174D;
 	--pink-900: #831843;
+	--green-50: #ECFDF5;
+	--green-100: #D1FAE5;
+	--green-200: #A7F3D0;
+	--green-300: #6EE7B7;
+	--green-400: #34D399;
+	--green-500: #10B981;
+	--green-600: #059669;
+	--green-700: #047857;
+	--green-800: #065F46;
+	--green-900: #064E3B;
 	--shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 	--shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 	--shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);

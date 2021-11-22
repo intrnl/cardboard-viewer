@@ -64,7 +64,7 @@ function startServer (server, options) {
 			if (error.code === 'EADDRINUSE') {
 				console.log(`port ${port} already in use, retrying...`);
 
-				port = (port + 1) % 65536;
+				port = (port % 65535) + 1;
 				server.listen(port, host);
 			}
 			else {

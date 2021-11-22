@@ -2,7 +2,7 @@ import * as esbuild from 'esbuild';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-import env from './lib/esbuild-plugin-env/index.js';
+import env from '@intrnl/esbuild-plugin-env';
 import postcss from './lib/esbuild-plugin-postcss/index.js';
 import alias from './lib/esbuild-plugin-alias/index.js';
 

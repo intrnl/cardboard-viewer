@@ -1,13 +1,11 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@intrnl/esbuild-plugin-env': ^0.1.2
   '@intrnl/fs-cache': ^0.1.4
   clsx: ^1.1.1
-  dotenv: ^10.0.0
-  dotenv-expand: ^5.1.0
   es-module-lexer: ^0.9.3
   esbuild: ^0.13.15
-  escalade: ^3.1.1
   history: ^5.1.0
   postcss: ^8.3.11
   postcss-modules: ^4.2.2
@@ -21,12 +19,10 @@ dependencies:
   react-router-dom: 6.0.2
 
 devDependencies:
+  '@intrnl/esbuild-plugin-env': 0.1.2_esbuild@0.13.15
   '@intrnl/fs-cache': 0.1.4
-  dotenv: 10.0.0
-  dotenv-expand: 5.1.0
   es-module-lexer: 0.9.3
   esbuild: 0.13.15
-  escalade: 3.1.1
   postcss: 8.3.11
   postcss-modules: 4.2.2_postcss@8.3.11
 
@@ -38,6 +34,17 @@ packages:
     dependencies:
       regenerator-runtime: 0.13.9
     dev: false
+
+  /@intrnl/esbuild-plugin-env/0.1.2_esbuild@0.13.15:
+    resolution: {integrity: sha512-UmfxxQy/eG37/U2GS+Pf1lyx/eBQnb7tbCjPHzfxxhsq1k1ka17YFEMlWKwbus88SICFcGDUQIkWc2xgjxEKtA==}
+    peerDependencies:
+      esbuild: '>=0.13.15'
+    dependencies:
+      dotenv: 10.0.0
+      dotenv-expand: 5.1.0
+      esbuild: 0.13.15
+      escalade: 3.1.1
+    dev: true
 
   /@intrnl/fs-cache/0.1.4:
     resolution: {integrity: sha512-KSedqrGzkGDtMaeZqm+xSYT28njxlXCcbZ83rOxzSi/m7zvdtz2kxXDAKxDEg+NmHBlptjoyR8eBSiNVWKTP0A==}

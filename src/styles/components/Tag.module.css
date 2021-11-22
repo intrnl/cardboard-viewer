@@ -22,16 +22,21 @@
 
 
 .tag.is-general {
+	color: var(--blue-700);
 }
 
 .tag.is-artist {
+	color: var(--red-700);
 }
 
 .tag.is-copyright {
+	color: var(--pink-700);
 }
 
 .tag.is-character {
+	color: var(--green-700);
 }
 
 .tag.is-meta {
+	color: var(--yellow-600);
 }

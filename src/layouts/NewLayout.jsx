@@ -250,10 +250,12 @@ function NavMenu (props) {
 
 		const target = container.open ? menu : container;
 
-		const focusable = target.querySelector(focusableHeader);
-		(focusable || target).focus();
+		if (container.contains(document.activeElement)) {
+			const focusable = target.querySelector(focusableHeader);
+			(focusable || target).focus();
 
-		target.scrollIntoView({ block: 'nearest' });
+			target.scrollIntoView({ block: 'nearest' });
+		}
 	};
 
 	const handleKeyDown = (event) => {
@@ -269,7 +271,9 @@ function NavMenu (props) {
 		if (keyCode === 27) {
 			toggleOpen();
 		}
-		else if (keyCode === 38) {
+		else if (keyCode === 38 || (event.shiftKey && keyCode === 9)) {
+			event.preventDefault();
+
 			const focusable = (
 				getPreviousSibling(item, focusableItem) ||
 				getPreviousSibling(menu.lastElementChild, focusableItem, true)
@@ -277,7 +281,9 @@ function NavMenu (props) {
 
 			focusable?.focus();
 		}
-		else if (keyCode === 40) {
+		else if (keyCode === 40 || keyCode === 9) {
+			event.preventDefault();
+
 			const focusable = (
 				getNextSibling(item, focusableItem) ||
 				getNextSibling(menu.firstElementChild, focusableItem, true)

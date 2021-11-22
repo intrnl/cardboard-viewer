@@ -1,6 +1,4 @@
 import { h, render } from 'preact';
-// import 'preact/devtools';
-// import 'preact/debug';
 
 import '~/src/styles/reset.css';
 import '~/src/styles/app.css';

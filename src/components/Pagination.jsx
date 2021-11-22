@@ -81,6 +81,8 @@ export function PaginationButton (props) {
 			variant='ghost'
 			className={clsx(styles.paginationButton, {
 				[styles.isActive]: active,
+				[styles.isPage]: isNumber,
+				[styles.isEllipsis]: isEllipsis,
 			})}
 			disabled={disabled}
 			onClick={onClick}

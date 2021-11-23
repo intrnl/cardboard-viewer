@@ -12,6 +12,7 @@ import { FlexSpacer } from '~/src/components/FlexSpacer.jsx';
 import { Divider } from '~/src/components/Divider.jsx';
 import { Icon } from '~/src/components/Icon.jsx';
 import { SearchInput } from '~/src/components/TagSearch.jsx';
+import { CircularProgress } from '~/src/components/CircularProgress.jsx';
 import * as styles from '~/src/styles/layouts/NewLayout.module.css';
 
 import ArchiveIcon from '~/src/icons/archive.svg';
@@ -30,9 +31,17 @@ export default function NewLayout () {
 	return (
 		<div className={styles.container}>
 			<Header />
-			<Suspense fallback={<div>Loading page</div>}>
+			<Suspense fallback={<OutletFallback />}>
 				<Outlet />
 			</Suspense>
+		</div>
+	);
+}
+
+function OutletFallback () {
+	return (
+		<div className={styles.fallback}>
+			<CircularProgress />
 		</div>
 	);
 }

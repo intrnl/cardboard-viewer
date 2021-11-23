@@ -7,6 +7,7 @@ import { MainLayout } from '~/src/layouts/MainLayout.jsx';
 import { Post, PostFallback } from '~/src/components/Post.jsx';
 import { Pagination } from '~/src/components/Pagination.jsx';
 import { Tag } from '~/src/components/Tag.jsx';
+import { CircularProgress } from '~/src/components/CircularProgress.jsx';
 import * as styles from '~/src/styles/pages/PostsListing.module.css';
 
 import { AuthStore } from '~/src/globals/auth.js';
@@ -74,7 +75,7 @@ function PostsListingAside (props) {
 
 	return (
 		<>
-			<Suspense fallback={null}>
+			<Suspense fallback={<CircularProgress />}>
 				<TagsList resource={list} />
 			</Suspense>
 		</>

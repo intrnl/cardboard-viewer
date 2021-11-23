@@ -4,6 +4,12 @@
 	flex-direction: column;
 }
 
+.fallback {
+	display: flex;
+	flex-direction: column;
+	padding: 16px;
+}
+
 
 .header {
 	background-color: var(--white);

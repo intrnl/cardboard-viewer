@@ -5,6 +5,7 @@ import { createResource } from '~/lib/use-asset';
 
 import { SideView, Main, Aside } from '~/src/layouts/SideView.jsx';
 import { Card } from '~/src/components/Card.jsx';
+import { CircularProgress } from '~/src/components/CircularProgress.jsx';
 import { PostsRelationship } from '~/src/components/PostsRelationship.jsx';
 import { Tag } from '~/src/components/Tag.jsx';
 import * as styles from '~/src/styles/pages/PostDetails.module.css';
@@ -33,9 +34,7 @@ export default function PostDetailsPage () {
 			</Main>
 
 			<Aside>
-				<Suspense fallback={<PostAsideFallback />}>
-					<PostTags resource={post} />
-				</Suspense>
+				<PostTags resource={post} />
 			</Aside>
 		</SideView>
 	);
@@ -71,36 +70,38 @@ function PostTags (props) {
 
 	return (
 		<Card className={styles.tags}>
-			{artists && (
-				<TagsList
-					header='Artists'
-					tags={artists}
-				/>
-			)}
-			{copyrights && (
-				<TagsList
-					header='Copyrights'
-					tags={copyrights}
-				/>
-			)}
-			{characters && (
-				<TagsList
-					header='Characters'
-					tags={characters}
-				/>
-			)}
-			{general && (
-				<TagsList
-					header='General'
-					tags={general}
-				/>
-			)}
-			{meta && (
-				<TagsList
-					header='Meta'
-					tags={meta}
-				/>
-			)}
+			<Suspense fallback={<CircularProgress />}>
+				{artists && (
+					<TagsList
+						header='Artists'
+						tags={artists}
+					/>
+				)}
+				{copyrights && (
+					<TagsList
+						header='Copyrights'
+						tags={copyrights}
+					/>
+				)}
+				{characters && (
+					<TagsList
+						header='Characters'
+						tags={characters}
+					/>
+				)}
+				{general && (
+					<TagsList
+						header='General'
+						tags={general}
+					/>
+				)}
+				{meta && (
+					<TagsList
+						header='Meta'
+						tags={meta}
+					/>
+				)}
+			</Suspense>
 		</Card>
 	);
 }
@@ -123,12 +124,6 @@ function TagsList (props) {
 				))}
 			</ul>
 		</div>
-	);
-}
-
-function PostAsideFallback () {
-	return (
-		<div></div>
 	);
 }
 
@@ -197,7 +192,7 @@ function PostDetails (props) {
 function PostDetailsFallback () {
 	return (
 		<Card>
-			Loading post
+			<CircularProgress />
 		</Card>
 	);
 }

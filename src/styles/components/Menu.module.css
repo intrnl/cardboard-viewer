@@ -13,8 +13,9 @@
 .menu-item {
 	color: var(--gray-800);
 	font-weight: 400;
-	justify-content: flex-start;
 	text-decoration: none;
+	justify-content: flex-start;
+	height: auto;
 	outline: 0;
 	border: 0;
 	border-radius: 0;

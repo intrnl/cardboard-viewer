@@ -1,5 +1,6 @@
 import { h, Fragment } from 'preact';
 import { Suspense } from 'preact/compat';
+import { useMemo } from 'preact/hooks';
 import { createMappedResource, createResource } from '~/lib/use-asset';
 import { useStore } from '~/lib/global-store';
 
@@ -25,6 +26,8 @@ const DEFAULT_SEARCH_PARAMS = {
 	limit: '20',
 };
 
+const RE_ORDER_RANDOM = /\border:random\b/i;
+
 export default function PostsListingPage () {
 	const [{ query, page, limit }, setParams] = useSearchParams(DEFAULT_SEARCH_PARAMS);
 
@@ -32,6 +35,7 @@ export default function PostsListingPage () {
 	const pageNum = parseInt(page);
 	const limitNum = parseInt(limit);
 
+	const isOrderRandom = useMemo(() => RE_ORDER_RANDOM.test(tags), [tags]);
 	const posts = asset.postList.use({ tags, page: pageNum, limit: limitNum });
 	const count = asset.postCount.use(tags);
 
@@ -51,14 +55,16 @@ export default function PostsListingPage () {
 					search={search}
 				/>
 			</Suspense>
-			<Suspense fallback={<PostsPaginationFallback />}>
-				<PostsPagination
-					resource={count}
-					page={pageNum}
-					limit={limitNum}
-					onChangePage={handlePageChange}
-				/>
-			</Suspense>
+			{!isOrderRandom && (
+				<Suspense fallback={<PostsPaginationFallback />}>
+					<PostsPagination
+						resource={count}
+						page={pageNum}
+						limit={limitNum}
+						onChangePage={handlePageChange}
+					/>
+				</Suspense>
+			)}
 		</MainLayout>
 	);
 }

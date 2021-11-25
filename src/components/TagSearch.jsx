@@ -43,7 +43,7 @@ export function SearchInput (props) {
 		readonly: true,
 	});
 
-	const autocomplete = autocompleteTags.get(deferredInput, {
+	const autocomplete = autocompleteTags.use(deferredInput, {
 		disabled: !deferredInput,
 	});
 

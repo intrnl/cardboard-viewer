@@ -18,7 +18,7 @@ export default function PostDetailsPage () {
 	const { id } = useParams();
 
 	const idNum = parseInt(id);
-	const post = asset.posts.get(idNum);
+	const post = asset.posts.use(idNum);
 
 
 	if (Number.isNaN(idNum) || Math.sign(idNum) !== 1) {

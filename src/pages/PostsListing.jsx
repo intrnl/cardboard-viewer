@@ -32,8 +32,8 @@ export default function PostsListingPage () {
 	const pageNum = parseInt(page);
 	const limitNum = parseInt(limit);
 
-	const posts = asset.postList.get({ tags, page: pageNum, limit: limitNum });
-	const count = asset.postCount.get(tags);
+	const posts = asset.postList.use({ tags, page: pageNum, limit: limitNum });
+	const count = asset.postCount.use(tags);
 
 	const search = query ? qss({ query }) : false;
 
@@ -71,7 +71,7 @@ function normalizeTags (tags) {
 function PostsListingAside (props) {
 	const { tags } = props;
 
-	const list = tags ? asset.relatedTags.get(tags) : asset.popularTags.get();
+	const list = tags ? asset.relatedTags.use(tags) : asset.popularTags.use();
 
 	return (
 		<>

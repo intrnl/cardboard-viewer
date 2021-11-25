@@ -19,7 +19,7 @@ export function PostsRelationship (props) {
 
 	const tags = `parent:${parent}`;
 	const count = asset.postCount.read(tags);
-	const posts = asset.postList.get({ tags, page: 1, limit: 20 });
+	const posts = asset.postList.use({ tags, page: 1, limit: 20 });
 
 	const search = qss({ query: tags + ' ' });
 	const toSearch = `/?${search}`;

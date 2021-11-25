@@ -4,10 +4,11 @@ specifiers:
   '@intrnl/esbuild-plugin-alias': ^0.1.0
   '@intrnl/esbuild-plugin-build-analysis': ^0.1.1
   '@intrnl/esbuild-plugin-env': ^0.1.2
-  '@intrnl/esbuild-plugin-postcss': ^0.1.3
+  '@intrnl/esbuild-plugin-postcss': ^0.2.0
   clsx: ^1.1.1
   esbuild: ^0.13.15
   history: ^5.1.0
+  postcss: ^8.4.1
   preact: https://pkg.csb.dev/preactjs/preact/commit/96082866/preact
   react-router-dom: ^6.0.2
 
@@ -21,8 +22,9 @@ devDependencies:
   '@intrnl/esbuild-plugin-alias': 0.1.0_esbuild@0.13.15
   '@intrnl/esbuild-plugin-build-analysis': 0.1.1_esbuild@0.13.15
   '@intrnl/esbuild-plugin-env': 0.1.2_esbuild@0.13.15
-  '@intrnl/esbuild-plugin-postcss': 0.1.3_esbuild@0.13.15
+  '@intrnl/esbuild-plugin-postcss': 0.2.0_esbuild@0.13.15+postcss@8.4.1
   esbuild: 0.13.15
+  postcss: 8.4.1
 
 packages:
 
@@ -61,10 +63,11 @@ packages:
       escalade: 3.1.1
     dev: true
 
-  /@intrnl/esbuild-plugin-postcss/0.1.3_esbuild@0.13.15:
-    resolution: {integrity: sha512-Y5L+wUugQnwhc2X5RV7l9Dq4hT/TjD5AWZctniF2A2ckc205EqYdvRKDL4gwjBxlq2koVuXUE80xj73XjyAXrg==}
+  /@intrnl/esbuild-plugin-postcss/0.2.0_esbuild@0.13.15+postcss@8.4.1:
+    resolution: {integrity: sha512-zG30cQR+ostIlIUZtZXvNdAbGpHxC67ut9dwitARKnkSKpXhDsG1TACJpOisUf8tgErTkt9wAhz/wwq21Q7WuA==}
     peerDependencies:
       esbuild: '>=0.13.15'
+      postcss: ^8.4.0
     dependencies:
       '@intrnl/fs-cache': 0.1.5
       esbuild: 0.13.15

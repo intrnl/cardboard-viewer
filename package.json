@@ -14,7 +14,8 @@
 		"@intrnl/esbuild-plugin-alias": "^0.1.0",
 		"@intrnl/esbuild-plugin-build-analysis": "^0.1.1",
 		"@intrnl/esbuild-plugin-env": "^0.1.2",
-		"@intrnl/esbuild-plugin-postcss": "^0.1.3",
-		"esbuild": "^0.13.15"
+		"@intrnl/esbuild-plugin-postcss": "^0.2.0",
+		"esbuild": "^0.13.15",
+		"postcss": "^8.4.1"
 	}
 }

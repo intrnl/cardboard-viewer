@@ -17,10 +17,14 @@ function request ({ method = 'POST', url, params, body }) {
 }
 
 export async function setFavorite ({ user_id, post_id, favorited }) {
+	const current = favorites.get({ user_id, post_id });
 	const auth = AuthStore.get();
 
 	if (auth.profile.id !== user_id) {
 		throw new Error('You can\'t favorite as someone else!');
+	}
+	if (current.favorited === favorited) {
+		return;
 	}
 
 	try {

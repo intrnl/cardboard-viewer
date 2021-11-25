@@ -23,7 +23,13 @@ export let config = {
 
 	plugins: [
 		env(),
-		postcss(),
+		postcss({
+			modules: {
+				generateScopedName: process.env.NODE_ENV === 'development'
+					? '[local]_[hash:6]'
+					: '_[hash:6]',
+			},
+		}),
 		alias({
 			entries: {
 				'~': dirname(fileURLToPath(import.meta.url)),

@@ -13,6 +13,7 @@
 .menu-item {
 	color: var(--gray-800);
 	font-weight: 400;
+	line-height: 16px;
 	text-decoration: none;
 	justify-content: flex-start;
 	height: auto;

@@ -60,8 +60,9 @@ function handleOverlayClick (event) {
 
 function handleClick (event) {
 	const details = event.currentTarget;
+	const target = event.target;
 
-	if (!details.matches('[data-menu-persist]') && isFocusable(event.target)) {
+	if (!target.matches('[data-menu-persist]') && isFocusable(target)) {
 		details.removeAttribute('open');
 	}
 }

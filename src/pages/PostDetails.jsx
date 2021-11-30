@@ -1,5 +1,5 @@
 import { h, Fragment } from 'preact';
-import { Suspense } from 'preact/compat';
+import { Suspense, SuspenseList } from 'preact/compat';
 import { useParams, Navigate } from 'react-router-dom';
 import { createResource } from '~/lib/use-asset';
 
@@ -70,38 +70,48 @@ function PostTags (props) {
 
 	return (
 		<Card className={styles.tags}>
-			<Suspense fallback={<CircularProgress />}>
+			<SuspenseList revealOrder='forwards' tail='collapsed'>
 				{artists && (
-					<TagsList
-						header='Artists'
-						tags={artists}
-					/>
+					<Suspense fallback={<CircularProgress />}>
+						<TagsList
+							header='Artists'
+							tags={artists}
+						/>
+					</Suspense>
 				)}
 				{copyrights && (
-					<TagsList
-						header='Copyrights'
-						tags={copyrights}
-					/>
+					<Suspense fallback={<CircularProgress />}>
+						<TagsList
+							header='Copyrights'
+							tags={copyrights}
+						/>
+					</Suspense>
 				)}
 				{characters && (
-					<TagsList
-						header='Characters'
-						tags={characters}
-					/>
+					<Suspense fallback={<CircularProgress />}>
+						<TagsList
+							header='Characters'
+							tags={characters}
+						/>
+					</Suspense>
 				)}
 				{general && (
-					<TagsList
-						header='General'
-						tags={general}
-					/>
+					<Suspense fallback={<CircularProgress />}>
+						<TagsList
+							header='General'
+							tags={general}
+						/>
+					</Suspense>
 				)}
 				{meta && (
-					<TagsList
-						header='Meta'
-						tags={meta}
-					/>
+					<Suspense fallback={<CircularProgress />}>
+						<TagsList
+							header='Meta'
+							tags={meta}
+						/>
+					</Suspense>
 				)}
-			</Suspense>
+			</SuspenseList>
 		</Card>
 	);
 }

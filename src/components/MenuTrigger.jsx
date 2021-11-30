@@ -44,7 +44,7 @@ function handleToggle (event) {
 		const menu = details.childNodes[2];
 		const elements = [...menu.querySelectorAll('*')].filter(isFocusable);
 
-		const focusable = elements[0];
+		const focusable = elements[0] || menu;
 		focusable.focus();
 	}
 	else {

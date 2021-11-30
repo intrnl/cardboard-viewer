@@ -1,0 +1,36 @@
+.container {
+	position: relative;
+}
+
+.container[open] {
+	z-index: 4;
+}
+
+.container[open] .overlay {
+	display: block;
+	position: fixed;
+	inset: 0;
+}
+
+.popup {
+	min-width: 250px;
+	max-width: calc(100vw - (16px * 2));
+	margin-top: 4px;
+	position: absolute;
+}
+
+.is-top {
+	top: 100%;
+}
+
+.is-bottom {
+	bottom: 100%;
+}
+
+.is-left {
+	left: 0;
+}
+
+.is-right {
+	right: 0;
+}

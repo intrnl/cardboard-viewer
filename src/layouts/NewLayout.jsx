@@ -1,13 +1,13 @@
-import { h, Fragment, cloneElement } from 'preact';
-import { useLayoutEffect, useMemo, useRef } from 'preact/hooks';
+import { h, Fragment } from 'preact';
+import { useMemo } from 'preact/hooks';
 import { Suspense } from 'preact/compat';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { useStore } from '~/lib/global-store';
 
-import clsx from 'clsx';
 import { Link } from '~/src/components/Link.jsx';
 import { Button } from '~/src/components/Button.jsx';
 import { Menu, MenuItem } from '~/src/components/Menu.jsx';
+import { MenuTrigger } from '~/src/components/MenuTrigger.jsx';
 import { FlexSpacer } from '~/src/components/FlexSpacer.jsx';
 import { Divider } from '~/src/components/Divider.jsx';
 import { Icon } from '~/src/components/Icon.jsx';
@@ -21,7 +21,6 @@ import MenuIcon from '~/src/icons/menu.svg';
 import { useSearchParams } from '~/src/utils/useSearchParams.js';
 import { useDerivedState } from '~/src/utils/useDerivedState.js';
 import { qss } from '~/src/utils/qss.js';
-import { getNextSibling, getPreviousSibling } from '~/src/utils/element.js';
 
 import { AuthStore, logout, STATUS_LOGGED_OUT, STATUS_LOGGED_IN } from '~/src/globals/auth';
 
@@ -117,7 +116,7 @@ function HeaderDesktopOnly () {
 			)}
 
 			{auth.status === STATUS_LOGGED_IN && (
-				<NavMenu>
+				<MenuTrigger>
 					<Button variant='ghost'>
 						{auth.profile.name}
 					</Button>
@@ -144,7 +143,7 @@ function HeaderDesktopOnly () {
 							</LinkTo>
 						)}
 					</Menu>
-				</NavMenu>
+				</MenuTrigger>
 			)}
 		</div>
 	);
@@ -156,7 +155,7 @@ function HeaderMobileOnly () {
 
 	return (
 		<div className={styles.navMobile}>
-			<NavMenu>
+			<MenuTrigger>
 				<Button title='Menu'>
 					<Icon src={MenuIcon} />
 				</Button>
@@ -202,7 +201,7 @@ function HeaderMobileOnly () {
 						</>
 					)}
 				</Menu>
-			</NavMenu>
+			</MenuTrigger>
 		</div>
 	);
 }
@@ -233,118 +232,4 @@ function LinkTo (props) {
 
 
 	return h(as, { to: to + '?' + params, ...rest });
-}
-
-// <NavMenu />
-const focusableItem = `a, button:not(:disabled)`;
-const focusableHeader = `:scope > :is(${focusableItem}, summary)`;
-
-function NavMenu (props) {
-	const { className, children } = props;
-
-	const containerRef = useRef();
-	const menuRef = useRef();
-
-	const toggleOpen = (value) => {
-		const container = containerRef.current;
-
-		if (container) {
-			container.open = value?.target ? !container.open : !!value;
-		}
-	};
-
-	const handleToggle = () => {
-		const container = containerRef.current;
-		const menu = menuRef.current;
-
-		const target = container.open ? menu : container;
-
-		if (container.contains(document.activeElement)) {
-			const focusable = target.querySelector(focusableHeader);
-			(focusable || target).focus();
-
-			target.scrollIntoView({ block: 'nearest' });
-		}
-	};
-
-	const handleKeyDown = (event) => {
-		const menu = menuRef.current;
-
-		const item = event.target;
-		const keyCode = event.keyCode;
-
-		if (item !== menu && item.parentElement !== menu) {
-			return;
-		}
-
-		if (keyCode === 27) {
-			toggleOpen();
-		}
-		else if (keyCode === 38 || (event.shiftKey && keyCode === 9)) {
-			event.preventDefault();
-
-			const focusable = (
-				getPreviousSibling(item, focusableItem) ||
-				getPreviousSibling(menu.lastElementChild, focusableItem, true)
-			);
-
-			focusable?.focus();
-		}
-		else if (keyCode === 40 || keyCode === 9) {
-			event.preventDefault();
-
-			const focusable = (
-				getNextSibling(item, focusableItem) ||
-				getNextSibling(menu.firstElementChild, focusableItem, true)
-			);
-
-			focusable?.focus();
-		}
-	};
-
-	const handleMenuClick = (event) => {
-		const target = event.target;
-
-		if (target.matches(focusableItem)) {
-			toggleOpen(false);
-		}
-	};
-
-	useLayoutEffect(() => {
-		const container = containerRef.current;
-
-		const handleDocumentClick = (event) => {
-			if (container.open && !container.contains(event.target)) {
-				toggleOpen();
-			}
-		};
-
-		document.addEventListener('click', handleDocumentClick);
-		return () => document.removeEventListener('click', handleDocumentClick);
-	}, []);
-
-
-	const cn = clsx(styles.navContainer, className);
-
-	const button = children[0];
-	const menu = children[1];
-
-
-	return (
-		<details ref={containerRef} className={cn} onToggle={handleToggle}>
-			{cloneElement(button, {
-				as: 'summary',
-				role: 'button',
-				'aria-haspopup': 'menu',
-			})}
-
-			{cloneElement(menu, {
-				ref: menuRef,
-				role: 'menu',
-				className: styles.navMenu,
-				onClick: handleMenuClick,
-				onKeyDown: handleKeyDown,
-			})}
-		</details>
-	);
 }

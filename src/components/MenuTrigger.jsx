@@ -78,7 +78,7 @@ function handleKeyDown (event) {
 	const keyCode = event.keyCode;
 
 	if (keyCode === 27) {
-		details.removeAttribute('open')
+		details.removeAttribute('open');
 		return;
 	}
 
@@ -109,8 +109,6 @@ function handleKeyDown (event) {
 		if (index > -1) {
 			target = index + movement;
 		}
-
-		console.log({ index, movement, target });
 	}
 
 	if (target < 0) {

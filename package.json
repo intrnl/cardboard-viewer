@@ -7,7 +7,7 @@
 	"dependencies": {
 		"clsx": "^1.1.1",
 		"history": "^5.1.0",
-		"preact": "https://pkg.csb.dev/preactjs/preact/commit/96082866/preact",
+		"preact": "https://pkg.csb.dev/preactjs/preact/commit/a5a12f92/preact",
 		"react-router-dom": "^6.0.2"
 	},
 	"devDependencies": {

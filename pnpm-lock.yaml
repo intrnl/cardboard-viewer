@@ -9,13 +9,13 @@ specifiers:
   esbuild: ^0.13.15
   history: ^5.1.0
   postcss: ^8.4.4
-  preact: https://pkg.csb.dev/preactjs/preact/commit/96082866/preact
+  preact: https://pkg.csb.dev/preactjs/preact/commit/a5a12f92/preact
   react-router-dom: ^6.0.2
 
 dependencies:
   clsx: 1.1.1
   history: 5.1.0
-  preact: '@pkg.csb.dev/preactjs/preact/commit/96082866/preact'
+  preact: '@pkg.csb.dev/preactjs/preact/commit/a5a12f92/preact'
   react-router-dom: 6.0.2
 
 devDependencies:
@@ -456,8 +456,8 @@ packages:
     resolution: {integrity: sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=}
     dev: true
 
-  '@pkg.csb.dev/preactjs/preact/commit/96082866/preact':
-    resolution: {tarball: https://pkg.csb.dev/preactjs/preact/commit/96082866/preact}
+  '@pkg.csb.dev/preactjs/preact/commit/a5a12f92/preact':
+    resolution: {tarball: https://pkg.csb.dev/preactjs/preact/commit/a5a12f92/preact}
     name: preact
     version: 10.5.13
     dev: false

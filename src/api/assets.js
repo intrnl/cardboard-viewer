@@ -1,12 +1,14 @@
 import { createAsset, createBatchedFetch } from '~/lib/use-asset';
 
 import { API_URL, ResponseError } from '~/src/api/base.js';
-import { AuthStore } from '~/src/globals/auth.js';
+import { AuthStore, LOGIN_PROMISE } from '~/src/globals/auth.js';
 
 import { qss } from '~/src/utils/qss.js';
 
 
 export const fetcher = async (url, params) => {
+	await LOGIN_PROMISE;
+
 	const auth = AuthStore.get();
 	const query = qss({ ...params, api_key: auth.key, login: auth.user });
 

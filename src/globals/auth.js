@@ -7,6 +7,7 @@ import { qss } from '~/src/utils/qss.js';
 
 const localKey = 'token';
 
+export let LOGIN_PROMISE = Promise.resolve();
 export const STATUS_VERIFYING = 0;
 export const STATUS_LOGGED_IN = 1;
 export const STATUS_LOGGED_OUT = 2;
@@ -24,7 +25,7 @@ login(JSON.parse(localStorage.getItem(localKey) || '{}'), false)
 export function login ({ key, user }, write = true) {
 	AuthStore.update({ status: STATUS_VERIFYING });
 
-	return verify({ key, user }).then(
+	const promise = verify({ key, user }).then(
 		(profile) => {
 			AuthStore.update({
 				status: STATUS_LOGGED_IN,
@@ -42,6 +43,8 @@ export function login ({ key, user }, write = true) {
 			return Promise.reject(error);
 		},
 	);
+
+	return LOGIN_PROMISE = promise;
 }
 
 export function logout (write = true) {

@@ -6,6 +6,7 @@ import { qss } from '~/src/utils/qss.js';
 
 
 const localKey = 'token';
+const noop = () => {};
 
 export let LOGIN_PROMISE = Promise.resolve();
 export const STATUS_VERIFYING = 0;
@@ -44,7 +45,8 @@ export function login ({ key, user }, write = true) {
 		},
 	);
 
-	return LOGIN_PROMISE = promise;
+	LOGIN_PROMISE = promise.then(noop, noop);
+	return promise;
 }
 
 export function logout (write = true) {

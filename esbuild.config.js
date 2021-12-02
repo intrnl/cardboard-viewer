@@ -1,9 +1,6 @@
 import * as esbuild from 'esbuild';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
 
 import env from '@intrnl/esbuild-plugin-env';
-import alias from '@intrnl/esbuild-plugin-alias';
 import postcss from '@intrnl/esbuild-plugin-postcss';
 
 
@@ -28,13 +25,6 @@ export let config = {
 				generateScopedName: process.env.NODE_ENV === 'development'
 					? '[local]_[hash:6]'
 					: '_[hash:6]',
-			},
-		}),
-		alias({
-			entries: {
-				'~': dirname(fileURLToPath(import.meta.url)),
-				'react': 'preact/compat',
-				'react-dom': 'preact/compat',
 			},
 		}),
 	],

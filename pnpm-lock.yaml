@@ -1,7 +1,6 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@intrnl/esbuild-plugin-alias': ^0.1.0
   '@intrnl/esbuild-plugin-build-analysis': ^0.1.2
   '@intrnl/esbuild-plugin-env': ^0.1.2
   '@intrnl/esbuild-plugin-postcss': ^0.2.1
@@ -19,7 +18,6 @@ dependencies:
   react-router-dom: 6.0.2
 
 devDependencies:
-  '@intrnl/esbuild-plugin-alias': 0.1.0_esbuild@0.14.1
   '@intrnl/esbuild-plugin-build-analysis': 0.1.2_esbuild@0.14.1
   '@intrnl/esbuild-plugin-env': 0.1.2_esbuild@0.14.1
   '@intrnl/esbuild-plugin-postcss': 0.2.1_esbuild@0.14.1+postcss@8.4.4
@@ -34,14 +32,6 @@ packages:
     dependencies:
       regenerator-runtime: 0.13.9
     dev: false
-
-  /@intrnl/esbuild-plugin-alias/0.1.0_esbuild@0.14.1:
-    resolution: {integrity: sha512-Nzw2qc7eqd2vJobPozFgY3fD6ENXu/hATTSM6g/WRSnWA+dehZ7Kjmj8F/EfeaZ8A2RV1g984poeQr/fdtvfkA==}
-    peerDependencies:
-      esbuild: '>=0.13.15'
-    dependencies:
-      esbuild: 0.14.1
-    dev: true
 
   /@intrnl/esbuild-plugin-build-analysis/0.1.2_esbuild@0.14.1:
     resolution: {integrity: sha512-vaZw39zy5i6mKPGw+J5XG33NIntWXavCjSQfEjWwYWL3cM+0/8/J7mGEOtMUspgCu4DIlfdT1BB1VdBFcfXbGw==}

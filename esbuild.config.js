@@ -10,6 +10,7 @@ export let config = {
 	outdir: 'dist/_assets',
 	publicPath: '/_assets/',
 
+	sourcemap: true,
 	jsx: 'transform',
 	jsxFactory: 'h',
 	jsxFragment: 'Fragment',

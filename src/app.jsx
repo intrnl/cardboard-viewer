@@ -2,7 +2,7 @@ import { h, render } from 'preact';
 
 import '~/src/styles/reset.css';
 import '~/src/styles/app.css';
-import { App } from '~/src/components/App.jsx';
+import { App } from '~/src/components/App';
 
 
 const CF_COMMIT = process.env.CF_PAGES_COMMIT_SHA;

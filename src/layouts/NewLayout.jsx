@@ -4,15 +4,14 @@ import { Suspense } from 'preact/compat';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { useStore } from '~/lib/global-store';
 
-import { Link } from '~/src/components/Link.jsx';
-import { Button } from '~/src/components/Button.jsx';
-import { Menu, MenuItem } from '~/src/components/Menu.jsx';
-import { MenuTrigger } from '~/src/components/MenuTrigger.jsx';
-import { FlexSpacer } from '~/src/components/FlexSpacer.jsx';
-import { Divider } from '~/src/components/Divider.jsx';
-import { Icon } from '~/src/components/Icon.jsx';
-import { SearchInput } from '~/src/components/TagSearch.jsx';
-import { CircularProgress } from '~/src/components/CircularProgress.jsx';
+import { Link } from '~/src/components/Link';
+import { Button } from '~/src/components/Button';
+import { Menu, MenuItem, MenuTrigger } from '~/src/components/Menu';
+import { FlexSpacer } from '~/src/components/FlexSpacer';
+import { Divider } from '~/src/components/Divider';
+import { Icon } from '~/src/components/Icon';
+import { SearchInput } from '~/src/components/TagSearch';
+import { CircularProgress } from '~/src/components/CircularProgress';
 import * as styles from '~/src/styles/layouts/NewLayout.module.css';
 
 import ArchiveIcon from '~/src/icons/archive.svg';
@@ -129,7 +128,7 @@ function HeaderDesktopOnly () {
 							My Favorites
 						</MenuLink>
 
-						<Divider gap />
+						<Divider orientation='horizontal' gap />
 
 						{auth.status === STATUS_LOGGED_IN && (
 							<MenuItem onClick={logout}>
@@ -172,7 +171,7 @@ function HeaderMobileOnly () {
 							<MenuLink to={'/?' + qss({ query: `ordfav:${auth.profile.name} `})}>
 								My Favorites
 							</MenuLink>
-							<Divider gap />
+							<Divider orientation='horizontal' gap />
 						</>
 					)}
 
@@ -185,7 +184,7 @@ function HeaderMobileOnly () {
 
 					{auth.status === STATUS_LOGGED_IN && (
 						<>
-							<Divider gap />
+							<Divider orientation='horizontal' gap />
 							<MenuItem onClick={logout}>
 								Logout
 							</MenuItem>
@@ -194,7 +193,7 @@ function HeaderMobileOnly () {
 
 					{auth.status === STATUS_LOGGED_OUT && (
 						<>
-							<Divider gap />
+							<Divider orientation='horizontal' gap />
 							<LinkTo as={MenuLink} to='/login'>
 								Login
 							</LinkTo>

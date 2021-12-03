@@ -1,9 +1,0 @@
-.divider {
-	border-top: 1px solid;
-	border-right: 1px solid;
-	border-color: var(--gray-300);
-}
-
-.is-gap {
-	margin-block: 4px;
-}

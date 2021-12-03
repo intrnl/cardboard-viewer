@@ -1,5 +1,6 @@
 {
 	"type": "module",
+	"name": "cardboard-viewer",
 	"scripts": {
 		"dev": "NODE_ENV=development node ./scripts/dev.js",
 		"build": "NODE_ENV=production node ./scripts/build.js"
@@ -15,6 +16,8 @@
 		"@intrnl/esbuild-plugin-build-analysis": "^0.1.2",
 		"@intrnl/esbuild-plugin-env": "^0.1.2",
 		"@intrnl/esbuild-plugin-postcss": "^0.2.4",
+		"@intrnl/esbuild-plugin-vanilla-extract": "^0.2.0",
+		"@vanilla-extract/css": "^1.6.8",
 		"esbuild": "^0.14.1",
 		"postcss": "^8.4.4"
 	}

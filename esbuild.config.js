@@ -2,6 +2,7 @@ import * as esbuild from 'esbuild';
 
 import env from '@intrnl/esbuild-plugin-env';
 import postcss from '@intrnl/esbuild-plugin-postcss';
+import vanillaExtract from '@intrnl/esbuild-plugin-vanilla-extract';
 
 
 /** @type {esbuild.BuildOptions} */
@@ -21,6 +22,7 @@ export let config = {
 
 	plugins: [
 		env(),
+		vanillaExtract(),
 		postcss({
 			modules: {
 				generateScopedName: process.env.NODE_ENV === 'development'

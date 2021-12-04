@@ -68,6 +68,7 @@ function PostTags (props) {
 		? data.tag_string_meta.split(RE_TAG_DELIMITER)
 		: false;
 
+
 	return (
 		<Card className={styles.tags}>
 			<SuspenseList revealOrder='forwards' tail='collapsed'>
@@ -118,6 +119,7 @@ function PostTags (props) {
 
 function TagsList (props) {
 	const { tags, header } = props;
+
 
 	return (
 		<div>

@@ -21,9 +21,9 @@ export const list = style({
 
 export const item = style({
 	padding: 4,
-	borderRadius: 2,
+	borderRadius: 4,
 }, 'item');
 
 export const isCurrent = style({
-	backgroundColor: theme.palette.gray[100],
+	backgroundColor: theme.palette.gray[300],
 }, 'is-current');

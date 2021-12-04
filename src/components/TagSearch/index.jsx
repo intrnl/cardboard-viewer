@@ -16,12 +16,14 @@ import SearchIcon from '~/icons/search.svg';
 import { autocompleteTags } from '~/api/assets.js';
 
 import { useDebouncedState } from '~/utils/useDebouncedState.js';
+import { useId } from '~/utils/useId.js';
 
 
 export function SearchInput (props) {
 	const { value, onChange, onSearch, className } = props;
 
 	const inputRef = useRef();
+	const prefix = useId();
 
 	/// Retrieve "pending" input
 	// Pending input is when the last tag hasn't been ended with a space.
@@ -124,7 +126,7 @@ export function SearchInput (props) {
 			className={clsx(styles.search, className)}
 			onSubmit={handleSubmit}
 		>
-			<InputGroup className={styles.container} onKeyDown={handleKeyDown}>
+			<InputGroup className={styles.container}>
 				<TextField
 					ref={inputRef}
 					type='search'
@@ -132,7 +134,15 @@ export function SearchInput (props) {
 					fullWidth
 					value={value}
 					onChange={handleInput}
+					onKeyDown={handleKeyDown}
 					placeholder='Search...'
+					aria-label='Search'
+					role='combobox'
+					aria-controls={prefix + 'menu'}
+					aria-autocomplete='list'
+					aria-haspopup='listbox'
+					aria-activedescendant={selection !== -1 && (prefix + selection)}
+					aria-expanded={!!pendingInput}
 				/>
 
 				<Button title='Search' type='submit'>
@@ -141,20 +151,23 @@ export function SearchInput (props) {
 			</InputGroup>
 
 			{pendingInput && (
-				<Suspense fallback={<AutocompleteListFallback />}>
-					<AutocompleteList
-						resource={autocomplete}
-						selection={selection}
-						onSelect={handleSelect}
-					/>
-				</Suspense>
+				<Menu as='ul' className={styles.menu} id={prefix + 'menu'} role='listbox'>
+					<Suspense fallback={<AutocompleteListFallback />}>
+						<AutocompleteList
+							resource={autocomplete}
+							selection={selection}
+							onSelect={handleSelect}
+							a11yPrefix={prefix}
+						/>
+					</Suspense>
+				</Menu>
 			)}
 		</form>
 	);
 }
 
 function AutocompleteList (props) {
-	const { resource, selection, onSelect } = props;
+	const { resource, selection, onSelect, a11yPrefix } = props;
 
 	const data = resource.read();
 
@@ -162,27 +175,25 @@ function AutocompleteList (props) {
 		return;
 	}
 
-	return (
-		<Menu className={styles.menu}>
-			{data.map((item, index) => (
-				<AutocompleteItem
-					data={item}
-					index={index}
-					selected={selection === index}
-					onSelect={onSelect}
-				/>
-			))}
-		</Menu>
-	)
+	return data.map((item, index) => (
+		<AutocompleteItem
+			data={item}
+			index={index}
+			selected={selection === index}
+			onSelect={onSelect}
+			a11yPrefix={a11yPrefix}
+		/>
+	));
 }
 
 // <AutocompleteItem />
-const countFormatter = new Intl.NumberFormat(undefined, {
+const aggregateFormatter = new Intl.NumberFormat(undefined, {
 	notation: 'compact',
-})
+});
+const a11yFormatter = new Intl.NumberFormat();
 
 function AutocompleteItem (props) {
-	const { data, index, selected, onSelect } = props;
+	const { data, index, selected, onSelect, a11yPrefix } = props;
 
 	const handleClick = (event) => {
 		if (isLinkEvent(event)) {
@@ -192,32 +203,39 @@ function AutocompleteItem (props) {
 		onSelect?.(index);
 	}
 
-	return (
-		<MenuItem
-			as={Link}
-			to={`/?query=${data.value}+`}
-			tabIndex={-1}
-			className={clsx(styles.item, selected && styles.isActive)}
-			onClick={handleClick}
-		>
-			{data.label}
+	const label = data.label;
+	const count = data.post_count;
 
-			{data.post_count && (
-				<span className={styles.postCount}>
-					{countFormatter.format(data.post_count)}
-				</span>
-			)}
-		</MenuItem>
+	const aggregateCount = aggregateFormatter.format(count);
+	const a11yCount = a11yFormatter.format(count);
+
+	return (
+		<li id={a11yPrefix + index} role='option' aria-selected={selected}>
+			<MenuItem
+				as={Link}
+				to={`/?query=${data.value}+`}
+				tabIndex={-1}
+				className={clsx(styles.item, selected && styles.isActive)}
+				onClick={handleClick}
+				aria-label={`${label}, Has ${a11yCount} posts.`}
+			>
+				{label}
+
+				{data.post_count && (
+					<span className={styles.postCount}>
+						{aggregateCount}
+					</span>
+				)}
+			</MenuItem>
+		</li>
 	);
 }
 
 function AutocompleteListFallback () {
 	return (
-		<Menu className={styles.menu}>
-			<MenuItem disabled className={clsx(styles.item)}>
-				loading...
-			</MenuItem>
-		</Menu>
+		<MenuItem disabled className={styles.item}>
+			loading...
+		</MenuItem>
 	);
 }
 

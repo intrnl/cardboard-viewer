@@ -1,8 +1,8 @@
 import { Store } from '~/lib/global-store';
 
-import { API_URL, ResponseError } from '~/src/api/base.js';
+import { API_URL, ResponseError } from '~/api/base.js';
 
-import { qss } from '~/src/utils/qss.js';
+import { qss } from '~/utils/qss.js';
 
 
 const localKey = 'token';

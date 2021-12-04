@@ -3,10 +3,10 @@ import { Suspense } from 'preact/compat';
 
 import { Router } from './Router';
 import { AppRouter } from './AppRouter';
-import { CircularProgress } from '~/src/components/CircularProgress';
+import { CircularProgress } from '~/components/CircularProgress';
 import * as styles from './App.css';
 
-import { history } from '~/src/globals/history.js';
+import { history } from '~/globals/history.js';
 
 
 export function App () {

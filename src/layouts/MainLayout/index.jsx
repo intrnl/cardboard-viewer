@@ -4,24 +4,24 @@ import { Suspense } from 'preact/compat';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { useStore } from '~/lib/global-store';
 
-import { Link } from '~/src/components/Link';
-import { Button } from '~/src/components/Button';
-import { Menu, MenuItem, MenuTrigger } from '~/src/components/Menu';
-import { FlexSpacer } from '~/src/components/FlexSpacer';
-import { Divider } from '~/src/components/Divider';
-import { Icon } from '~/src/components/Icon';
-import { SearchInput } from '~/src/components/TagSearch';
-import { CircularProgress } from '~/src/components/CircularProgress';
+import { Link } from '~/components/Link';
+import { Button } from '~/components/Button';
+import { Menu, MenuItem, MenuTrigger } from '~/components/Menu';
+import { FlexSpacer } from '~/components/FlexSpacer';
+import { Divider } from '~/components/Divider';
+import { Icon } from '~/components/Icon';
+import { SearchInput } from '~/components/TagSearch';
+import { CircularProgress } from '~/components/CircularProgress';
 import * as styles from './MainLayout.css';
 
-import ArchiveIcon from '~/src/icons/archive.svg';
-import MenuIcon from '~/src/icons/menu.svg';
+import ArchiveIcon from '~/icons/archive.svg';
+import MenuIcon from '~/icons/menu.svg';
 
-import { useSearchParams } from '~/src/utils/useSearchParams.js';
-import { useDerivedState } from '~/src/utils/useDerivedState.js';
-import { qss } from '~/src/utils/qss.js';
+import { useSearchParams } from '~/utils/useSearchParams.js';
+import { useDerivedState } from '~/utils/useDerivedState.js';
+import { qss } from '~/utils/qss.js';
 
-import { AuthStore, logout, STATUS_LOGGED_OUT, STATUS_LOGGED_IN } from '~/src/globals/auth';
+import { AuthStore, logout, STATUS_LOGGED_OUT, STATUS_LOGGED_IN } from '~/globals/auth';
 
 
 // <NewLayout />

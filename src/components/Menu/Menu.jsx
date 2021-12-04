@@ -2,7 +2,7 @@ import { h } from 'preact';
 import { forwardRef } from 'preact/compat';
 
 import clsx from 'clsx';
-import { Button } from '~/src/components/Button';
+import { Button } from '~/components/Button';
 import * as styles from './Menu.css';
 
 

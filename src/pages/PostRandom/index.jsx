@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef } from 'preact/hooks';
 import { useNavigate } from 'react-router-dom';
 
-import * as asset from '~/src/api/assets.js';
+import * as asset from '~/api/assets.js';
 
 
 export default function PostRandomPage () {

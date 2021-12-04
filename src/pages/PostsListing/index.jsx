@@ -4,20 +4,20 @@ import { useMemo } from 'preact/hooks';
 import { createMappedResource, createResource } from '~/lib/use-asset';
 import { useStore } from '~/lib/global-store';
 
-import { SideView, Main, Aside } from '~/src/layouts/SideView';
-import { Post, PostFallback } from '~/src/components/Post';
-import { Pagination } from '~/src/components/Pagination';
-import { Tag } from '~/src/components/Tag';
-import { CircularProgress } from '~/src/components/CircularProgress';
+import { SideView, Main, Aside } from '~/layouts/SideView';
+import { Post, PostFallback } from '~/components/Post';
+import { Pagination } from '~/components/Pagination';
+import { Tag } from '~/components/Tag';
+import { CircularProgress } from '~/components/CircularProgress';
 import * as styles from './PostsListing.css';
 
-import { AuthStore } from '~/src/globals/auth.js';
-import * as asset from '~/src/api/assets.js';
-import { GET_MAX_PAGE } from '~/src/api/enums.js';
+import { AuthStore } from '~/globals/auth.js';
+import * as asset from '~/api/assets.js';
+import { GET_MAX_PAGE } from '~/api/enums.js';
 
-import { useSearchParams } from '~/src/utils/useSearchParams.js';
-import { useFactoryMemo } from '~/src/utils/useFactoryMemo.js';
-import { qss } from '~/src/utils/qss.js';
+import { useSearchParams } from '~/utils/useSearchParams.js';
+import { useFactoryMemo } from '~/utils/useFactoryMemo.js';
+import { qss } from '~/utils/qss.js';
 
 
 const DEFAULT_SEARCH_PARAMS = {

@@ -1,22 +1,22 @@
 import { h } from 'preact';
 
 import clsx from 'clsx';
-import { Icon } from '~/src/components/Icon';
-import { Button } from '~/src/components/Button';
+import { Icon } from '~/components/Icon';
+import { Button } from '~/components/Button';
 import * as styles from './Pagination.css';
 
-import DotsHorizIcon from '~/src/icons/dots-horizontal.svg';
-import ChevronLeftIcon from '~/src/icons/chevron-left.svg';
-import ChevronRightIcon from '~/src/icons/chevron-right.svg';
+import DotsHorizIcon from '~/icons/dots-horizontal.svg';
+import ChevronLeftIcon from '~/icons/chevron-left.svg';
+import ChevronRightIcon from '~/icons/chevron-right.svg';
 
-import { useFactoryMemo } from '~/src/utils/useFactoryMemo.js';
+import { useFactoryMemo } from '~/utils/useFactoryMemo.js';
 import {
 	createPagination,
 	PAGINATION_DOT_START,
 	PAGINATION_DOT_END,
 	PAGINATION_NEXT,
 	PAGINATION_PREVIOUS,
-} from '~/src/utils/pagination.js';
+} from '~/utils/pagination.js';
 
 
 export function Pagination (props) {

@@ -1,8 +1,8 @@
 import { style } from '@vanilla-extract/css';
 
-import { theme } from '~/src/styles/theme.css';
-import { interactable, focusable } from '~/src/styles/misc/interactions.css';
-import { control } from '~/src/styles/misc/controls.css';
+import { theme } from '~/styles/theme.css';
+import { interactable, focusable } from '~/styles/misc/interactions.css';
+import { control } from '~/styles/misc/controls.css';
 
 
 export const button = style([interactable, focusable, control, {

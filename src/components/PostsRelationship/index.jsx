@@ -4,14 +4,14 @@ import { h } from 'preact';
 import { createMappedResource } from '~/lib/use-asset';
 
 import clsx from 'clsx';
-import { Link } from '~/src/components/Link';
-import { Post } from '~/src/components/Post';
-import { Card } from '~/src/components/Card';
+import { Link } from '~/components/Link';
+import { Post } from '~/components/Post';
+import { Card } from '~/components/Card';
 import * as styles from './PostsRelationship.css';
 
-import * as asset from '~/src/api/assets.js';
+import * as asset from '~/api/assets.js';
 
-import { qss } from '~/src/utils/qss.js';
+import { qss } from '~/utils/qss.js';
 
 
 export function PostsRelationship (props) {

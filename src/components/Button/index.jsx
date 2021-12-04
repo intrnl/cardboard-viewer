@@ -2,7 +2,7 @@ import { h } from 'preact';
 import { forwardRef } from 'preact/compat';
 
 import clsx from 'clsx';
-import * as controls from '~/src/styles/misc/controls.css';
+import * as controls from '~/styles/misc/controls.css';
 import * as styles from './Button.css';
 
 

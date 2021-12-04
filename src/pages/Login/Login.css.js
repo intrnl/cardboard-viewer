@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { vh } from '@intrnl/cssom-utils';
 
-import { theme } from '~/src/styles/theme.css';
+import { theme } from '~/styles/theme.css';
 
 
 export const container = style({

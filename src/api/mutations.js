@@ -1,8 +1,8 @@
-import { AuthStore } from '~/src/globals/auth.js';
-import { PROXY_URL, ResponseError } from '~/src/api/base.js';
-import { favorites } from '~/src/api/assets.js';
+import { AuthStore } from '~/globals/auth.js';
+import { PROXY_URL, ResponseError } from '~/api/base.js';
+import { favorites } from '~/api/assets.js';
 
-import { qss } from '~/src/utils/qss.js';
+import { qss } from '~/utils/qss.js';
 
 
 function request ({ method = 'POST', url, params, body }) {

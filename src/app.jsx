@@ -1,8 +1,8 @@
 import { h, render } from 'preact';
 
-import '~/src/styles/reset.css';
-import '~/src/styles/app.css';
-import { App } from '~/src/components/App';
+import '~/styles/reset.css';
+import '~/styles/app.css';
+import { App } from '~/components/App';
 
 
 const CF_COMMIT = process.env.CF_PAGES_COMMIT_SHA;

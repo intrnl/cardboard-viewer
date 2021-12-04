@@ -4,19 +4,19 @@ import { useMemo } from 'preact/hooks';
 import { useStore } from '~/lib/global-store';
 
 import clsx from 'clsx';
-import { Link } from '~/src/components/Link';
-import { Icon } from '~/src/components/Icon';
+import { Link } from '~/components/Link';
+import { Icon } from '~/components/Icon';
 import * as styles from './Post.css';
 
-import HeartIcon from '~/src/icons/heart.svg';
-import RefreshIcon from '~/src/icons/refresh.svg';
+import HeartIcon from '~/icons/heart.svg';
+import RefreshIcon from '~/icons/refresh.svg';
 
-import { AuthStore, STATUS_LOGGED_IN } from '~/src/globals/auth';
-import * as asset from '~/src/api/assets.js';
-import { setFavorite } from '~/src/api/mutations.js';
-import { POST_IMAGE_SMALL_SIZE, GET_IMAGE_SIZE } from '~/src/api/enums.js';
+import { AuthStore, STATUS_LOGGED_IN } from '~/globals/auth';
+import * as asset from '~/api/assets.js';
+import { setFavorite } from '~/api/mutations.js';
+import { POST_IMAGE_SMALL_SIZE, GET_IMAGE_SIZE } from '~/api/enums.js';
 
-import { useSuspense } from '~/src/utils/useSuspense.js';
+import { useSuspense } from '~/utils/useSuspense.js';
 
 
 // <Post />

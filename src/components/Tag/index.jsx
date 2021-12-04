@@ -1,7 +1,7 @@
 import { h } from 'preact';
 
 import clsx from 'clsx';
-import { Link } from '~/src/components/Link';
+import { Link } from '~/components/Link';
 import * as styles from './Tag.css';
 
 import {
@@ -10,9 +10,9 @@ import {
 	TAG_CATEGORY_COPYRIGHT,
 	TAG_CATEGORY_CHARACTER,
 	TAG_CATEGORY_META,
-} from '~/src/api/enums.js';
+} from '~/api/enums.js';
 
-import { qss } from '~/src/utils/qss.js';
+import { qss } from '~/utils/qss.js';
 
 
 const countFormatter = new Intl.NumberFormat(undefined, {

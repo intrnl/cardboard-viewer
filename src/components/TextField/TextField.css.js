@@ -1,9 +1,9 @@
 import { style } from '@vanilla-extract/css';
 import { percent } from '@intrnl/cssom-utils';
 
-import { theme } from '~/src/styles/theme.css';
-import { focusable } from '~/src/styles/misc/interactions.css';
-import { control } from '~/src/styles/misc/controls.css';
+import { theme } from '~/styles/theme.css';
+import { focusable } from '~/styles/misc/interactions.css';
+import { control } from '~/styles/misc/controls.css';
 
 
 export const field = style([focusable, control, {

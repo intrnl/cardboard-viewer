@@ -3,15 +3,15 @@ import { Suspense, SuspenseList } from 'preact/compat';
 import { useParams, Navigate } from 'react-router-dom';
 import { createResource } from '~/lib/use-asset';
 
-import { SideView, Main, Aside } from '~/src/layouts/SideView';
-import { Card } from '~/src/components/Card';
-import { CircularProgress } from '~/src/components/CircularProgress';
-import { PostsRelationship } from '~/src/components/PostsRelationship';
-import { Tag } from '~/src/components/Tag';
+import { SideView, Main, Aside } from '~/layouts/SideView';
+import { Card } from '~/components/Card';
+import { CircularProgress } from '~/components/CircularProgress';
+import { PostsRelationship } from '~/components/PostsRelationship';
+import { Tag } from '~/components/Tag';
 import * as styles from './PostDetails.css';
 
-import * as asset from '~/src/api/assets.js';
-import { POST_IMAGE_LARGE_SIZE, GET_IMAGE_CEIL } from '~/src/api/enums.js';
+import * as asset from '~/api/assets.js';
+import { POST_IMAGE_LARGE_SIZE, GET_IMAGE_CEIL } from '~/api/enums.js';
 
 
 export default function PostDetailsPage () {

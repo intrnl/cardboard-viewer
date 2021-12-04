@@ -1,7 +1,7 @@
 import { style, globalStyle } from '@vanilla-extract/css';
 
-import { theme } from '~/src/styles/theme.css';
-import { focusable } from '~/src/styles/misc/interactions.css';
+import { theme } from '~/styles/theme.css';
+import { focusable } from '~/styles/misc/interactions.css';
 
 
 export const post = style({

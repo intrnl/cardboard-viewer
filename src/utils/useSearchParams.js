@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { qss } from '~/src/utils/qss.js';
-import { useFactoryMemo } from '~/src/utils/useFactoryMemo.js';
+import { qss } from '~/utils/qss.js';
+import { useFactoryMemo } from '~/utils/useFactoryMemo.js';
 
 /**
  * @template {Record<string, string>} T

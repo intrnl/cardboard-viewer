@@ -3,16 +3,16 @@ import { useEffect, useLayoutEffect } from 'preact/hooks';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '~/lib/global-store';
 
-import { Card } from '~/src/components/Card';
-import { FieldLabel } from '~/src/components/FieldLabel';
-import { TextField } from '~/src/components/TextField';
-import { Button } from '~/src/components/Button';
+import { Card } from '~/components/Card';
+import { FieldLabel } from '~/components/FieldLabel';
+import { TextField } from '~/components/TextField';
+import { Button } from '~/components/Button';
 import * as styles from './Login.css';
 
-import { AuthStore, login, STATUS_LOGGED_IN, STATUS_VERIFYING } from '~/src/globals/auth.js';
+import { AuthStore, login, STATUS_LOGGED_IN, STATUS_VERIFYING } from '~/globals/auth.js';
 
-import { useSearchParams } from '~/src/utils/useSearchParams.js';
-import { useInputState } from '~/src/utils/useInputState.js';
+import { useSearchParams } from '~/utils/useSearchParams.js';
+import { useInputState } from '~/utils/useInputState.js';
 
 
 const DEFAULT_SEARCH_PARAMS = {

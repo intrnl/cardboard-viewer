@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 
-import { theme } from '~/src/styles/theme.css';
-import { button as baseButton, isGhost } from '~/src/components/Button/Button.css';
+import { theme } from '~/styles/theme.css';
+import { button as baseButton, isGhost } from '~/components/Button/Button.css';
 
 
 export const pagination = style({

@@ -3,19 +3,19 @@ import { Suspense } from 'preact/compat';
 import { useState, useRef,  useLayoutEffect } from 'preact/hooks';
 
 import clsx from 'clsx';
-import { Link, isLinkEvent } from '~/src/components/Link';
-import { Button } from '~/src/components/Button';
-import { TextField } from '~/src/components/TextField';
-import { InputGroup } from '~/src/components/InputGroup';
-import { Menu, MenuItem } from '~/src/components/Menu';
-import { Icon } from '~/src/components/Icon';
+import { Link, isLinkEvent } from '~/components/Link';
+import { Button } from '~/components/Button';
+import { TextField } from '~/components/TextField';
+import { InputGroup } from '~/components/InputGroup';
+import { Menu, MenuItem } from '~/components/Menu';
+import { Icon } from '~/components/Icon';
 import * as styles from './TagSearch.css';
 
-import SearchIcon from '~/src/icons/search.svg';
+import SearchIcon from '~/icons/search.svg';
 
-import { autocompleteTags } from '~/src/api/assets.js';
+import { autocompleteTags } from '~/api/assets.js';
 
-import { useDebouncedState } from '~/src/utils/useDebouncedState.js';
+import { useDebouncedState } from '~/utils/useDebouncedState.js';
 
 
 export function SearchInput (props) {

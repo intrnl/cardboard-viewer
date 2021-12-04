@@ -12,7 +12,7 @@ import { Divider } from '~/src/components/Divider';
 import { Icon } from '~/src/components/Icon';
 import { SearchInput } from '~/src/components/TagSearch';
 import { CircularProgress } from '~/src/components/CircularProgress';
-import * as styles from '~/src/styles/layouts/NewLayout.module.css';
+import * as styles from './MainLayout.css';
 
 import ArchiveIcon from '~/src/icons/archive.svg';
 import MenuIcon from '~/src/icons/menu.svg';
@@ -84,7 +84,7 @@ function HeaderSearch () {
 
 	return (
 		<SearchInput
-			className={styles.headerSearch}
+			className={styles.search}
 			value={input}
 			onChange={handleInputChange}
 			onSearch={handleSearch}
@@ -98,7 +98,7 @@ function HeaderDesktopOnly () {
 
 
 	return (
-		<div className={styles.navDesktop}>
+		<div className={styles.desktop}>
 			<NavLink to={'/?' + qss({ query: 'order:rank ' })}>
 				Hot
 			</NavLink>
@@ -153,7 +153,7 @@ function HeaderMobileOnly () {
 	const auth = useStore(AuthStore);
 
 	return (
-		<div className={styles.navMobile}>
+		<div className={styles.mobile}>
 			<MenuTrigger>
 				<Button title='Menu'>
 					<Icon src={MenuIcon} />

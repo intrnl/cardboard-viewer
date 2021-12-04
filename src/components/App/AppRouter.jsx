@@ -3,7 +3,7 @@ import { lazy } from 'preact/compat';
 import { Routes, Route } from 'react-router-dom';
 
 
-const NewLayout = lazy(() => import('~/src/layouts/NewLayout'));
+const MainLayout = lazy(() => import('~/src/layouts/MainLayout'));
 
 const Login = lazy(() => import('~/src/pages/Login'));
 const PostsListing = lazy(() => import('~/src/pages/PostsListing'));
@@ -14,7 +14,7 @@ const PostRandom = lazy(() => import('~/src/pages/PostRandom'));
 export function AppRouter () {
 	return (
 		<Routes>
-			<Route element={<NewLayout />}>
+			<Route element={<MainLayout />}>
 				<Route path='/' element={<PostsListing />} />
 				<Route path='/posts/:id' element={<PostDetails />} />
 				<Route path='/posts/random' element={<PostRandom />} />

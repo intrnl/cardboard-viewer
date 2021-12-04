@@ -69,9 +69,8 @@ function handleClick (event) {
 
 function handleKeyDown (event) {
 	const details = event.currentTarget;
-	const menu = details.childNodes[2];
 
-	if (!details.hasAttribute('open') || !menu) {
+	if (!details.hasAttribute('open')) {
 		return;
 	}
 
@@ -91,15 +90,15 @@ function handleKeyDown (event) {
 
 	event.preventDefault();
 
-	const elements = [...menu.querySelectorAll('*')].filter(isFocusable);
+	const elements = [...details.querySelectorAll('*')].filter(isFocusable);
 
 	if (elements.length < 1) {
 		return;
 	}
 
 	const movement = isReverse ? -1 : 1;
-	const root = menu.getRootNode();
-	const focused = menu.contains(root.activeElement) ? root.activeElement : null;
+	const root = details.getRootNode();
+	const focused = details.contains(root.activeElement) ? root.activeElement : null;
 
 	let target = isReverse ? -1 : 0;
 

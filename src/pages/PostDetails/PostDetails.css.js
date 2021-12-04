@@ -13,9 +13,10 @@ const constrained = style({
 		'(max-width: 639px)': {
 			borderInline: 0,
 			borderRadius: 0,
+			marginInline: -8,
 		},
 	},
-})
+}, 'constrained');
 
 
 export const post = style([constrained], 'post');

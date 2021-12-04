@@ -22,8 +22,8 @@ export const container = style({
 });
 
 export const card = style({
-	gap: 16,
-	padding: 16,
+	gap: 24,
+	padding: 24,
 
 	'@media': {
 		'(max-width: 639px)': {
@@ -39,5 +39,7 @@ export const card = style({
 
 export const blurb = style({
 	fontSize: 13,
+	fontWeight: 400,
 	color: theme.palette.gray[600],
+	marginTop: 4,
 }, 'blurb');

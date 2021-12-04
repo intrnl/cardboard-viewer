@@ -108,11 +108,11 @@ export default function NewLoginPage () {
 						value={tokenUrl}
 						onChange={handleTokenUrlInput}
 					/>
+					<p className={styles.blurb}>
+						Quickly login by copy-pasting the example usage URL provided after
+						API key creation.
+					</p>
 				</FieldLabel>
-				<p className={styles.blurb}>
-					Quickly login by copy-pasting the example usage URL provided after
-					API key creation.
-				</p>
 			</Card>
 		</form>
 	);

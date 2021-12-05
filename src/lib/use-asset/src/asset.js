@@ -15,6 +15,7 @@ const RECORD_REJECTED = 2;
 
 class Asset {
 	#cache = new Map();
+	#timeout = new Map();
 
 	#fetcher;
 	#lifespan;
@@ -39,16 +40,14 @@ class Asset {
 
 
 	set (key, value) {
-		const cache = this.#cache;
+		const _this = this;
+		const cache = _this.#cache;
+		const lifespan = _this.#lifespan;
+
 		const id = stringify(key);
 
-		const lifespan = this.#lifespan;
-
 		const promise = (async () => {
-			if (lifespan > 0) {
-				setTimeout(() => cache.delete(id), lifespan);
-			}
-
+			_this.#purge(id, lifespan);
 			return value;
 		})();
 
@@ -63,19 +62,36 @@ class Asset {
 	}
 
 	delete (key) {
-		const cache = this.#cache;
+		const _this = this;
+		const cache = _this.#cache;
+
 		const id = stringify(key);
 
+		_this.#purge(id);
 		cache.delete(id);
 	}
 
 
+	#purge (id, lifespan) {
+		const _this = this;
+		const cache = _this.#cache;
+
+		const prev = _this.#timeout.get(id);
+		clearTimeout(prev);
+
+		if (lifespan > 0) {
+			const next = setTimeout(() => cache.delete(id), lifespan);
+			_this.#timeout.set(id, next);
+		}
+	}
+
 	#use (key, id, options = {}) {
 		const { readonly, disabled } = options;
 
-		const cache = this.#cache;
-		const fetcher = this.#fetcher;
-		const lifespan = this.#lifespan;
+		const _this = this;
+		const cache = _this.#cache;
+		const fetcher = _this.#fetcher;
+		const lifespan = _this.#lifespan;
 
 		const forceUpdate = useForceUpdate();
 		const recordRef = useRef();
@@ -94,10 +110,7 @@ class Asset {
 					try {
 						const data = await fetcher(key);
 
-						if (lifespan > 0) {
-							setTimeout(() => cache.delete(id), lifespan);
-						}
-
+						_this.#purge(id, lifespan);
 						return data;
 					}
 					catch (error) {

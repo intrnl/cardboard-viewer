@@ -8,7 +8,7 @@ export function createBatchedFetch (options) {
 	const {
 		fetch,
 		limit = 100,
-		timeout = 250,
+		timeout = 0,
 		key: getKey = defaultKey,
 		id: getId = defaultId,
 	} = options;

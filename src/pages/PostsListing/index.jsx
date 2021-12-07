@@ -104,6 +104,7 @@ function TagsList (props) {
 		suspense: true,
 	});
 
+
 	return (
 		<div>
 			<h3>Tags</h3>
@@ -129,6 +130,7 @@ function PostsListing (props) {
 		fetch: getPostList,
 		staleTime: 60000,
 	})
+
 
 	if (status === 'loading') {
 		return (
@@ -173,6 +175,7 @@ function PostsPagination (props) {
 		fetch: getPostCount,
 		staleTime: 60000,
 	});
+
 
 	if (status === 'loading') {
 		// Don't think we need to show placeholders for this.

@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef } from 'preact/hooks';
 import { useNavigate } from 'react-router-dom';
 import { useMutate } from '@intrnl/rq';
 
-import { fetcher } from '~/api/assets.new';
+import { fetcher } from '~/api/assets';
 
 
 export default function PostRandomPage () {

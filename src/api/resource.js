@@ -1,6 +1,6 @@
 import { useQuery } from '@intrnl/rq';
 
-import { getTag } from '~/api/assets.new';
+import { getTag } from '~/api/assets';
 
 import { createResource } from '~/utils/resource';
 

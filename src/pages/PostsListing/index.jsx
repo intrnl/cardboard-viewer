@@ -11,15 +11,15 @@ import { Tag } from '~/components/Tag';
 import { CircularProgress } from '~/components/CircularProgress';
 import * as styles from './PostsListing.css';
 
-import { AuthStore } from '~/globals/auth.js';
-import { getPostList, getPostCount, getPopularTags, getRelatedTags } from '~/api/assets.new';
+import { AuthStore } from '~/globals/auth';
+import { getPostList, getPostCount, getPopularTags, getRelatedTags } from '~/api/assets';
 import { createTagResource } from '~/api/resource';
-import { GET_MAX_PAGE } from '~/api/enums.js';
+import { GET_MAX_PAGE } from '~/api/enums';
 
 import { createMappedResource } from '~/utils/resource';
-import { useSearchParams } from '~/utils/useSearchParams.js';
-import { useFactoryMemo } from '~/utils/useFactoryMemo.js';
-import { qss } from '~/utils/qss.js';
+import { useSearchParams } from '~/utils/useSearchParams';
+import { useFactoryMemo } from '~/utils/useFactoryMemo';
+import { qss } from '~/utils/qss';
 
 
 const DEFAULT_SEARCH_PARAMS = {

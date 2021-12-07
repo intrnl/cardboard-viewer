@@ -12,9 +12,9 @@ import HeartIcon from '~/icons/heart.svg';
 import RefreshIcon from '~/icons/refresh.svg';
 
 import { AuthStore, STATUS_LOGGED_IN } from '~/globals/auth';
-import { getFavoriteStatus } from '~/api/assets.new';
+import { getFavoriteStatus } from '~/api/assets';
 import { setFavoriteStatus } from '~/api/mutations';
-import { POST_IMAGE_SMALL_SIZE, GET_IMAGE_SIZE } from '~/api/enums.js';
+import { POST_IMAGE_SMALL_SIZE, GET_IMAGE_SIZE } from '~/api/enums';
 
 
 // <Post />

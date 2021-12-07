@@ -13,9 +13,9 @@ import * as styles from './TagSearch.css';
 
 import SearchIcon from '~/icons/search.svg';
 
-import { getTagCompletion } from '~/api/assets.new';
+import { getTagCompletion } from '~/api/assets';
 
-import { useDebouncedState } from '~/utils/useDebouncedState.js';
+import { useDebouncedState } from '~/utils/useDebouncedState';
 
 
 export function SearchInput (props) {

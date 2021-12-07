@@ -7,7 +7,7 @@ import { Post } from '~/components/Post';
 import { Card } from '~/components/Card';
 import * as styles from './PostsRelationship.css';
 
-import { getPostList, getPostCount } from '~/api/assets.new';
+import { getPostList, getPostCount } from '~/api/assets';
 
 import { createMappedResource } from '~/utils/resource';
 import { qss } from '~/utils/qss';

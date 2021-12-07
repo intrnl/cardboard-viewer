@@ -10,9 +10,9 @@ import { PostsRelationship } from '~/components/PostsRelationship';
 import { Tag } from '~/components/Tag';
 import * as styles from './PostDetails.css';
 
-import { getPost } from '~/api/assets.new';
+import { getPost } from '~/api/assets';
 import { createTagResource } from '~/api/resource';
-import { POST_IMAGE_LARGE_SIZE, GET_IMAGE_CEIL } from '~/api/enums.js';
+import { POST_IMAGE_LARGE_SIZE, GET_IMAGE_CEIL } from '~/api/enums';
 
 
 export default function PostDetailsPage () {

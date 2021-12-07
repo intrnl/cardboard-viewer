@@ -22,12 +22,14 @@ export function PostsRelationship (props) {
 		key: ['post/list', { tags, page: 1, limit: 20 }],
 		fetch: getPostList,
 		suspense: true,
+		staleTime: 60000,
 	});
 
 	const { data: count } = useQuery({
 		key: ['post/count', tags],
 		fetch: getPostCount,
 		suspense: true,
+		staleTime: 60000,
 	});
 
 	const search = qss({ query: tags + ' ' });

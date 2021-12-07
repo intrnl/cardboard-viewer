@@ -25,7 +25,7 @@ export default function PostDetailsPage () {
 		disabled: invalid,
 		key: ['post', idNum],
 		fetch: getPost,
-		staleTime: 90000,
+		staleTime: 60000,
 		suspense: true,
 	});
 

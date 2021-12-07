@@ -1,7 +1,5 @@
-// Ha, ha, call me when there are more than 18 siblings in a relationship
-
 import { h } from 'preact';
-import { createMappedResource } from '~/lib/use-asset';
+import { useQuery } from '@intrnl/rq';
 
 import clsx from 'clsx';
 import { Link } from '~/components/Link';
@@ -9,17 +7,28 @@ import { Post } from '~/components/Post';
 import { Card } from '~/components/Card';
 import * as styles from './PostsRelationship.css';
 
-import * as asset from '~/api/assets.js';
+import { getPostList, getPostCount } from '~/api/assets.new';
 
-import { qss } from '~/utils/qss.js';
+import { createMappedResource } from '~/utils/resource';
+import { qss } from '~/utils/qss';
 
 
 export function PostsRelationship (props) {
 	const { parent, id = parent, className } = props;
 
 	const tags = `parent:${parent}`;
-	const count = asset.postCount.read(tags);
-	const posts = asset.postList.use({ tags, page: 1, limit: 20 });
+
+	const { data: posts } = useQuery({
+		key: ['post/list', { tags, page: 1, limit: 20 }],
+		fetch: getPostList,
+		suspense: true,
+	});
+
+	const { data: count } = useQuery({
+		key: ['post/count', tags],
+		fetch: getPostCount,
+		suspense: true,
+	});
 
 	const search = qss({ query: tags + ' ' });
 	const toSearch = `/?${search}`;
@@ -39,36 +48,17 @@ export function PostsRelationship (props) {
 					<Link to={toSearch}>{count - 1} children</Link>
 				</span>
 			)}
-			<PostsRelationshipList
-				resource={posts}
-				current={id}
-				search={search}
-			/>
+			<div className={styles.list}>
+				{posts.map((item) => (
+					<div className={clsx(styles.item, item.id === id && styles.isCurrent)}>
+						<Post
+							key={item.created_at}
+							resource={createMappedResource(item)}
+							search={search}
+						/>
+					</div>
+				))}
+			</div>
 		</Card>
-	);
-}
-
-export function PostsRelationshipList (props) {
-	const { resource, current, search } = props;
-
-	const posts = resource.read();
-
-
-	return (
-		<div className={styles.list}>
-			{posts.map((item) => (
-				<div
-					className={clsx(styles.item, {
-						[styles.isCurrent]: item.id === current,
-					})}
-				>
-					<Post
-						key={item.created_at}
-						resource={createMappedResource(item)}
-						search={search}
-					/>
-				</div>
-			))}
-		</div>
 	);
 }

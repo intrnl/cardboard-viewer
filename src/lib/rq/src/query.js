@@ -21,6 +21,7 @@ export function useQuery (options) {
 		revalidateOnFocus,
 
 		suspense,
+		errorBoundary,
 	} = options;
 
 	const forceUpdate = useForceUpdate();
@@ -118,24 +119,23 @@ export function useQuery (options) {
 
 
 	const state = query.state;
+	const status = state.status;
+	const invalidated = state.invalidated;
 
 	if (!disabled) {
-
-		const status = state.status;
-		const invalidated = state.invalidated;
-
 		if (suspense) {
 			if (status === 'loading' || (status === 'error' && invalidated)) {
 				throw revalidate();
-			}
-			else if (status === 'error') {
-				throw state.error;
 			}
 		}
 
 		if (invalidated && !state.fetching) {
 			revalidate();
 		}
+	}
+
+	if (errorBoundary && status === 'error') {
+		throw state.error;
 	}
 
 	return { ...state, mutate, revalidate };

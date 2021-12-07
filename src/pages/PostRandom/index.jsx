@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef } from 'preact/hooks';
 import { useNavigate } from 'react-router-dom';
 
-import * as asset from '~/api/assets.js';
+import { fetcher } from '~/api/assets.new';
 
 
 export default function PostRandomPage () {
@@ -9,7 +9,7 @@ export default function PostRandomPage () {
 	const valueRef = useRef();
 
 	if (!valueRef.promise) {
-		const promise = valueRef.promise = asset.fetcher(`/posts/random.json`)
+		const promise = valueRef.promise = fetcher(`/posts/random.json`)
 			.then((post) => {
 				asset.posts.set(post.id, post);
 				valueRef.current = post.id;

@@ -155,7 +155,8 @@ export function getTagCompletion (key, query) {
 // ['tag/popular', date]
 export function getPopularTags (key, specifiedDate) {
 	const date = new Date(specifiedDate);
-
 	const params = { date: date.toISOString() };
+
+	// Array<[tag: string, popularity: number]>
 	return fetcher(`/explore/posts/searches.json`, params);
 }

@@ -5,7 +5,7 @@ specifiers:
   '@intrnl/esbuild-plugin-build-analysis': ^0.1.2
   '@intrnl/esbuild-plugin-env': ^0.1.2
   '@intrnl/esbuild-plugin-vanilla-extract': ^0.2.0
-  '@intrnl/rq': ^0.1.4
+  '@intrnl/rq': ^0.1.6
   '@intrnl/stable-stringify': ^0.1.1
   '@vanilla-extract/css': ^1.6.8
   clsx: ^1.1.1
@@ -16,7 +16,7 @@ specifiers:
   react-router-dom: ^6.0.2
 
 dependencies:
-  '@intrnl/rq': 0.1.4_preact@10.5.13
+  '@intrnl/rq': 0.1.6_preact@10.5.13
   '@intrnl/stable-stringify': 0.1.1
   clsx: 1.1.1
   history: 5.1.0
@@ -87,8 +87,8 @@ packages:
       stable-hash: 0.0.2
     dev: true
 
-  /@intrnl/rq/0.1.4_preact@10.5.13:
-    resolution: {integrity: sha512-PaywMtIhVco/piLSRkWxh9xroZgBF8PEBJDM14ERsnHTJ39uHYs0J8ljLWUtzDHF2tDZxdfKTTH2YYpB8VFsqw==}
+  /@intrnl/rq/0.1.6_preact@10.5.13:
+    resolution: {integrity: sha512-rHVWfwxGhwBElrwDRbYf/4ZK+0y1MvnU7LOpmWcV1PLvKqYqIuOq0hrv+jKz5uQp8pISWcAQgS16YYt0ktFrRA==}
     peerDependencies:
       preact: ^10.6.2
     dependencies:

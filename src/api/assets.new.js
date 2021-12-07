@@ -1,4 +1,3 @@
-import { defaultQueryOptions, mutateQuery } from '@intrnl/rq';
 import { createBatchedFetch } from '~/lib/batch-fetch';
 
 import { AuthStore, LOGIN_PROMISE } from '~/globals/auth';
@@ -6,8 +5,6 @@ import { API_URL, ResponseError } from '~/api/base';
 
 import { qss } from '~/utils/qss';
 
-
-const cache = defaultQueryOptions.cache;
 
 export async function fetcher (url, params) {
 	await LOGIN_PROMISE;
@@ -40,39 +37,7 @@ export function getPost (key, id) {
 
 // ['post/list', query]
 export async function getPostList (key, params) {
-	const result = await fetcher(`/posts.json`, params);
-	// const auth = AuthStore.get();
-
-	// for (const post of result) {
-	// 	const post_id = post.id;
-
-	// 	if (!post_id) {
-	// 		continue;
-	// 	}
-
-	// 	mutateQuery(cache, ['post', post_id], post, false);
-	// }
-
-	// if (auth.profile && params.tags) {
-	// 	const { tags } = params;
-	// 	const { name } = auth.profile;
-
-	// 	const re = auth.profile._re_ordfav ||= new RegExp(`\\b(?:ord)?fav:${name}\\b`);
-
-	// 	if (re.test(tags)) {
-	// 		for (const post of result) {
-	// 			const post_id = post.id;
-
-	// 			if (!post_id) {
-	// 				continue;
-	// 			}
-
-	// 			mutateQuery(cache, ['favorite', post_id], { favorited: true });
-	// 		}
-	// 	}
-	// }
-
-	return result;
+	return fetcher(`/posts.json`, params);
 }
 
 // ['post/count', tags]

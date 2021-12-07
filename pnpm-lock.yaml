@@ -5,7 +5,7 @@ specifiers:
   '@intrnl/esbuild-plugin-build-analysis': ^0.1.2
   '@intrnl/esbuild-plugin-env': ^0.1.2
   '@intrnl/esbuild-plugin-vanilla-extract': ^0.2.0
-  '@intrnl/rq': ^0.1.6
+  '@intrnl/rq': ^0.1.7
   '@intrnl/stable-stringify': ^0.1.1
   '@vanilla-extract/css': ^1.6.8
   clsx: ^1.1.1
@@ -16,7 +16,7 @@ specifiers:
   react-router-dom: ^6.0.2
 
 dependencies:
-  '@intrnl/rq': 0.1.6_preact@10.5.13
+  '@intrnl/rq': 0.1.7_preact@10.5.13
   '@intrnl/stable-stringify': 0.1.1
   clsx: 1.1.1
   history: 5.1.0
@@ -87,10 +87,10 @@ packages:
       stable-hash: 0.0.2
     dev: true
 
-  /@intrnl/rq/0.1.6_preact@10.5.13:
-    resolution: {integrity: sha512-rHVWfwxGhwBElrwDRbYf/4ZK+0y1MvnU7LOpmWcV1PLvKqYqIuOq0hrv+jKz5uQp8pISWcAQgS16YYt0ktFrRA==}
+  /@intrnl/rq/0.1.7_preact@10.5.13:
+    resolution: {integrity: sha512-i313Ep99aGrE6SR+rKZrXRRIFZugf683/KmtF3D0LK8MAYV6iokEWwBcurVPPZzD1orLKfxjGmEKibyp7faQLQ==}
     peerDependencies:
-      preact: ^10.6.2
+      preact: '>=10.5.0'
     dependencies:
       '@intrnl/stable-stringify': 0.1.1
       preact: '@pkg.csb.dev/preactjs/preact/commit/a5a12f92/preact'

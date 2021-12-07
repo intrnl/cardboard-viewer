@@ -14,6 +14,11 @@ export default function PostRandomPage () {
 	if (!valueRef.promise) {
 		const promise = valueRef.promise = fetcher(`/posts/random.json`)
 			.then((post) => {
+				if (!post.id) {
+					valueRef.promise = null;
+					return;
+				}
+
 				mutate(['post', post.id], post, false);
 				valueRef.current = post.id;
 			});

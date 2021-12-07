@@ -1,0 +1,1 @@
+export { useErrorBoundary } from './useErrorBoundary';

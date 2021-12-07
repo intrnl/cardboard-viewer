@@ -50,7 +50,7 @@ export async function getPostList (key, params) {
 			continue;
 		}
 
-		mutateQuery(cache, ['post', post_id], post);
+		mutateQuery(cache, ['post', post_id], post, false);
 	}
 
 	if (auth.profile && params.tags) {
@@ -163,8 +163,7 @@ export async function getRelatedTags (key, query) {
 
 // ['tag/popular', date]
 export function getPopularTags (key, specifiedDate) {
-	const date = new Date(specifiedDate);
-	const params = { date: date.toISOString() };
+	const params = { date: specifiedDate };
 
 	// Array<[tag: string, popularity: number]>
 	return fetcher(`/explore/posts/searches.json`, params);

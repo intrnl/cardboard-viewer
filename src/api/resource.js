@@ -2,7 +2,7 @@ import { useQuery } from '@intrnl/rq';
 
 import { getTag } from '~/api/assets.new';
 
-import { createResource } from '~/lib/use-asset';
+import { createResource } from '~/utils/resource';
 
 
 export function createTagResource (name) {

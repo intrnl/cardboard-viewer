@@ -93,7 +93,7 @@ export function useQuery (options) {
 				// them manually.
 
 				const timeout = errorBoundary && query.state.status === 'error'
-					? 0
+					? 50
 					: cacheTime;
 
 				query.timeout = setTimeout(() => cache.delete(hash), timeout);

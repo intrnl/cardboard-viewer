@@ -113,6 +113,7 @@ function TagsList (props) {
 					<Tag
 						key={tag}
 						as='li'
+						name={tag}
 						resource={createTagResource(tag)}
 					/>
 				))}

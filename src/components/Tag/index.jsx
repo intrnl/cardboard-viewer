@@ -20,13 +20,15 @@ const countFormatter = new Intl.NumberFormat(undefined, {
 });
 
 export function Tag (props) {
-	const { as = 'span', resource, className } = props;
+	const { as = 'span', name, resource, className } = props;
 
 	const Component = as;
 
 	const data = resource.read();
-	const name = data.name;
-	const category = data.category;
+
+	const tag = data?.name ?? name;
+	const category = data?.category;
+	const count = data?.post_count ?? -1;
 
 	return (
 		<Component
@@ -38,12 +40,14 @@ export function Tag (props) {
 				[styles.isMeta]: category === TAG_CATEGORY_META,
 			})}
 		>
-			<Link to={`/?${qss({ query: name + ' ' })}`} className={styles.link}>
-				{name}
+			<Link to={`/?${qss({ query: tag + ' ' })}`} className={styles.link}>
+				{tag}
 			</Link>
-			<span className={styles.count}>
-				{countFormatter.format(data.post_count)}
-			</span>
+			{count > 0 && (
+				<span className={styles.count}>
+					{countFormatter.format(data.post_count)}
+				</span>
+			)}
 		</Component>
 	);
 }

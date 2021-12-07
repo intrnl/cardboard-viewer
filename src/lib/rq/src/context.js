@@ -5,14 +5,10 @@ import { useContext, useMemo } from 'preact/hooks';
 export const defaultQueryOptions = {
 	cache: new Map(),
 
-	fetch: null,
-
 	staleTime: 3 * 1000,
 	cacheTime: 5 * 60 * 1000,
 	revalidateOnMount: true,
 	revalidateOnFocus: true,
-
-	suspense: false,
 };
 
 const QueryContext = createContext(defaultQueryOptions);

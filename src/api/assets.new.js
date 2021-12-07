@@ -152,6 +152,15 @@ export function getTagCompletion (key, query) {
 	return fetcher(`/autocomplete.json`, params);
 }
 
+// ['tag/related', tags]
+export async function getRelatedTags (key, query) {
+	const params = { query };
+	const response = await fetcher(`/related_tag.json`, params);
+
+	// Array<[tag: string, type: TagType]>
+	return response.tags;
+}
+
 // ['tag/popular', date]
 export function getPopularTags (key, specifiedDate) {
 	const date = new Date(specifiedDate);

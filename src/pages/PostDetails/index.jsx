@@ -12,7 +12,16 @@ import * as styles from './PostDetails.css';
 
 import { getPost } from '~/api/assets';
 import { createTagResource } from '~/api/resource';
-import { POST_IMAGE_LARGE_SIZE, GET_IMAGE_CEIL } from '~/api/enums';
+import {
+	POST_IMAGE_LARGE_SIZE,
+	GET_IMAGE_CEIL,
+
+	TAG_CATEGORY_GENERAL,
+	TAG_CATEGORY_ARTIST,
+	TAG_CATEGORY_COPYRIGHT,
+	TAG_CATEGORY_CHARACTER,
+	TAG_CATEGORY_META,
+} from '~/api/enums';
 
 
 export default function PostDetailsPage () {
@@ -82,6 +91,7 @@ function PostTags (props) {
 						<TagsList
 							header='Artists'
 							tags={artists}
+							category={TAG_CATEGORY_ARTIST}
 						/>
 					</Suspense>
 				)}
@@ -90,6 +100,7 @@ function PostTags (props) {
 						<TagsList
 							header='Copyrights'
 							tags={copyrights}
+							category={TAG_CATEGORY_COPYRIGHT}
 						/>
 					</Suspense>
 				)}
@@ -98,6 +109,7 @@ function PostTags (props) {
 						<TagsList
 							header='Characters'
 							tags={characters}
+							category={TAG_CATEGORY_CHARACTER}
 						/>
 					</Suspense>
 				)}
@@ -106,6 +118,7 @@ function PostTags (props) {
 						<TagsList
 							header='General'
 							tags={general}
+							category={TAG_CATEGORY_GENERAL}
 						/>
 					</Suspense>
 				)}
@@ -114,6 +127,7 @@ function PostTags (props) {
 						<TagsList
 							header='Meta'
 							tags={meta}
+							category={TAG_CATEGORY_META}
 						/>
 					</Suspense>
 				)}
@@ -123,7 +137,7 @@ function PostTags (props) {
 }
 
 function TagsList (props) {
-	const { tags, header } = props;
+	const { tags, header, category } = props;
 
 
 	return (
@@ -135,6 +149,7 @@ function TagsList (props) {
 						key={tag}
 						as='li'
 						name={tag}
+						category={category}
 						resource={createTagResource(tag)}
 					/>
 				))}

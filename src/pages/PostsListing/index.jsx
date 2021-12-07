@@ -12,10 +12,11 @@ import { CircularProgress } from '~/components/CircularProgress';
 import * as styles from './PostsListing.css';
 
 import { AuthStore } from '~/globals/auth.js';
-import { getPostList, getPostCount, getTag, getPopularTags, getRelatedTags } from '~/api/assets.new';
+import { getPostList, getPostCount, getPopularTags, getRelatedTags } from '~/api/assets.new';
+import { createTagResource } from '~/api/resource';
 import { GET_MAX_PAGE } from '~/api/enums.js';
 
-import { createMappedResource, createResource } from '~/utils/resource';
+import { createMappedResource } from '~/utils/resource';
 import { useSearchParams } from '~/utils/useSearchParams.js';
 import { useFactoryMemo } from '~/utils/useFactoryMemo.js';
 import { qss } from '~/utils/qss.js';
@@ -102,19 +103,6 @@ function TagsList (props) {
 		staleTime: 60000,
 		suspense: true,
 	});
-
-	const createTagResource = (name) => {
-		return createResource(() => {
-			const { data } = useQuery({
-				key: ['tag', name],
-				fetch: getTag,
-				staleTime: 60000,
-				suspense: true,
-			});
-
-			return data;
-		});
-	}
 
 	return (
 		<div>

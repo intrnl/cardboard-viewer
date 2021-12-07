@@ -98,4 +98,6 @@ function printServerInfo ({ host, port }) {
 			console.info(`> ${type}: http://${hostname}:${port}`);
 		}
 	}
+
+	console.log('');
 }

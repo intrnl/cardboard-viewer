@@ -83,15 +83,16 @@ export function useQuery (options) {
 			unsubscribe();
 
 			if (!query.listeners.length) {
-				// in Suspense mode, errors are immediately thrown and usually caught
-				// by error boundaries. Rather than exposing a method to somehow reset
-				// these queries, it might be better if we just clear it immediately.
+				// with `errorBoundary` enabled, errors are thrown immediately to be
+				// caught by error boundaries. Rather than having to manually reset
+				// the queries thrown that way, it might be better if we just dispose
+				// of them immediately.
 
-				// This doesn't handle cases such as when you have both Suspense and
-				// non-Suspense queries on the same key, but at that point you might
-				// want to invalidate them manually.
+				// This doesn't handle cases where you have users with both the option
+				// enabled and disabled, but at that point you might want to invalidate
+				// them manually.
 
-				const timeout = suspense && query.state.status === 'error'
+				const timeout = errorBoundary && query.state.status === 'error'
 					? 0
 					: cacheTime;
 

@@ -41,36 +41,36 @@ export function getPost (key, id) {
 // ['post/list', query]
 export async function getPostList (key, params) {
 	const result = await fetcher(`/posts.json`, params);
-	const auth = AuthStore.get();
+	// const auth = AuthStore.get();
 
-	for (const post of result) {
-		const post_id = post.id;
+	// for (const post of result) {
+	// 	const post_id = post.id;
 
-		if (!post_id) {
-			continue;
-		}
+	// 	if (!post_id) {
+	// 		continue;
+	// 	}
 
-		mutateQuery(cache, ['post', post_id], post, false);
-	}
+	// 	mutateQuery(cache, ['post', post_id], post, false);
+	// }
 
-	if (auth.profile && params.tags) {
-		const { tags } = params;
-		const { name } = auth.profile;
+	// if (auth.profile && params.tags) {
+	// 	const { tags } = params;
+	// 	const { name } = auth.profile;
 
-		const re = auth.profile._re_ordfav ||= new RegExp(`\\b(?:ord)?fav:${name}\\b`);
+	// 	const re = auth.profile._re_ordfav ||= new RegExp(`\\b(?:ord)?fav:${name}\\b`);
 
-		if (re.test(tags)) {
-			for (const post of result) {
-				const post_id = post.id;
+	// 	if (re.test(tags)) {
+	// 		for (const post of result) {
+	// 			const post_id = post.id;
 
-				if (!post_id) {
-					continue;
-				}
+	// 			if (!post_id) {
+	// 				continue;
+	// 			}
 
-				mutateQuery(cache, ['favorite', post_id], { favorited: true });
-			}
-		}
-	}
+	// 			mutateQuery(cache, ['favorite', post_id], { favorited: true });
+	// 		}
+	// 	}
+	// }
 
 	return result;
 }

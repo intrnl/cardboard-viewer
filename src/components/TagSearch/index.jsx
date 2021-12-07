@@ -9,7 +9,6 @@ import { TextField } from '~/components/TextField';
 import { InputGroup } from '~/components/InputGroup';
 import { Menu, MenuItem } from '~/components/Menu';
 import { Icon } from '~/components/Icon';
-import { useErrorBoundary } from '~/components/ErrorBoundary';
 import * as styles from './TagSearch.css';
 
 import SearchIcon from '~/icons/search.svg';
@@ -38,13 +37,12 @@ export function SearchInput (props) {
 	useLayoutEffect(() => setSelection(-1), [pendingInput]);
 
 	/// Autocomplete data
-	const { status, data, error } = useQuery({
+	const { status, data } = useQuery({
 		disabled: !deferredInput,
 		key: ['tag/autocomplete', deferredInput],
 		fetch: getTagCompletion,
+		errorBoundary: true,
 	});
-
-	useErrorBoundary(error);
 
 	/// Handle events
 	const applySelection = (selected) => {

@@ -44,7 +44,6 @@ export async function setFavorite ({ user_id, post_id, favorited }) {
 		favorites.set({ user_id, post_id }, { user_id, post_id, favorited });
 	}
 	catch (error) {
-		update.dispose();
 		throw new Error(`Failed to favorite post`, { cause: error });
 	}
 }

@@ -41,7 +41,6 @@ export function SearchInput (props) {
 		disabled: !deferredInput,
 		key: ['tag/autocomplete', deferredInput],
 		fetch: getTagCompletion,
-		errorBoundary: true,
 	});
 
 	/// Handle events

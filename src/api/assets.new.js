@@ -26,16 +26,19 @@ export async function fetcher (url, params) {
 
 
 // User
+// ['user', id]
 export function getUser (key, id) {
 	return fetcher(`/users/${id}.json`);
 }
 
 
 /// Posts
+// ['post', id]
 export function getPost (key, id) {
 	return fetcher(`/posts/${id}.json`);
 }
 
+// ['post/list', query]
 export async function getPostList (key, params) {
 	const result = await fetcher(`/posts.json`, params);
 	const auth = AuthStore.get();
@@ -72,6 +75,7 @@ export async function getPostList (key, params) {
 	return result;
 }
 
+// ['post/count', tags]
 export async function getPostCount (key, tags) {
 	const params = { tags };
 	const result = await fetcher(`/counts/posts.json`, params);
@@ -119,6 +123,7 @@ const batchFavoriteStatus = createBatchedFetch({
 	},
 });
 
+// ['favorite', post_id]
 export function getFavoriteStatus (key, post_id) {
 	return batchFavoriteStatus({ post_id });
 }
@@ -136,15 +141,18 @@ const batchTags = createBatchedFetch({
 	},
 });
 
+// ['tag', name]
 export function getTag (key, name) {
 	return batchTags(name);
 }
 
+// ['tag/autocomplete', query]
 export function getTagCompletion (key, query) {
 	const params = { search: { query, type: 'tag_query' }, limit: 10 };
 	return fetcher(`/autocomplete.json`, params);
 }
 
+// ['tag/popular', date]
 export function getPopularTags (key, specifiedDate) {
 	const date = new Date(specifiedDate);
 

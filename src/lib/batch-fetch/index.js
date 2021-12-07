@@ -1,4 +1,4 @@
-import { stringify } from '~/lib/stable-stringify';
+import { stableStringify } from '@intrnl/stable-stringify';
 
 
 const defaultKey = () => {};
@@ -18,7 +18,7 @@ export function createBatchedFetch (options) {
 	return (value) => {
 		const deferred = createDeferred();
 
-		const id = stringify(value);
+		const id = stableStringify(value);
 		const key = getKey(value);
 
 		let map = curr;
@@ -52,7 +52,7 @@ async function perform (map, fetch, getId) {
 		const dataset = await fetch(values);
 
 		for (const data of dataset) {
-			const id = stringify(getId(data));
+			const id = stableStringify(getId(data));
 			const deferred = items.get(id);
 
 			deferred?.resolve(data);

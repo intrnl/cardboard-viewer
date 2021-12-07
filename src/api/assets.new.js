@@ -1,4 +1,4 @@
-import { defaultQueryOptions, mutateQuery } from '~/lib/rq';
+import { defaultQueryOptions, mutateQuery } from '@intrnl/rq';
 import { createBatchedFetch } from '~/lib/batch-fetch';
 
 import { AuthStore, LOGIN_PROMISE } from '~/globals/auth';

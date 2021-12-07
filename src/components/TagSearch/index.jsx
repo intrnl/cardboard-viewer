@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import { useState, useRef,  useLayoutEffect } from 'preact/hooks';
-import { useQuery } from '~/lib/rq';
+import { useQuery } from '@intrnl/rq';
 
 import clsx from 'clsx';
 import { Link, isLinkEvent } from '~/components/Link';

@@ -1,5 +1,5 @@
 import { Store } from '~/lib/global-store';
-import { defaultQueryOptions, invalidateQueries } from '~/lib/rq';
+import { defaultQueryOptions, invalidateQueries } from '@intrnl/rq';
 
 import { API_URL, ResponseError } from '~/api/base.js';
 

@@ -1,5 +1,5 @@
 import { h, Fragment } from 'preact';
-import { Suspense, SuspenseList } from 'preact/compat';
+import { Suspense } from 'preact/compat';
 import { useParams, Navigate } from 'react-router-dom';
 import { useQuery } from '@intrnl/rq';
 
@@ -85,53 +85,41 @@ function PostTags (props) {
 
 	return (
 		<Card className={styles.tags}>
-			<SuspenseList revealOrder='forwards' tail='collapsed'>
-				{artists && (
-					<Suspense fallback={<CircularProgress />}>
-						<TagsList
-							header='Artists'
-							tags={artists}
-							category={TAG_CATEGORY_ARTIST}
-						/>
-					</Suspense>
-				)}
-				{copyrights && (
-					<Suspense fallback={<CircularProgress />}>
-						<TagsList
-							header='Copyrights'
-							tags={copyrights}
-							category={TAG_CATEGORY_COPYRIGHT}
-						/>
-					</Suspense>
-				)}
-				{characters && (
-					<Suspense fallback={<CircularProgress />}>
-						<TagsList
-							header='Characters'
-							tags={characters}
-							category={TAG_CATEGORY_CHARACTER}
-						/>
-					</Suspense>
-				)}
-				{general && (
-					<Suspense fallback={<CircularProgress />}>
-						<TagsList
-							header='General'
-							tags={general}
-							category={TAG_CATEGORY_GENERAL}
-						/>
-					</Suspense>
-				)}
-				{meta && (
-					<Suspense fallback={<CircularProgress />}>
-						<TagsList
-							header='Meta'
-							tags={meta}
-							category={TAG_CATEGORY_META}
-						/>
-					</Suspense>
-				)}
-			</SuspenseList>
+			{artists && (
+				<TagsList
+					header='Artists'
+					tags={artists}
+					category={TAG_CATEGORY_ARTIST}
+				/>
+			)}
+			{copyrights && (
+				<TagsList
+					header='Copyrights'
+					tags={copyrights}
+					category={TAG_CATEGORY_COPYRIGHT}
+				/>
+			)}
+			{characters && (
+				<TagsList
+					header='Characters'
+					tags={characters}
+					category={TAG_CATEGORY_CHARACTER}
+				/>
+			)}
+			{general && (
+				<TagsList
+					header='General'
+					tags={general}
+					category={TAG_CATEGORY_GENERAL}
+				/>
+			)}
+			{meta && (
+				<TagsList
+					header='Meta'
+					tags={meta}
+					category={TAG_CATEGORY_META}
+				/>
+			)}
 		</Card>
 	);
 }

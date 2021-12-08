@@ -11,7 +11,7 @@ export const button = style([interactable, focusable, control, {
 	display: 'flex',
 	alignItems: 'center',
 	justifyContent: 'center',
-	gap: 4,
+	gap: 8,
 	height: 32,
 	minWidth: 32,
 	padding: 8,

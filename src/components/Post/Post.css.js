@@ -45,6 +45,7 @@ export const isFavorited = style({}, 'is-favorited');
 export const favorite = style({
 	all: 'unset',
 	appearance: 'unset',
+	cursor: 'pointer',
 	color: theme.palette.white,
 	padding: 4,
 	position: 'absolute',
@@ -56,7 +57,7 @@ export const favorite = style({
 		[`&${isFavorited}`]: {
 			color: theme.palette.red[600],
 		},
-		[`&:is(:hover, :focus-visible)`]: {
+		[`&:focus-visible`]: {
 			color: theme.palette.red[300],
 		},
 	},

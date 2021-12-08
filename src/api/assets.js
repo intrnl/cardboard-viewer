@@ -36,7 +36,17 @@ export function getPost (key, id) {
 }
 
 // ['post/list', query]
+const POST_LIST_FIELDS = [
+	'id',
+	'parent_id',
+	'has_active_children',
+	'preview_file_url',
+	'image_width',
+	'image_height',
+].join(',');
+
 export async function getPostList (key, params) {
+	params = { only: POST_LIST_FIELDS, ...params };
 	return fetcher(`/posts.json`, params);
 }
 

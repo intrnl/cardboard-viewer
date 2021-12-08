@@ -1,4 +1,4 @@
-import { stringify, createDeferred } from './utils.js';
+import { stableStringify } from '@intrnl/stable-stringify';
 
 
 const defaultKey = () => {};
@@ -18,12 +18,12 @@ export function createBatchedFetch (options) {
 	return (value) => {
 		const deferred = createDeferred();
 
-		const id = stringify(value);
+		const id = stableStringify(value);
 		const key = getKey(value);
 
 		let map = curr;
 
-		if (!map || map.stale || map.values.length >= limit || map.key !== key) {
+		if (!map || map.values.length >= limit || map.key !== key) {
 			map = curr = createMap(key);
 		}
 
@@ -31,15 +31,20 @@ export function createBatchedFetch (options) {
 		map.items.set(id, deferred);
 
 		clearTimeout(map.timeout);
-		map.timeout = setTimeout(() => perform(map, fetch, getId), timeout);
+
+		map.timeout = setTimeout(() => {
+			if (curr === map) {
+				curr = null;
+			}
+
+			perform(map, fetch, getId);
+		}, timeout);
 
 		return deferred.promise;
 	};
 }
 
 async function perform (map, fetch, getId) {
-	map.stale = true;
-
 	const { items, values } = map;
 	let errored = false;
 
@@ -47,7 +52,7 @@ async function perform (map, fetch, getId) {
 		const dataset = await fetch(values);
 
 		for (const data of dataset) {
-			const id = stringify(getId(data));
+			const id = stableStringify(getId(data));
 			const deferred = items.get(id);
 
 			deferred?.resolve(data);
@@ -73,10 +78,20 @@ async function perform (map, fetch, getId) {
 
 function createMap (key) {
 	return {
-		stale: false,
 		values: [],
 		items: new Map(),
 		key: key,
 		timeout: null,
 	};
 }
+
+function createDeferred () {
+	let deferred = {};
+
+	deferred.promise = new Promise((resolve, reject) => (
+		Object.assign(deferred, { resolve, reject })
+	));
+
+	return deferred;
+}
+

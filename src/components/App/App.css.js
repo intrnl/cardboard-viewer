@@ -3,8 +3,17 @@ import { vh } from '@intrnl/cssom-utils';
 
 
 export const fallback = style({
+	minHeight: '100vh',
 	display: 'flex',
 	flexDirection: 'column',
+	alignItems: 'center',
 	justifyContent: 'center',
-	height: vh(100),
+	padding: 16,
 }, 'fallback');
+
+export const error = style([fallback, {
+	maxWidth: 500,
+	gap: 16,
+	marginInline: 'auto',
+}], 'error');
+

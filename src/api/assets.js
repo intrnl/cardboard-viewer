@@ -1,126 +1,73 @@
-import { createAsset, createBatchedFetch } from '~/lib/use-asset';
+import { createBatchedFetch } from '~/lib/batch-fetch';
 
-import { API_URL, ResponseError } from '~/api/base.js';
-import { AuthStore, LOGIN_PROMISE } from '~/globals/auth.js';
+import { AuthStore, LOGIN_PROMISE } from '~/globals/auth';
+import { API_URL, ResponseError } from '~/api/base';
 
-import { qss } from '~/utils/qss.js';
+import { qss } from '~/utils/qss';
 
 
-export const fetcher = async (url, params) => {
+export async function fetcher (url, params) {
 	await LOGIN_PROMISE;
 
 	const auth = AuthStore.get();
 	const query = qss({ ...params, api_key: auth.key, login: auth.user });
 
 	const response = await fetch(`${API_URL}${url}?${query}`);
-	if (!response.ok) throw new ResponseError(response);
+
+	if (!response.ok) {
+		throw new ResponseError(response);
+	}
 
 	return response.json();
-};
+}
 
 
-export const users = createAsset((id) => {
+// User
+// ['user', id]
+export function getUser (key, id) {
 	return fetcher(`/users/${id}.json`);
-}, 90000);
+}
 
 
-export const posts = createAsset((id) => {
+/// Posts
+// ['post', id]
+export function getPost (key, id) {
 	return fetcher(`/posts/${id}.json`);
-}, 90000);
+}
 
-export const postList = createAsset(async (params) => {
-	const auth = AuthStore.get();
-	const result = await fetcher(`/posts.json`, params);
+// ['post/list', query]
+const POST_LIST_FIELDS = [
+	'id',
+	'parent_id',
+	'has_active_children',
+	'preview_file_url',
+	'image_width',
+	'image_height',
+].join(',');
 
-	for (const post of result) {
-		const post_id = post.id;
+export async function getPostList (key, params) {
+	params = { only: POST_LIST_FIELDS, ...params };
+	return fetcher(`/posts.json`, params);
+}
 
-		if (!post_id) {
-			continue;
-		}
-
-		posts.set(post_id, post);
-	}
-
-	if (auth.profile && params.tags) {
-		const { tags } = params;
-		const { name, id: user_id } = auth.profile;
-
-		const re = auth.profile._re_ordfav ||= new RegExp(`\\b(?:ord)?fav:${name}\\b`);
-
-		if (re.test(tags)) {
-			for (const post of result) {
-				const post_id = post.id;
-
-				if (!post_id) {
-					continue;
-				}
-
-				favorites.set({ user_id, post_id }, { user_id, post_id, favorited: true });
-			}
-		}
-	}
-
-	return result;
-}, 90000);
-
-export const postCount = createAsset(async (tags) => {
+// ['post/count', tags]
+export async function getPostCount (key, tags) {
 	const params = { tags };
 	const result = await fetcher(`/counts/posts.json`, params);
 
-	return result.counts.posts
-}, 90000);
+	return result.counts.posts;
+}
 
-export const tags = createAsset(createBatchedFetch({
-	// We don't want to use its actual ID, only the name.
-	id: (x) => x.name,
+
+// Favorited posts
+const batchFavoriteStatus = createBatchedFetch({
+	id: ({ post_id }) => ({ post_id }),
 	limit: 20,
 
-	fetch: (tags) => {
-		const params = { search: { name: tags } };
-		return fetcher(`/tags.json`, params);
-	},
-}), 90000);
+	async fetch (requests) {
+		const auth = AuthStore.get();
 
-export const autocompleteTags = createAsset((query) => {
-	const params = { search: { query, type: 'tag_query' }, limit: 10 };
-
-	return fetcher(`/autocomplete.json`, params);
-}, 5000);
-
-export const relatedTags = createAsset(async (query) => {
-	const params = { query };
-	const response = await fetcher(`/related_tag.json`, params);
-
-	// Array<[tag: string, type: TagType]>
-	return response.tags;
-}, 90000);
-
-export const popularTags = createAsset(() => {
-	const date = new Date();
-	date.setDate(date.getDate() - 1);
-
-	const params = { date: date.toISOString() };
-
-	// Array<[tag: string, popularity: number]>
-	return fetcher(`/explore/posts/searches.json`, params);
-}, 90000);
-
-export const favorites = createAsset(createBatchedFetch({
-	id: ({ user_id, post_id }) => ({ user_id, post_id }),
-	limit: 20,
-
-	// One quirk about the favorites endpoint is that if two users share the same
-	// favorited posts, it would only return one, that means we wouldn't know if
-	// the other user had actually favorited it.
-
-	// While the likelihood of having to figure out favorite posts for more than
-	// one user in this app is rather slim, we still have to break up the batch
-	// in the case it ever happens.
-	key: (x) => x.user_id,
-
-	fetch: async (requests) => {
-		const user_id = requests[0].user_id;
+		let user_id = auth.profile.id;
 		let post_id = '';
 
 		for (const request of requests) {
@@ -137,7 +84,6 @@ export const favorites = createAsset(createBatchedFetch({
 
 		// Our requests contains the fields that we needed from the response, so
 		// we're just going to mutate it to include a non-standard field.
-
 		const favorited_set = new Set();
 
 		for (const data of responses) {
@@ -150,4 +96,50 @@ export const favorites = createAsset(createBatchedFetch({
 
 		return requests;
 	},
-}), 90000);
+});
+
+// ['favorite', post_id]
+export function getFavoriteStatus (key, post_id) {
+	return batchFavoriteStatus({ post_id });
+}
+
+
+/// Tags
+const batchTags = createBatchedFetch({
+	// We don't want to use its actual ID, only the name.
+	id: (x) => x.name,
+	limit: 20,
+
+	fetch (tags) {
+		const params = { search: { name: tags } };
+		return fetcher(`/tags.json`, params);
+	},
+});
+
+// ['tag', name]
+export function getTag (key, name) {
+	return batchTags(name);
+}
+
+// ['tag/autocomplete', query]
+export function getTagCompletion (key, query) {
+	const params = { search: { query, type: 'tag_query' }, limit: 10 };
+	return fetcher(`/autocomplete.json`, params);
+}
+
+// ['tag/related', tags]
+export async function getRelatedTags (key, query) {
+	const params = { query };
+	const response = await fetcher(`/related_tag.json`, params);
+
+	// Array<[tag: string, type: TagType]>
+	return response.tags;
+}
+
+// ['tag/popular', date]
+export function getPopularTags (key, specifiedDate) {
+	const params = { date: specifiedDate };
+
+	// Array<[tag: string, popularity: number]>
+	return fetcher(`/explore/posts/searches.json`, params);
+}

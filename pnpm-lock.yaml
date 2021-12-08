@@ -5,6 +5,8 @@ specifiers:
   '@intrnl/esbuild-plugin-build-analysis': ^0.1.2
   '@intrnl/esbuild-plugin-env': ^0.1.2
   '@intrnl/esbuild-plugin-vanilla-extract': ^0.2.0
+  '@intrnl/rq': ^0.1.8
+  '@intrnl/stable-stringify': ^0.1.1
   '@vanilla-extract/css': ^1.6.8
   clsx: ^1.1.1
   esbuild: ^0.14.2
@@ -14,6 +16,8 @@ specifiers:
   react-router-dom: ^6.0.2
 
 dependencies:
+  '@intrnl/rq': 0.1.8_preact@10.5.13
+  '@intrnl/stable-stringify': 0.1.1
   clsx: 1.1.1
   history: 5.1.0
   preact: '@pkg.csb.dev/preactjs/preact/commit/a5a12f92/preact'
@@ -82,6 +86,19 @@ packages:
       escalade: 3.1.1
       stable-hash: 0.0.2
     dev: true
+
+  /@intrnl/rq/0.1.8_preact@10.5.13:
+    resolution: {integrity: sha512-SE9msE7mORd0Qo0dNw0roFKhobzJUuyFNvQVBCKmAH1W/IDhb3WKV403KHRjmJXPIfY8fEqPym35O7vL2tiXWA==}
+    peerDependencies:
+      preact: '>=10.5.0'
+    dependencies:
+      '@intrnl/stable-stringify': 0.1.1
+      preact: '@pkg.csb.dev/preactjs/preact/commit/a5a12f92/preact'
+    dev: false
+
+  /@intrnl/stable-stringify/0.1.1:
+    resolution: {integrity: sha512-uvKA+iE1iNFOPfBkZwwz9m95cbgDG6elnSF2oV51D9gbTBtTWPqBsOoODqq5+EvJwj35UuCW+nU1yCgPuJ+aWw==}
+    dev: false
 
   /@intrnl/xxhash64/0.1.1:
     resolution: {integrity: sha512-iVSVAbt0TQ1hzvUFkFS8n3k1/cNXynyHRAyrNE1lZR2hTfhKQy4saDD+xlVkuTFV5Zjio0wdnKlnSJOMacD/Sg==}

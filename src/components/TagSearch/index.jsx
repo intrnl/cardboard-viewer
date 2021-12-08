@@ -1,6 +1,6 @@
 import { h } from 'preact';
-import { Suspense } from 'preact/compat';
 import { useState, useRef,  useLayoutEffect } from 'preact/hooks';
+import { useQuery } from '@intrnl/rq';
 
 import clsx from 'clsx';
 import { Link, isLinkEvent } from '~/components/Link';
@@ -13,9 +13,9 @@ import * as styles from './TagSearch.css';
 
 import SearchIcon from '~/icons/search.svg';
 
-import { autocompleteTags } from '~/api/assets.js';
+import { getTagCompletion } from '~/api/assets';
 
-import { useDebouncedState } from '~/utils/useDebouncedState.js';
+import { useDebouncedState } from '~/utils/useDebouncedState';
 
 
 export function SearchInput (props) {
@@ -28,7 +28,7 @@ export function SearchInput (props) {
 	const [pendingInput, setPendingInput] = useState('');
 	const [pendingIndex, setPendingIndex] = useState(0);
 
-	const deferredInput = useDebouncedState(pendingInput, 250);
+	const deferredInput = useDebouncedState(pendingInput, 500);
 
 	/// Autocomplete selection index
 	// We should reset the index if the pending input changes.
@@ -37,15 +37,10 @@ export function SearchInput (props) {
 	useLayoutEffect(() => setSelection(-1), [pendingInput]);
 
 	/// Autocomplete data
-	// To allow for wrapping the selection index, we need the ability to peek
-	// into its data. Peeking shouldn't throw a promise.
-	const autocompleteList = autocompleteTags.read(deferredInput, {
+	const { status, data } = useQuery({
 		disabled: !deferredInput,
-		readonly: true,
-	});
-
-	const autocomplete = autocompleteTags.use(deferredInput, {
-		disabled: !deferredInput,
+		key: ['tag/autocomplete', deferredInput],
+		fetch: getTagCompletion,
 	});
 
 	/// Handle events
@@ -64,7 +59,7 @@ export function SearchInput (props) {
 
 	const handleKeyDown = (event) => {
 		// Ignore if the autocomplete list is empty.
-		if (!autocompleteList?.length) {
+		if (!data?.length) {
 			return;
 		}
 
@@ -72,25 +67,25 @@ export function SearchInput (props) {
 			// Enter
 			event.preventDefault();
 
-			const selected = autocompleteList[selection];
+			const selected = data[selection];
 			applySelection(selected.value);
 		}
 		else if (event.keyCode === 38) {
 			// Up arrow
 			event.preventDefault();
 
-			setSelection((selection <= -1 ? autocompleteList.length : selection) - 1);
+			setSelection((selection <= -1 ? data.length : selection) - 1);
 		}
 		else if (event.keyCode === 40) {
 			// Down arrow
 			event.preventDefault();
 
-			setSelection((selection >= autocompleteList.length - 1 ? -2 : selection) + 1);
+			setSelection((selection >= data.length - 1 ? -2 : selection) + 1);
 		}
 	};
 
 	const handleSelect = (index) => {
-		const selected = autocompleteList[index];
+		const selected = data[index];
 		applySelection(selected.value);
 
 		inputRef.current?.focus();
@@ -118,12 +113,8 @@ export function SearchInput (props) {
 		onSearch?.(event);
 	};
 
-
 	return (
-		<form
-			className={clsx(styles.search, className)}
-			onSubmit={handleSubmit}
-		>
+		<form className={clsx(styles.search, className)} onSubmit={handleSubmit}>
 			<InputGroup className={styles.container} onKeyDown={handleKeyDown}>
 				<TextField
 					ref={inputRef}
@@ -140,40 +131,26 @@ export function SearchInput (props) {
 				</Button>
 			</InputGroup>
 
-			{pendingInput && (
-				<Suspense fallback={<AutocompleteListFallback />}>
-					<AutocompleteList
-						resource={autocomplete}
-						selection={selection}
-						onSelect={handleSelect}
-					/>
-				</Suspense>
+			{deferredInput && pendingInput && (
+				<Menu className={styles.menu}>
+					{status === 'loading' ? (
+						<MenuItem disabled className={styles.item}>
+							loading...
+						</MenuItem>
+					) : (
+						data.map((item, index) => (
+							<AutocompleteItem
+								data={item}
+								index={index}
+								selected={selection === index}
+								onSelect={handleSelect}
+							/>
+						))
+					)}
+				</Menu>
 			)}
 		</form>
 	);
-}
-
-function AutocompleteList (props) {
-	const { resource, selection, onSelect } = props;
-
-	const data = resource.read();
-
-	if (!data) {
-		return;
-	}
-
-	return (
-		<Menu className={styles.menu}>
-			{data.map((item, index) => (
-				<AutocompleteItem
-					data={item}
-					index={index}
-					selected={selection === index}
-					onSelect={onSelect}
-				/>
-			))}
-		</Menu>
-	)
 }
 
 // <AutocompleteItem />
@@ -211,24 +188,6 @@ function AutocompleteItem (props) {
 	);
 }
 
-function AutocompleteListFallback () {
-	return (
-		<Menu className={styles.menu}>
-			<MenuItem disabled className={clsx(styles.item)}>
-				loading...
-			</MenuItem>
-		</Menu>
-	);
-}
-
 function splice (string, index, count, replace = '') {
 	return string.slice(0, index) + replace + string.slice(index + count);
-}
-
-// We want to make it so that the autocomplete functionality allows for quickly
-// searching different tags in a new tab
-function handleNavigatePrevent (event) {
-	if (event.button === 0 && !(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey)) {
-		event.preventDefault();
-	}
 }

@@ -1,4 +1,5 @@
 import { Store } from '~/lib/global-store';
+import { defaultQueryOptions, invalidateQueries } from '@intrnl/rq';
 
 import { API_URL, ResponseError } from '~/api/base.js';
 
@@ -7,6 +8,7 @@ import { qss } from '~/utils/qss.js';
 
 const localKey = 'token';
 const noop = () => {};
+const cache = defaultQueryOptions.cache;
 
 export let LOGIN_PROMISE = Promise.resolve();
 export const STATUS_VERIFYING = 0;
@@ -38,6 +40,8 @@ export function login ({ key, user }, write = true) {
 			if (write) {
 				localStorage.setItem(localKey, JSON.stringify({ key, user }));
 			}
+
+			invalidateQueries(cache, []);
 		},
 		(error) => {
 			logout(error.response?.status === 401);
@@ -60,6 +64,8 @@ export function logout (write = true) {
 	if (write) {
 		localStorage.removeItem(localKey);
 	}
+
+	invalidateQueries(cache, []);
 }
 
 export async function verify ({ key, user }) {

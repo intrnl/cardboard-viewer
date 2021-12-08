@@ -1,6 +1,6 @@
 import { h } from 'preact';
-import { Suspense } from 'preact/compat';
 import { useMemo } from 'preact/hooks';
+import { useQuery, useMutation } from '@intrnl/rq';
 import { useStore } from '~/lib/global-store';
 
 import clsx from 'clsx';
@@ -12,16 +12,20 @@ import HeartIcon from '~/icons/heart.svg';
 import RefreshIcon from '~/icons/refresh.svg';
 
 import { AuthStore, STATUS_LOGGED_IN } from '~/globals/auth';
-import * as asset from '~/api/assets.js';
-import { setFavorite } from '~/api/mutations.js';
-import { POST_IMAGE_SMALL_SIZE, GET_IMAGE_SIZE } from '~/api/enums.js';
-
-import { useSuspense } from '~/utils/useSuspense.js';
+import { getFavoriteStatus } from '~/api/assets';
+import { setFavoriteStatus } from '~/api/mutations';
+import { POST_IMAGE_SMALL_SIZE, GET_IMAGE_SIZE } from '~/api/enums';
 
 
 // <Post />
 export function Post (props) {
-	const { resource, className, search } = props;
+	const {
+		resource,
+		search,
+		hideFavorite,
+		isInFavorite,
+		className,
+	} = props;
 
 	const data = resource.read();
 
@@ -53,10 +57,8 @@ export function Post (props) {
 				/>
 			</Link>
 
-			{auth.status === STATUS_LOGGED_IN && (
-				<Suspense fallback={<FavoriteFallback />}>
-					<Favorite postId={data.id} userId={auth.profile.id} />
-				</Suspense>
+			{!hideFavorite && auth.status === STATUS_LOGGED_IN && (
+				<Favorite postId={data.id} isInFavorite={isInFavorite} />
 			)}
 		</article>
 	);
@@ -91,23 +93,39 @@ function getRandomInclusive (min, max) {
 
 // <Favorite />
 function Favorite (props) {
-	const { postId, userId } = props;
+	const { postId, isInFavorite } = props;
 
-	const suspend = useSuspense();
+	const { status, data, mutate } = useQuery({
+		key: ['favorite', postId],
+		fetch: getFavoriteStatus,
+		revalidateOnFocus: false,
+	});
 
-	const data = asset.favorites.read({ post_id: postId, user_id: userId });
-	const favorited = data.favorited;
+	const mutation = useMutation(setFavoriteStatus, {
+		onMutate (variables) {
+			// Optimistic update
+			mutate(variables, false);
+		},
+		onSettled () {
+			mutate();
+		},
+	});
+
+	const loading = !isInFavorite && status === 'loading';
+	const favorited = data?.favorited ?? isInFavorite;
 
 	const handleClick = () => {
-		const promise = setFavorite({
-			post_id: postId,
-			user_id: userId,
-			favorited: !favorited,
-		});
-
-		suspend(promise);
+		mutation.mutate({ post_id: postId, favorited: !favorited });
 	};
 
+
+	if (loading) {
+		return (
+			<div className={styles.favorite}>
+				<Icon size={20} src={RefreshIcon} />
+			</div>
+		);
+	}
 
 	return (
 		<button
@@ -117,13 +135,5 @@ function Favorite (props) {
 		>
 			<Icon size={20} src={HeartIcon} className={styles.favoriteIcon} />
 		</button>
-	);
-}
-
-function FavoriteFallback () {
-	return (
-		<div className={clsx(styles.favorite)}>
-			<Icon size={20} src={RefreshIcon} />
-		</div>
 	);
 }

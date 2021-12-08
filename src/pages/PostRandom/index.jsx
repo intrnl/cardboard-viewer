@@ -1,17 +1,25 @@
 import { useLayoutEffect, useRef } from 'preact/hooks';
 import { useNavigate } from 'react-router-dom';
+import { useMutate } from '@intrnl/rq';
 
-import * as asset from '~/api/assets.js';
+import { fetcher } from '~/api/assets';
 
 
 export default function PostRandomPage () {
 	const navigate = useNavigate();
+	const mutate = useMutate();
+
 	const valueRef = useRef();
 
 	if (!valueRef.promise) {
-		const promise = valueRef.promise = asset.fetcher(`/posts/random.json`)
+		const promise = valueRef.promise = fetcher(`/posts/random.json`)
 			.then((post) => {
-				asset.posts.set(post.id, post);
+				if (!post.id) {
+					valueRef.promise = null;
+					return;
+				}
+
+				mutate(['post', post.id], post, false);
 				valueRef.current = post.id;
 			});
 

@@ -62,64 +62,34 @@ const RE_TAG_DELIMITER = / +/g;
 function PostTags (props) {
 	const { post } = props;
 
-	const artists = post.tag_string_artist
-		? post.tag_string_artist.split(RE_TAG_DELIMITER)
-		: false;
-
-	const copyrights = post.tag_string_copyright
-		? post.tag_string_copyright.split(RE_TAG_DELIMITER)
-		: false;
-
-	const characters = post.tag_string_character
-		? post.tag_string_character.split(RE_TAG_DELIMITER)
-		: false;
-
-	const general = post.tag_string_general
-		? post.tag_string_general.split(RE_TAG_DELIMITER)
-		: false;
-
-	const meta = post.tag_string_meta
-		? post.tag_string_meta.split(RE_TAG_DELIMITER)
-		: false;
-
 
 	return (
 		<Card className={styles.tags}>
-			{artists && (
-				<TagsList
-					header='Artists'
-					tags={artists}
-					category={TAG_CATEGORY_ARTIST}
-				/>
-			)}
-			{copyrights && (
-				<TagsList
-					header='Copyrights'
-					tags={copyrights}
-					category={TAG_CATEGORY_COPYRIGHT}
-				/>
-			)}
-			{characters && (
-				<TagsList
-					header='Characters'
-					tags={characters}
-					category={TAG_CATEGORY_CHARACTER}
-				/>
-			)}
-			{general && (
-				<TagsList
-					header='General'
-					tags={general}
-					category={TAG_CATEGORY_GENERAL}
-				/>
-			)}
-			{meta && (
-				<TagsList
-					header='Meta'
-					tags={meta}
-					category={TAG_CATEGORY_META}
-				/>
-			)}
+			<TagsList
+				header='Artists'
+				tags={post.tag_string_artist}
+				category={TAG_CATEGORY_ARTIST}
+			/>
+			<TagsList
+				header='Copyrights'
+				tags={post.tag_string_copyright}
+				category={TAG_CATEGORY_COPYRIGHT}
+			/>
+			<TagsList
+				header='Characters'
+				tags={post.tag_string_character}
+				category={TAG_CATEGORY_CHARACTER}
+			/>
+			<TagsList
+				header='General'
+				tags={post.tag_string_general}
+				category={TAG_CATEGORY_GENERAL}
+			/>
+			<TagsList
+				header='Meta'
+				tags={post.tag_string_meta}
+				category={TAG_CATEGORY_META}
+			/>
 		</Card>
 	);
 }
@@ -127,12 +97,20 @@ function PostTags (props) {
 function TagsList (props) {
 	const { tags, header, category } = props;
 
+	const list = tags
+		? tags.split(RE_TAG_DELIMITER)
+		: false
+
+
+	if (!list) {
+		return null;
+	}
 
 	return (
 		<div>
 			<h3>{header}</h3>
 			<ul>
-				{tags.map((tag) => (
+				{list.map((tag) => (
 					<Tag
 						key={tag}
 						as='li'

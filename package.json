@@ -6,7 +6,7 @@
 		"build": "NODE_ENV=production node ./scripts/build.js"
 	},
 	"dependencies": {
-		"@intrnl/rq": "^0.1.7",
+		"@intrnl/rq": "^0.1.8",
 		"@intrnl/stable-stringify": "^0.1.1",
 		"clsx": "^1.1.1",
 		"history": "^5.1.0",

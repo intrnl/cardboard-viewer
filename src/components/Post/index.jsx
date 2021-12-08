@@ -49,6 +49,7 @@ export function Post (props) {
 		>
 			<Link className={styles.link} to={`/posts/${data.id}${search ? `?${search}` : ''}`}>
 				<img
+					key={data.preview_file_url}
 					width={width}
 					height={height}
 					alt={`post #${data.id}`}

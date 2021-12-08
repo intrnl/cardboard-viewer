@@ -143,7 +143,7 @@ function PostsListing (props) {
 		<div className={styles.listing}>
 			{data.map((item) => (
 				<Post
-					key={item.created_at}
+					key={item.preview_file_url}
 					resource={createMappedResource(item)}
 					className={styles.item}
 					search={search}

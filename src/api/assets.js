@@ -43,7 +43,6 @@ const POST_LIST_FIELDS = [
 	'preview_file_url',
 	'image_width',
 	'image_height',
-	'date_created',
 ].join(',');
 
 export async function getPostList (key, params) {

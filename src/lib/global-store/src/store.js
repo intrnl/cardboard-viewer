@@ -1,10 +1,9 @@
 import { useLayoutEffect, useRef, useState } from 'preact/hooks';
 
-const UPDATE = 'update';
 
 export class Store {
 	#value;
-	#events = new EventTarget();
+	#listeners = new Set();
 
 	constructor (value) {
 		this.#value = value;
@@ -17,7 +16,10 @@ export class Store {
 	set (next) {
 		if (!Object.is(this.#value, next)) {
 			this.#value = next;
-			this.#events.dispatchEvent(new CustomEvent(UPDATE, { detail: next }));
+
+			for (const listener of this.#listeners) {
+				listener(next);
+			}
 		}
 	}
 
@@ -29,10 +31,8 @@ export class Store {
 	}
 
 	subscribe (listener) {
-		const callback = (event) => listener(event.detail);
-
-		this.#events.addEventListener(UPDATE, callback);
-		return () => this.#events.removeEventListener(UPDATE, callback);
+		this.#listeners.add(listener);
+		return () => this.#listeners.delete(listener);
 	}
 }
 

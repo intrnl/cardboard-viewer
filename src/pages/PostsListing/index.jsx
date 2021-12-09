@@ -178,8 +178,7 @@ function PostsPagination (props) {
 	});
 
 
-	if (status === 'loading') {
-		// Don't think we need to show placeholders for this.
+	if (status === 'loading' || !data) {
 		return null;
 	}
 

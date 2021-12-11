@@ -19,7 +19,9 @@ const constrained = style({
 }, 'constrained');
 
 
-export const post = style([constrained], 'post');
+export const post = style([constrained, {
+	overflow: 'hidden',
+}], 'post');
 
 export const container = style({
 	display: 'flex',

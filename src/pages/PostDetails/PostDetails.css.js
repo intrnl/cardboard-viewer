@@ -19,9 +19,7 @@ const constrained = style({
 }, 'constrained');
 
 
-export const post = style([constrained, {
-	overflow: 'hidden',
-}], 'post');
+export const post = style([constrained], 'post');
 
 export const container = style({
 	display: 'flex',
@@ -41,12 +39,13 @@ export const unsupported = style({
 }, 'unsupported');
 
 export const actions = style({
-	backgroundColor: `rgba(255, 255, 255, 0.85)`,
 	display: 'flex',
+	alignItems: 'center',
 	height: 48,
-	paddingInline: 16,
-	position: 'sticky',
-	bottom: 0,
+	paddingInline: 8,
+	borderTopStyle: 'solid',
+	borderTopWidth: 1,
+	borderTopColor: theme.palette.gray[300],
 }, 'actions');
 
 
@@ -61,3 +60,8 @@ export const tags = style([constrained, {
 export const tagHeader = style({
 	fontSize: 14,
 }, 'tag-header');
+
+
+export const favorited = style({
+	color: theme.palette.red[600],
+}, 'favorited');

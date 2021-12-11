@@ -1,16 +1,22 @@
 import { h, Fragment } from 'preact';
 import { Suspense } from 'preact/compat';
 import { useParams, Navigate } from 'react-router-dom';
-import { useQuery } from '@intrnl/rq';
+import { useQuery, useMutation } from '@intrnl/rq';
 
+import clsx from 'clsx';
 import { SideView, Main, Aside } from '~/layouts/SideView';
 import { Card } from '~/components/Card';
-import { CircularProgress } from '~/components/CircularProgress';
+import { FlexSpacer } from '~/components/FlexSpacer';
+import { Button } from '~/components/Button';
+import { Icon } from '~/components/Icon';
 import { PostsRelationship } from '~/components/PostsRelationship';
 import { Tag } from '~/components/Tag';
 import * as styles from './PostDetails.css';
 
-import { getPost } from '~/api/assets';
+import FavoriteIcon from '~/icons/heart.svg';
+
+import { getFavoriteStatus, getPost } from '~/api/assets';
+import { setFavoriteStatus } from '~/api/mutations';
 import { createTagResource } from '~/api/resource';
 import {
 	POST_IMAGE_LARGE_SIZE,
@@ -161,6 +167,11 @@ function PostDetails (props) {
 						</div>
 					)}
 				</div>
+
+				<div className={styles.actions}>
+					<FlexSpacer />
+					<Favorite postId={post.id} />
+				</div>
 			</Card>
 
 			{post.parent_id && (
@@ -185,11 +196,42 @@ function PostDetails (props) {
 	);
 }
 
+function Favorite (props) {
+	const { postId } = props;
 
-function PostDetailsFallback () {
+	const { status, data, mutate } = useQuery({
+		key: ['favorite', postId],
+		fetch: getFavoriteStatus,
+		revalidateOnFocus: false,
+	});
+
+	const mutation = useMutation(setFavoriteStatus, {
+		onMutate (variables) {
+			// Optimistic update
+			mutate(variables, false);
+		},
+		onSettled () {
+			mutate();
+		},
+	});
+
+	const loading = status === 'loading';
+	const favorited = data?.favorited;
+
+	const handleClick = () => {
+		mutation.mutate({ post_id: postId, favorited: !favorited });
+	};
+
+
 	return (
-		<Card>
-			<CircularProgress />
-		</Card>
+		<Button
+			title={favorited ? 'Unfavorite' : 'Favorite'}
+			variant='ghost'
+			disabled={loading}
+			onClick={handleClick}
+			className={clsx(favorited && styles.favorited)}
+		>
+			<Icon src={FavoriteIcon} />
+		</Button>
 	);
 }

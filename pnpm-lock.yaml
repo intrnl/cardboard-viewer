@@ -3,7 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@intrnl/cssom-utils': ^0.2.3
   '@intrnl/esbuild-plugin-build-analysis': ^0.1.2
-  '@intrnl/esbuild-plugin-env': ^0.1.2
+  '@intrnl/esbuild-plugin-env': ^0.1.3
   '@intrnl/esbuild-plugin-vanilla-extract': ^0.2.0
   '@intrnl/rq': ^0.1.8
   '@intrnl/stable-stringify': ^0.1.1
@@ -13,7 +13,7 @@ specifiers:
   history: ^5.1.0
   postcss: ^8.4.4
   preact: https://pkg.csb.dev/preactjs/preact/commit/424e4268/preact
-  react-router-dom: ^6.0.2
+  react-router-dom: ^6.1.0
 
 dependencies:
   '@intrnl/rq': 0.1.8_preact@10.5.13
@@ -21,12 +21,12 @@ dependencies:
   clsx: 1.1.1
   history: 5.1.0
   preact: '@pkg.csb.dev/preactjs/preact/commit/424e4268/preact'
-  react-router-dom: 6.0.2
+  react-router-dom: 6.1.0
 
 devDependencies:
   '@intrnl/cssom-utils': 0.2.3
   '@intrnl/esbuild-plugin-build-analysis': 0.1.2_esbuild@0.14.2
-  '@intrnl/esbuild-plugin-env': 0.1.2_esbuild@0.14.2
+  '@intrnl/esbuild-plugin-env': 0.1.3_esbuild@0.14.2
   '@intrnl/esbuild-plugin-vanilla-extract': 0.2.0_esbuild@0.14.2
   '@vanilla-extract/css': 1.6.8
   esbuild: 0.14.2
@@ -58,8 +58,8 @@ packages:
       esbuild: 0.14.2
     dev: true
 
-  /@intrnl/esbuild-plugin-env/0.1.2_esbuild@0.14.2:
-    resolution: {integrity: sha512-UmfxxQy/eG37/U2GS+Pf1lyx/eBQnb7tbCjPHzfxxhsq1k1ka17YFEMlWKwbus88SICFcGDUQIkWc2xgjxEKtA==}
+  /@intrnl/esbuild-plugin-env/0.1.3_esbuild@0.14.2:
+    resolution: {integrity: sha512-PxR2o2Zsyz7T76vi/ofhPqNQ5V/pcHHyPeUzMrBY56ntVsNkE0QECuu8l4xOfR3ynH6+BW2WmA1mY6hYVpgH0g==}
     peerDependencies:
       esbuild: '>=0.13.15'
     dependencies:
@@ -463,18 +463,18 @@ packages:
       source-map-js: 1.0.1
     dev: true
 
-  /react-router-dom/6.0.2:
-    resolution: {integrity: sha512-cOpJ4B6raFutr0EG8O/M2fEoyQmwvZWomf1c6W2YXBZuFBx8oTk/zqjXghwScyhfrtnt0lANXV2182NQblRxFA==}
+  /react-router-dom/6.1.0:
+    resolution: {integrity: sha512-ONVhgCiEHTPZvsz05AUiqKj9mrlkDyxt96FB51JrZH7Jlau2B8GJ+NfWw7rbu+oj9gfpZOsK14xJppLAWg2ifQ==}
     peerDependencies:
       react: '>=16.8'
       react-dom: '>=16.8'
     dependencies:
       history: 5.1.0
-      react-router: 6.0.2
+      react-router: 6.1.0
     dev: false
 
-  /react-router/6.0.2:
-    resolution: {integrity: sha512-8/Wm3Ed8t7TuedXjAvV39+c8j0vwrI5qVsYqjFr5WkJjsJpEvNSoLRUbtqSEYzqaTUj1IV+sbPJxvO+accvU0Q==}
+  /react-router/6.1.0:
+    resolution: {integrity: sha512-96x4YGONBBz41ikne/I9Zw4jZm+KeFyUZraiNkSA384g/B8ps8nRNAfN8339EpZRt+t16RM+TA9z+NqlYATGzw==}
     peerDependencies:
       react: '>=16.8'
     dependencies:

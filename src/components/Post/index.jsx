@@ -9,7 +9,6 @@ import { Icon } from '~/components/Icon';
 import * as styles from './Post.css';
 
 import HeartIcon from '~/icons/heart.svg';
-import RefreshIcon from '~/icons/refresh.svg';
 
 import { AuthStore, STATUS_LOGGED_IN } from '~/globals/auth';
 import { getFavoriteStatus } from '~/api/assets';
@@ -120,17 +119,10 @@ function Favorite (props) {
 	};
 
 
-	if (loading) {
-		return (
-			<div className={styles.favorite}>
-				<Icon size={20} src={RefreshIcon} />
-			</div>
-		);
-	}
-
 	return (
 		<button
 			title={favorited ? 'Unfavorite' : 'Favorite'}
+			disabled={loading}
 			onClick={handleClick}
 			className={clsx(styles.favorite, favorited && styles.isFavorited)}
 		>

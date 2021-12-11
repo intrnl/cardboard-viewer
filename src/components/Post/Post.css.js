@@ -60,6 +60,9 @@ export const favorite = style({
 		[`&:focus-visible`]: {
 			color: theme.palette.red[300],
 		},
+		[`&:disabled`]: {
+			opacity: 0.25,
+		},
 	},
 }, 'favorite');
 

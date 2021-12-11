@@ -2,11 +2,11 @@ import { h, Fragment } from 'preact';
 import { Suspense } from 'preact/compat';
 import { useParams, Navigate } from 'react-router-dom';
 import { useQuery, useMutation } from '@intrnl/rq';
+import { useStore } from '~/lib/global-store';
 
 import clsx from 'clsx';
 import { SideView, Main, Aside } from '~/layouts/SideView';
 import { Card } from '~/components/Card';
-import { FlexSpacer } from '~/components/FlexSpacer';
 import { Button } from '~/components/Button';
 import { Icon } from '~/components/Icon';
 import { PostsRelationship } from '~/components/PostsRelationship';
@@ -15,6 +15,7 @@ import * as styles from './PostDetails.css';
 
 import FavoriteIcon from '~/icons/heart.svg';
 
+import { AuthStore, STATUS_LOGGED_IN } from '~/globals/auth';
 import { getFavoriteStatus, getPost } from '~/api/assets';
 import { setFavoriteStatus } from '~/api/mutations';
 import { createTagResource } from '~/api/resource';
@@ -141,6 +142,8 @@ function PostDetails (props) {
 	const originalHeight = post.image_height;
 	const [width, height] = GET_IMAGE_CEIL(originalWidth, originalHeight, POST_IMAGE_LARGE_SIZE);
 
+	const auth = useStore(AuthStore);
+
 
 	return (
 		<>
@@ -169,8 +172,9 @@ function PostDetails (props) {
 				</div>
 
 				<div className={styles.actions}>
-					<FlexSpacer />
-					<Favorite postId={post.id} />
+					{auth.status === STATUS_LOGGED_IN && (
+						<Favorite postId={post.id} />
+					)}
 				</div>
 			</Card>
 

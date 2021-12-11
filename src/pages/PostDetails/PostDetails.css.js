@@ -43,11 +43,16 @@ export const unsupported = style({
 export const actions = style({
 	display: 'flex',
 	alignItems: 'center',
+	justifyContent: 'flex-end',
 	height: 48,
 	paddingInline: 8,
 	borderTopStyle: 'solid',
 	borderTopWidth: 1,
 	borderTopColor: theme.palette.gray[300],
+
+	':empty': {
+		display: 'none',
+	},
 }, 'actions');
 
 

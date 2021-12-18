@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 
 const MainLayout = lazy(() => import('~/layouts/MainLayout'));
 
+const NotFound = lazy(() => import('~/pages/NotFound'));
 const Login = lazy(() => import('~/pages/Login'));
 const PostsListing = lazy(() => import('~/pages/PostsListing'));
 const PostDetails = lazy(() => import('~/pages/PostDetails'));
@@ -16,11 +17,12 @@ export function AppRouter () {
 		<Routes>
 			<Route element={<MainLayout />}>
 				<Route path='/' element={<PostsListing />} />
-				<Route path='/posts/:id' element={<PostDetails />} />
-				<Route path='/posts/random' element={<PostRandom />} />
+				<Route path='posts/:id' element={<PostDetails />} />
+				<Route path='posts/random' element={<PostRandom />} />
 			</Route>
 
-			<Route path='/login' element={<Login />} />
+			<Route path='login' element={<Login />} />
+			<Route path='*' element={<NotFound />} />
 		</Routes>
 	);
 }

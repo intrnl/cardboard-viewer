@@ -3,9 +3,18 @@ import { h, cloneElement } from 'preact';
 import clsx from 'clsx';
 import * as styles from './MenuTrigger.css';
 
+import { handleFocusTrapping, isFocusable } from '~/utils/element';
+
 
 export function MenuTrigger (props) {
-	const { children, className, y = 'top', x = 'right' } = props;
+	const {
+		children,
+		className,
+		y = 'top',
+		x = 'right',
+		arrowNavigation = true,
+		persist = false,
+	} = props;
 
 	const [button, menu] = children;
 
@@ -15,6 +24,8 @@ export function MenuTrigger (props) {
 			onToggle={handleToggle}
 			onKeyDown={handleKeyDown}
 			onClick={handleClick}
+			data-arrownavigation={arrowNavigation}
+			data-persist={persist}
 		>
 			<div className={styles.overlay} onClick={handleOverlayClick} />
 
@@ -36,19 +47,16 @@ export function MenuTrigger (props) {
 		</details>
 	);
 }
-
 function handleToggle (event) {
 	const details = event.currentTarget;
 
 	if (details.open) {
-		const menu = details.childNodes[2];
-		const elements = [...menu.querySelectorAll('*')].filter(isFocusable);
+		const dialog = details.childNodes[2];
 
-		const focusable = elements[0] || menu;
-		focusable.focus();
+		handleFocusTrapping(dialog);
 	}
 	else {
-		const focusable = details.childNodes[1];
+		const focusable = details.childNodes[0];
 		focusable.focus();
 	}
 }
@@ -62,77 +70,38 @@ function handleClick (event) {
 	const details = event.currentTarget;
 	const target = event.target;
 
-	if (!target.matches('[data-menu-persist]') && isFocusable(target)) {
+	if (details.hasAttribute('data-persist')) {
+		return;
+	}
+
+	if (!target.hasAttribute('data-dialog-persist') && isFocusable(target)) {
 		details.removeAttribute('open');
 	}
 }
 
 function handleKeyDown (event) {
 	const details = event.currentTarget;
+	const dialog = details.childNodes[2];
 
-	if (!details.hasAttribute('open')) {
+	if (!details.hasAttribute('open') || !dialog) {
 		return;
 	}
 
 	const keyCode = event.keyCode;
+	const arrow = details.hasAttribute('data-arrownavigation');
 
 	if (keyCode === 27) {
 		details.removeAttribute('open');
 		return;
 	}
 
-	const isTab = keyCode === 38 || keyCode === 40 || keyCode === 9;
-	const isReverse = keyCode === 38 || (event.shiftKey && keyCode === 9);
+	const isTab = keyCode === 9 || (arrow && (keyCode === 38 || keyCode === 40));
+	const isReverse = (event.shiftKey && keyCode === 9) || keyCode === 38;
 
 	if (!isTab) {
 		return;
 	}
 
 	event.preventDefault();
-
-	const elements = [...details.querySelectorAll('*')].filter(isFocusable);
-
-	if (elements.length < 1) {
-		return;
-	}
-
-	const movement = isReverse ? -1 : 1;
-	const root = details.getRootNode();
-	const focused = details.contains(root.activeElement) ? root.activeElement : null;
-
-	let target = isReverse ? -1 : 0;
-
-	if (focused) {
-		const index = elements.indexOf(focused);
-
-		if (index > -1) {
-			target = index + movement;
-		}
-	}
-
-	if (target < 0) {
-		target = elements.length - 1;
-	}
-	else {
-		target = target % elements.length;
-	}
-
-	const focusable = elements[target];
-	focusable.focus();
-}
-
-function isFocusable (el) {
-	return (
-		el.tabIndex >= 0 &&
-		!el.disabled &&
-		isVisible(el)
-	);
-}
-
-function isVisible (el) {
-	return (
-		!el.hidden &&
-		(!el.type || el.type !== 'hidden') &&
-		(el.offsetWidth > 0 || el.offsetHeight > 0)
-	);
+	handleFocusTrapping(dialog, isReverse ? -1 : 1);
 }

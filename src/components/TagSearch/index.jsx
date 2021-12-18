@@ -63,20 +63,27 @@ export function SearchInput (props) {
 			return;
 		}
 
-		if (selection > -1 && event.keyCode == 13) {
+		const key = event.keyCode;
+
+		if (selection > -1 && key == 13) {
 			// Enter
 			event.preventDefault();
 
 			const selected = data[selection];
 			applySelection(selected.value);
 		}
-		else if (event.keyCode === 38) {
+		else if (key === 27) {
+			event.preventDefault();
+
+			setPendingInput('');
+		}
+		else if (key === 38) {
 			// Up arrow
 			event.preventDefault();
 
 			setSelection((selection <= -1 ? data.length : selection) - 1);
 		}
-		else if (event.keyCode === 40) {
+		else if (key === 40) {
 			// Down arrow
 			event.preventDefault();
 

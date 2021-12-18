@@ -51,6 +51,9 @@ function ErrorContainer (props) {
 			<Button onClick={reset}>
 				Try again
 			</Button>
+			<Button onClick={() => location.reload()}>
+				Reload page
+			</Button>
 		</div>
 	);
 }

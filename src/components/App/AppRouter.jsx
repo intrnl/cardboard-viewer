@@ -19,10 +19,10 @@ export function AppRouter () {
 				<Route path='/' element={<PostsListing />} />
 				<Route path='posts/:id' element={<PostDetails />} />
 				<Route path='posts/random' element={<PostRandom />} />
+				<Route path='*' element={<NotFound />} />
 			</Route>
 
 			<Route path='login' element={<Login />} />
-			<Route path='*' element={<NotFound />} />
 		</Routes>
 	);
 }

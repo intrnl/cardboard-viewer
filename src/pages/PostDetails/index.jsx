@@ -1,5 +1,5 @@
 import { h, Fragment } from 'preact';
-import { Suspense } from 'preact/compat';
+import { Suspense, lazy } from 'preact/compat';
 import { useParams, Navigate } from 'react-router-dom';
 import { useQuery, useMutation } from '@intrnl/rq';
 import { useStore } from '~/lib/global-store';
@@ -30,6 +30,8 @@ import {
 	TAG_CATEGORY_META,
 } from '~/api/enums';
 
+const NotFound = lazy(() => import('~/pages/NotFound'));
+
 
 export default function PostDetailsPage () {
 	const { id } = useParams();
@@ -37,14 +39,23 @@ export default function PostDetailsPage () {
 	const idNum = parseInt(id);
 	const invalid = Number.isNaN(idNum) || Math.sign(idNum) !== 1;
 
-	const { data: post } = useQuery({
+	const { data: post, error } = useQuery({
 		disabled: invalid,
 		key: ['post', idNum],
 		fetch: getPost,
 		staleTime: 60000,
 		suspense: true,
+		errorBoundary: false,
 	});
 
+
+	if (error) {
+		if (error?.response.status === 404) {
+			return <NotFound />
+		}
+
+		throw error;
+	}
 
 	if (invalid) {
 		return <Navigate to='/' replace />

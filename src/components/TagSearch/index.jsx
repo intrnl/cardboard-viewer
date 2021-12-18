@@ -169,10 +169,11 @@ function AutocompleteItem (props) {
 	const { data, index, selected, onSelect } = props;
 
 	const handleClick = (event) => {
-		if (isLinkEvent(event)) {
-			event.preventDefault();
+		if (!isLinkEvent(event)) {
+			return;
 		}
 
+		event.preventDefault();
 		onSelect?.(index);
 	}
 

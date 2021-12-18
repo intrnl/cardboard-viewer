@@ -27,23 +27,7 @@ export const overlay = style({
 export const popup = style({
 	minWidth: 250,
 	maxWidth: sub(vw(100), mul(px(16), 2)),
-	marginTop: 4,
-	position: 'absolute',
+	position: 'fixed',
+	zIndex: 3,
+	visibility: 'hidden',
 }, 'popup');
-
-
-export const isTop = style({
-	top: percent(100),
-}, 'is-top');
-
-export const isBottom = style({
-	bottom: percent(100),
-}, 'is-bottom');
-
-export const isLeft = style({
-	left: 0,
-}, 'is-left');
-
-export const isRight = style({
-	right: 0,
-}, 'is-right');

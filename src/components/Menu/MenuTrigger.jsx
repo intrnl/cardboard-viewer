@@ -3,17 +3,16 @@ import { h, cloneElement } from 'preact';
 import clsx from 'clsx';
 import * as styles from './MenuTrigger.css';
 
-import { handleFocusTrapping, isFocusable } from '~/utils/element';
+import { computeFloatingPosition, handleFocusTrapping, isFocusable } from '~/utils/element';
 
 
 export function MenuTrigger (props) {
 	const {
 		children,
 		className,
-		y = 'top',
-		x = 'right',
 		arrowNavigation = true,
 		persist = false,
+		placement,
 	} = props;
 
 	const [button, menu] = children;
@@ -26,6 +25,7 @@ export function MenuTrigger (props) {
 			onClick={handleClick}
 			data-arrownavigation={arrowNavigation}
 			data-persist={persist}
+			data-placement={placement}
 		>
 			<div className={styles.overlay} onClick={handleOverlayClick} />
 
@@ -37,26 +37,27 @@ export function MenuTrigger (props) {
 
 			{cloneElement(menu, {
 				role: 'menu',
-				className: clsx(styles.popup, menu.props.className, {
-					[styles.isTop]: y === 'top',
-					[styles.isBottom]: y === 'bottom',
-					[styles.isLeft]: x === 'left',
-					[styles.isRight]: x === 'right',
-				}),
+				className: clsx(styles.popup, menu.props.className),
 			})}
 		</details>
 	);
 }
-function handleToggle (event) {
+
+async function handleToggle (event) {
 	const details = event.currentTarget;
 
 	if (details.open) {
+		const summary = details.childNodes[1];
 		const dialog = details.childNodes[2];
 
-		handleFocusTrapping(dialog);
+		const placement = details.getAttribute('data-placement');
+
+		computeFloatingPosition(summary, dialog, placement).then(() => {
+			handleFocusTrapping(dialog);
+		});
 	}
 	else {
-		const focusable = details.childNodes[0];
+		const focusable = details.childNodes[1];
 		focusable.focus();
 	}
 }

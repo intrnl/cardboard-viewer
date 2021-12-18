@@ -1,3 +1,27 @@
+import { computePosition, shift, flip, offset } from '@floating-ui/dom';
+
+
+export async function computeFloatingPosition (reference, floating, placement) {
+	const result = await computePosition(reference, floating, {
+		strategy: 'fixed',
+		placement: placement ?? undefined,
+		middleware: [
+			offset(4),
+			shift({ padding: 16 }),
+			flip(),
+		],
+	});
+
+	const { strategy, x, y } = result;
+
+	Object.assign(floating.style, {
+		visibility: 'visible',
+		position: strategy,
+		left: `${x}px`,
+		top: `${y}px`,
+	});
+}
+
 export function isFocusable (el) {
 	return (
 		el.tabIndex >= 0 &&

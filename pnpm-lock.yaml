@@ -1,7 +1,6 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@floating-ui/dom': ^0.1.7
   '@intrnl/cssom-utils': ^0.2.3
   '@intrnl/esbuild-plugin-build-analysis': ^0.1.2
   '@intrnl/esbuild-plugin-env': ^0.1.3
@@ -12,15 +11,16 @@ specifiers:
   clsx: ^1.1.1
   esbuild: ^0.14.5
   history: ^5.2.0
+  nanopop: ^2.1.0
   preact: https://pkg.csb.dev/preactjs/preact/commit/424e4268/preact
   react-router-dom: ^6.2.1
 
 dependencies:
-  '@floating-ui/dom': 0.1.7
   '@intrnl/rq': 0.1.8_preact@10.5.13
   '@intrnl/stable-stringify': 0.1.1
   clsx: 1.1.1
   history: 5.2.0
+  nanopop: 2.1.0
   preact: '@pkg.csb.dev/preactjs/preact/commit/424e4268/preact'
   react-router-dom: 6.2.1
 
@@ -44,16 +44,6 @@ packages:
   /@emotion/hash/0.8.0:
     resolution: {integrity: sha512-kBJtf7PH6aWwZ6fka3zQ0p6SBYzx4fl1LoZXE2RrnYST9Xljm7WfKJrU4g/Xr3Beg72MLrp1AWNUmuYJTL7Cow==}
     dev: true
-
-  /@floating-ui/core/0.2.1:
-    resolution: {integrity: sha512-fhFNlxBdiA8RVdVcZUllwvIgwvj3QL1o5MxthjgPmkc6nizu1/qwTVMhpr9QRdkF6DwNQnu0rvgb0r7Ml3i4mw==}
-    dev: false
-
-  /@floating-ui/dom/0.1.7:
-    resolution: {integrity: sha512-aA0i/ov24v+f6YCobJecoDBcOikn1W7+q9txSXQmezfPEJ6P9QFRrFvuYGaO0EevgexmJ3PlrfSR4dKhNHRP0Q==}
-    dependencies:
-      '@floating-ui/core': 0.2.1
-    dev: false
 
   /@intrnl/cssom-utils/0.2.3:
     resolution: {integrity: sha512-8+T1yZtlBe1rtX8uGPX41OklOfN9pL2G5NEtX4Bq4o7YR0IuQgJigQegECe4sjhGcRAZr+XFc/9rYzfTpTkwSg==}
@@ -358,6 +348,10 @@ packages:
     resolution: {integrity: sha512-uPSF6lAJb3nSePJ43hN3eKj1dTWpN9gMod0ZssbFTIsen+WehTmEadgL+kg78xLJFdRfrrC//SavDzmRVdE+Ig==}
     dependencies:
       '@babel/runtime': 7.16.5
+    dev: false
+
+  /nanopop/2.1.0:
+    resolution: {integrity: sha512-jGTwpFRexSH+fxappnGQtN9dspgE2ipa1aOjtR24igG0pv6JCxImIAmrLRHX+zUF5+1wtsFVbKyfP51kIGAVNw==}
     dev: false
 
   /outdent/0.8.0:

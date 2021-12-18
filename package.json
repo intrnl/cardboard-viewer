@@ -6,11 +6,11 @@
 		"build": "NODE_ENV=production node ./scripts/build.js"
 	},
 	"dependencies": {
-		"@floating-ui/dom": "^0.1.7",
 		"@intrnl/rq": "^0.1.8",
 		"@intrnl/stable-stringify": "^0.1.1",
 		"clsx": "^1.1.1",
 		"history": "^5.2.0",
+		"nanopop": "^2.1.0",
 		"preact": "https://pkg.csb.dev/preactjs/preact/commit/424e4268/preact",
 		"react-router-dom": "^6.2.1"
 	},

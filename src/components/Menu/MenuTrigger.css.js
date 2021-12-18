@@ -25,9 +25,9 @@ export const overlay = style({
 
 
 export const popup = style({
+	opacity: 0,
 	minWidth: 250,
 	maxWidth: sub(vw(100), mul(px(16), 2)),
 	position: 'fixed',
 	zIndex: 3,
-	visibility: 'hidden',
 }, 'popup');

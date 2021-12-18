@@ -52,9 +52,8 @@ async function handleToggle (event) {
 
 		const placement = details.getAttribute('data-placement');
 
-		computeFloatingPosition(summary, dialog, placement).then(() => {
-			handleFocusTrapping(dialog);
-		});
+		computeFloatingPosition(summary, dialog, placement);
+		handleFocusTrapping(dialog);
 	}
 	else {
 		const focusable = details.childNodes[1];

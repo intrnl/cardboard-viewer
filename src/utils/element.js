@@ -1,25 +1,13 @@
-import { computePosition, shift, flip, offset } from '@floating-ui/dom';
+import { reposition } from 'nanopop';
 
 
-export async function computeFloatingPosition (reference, floating, placement) {
-	const result = await computePosition(reference, floating, {
-		strategy: 'fixed',
-		placement: placement ?? undefined,
-		middleware: [
-			offset(4),
-			shift({ padding: 16 }),
-			flip(),
-		],
+export function computeFloatingPosition (reference, floating, placement) {
+	reposition(reference, floating, {
+		position: placement ?? 'bottom',
+		margin: 4,
 	});
 
-	const { strategy, x, y } = result;
-
-	Object.assign(floating.style, {
-		visibility: 'visible',
-		position: strategy,
-		left: `${x}px`,
-		top: `${y}px`,
-	});
+	floating.style.opacity = '1';
 }
 
 export function isFocusable (el) {

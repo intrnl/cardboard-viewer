@@ -37,7 +37,17 @@ export function Pagination (props) {
 		value = parseInt(value);
 
 		if (value === page) {
-			return;
+			let ret = prompt(`Go to page? (${page}/${total})`);
+			value = parseInt(ret);
+
+			if (!ret) {
+				return;
+			}
+
+			if (!Number.isFinite(value) || value < 1 || value > total) {
+				alert(`Invalid page: ${ret}`);
+				return;
+			}
 		}
 
 		onChangePage?.(value);

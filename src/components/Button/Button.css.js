@@ -6,6 +6,7 @@ import { control } from '~/styles/misc/controls.css';
 
 
 export const button = style([interactable, focusable, control, {
+	cursor: 'pointer',
 	fontWeight: 500,
 	textDecoration: 'none',
 	display: 'flex',

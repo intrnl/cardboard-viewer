@@ -28,8 +28,6 @@ const DEFAULT_SEARCH_PARAMS = {
 	limit: '20',
 };
 
-const RE_ORDER_RANDOM = /\border:random\b/i;
-
 export default function PostsListingPage () {
 	const [{ query, page, limit }, setParams] = useSearchParams(DEFAULT_SEARCH_PARAMS);
 
@@ -41,7 +39,6 @@ export default function PostsListingPage () {
 	const pageNum = parseInt(page);
 	const limitNum = parseInt(limit);
 
-	const isOrderRandom = useMemo(() => RE_ORDER_RANDOM.test(tags), [tags]);
 	const isInFavorite = useMemo(() => RE_ORDFAV?.test(tags), [tags]);
 
 	const search = query ? qss({ query }) : false;
@@ -62,15 +59,13 @@ export default function PostsListingPage () {
 					search={search}
 					isInFavorite={isInFavorite}
 				/>
-				{!isOrderRandom && (
-					<PostsPagination
-						tags={tags}
-						page={pageNum}
-						maxPage={maxPage}
-						limit={limitNum}
-						onChangePage={handlePageChange}
-					/>
-				)}
+				<PostsPagination
+					tags={tags}
+					page={pageNum}
+					maxPage={maxPage}
+					limit={limitNum}
+					onChangePage={handlePageChange}
+				/>
 			</Main>
 
 			<Aside>

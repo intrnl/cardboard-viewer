@@ -16,6 +16,7 @@ export const item = style([button, isGhost, {
 		'&:is(:hover, :active, :focus-visible)': {
 			color: theme.palette.white,
 			backgroundColor: theme.palette.blue[600],
+			outlineWidth: 0,
 		},
 	},
 }]);

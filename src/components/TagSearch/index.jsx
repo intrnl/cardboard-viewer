@@ -144,7 +144,7 @@ export function SearchInput (props) {
 						<MenuItem disabled className={styles.item}>
 							loading...
 						</MenuItem>
-					) : (
+					) : data.length > 0 ? (
 						data.map((item, index) => (
 							<AutocompleteItem
 								data={item}
@@ -153,6 +153,10 @@ export function SearchInput (props) {
 								onSelect={handleSelect}
 							/>
 						))
+					) : (
+						<MenuItem disabled className={styles.item}>
+							no results
+						</MenuItem>
 					)}
 				</Menu>
 			)}

@@ -30,10 +30,6 @@ export function Post (props) {
 
 	const auth = useStore(AuthStore);
 
-	if (!data.id) {
-		return null;
-	}
-
 	const originalWidth = data.image_width;
 	const originalHeight = data.image_height;
 	const [width, height] = GET_IMAGE_SIZE(originalWidth, originalHeight, POST_IMAGE_SMALL_SIZE);

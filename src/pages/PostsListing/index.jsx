@@ -122,6 +122,8 @@ function TagsList (props) {
 }
 
 // <PostsListing />
+const RE_ALLOW_DELETED = /\bstatus:(all|any|active|unmoderated|modqueue|deleted|appealed)\b/;
+
 function PostsListing (props) {
 	const { tags, page, limit, search, isInFavorite } = props;
 
@@ -129,7 +131,9 @@ function PostsListing (props) {
 		key: ['post/list', { tags, page, limit }],
 		fetch: getPostList,
 		staleTime: 60000,
-	})
+	});
+
+	const showDeleted = useMemo(() => RE_ALLOW_DELETED.test(tags), [tags]);
 
 
 	if (status === 'loading') {
@@ -141,15 +145,21 @@ function PostsListing (props) {
 	return (
 		<div className={styles.listing}>
 			{data.length > 0 ? (
-				data.map((item) => (
-					<Post
-						key={item.preview_file_url}
-						resource={createMappedResource(item)}
-						className={styles.item}
-						search={search}
-						isInFavorite={isInFavorite}
-					/>
-				))
+				data.map((item) => {
+					if (!item.id || (!showDeleted && item.is_deleted)) {
+						return null;
+					}
+
+					return (
+						<Post
+							key={item.preview_file_url}
+							resource={createMappedResource(item)}
+							className={styles.item}
+							search={search}
+							isInFavorite={isInFavorite}
+						/>
+					)
+				})
 			) : (
 				<p>Nothing to see here.</p>
 			)}

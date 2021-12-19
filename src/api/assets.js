@@ -41,6 +41,7 @@ const POST_LIST_FIELDS = [
 	'parent_id',
 	'has_active_children',
 	'is_pending',
+	'is_deleted',
 	'preview_file_url',
 	'image_width',
 	'image_height',

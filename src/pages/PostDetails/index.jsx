@@ -145,6 +145,7 @@ function TagsList (props) {
 // <PostDetails />
 const RE_EXT_IMAGE = /\.(png|jpe?g|gif|webp)$/i;
 const RE_EXT_VIDEO = /\.(mp4|webm)$/i;
+const RE_EXT = /(?<=\.)[a-z0-9.]+$/i;
 
 function PostDetails (props) {
 	const { post } = props;
@@ -155,29 +156,31 @@ function PostDetails (props) {
 
 	const auth = useStore(AuthStore);
 
+	const large_file_url = post.large_file_url;
+
 
 	return (
 		<>
 			<Card className={styles.post}>
-				<div key={post.large_file_url} className={styles.container}>
-					{RE_EXT_IMAGE.test(post.large_file_url) ? (
+				<div key={large_file_url} className={styles.container}>
+					{RE_EXT_IMAGE.test(large_file_url) ? (
 						<img
 							className={styles.media}
 							width={width}
 							height={height}
-							src={post.large_file_url}
+							src={large_file_url}
 						/>
-					) : RE_EXT_VIDEO.test(post.large_file_url) ? (
+					) : RE_EXT_VIDEO.test(large_file_url) ? (
 						<video
 							className={styles.media}
 							controls
 							width={width}
 							height={height}
-							src={post.large_file_url}
+							src={large_file_url}
 						/>
 					) : (
 						<div className={styles.unsupported}>
-							Post has unsupported file format
+							Post has unsupported file format: {RE_EXT.exec(large_file_url)?.[0] || '<missing file extension>'}
 						</div>
 					)}
 				</div>

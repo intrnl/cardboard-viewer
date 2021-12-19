@@ -100,6 +100,10 @@ function TagsList (props) {
 	});
 
 
+	if (data.length < 1) {
+		return null;
+	}
+
 	return (
 		<div>
 			<h3>Tags</h3>

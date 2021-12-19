@@ -13,7 +13,8 @@ import { PostsRelationship } from '~/components/PostsRelationship';
 import { Tag } from '~/components/Tag';
 import * as styles from './PostDetails.css';
 
-import FavoriteIcon from '~/icons/heart.svg';
+import HeartIcon from '~/icons/heart.svg';
+import DownloadIcon from '~/icons/download.svg';
 
 import { AuthStore, STATUS_LOGGED_IN } from '~/globals/auth';
 import { getFavoriteStatus, getPost } from '~/api/assets';
@@ -186,6 +187,10 @@ function PostDetails (props) {
 				</div>
 
 				<div className={styles.actions}>
+					<Button as='a' download href={post.file_url} title='Download' variant='ghost'>
+						<Icon src={DownloadIcon} />
+					</Button>
+
 					{auth.status === STATUS_LOGGED_IN && (
 						<Favorite postId={post.id} />
 					)}
@@ -249,7 +254,7 @@ function Favorite (props) {
 			onClick={handleClick}
 			className={clsx(favorited && styles.favorited)}
 		>
-			<Icon src={FavoriteIcon} />
+			<Icon src={HeartIcon} />
 		</Button>
 	);
 }

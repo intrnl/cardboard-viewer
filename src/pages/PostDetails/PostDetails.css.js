@@ -45,6 +45,7 @@ export const actions = style({
 	alignItems: 'center',
 	justifyContent: 'flex-end',
 	height: 48,
+	gap: 8,
 	paddingInline: 8,
 	borderTopStyle: 'solid',
 	borderTopWidth: 1,

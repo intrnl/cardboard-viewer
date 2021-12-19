@@ -140,15 +140,19 @@ function PostsListing (props) {
 
 	return (
 		<div className={styles.listing}>
-			{data.map((item) => (
-				<Post
-					key={item.preview_file_url}
-					resource={createMappedResource(item)}
-					className={styles.item}
-					search={search}
-					isInFavorite={isInFavorite}
-				/>
-			))}
+			{data.length > 0 ? (
+				data.map((item) => (
+					<Post
+						key={item.preview_file_url}
+						resource={createMappedResource(item)}
+						className={styles.item}
+						search={search}
+						isInFavorite={isInFavorite}
+					/>
+				))
+			) : (
+				<p>Nothing to see here.</p>
+			)}
 		</div>
 	);
 }

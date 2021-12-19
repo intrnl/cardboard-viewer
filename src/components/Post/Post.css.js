@@ -15,7 +15,7 @@ const hasStatus = style({
 }, 'has-status');
 
 export const isParent = style([hasStatus, {
-	borderColor: theme.palette.green[500],
+	borderColor: theme.palette.green[600],
 }], 'is-parent');
 
 export const isChild = style([hasStatus, {
@@ -27,16 +27,16 @@ export const isPending = style([hasStatus, {
 }], 'is-pending');
 
 globalStyle(`${isParent}${isChild}`, {
-	borderLeftColor: theme.palette.green[500],
+	borderLeftColor: theme.palette.green[600],
 	borderRightColor: theme.palette.yellow[500],
-	borderTopColor: theme.palette.green[500],
+	borderTopColor: theme.palette.green[600],
 	borderBottomColor: theme.palette.yellow[500],
 });
 
 globalStyle(`${isParent}${isPending}`, {
-	borderLeftColor: theme.palette.green[500],
+	borderLeftColor: theme.palette.green[600],
 	borderRightColor: theme.palette.blue[400],
-	borderTopColor: theme.palette.green[500],
+	borderTopColor: theme.palette.green[600],
 	borderBottomColor: theme.palette.blue[400],
 });
 

@@ -64,10 +64,6 @@ export const tags = style([constrained, {
 	padding: 16,
 }], 'tags');
 
-export const tagHeader = style({
-	fontSize: 14,
-}, 'tag-header');
-
 
 export const favorited = style({
 	color: theme.palette.red[600],

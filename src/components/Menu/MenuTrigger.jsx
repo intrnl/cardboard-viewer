@@ -54,10 +54,15 @@ async function handleToggle (event) {
 
 		computeFloatingPosition(summary, dialog, placement);
 		handleFocusTrapping(dialog);
+
+		details.$s ||= (event) => handleOutsideScroll(event, details);
+		document.addEventListener('scroll', details.$s, true);
 	}
 	else {
 		const focusable = details.childNodes[1];
 		focusable.focus();
+
+		document.removeEventListener('scroll', details.$s, true);
 	}
 }
 
@@ -104,4 +109,18 @@ function handleKeyDown (event) {
 
 	event.preventDefault();
 	handleFocusTrapping(dialog, isReverse ? -1 : 1);
+}
+
+function handleOutsideScroll (event, details) {
+	let target = event.target;
+
+	while (target) {
+		if (target === details) {
+			return;
+		}
+
+		target = target.parentElement;
+	}
+
+	details.removeAttribute('open');
 }

@@ -9,24 +9,42 @@ export const post = style({
 	position: 'relative',
 });
 
-const hasRelationship = style({
+const hasStatus = style({
 	borderStyle: 'solid',
 	borderWidth: 2,
-}, 'has-relationship');
+}, 'has-status');
 
-export const isParent = style([hasRelationship, {
+export const isParent = style([hasStatus, {
 	borderColor: theme.palette.green[500],
 }], 'is-parent');
 
-export const isChild = style([hasRelationship, {
+export const isChild = style([hasStatus, {
 	borderColor: theme.palette.yellow[500],
 }], 'is-child');
+
+export const isPending = style([hasStatus, {
+	borderColor: theme.palette.blue[400],
+}], 'is-pending');
 
 globalStyle(`${isParent}${isChild}`, {
 	borderLeftColor: theme.palette.green[500],
 	borderRightColor: theme.palette.yellow[500],
 	borderTopColor: theme.palette.green[500],
 	borderBottomColor: theme.palette.yellow[500],
+});
+
+globalStyle(`${isParent}${isPending}`, {
+	borderLeftColor: theme.palette.green[500],
+	borderRightColor: theme.palette.blue[400],
+	borderTopColor: theme.palette.green[500],
+	borderBottomColor: theme.palette.blue[400],
+});
+
+globalStyle(`${isChild}${isPending}`, {
+	borderLeftColor: theme.palette.yellow[500],
+	borderRightColor: theme.palette.blue[400],
+	borderTopColor: theme.palette.yellow[500],
+	borderBottomColor: theme.palette.blue[400],
 });
 
 

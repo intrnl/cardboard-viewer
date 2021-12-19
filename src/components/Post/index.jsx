@@ -44,6 +44,7 @@ export function Post (props) {
 			className={clsx(styles.post, className, {
 				[styles.isChild]: data.parent_id,
 				[styles.isParent]: data.has_active_children,
+				[styles.isPending]: data.is_pending,
 			})}
 		>
 			<Link className={styles.link} to={`/posts/${data.id}${search ? `?${search}` : ''}`}>

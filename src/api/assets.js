@@ -40,6 +40,7 @@ const POST_LIST_FIELDS = [
 	'id',
 	'parent_id',
 	'has_active_children',
+	'is_pending',
 	'preview_file_url',
 	'image_width',
 	'image_height',

@@ -12,6 +12,7 @@ export async function onRequest ({ request, params }) {
 	let response = await fetch(request);
 
 	response = new Response(response.body, response);
+	response.headers.delete('Set-Cookie');
 
 	return response;
 }

@@ -55,6 +55,8 @@ export function SearchInput (props) {
 
 		onChange(splice(value, pendingIndex, pendingInput.length + pad, selected + ' '));
 		setPendingInput('');
+
+		inputRef.current?.focus();
 	};
 
 	const handleKeyDown = (event) => {
@@ -94,8 +96,6 @@ export function SearchInput (props) {
 	const handleSelect = (index) => {
 		const selected = data[index];
 		applySelection(selected.value);
-
-		inputRef.current?.focus();
 	};
 
 	const handleInput = (event) => {

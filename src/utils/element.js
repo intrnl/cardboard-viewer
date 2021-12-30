@@ -27,7 +27,7 @@ export function isVisible (el) {
 }
 
 export function handleFocusTrapping (container, move = 0) {
-	const elements = [...container.querySelectorAll('*')].filter(isFocusable);
+	const elements = findFocusable(container);
 	const length = elements.length;
 
 	if (length < 1) {
@@ -57,4 +57,19 @@ export function handleFocusTrapping (container, move = 0) {
 
 	const focusable = elements[target];
 	focusable.focus();
+}
+
+export function findFocusable (container) {
+	const matches = [];
+	const nodes = container.querySelectorAll('*');
+
+	for (let index = 0, length = nodes.length; index < length; index++) {
+		const node = nodes[index];
+
+		if (isFocusable(node)) {
+			matches.push(node);
+		}
+	}
+
+	return matches;
 }

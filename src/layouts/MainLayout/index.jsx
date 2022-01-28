@@ -67,20 +67,15 @@ const DEFAULT_SEARCH_PARAMS = {
 
 function HeaderSearch () {
 	const navigate = useNavigate();
-	const [{ query }] = useSearchParams(DEFAULT_SEARCH_PARAMS);
+	const { tags: query } = useSearchParams(DEFAULT_SEARCH_PARAMS);
 
 	const [input, handleInputChange] = useDerivedState(query);
 
 	const handleSearch = () => {
-		let url = '/';
-
-		if (input) {
-			url += '?' + qss({ query: input });
-		}
-
-		navigate(url);
+		navigate('/posts?' + qss({ tags: input }));
 		window.scrollTo({ top: 0 });
 	};
+
 
 	return (
 		<SearchInput

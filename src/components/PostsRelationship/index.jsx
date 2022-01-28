@@ -32,8 +32,8 @@ export function PostsRelationship (props) {
 		staleTime: 60000,
 	});
 
-	const search = qss({ query: tags + ' ' });
-	const toSearch = `/?${search}`;
+	const search = qss({ tags: tags + ' ' });
+	const toSearch = '/posts?' + search;
 
 
 	return (

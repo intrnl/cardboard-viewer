@@ -1,6 +1,5 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
-import { qss } from '~/utils/qss.js';
 import { useFactoryMemo } from '~/utils/useFactoryMemo.js';
 
 /**
@@ -9,19 +8,13 @@ import { useFactoryMemo } from '~/utils/useFactoryMemo.js';
  * @param {import('react-router-dom').NavigateOptions} options
  * @returns {[T, (next: Partial<T>) => void]}
  */
-export function useSearchParams (init, options) {
-	const navigate = useNavigate();
+export function useSearchParams (init) {
 	const location = useLocation();
 
 	const search = location.search;
 	const params = useFactoryMemo(retrieveSearchParams, [search, init]);
 
-	const setParams = (next) => {
-		const url = '?' + qss({ ...params, ...next });
-		navigate(url, options);
-	};
-
-	return [params, setParams];
+	return params;
 }
 
 function retrieveSearchParams (search, init = null) {

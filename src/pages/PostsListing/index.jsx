@@ -1,6 +1,7 @@
 import { h } from 'preact';
 import { Suspense } from 'preact/compat';
 import { useMemo, useState } from 'preact/hooks';
+import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@intrnl/rq';
 import { useStore } from '~/lib/global-store';
 
@@ -23,13 +24,14 @@ import { qss } from '~/utils/qss';
 
 
 const DEFAULT_SEARCH_PARAMS = {
-	query: '',
+	tags: '',
 	page: '1',
 	limit: '20',
 };
 
 export default function PostsListingPage () {
-	const [{ query, page, limit }, setParams] = useSearchParams(DEFAULT_SEARCH_PARAMS);
+	const { tags: query, page, limit } = useSearchParams(DEFAULT_SEARCH_PARAMS);
+	const navigate = useNavigate();
 
 	const auth = useStore(AuthStore);
 	const RE_ORDFAV = auth.profile && (auth.profile._re_ordfav ||= new RegExp(`\\b(?:ord)?fav:${auth.profile.name}\\b`));
@@ -41,10 +43,10 @@ export default function PostsListingPage () {
 
 	const isInFavorite = useMemo(() => RE_ORDFAV?.test(tags), [tags]);
 
-	const search = query ? qss({ query }) : false;
+	const search = query ? qss({ tags: query }) : false;
 
 	const handlePageChange = (page) => {
-		setParams({ page });
+		navigate('/posts?' + qss({ tags: query, page, limit }));
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	};
 

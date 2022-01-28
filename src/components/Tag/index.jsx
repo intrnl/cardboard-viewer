@@ -40,7 +40,7 @@ export function Tag (props) {
 				[styles.isMeta]: cat === TAG_CATEGORY_META,
 			})}
 		>
-			<Link to={`/?${qss({ query: tag + ' ' })}`} className={styles.link}>
+			<Link to={'/posts?' + qss({ tags: tag + ' ' })} className={styles.link}>
 				{tag}
 			</Link>
 			{count > 0 && (

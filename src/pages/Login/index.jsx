@@ -22,7 +22,7 @@ const DEFAULT_SEARCH_PARAMS = {
 export default function NewLoginPage () {
 	const auth = useStore(AuthStore);
 	const navigate = useNavigate();
-	const [{ to }] = useSearchParams(DEFAULT_SEARCH_PARAMS);
+	const { to } = useSearchParams(DEFAULT_SEARCH_PARAMS);
 
 	const dispatching = auth.status === STATUS_VERIFYING;
 

@@ -94,7 +94,7 @@ function HeaderDesktopOnly () {
 
 	return (
 		<div className={styles.desktop}>
-			<NavLink to={'/?' + qss({ tags: 'order:rank ' })}>
+			<NavLink to={'/posts?' + qss({ tags: 'order:rank ' })}>
 				Hot
 			</NavLink>
 			<NavLink to='/posts/random'>
@@ -119,7 +119,7 @@ function HeaderDesktopOnly () {
 						<MenuLink to={`/users/${auth.profile.id}`}>
 							My Profile
 						</MenuLink>
-						<MenuLink to={'/?' + qss({ tags: `ordfav:${auth.profile.name} `})}>
+						<MenuLink to={'/posts?' + qss({ tags: `ordfav:${auth.profile.name} `})}>
 							My Favorites
 						</MenuLink>
 

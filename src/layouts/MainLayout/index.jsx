@@ -163,14 +163,14 @@ function HeaderMobileOnly () {
 							<MenuLink to={`/users/${auth.profile.id}`}>
 								My Profile
 							</MenuLink>
-							<MenuLink to={'/?' + qss({ query: `ordfav:${auth.profile.name} `})}>
+							<MenuLink to={'/?' + qss({ tags: `ordfav:${auth.profile.name} `})}>
 								My Favorites
 							</MenuLink>
 							<Divider orientation='horizontal' gap />
 						</>
 					)}
 
-					<MenuLink to={'/?' + qss({ query: 'order:rank ' })}>
+					<MenuLink to={'/?' + qss({ tags: 'order:rank ' })}>
 						Hot
 					</MenuLink>
 					<MenuLink to='/posts/random'>

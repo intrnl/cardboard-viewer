@@ -51,15 +51,21 @@ export function PostsRelationship (props) {
 				</span>
 			)}
 			<div className={styles.list}>
-				{posts.map((item) => (
-					<div className={clsx(styles.item, item.id === id && styles.isCurrent)}>
-						<Post
-							key={item.created_at}
-							resource={createMappedResource(item)}
-							search={search}
-						/>
-					</div>
-				))}
+				{posts.map((item) => {
+					if (!item.id) {
+						return null;
+					}
+
+					return (
+						<div className={clsx(styles.item, item.id === id && styles.isCurrent)}>
+							<Post
+								key={item.created_at}
+								resource={createMappedResource(item)}
+								search={search}
+							/>
+						</div>
+					);
+				})}
 			</div>
 		</Card>
 	);

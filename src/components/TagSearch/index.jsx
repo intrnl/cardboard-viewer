@@ -184,7 +184,7 @@ function AutocompleteItem (props) {
 	return (
 		<MenuItem
 			as={Link}
-			to={`/?query=${data.value}+`}
+			to={`/?tags=${data.value}+`}
 			tabIndex={-1}
 			className={clsx(styles.item, selected && styles.isActive)}
 			onClick={handleClick}

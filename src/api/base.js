@@ -3,8 +3,9 @@ export const PROXY_URL = process.env.APP_PROXY_URL;
 
 
 export class ResponseError extends Error {
-	constructor (response) {
+	constructor (response, data) {
 		super(`Response error ${response.status}`);
 		this.response = response;
+		this.data = data;
 	}
 }

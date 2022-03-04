@@ -15,7 +15,13 @@ export async function fetcher (url, params) {
 	const response = await fetch(`${API_URL}${url}?${query}`);
 
 	if (!response.ok) {
-		throw new ResponseError(response);
+		let data;
+
+		try {
+			data = await response.json();
+		} catch {}
+
+		throw new ResponseError(response, data);
 	}
 
 	return response.json();

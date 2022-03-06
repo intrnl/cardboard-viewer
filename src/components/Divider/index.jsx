@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import clsx from 'clsx';
 
-import * as styles from './Divider.css';
+import styles from './Divider.module.css';
 
 
 export function Divider (props) {

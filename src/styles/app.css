@@ -1,0 +1,78 @@
+:root {
+	--palette-black: #000000;
+	--palette-white: #ffffff;
+
+	--palette-gray-50: #F9FAFB;
+	--palette-gray-100: #F3F4F6;
+	--palette-gray-200: #E5E7EB;
+	--palette-gray-300: #D1D5DB;
+	--palette-gray-400: #9CA3AF;
+	--palette-gray-500: #6B7280;
+	--palette-gray-600: #4B5563;
+	--palette-gray-700: #374151;
+	--palette-gray-800: #1F2937;
+	--palette-gray-900: #111827;
+
+	--palette-red-50: #FEF2F2;
+	--palette-red-100: #FEE2E2;
+	--palette-red-200: #FECACA;
+	--palette-red-300: #FCA5A5;
+	--palette-red-400: #F87171;
+	--palette-red-500: #EF4444;
+	--palette-red-600: #DC2626;
+	--palette-red-700: #B91C1C;
+	--palette-red-800: #991B1B;
+	--palette-red-900: #7F1D1D;
+
+	--palette-blue-50: #EFF6FF;
+	--palette-blue-100: #DBEAFE;
+	--palette-blue-200: #BFDBFE;
+	--palette-blue-300: #93C5FD;
+	--palette-blue-400: #60A5FA;
+	--palette-blue-500: #3B82F6;
+	--palette-blue-600: #2563EB;
+	--palette-blue-700: #1D4ED8;
+	--palette-blue-800: #1E40AF;
+	--palette-blue-900: #1E3A8A;
+
+	--palette-pink-50: #FDF2F8;
+	--palette-pink-100: #FCE7F3;
+	--palette-pink-200: #FBCFE8;
+	--palette-pink-300: #F9A8D4;
+	--palette-pink-400: #F472B6;
+	--palette-pink-500: #EC4899;
+	--palette-pink-600: #DB2777;
+	--palette-pink-700: #BE185D;
+	--palette-pink-800: #9D174D;
+	--palette-pink-900: #831843;
+
+	--palette-green-50: #ECFDF5;
+	--palette-green-100: #D1FAE5;
+	--palette-green-200: #A7F3D0;
+	--palette-green-300: #6EE7B7;
+	--palette-green-400: #34D399;
+	--palette-green-500: #10B981;
+	--palette-green-600: #059669;
+	--palette-green-700: #047857;
+	--palette-green-800: #065F46;
+	--palette-green-900: #064E3B;
+
+	--palette-yellow-50: #FFFBEB;
+	--palette-yellow-100: #FEF3C7;
+	--palette-yellow-200: #FDE68A;
+	--palette-yellow-300: #FCD34D;
+	--palette-yellow-400: #FBBF24;
+	--palette-yellow-500: #F59E0B;
+	--palette-yellow-600: #D97706;
+	--palette-yellow-700: #B45309;
+	--palette-yellow-800: #92400E;
+	--palette-yellow-900: #78350F;
+
+	--shadow-main: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+	--shadow-small: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+	--shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+body {
+	background-color: var(--palette-gray-100);
+}

@@ -12,7 +12,7 @@ import { Divider } from '~/components/Divider';
 import { Icon } from '~/components/Icon';
 import { SearchInput } from '~/components/TagSearch';
 import { CircularProgress } from '~/components/CircularProgress';
-import * as styles from './MainLayout.css';
+import styles from './MainLayout.module.css';
 
 import ArchiveIcon from '~/icons/archive.svg';
 import MenuIcon from '~/icons/menu.svg';

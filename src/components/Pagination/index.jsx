@@ -2,7 +2,7 @@ import { h } from 'preact';
 
 import clsx from 'clsx';
 import { Icon } from '~/components/Icon';
-import * as styles from './Pagination.css';
+import styles from './Pagination.module.css';
 
 import DotsHorizIcon from '~/icons/dots-horizontal.svg';
 import ChevronLeftIcon from '~/icons/chevron-left.svg';

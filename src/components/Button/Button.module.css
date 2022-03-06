@@ -1,0 +1,67 @@
+.button {
+	composes: interactable from '~/styles/misc/interactions.module.css';
+	composes: focusable from '~/styles/misc/interactions.module.css';
+	composes: control from '~/styles/misc/controls.module.css';
+
+	font-weight: 500;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: calc(8px * 1);
+	height: calc(8px * 4);
+	min-width: calc(8px * 4);
+	padding: calc(8px * 1);
+	border: 0;
+}
+
+.button:disabled {
+	color: var(--palette-gray-400);
+	pointer-events: none;
+}
+
+/* Primary variant */
+.isPrimary {
+	color: var(--palette-white);
+	background-color: var(--palette-blue-600);
+	box-shadow: var(--shadow-small);
+}
+
+.isPrimary:hover {
+	background-color: var(--palette-blue-700);
+}
+
+.isPrimary:focus-visible {
+	outline-offset: 2px;
+}
+
+.isPrimary:disabled {
+	background-color: var(--palette-blue-500);
+	color: var(--palette-blue-200);
+}
+
+/* Default variant */
+.isDefault {
+	color: var(--palette-gray-800);
+	background-color: var(--palette-white);
+	box-shadow: var(--shadow-small);
+	border: 1px solid var(--palette-gray-300);
+}
+
+.isDefault:hover {
+	background-color: var(--palette-gray-50);
+}
+
+.isDefault:disabled {
+	border-color: var(--palette-gray-200);
+}
+
+/* Ghost variant */
+.isGhost {
+	color: var(--palette-gray-800);
+	background-color: transparent;
+}
+
+.isGhost:hover {
+	background-color: var(--palette-gray-200);
+}

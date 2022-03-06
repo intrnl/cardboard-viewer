@@ -2,7 +2,7 @@ import { h } from 'preact';
 
 import clsx from 'clsx';
 import { Link } from '~/components/Link';
-import * as styles from './Tag.css';
+import styles from './Tag.module.css';
 
 import {
 	TAG_CATEGORY_GENERAL,

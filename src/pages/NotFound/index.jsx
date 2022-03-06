@@ -2,7 +2,7 @@ import { h } from 'preact';
 
 import { Button } from '~/components/Button';
 import { Link } from '~/components/Link';
-import * as styles from './NotFound.css';
+import styles from './NotFound.module.css';
 
 
 export default function NotFoundPage () {

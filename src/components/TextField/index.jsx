@@ -2,8 +2,8 @@ import { h } from 'preact';
 import { forwardRef } from 'preact/compat';
 
 import clsx from 'clsx';
-import * as controls from '~/styles/misc/controls.css';
-import * as styles from './TextField.css';
+import controls from '~/styles/misc/controls.module.css';
+import styles from './TextField.module.css';
 
 
 const TextFieldRef = forwardRef(TextField);
@@ -18,7 +18,7 @@ function TextField (props, ref) {
 	} = props;
 
 	const cn = clsx(styles.field, {
-		[styles.isFullWidth]: fullWidth,
+		[styles.isFullwidth]: fullWidth,
 		[controls.isStart]: position === 'start',
 		[controls.isMiddle]: position === 'middle',
 		[controls.isEnd]: position === 'end',

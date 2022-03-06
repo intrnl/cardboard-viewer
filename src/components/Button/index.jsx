@@ -2,8 +2,8 @@ import { h } from 'preact';
 import { forwardRef } from 'preact/compat';
 
 import clsx from 'clsx';
-import * as controls from '~/styles/misc/controls.css';
-import * as styles from './Button.css';
+import controls from '~/styles/misc/controls.module.css';
+import styles from './Button.module.css';
 
 
 const ButtonRef = forwardRef(Button);

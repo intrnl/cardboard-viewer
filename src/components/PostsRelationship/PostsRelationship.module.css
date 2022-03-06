@@ -1,0 +1,22 @@
+.relationship {
+	gap: calc(8px * 2);
+	padding: calc(8px * 2);
+}
+
+.list {
+	display: flex;
+	align-items: center;
+	gap: calc(8px * 1);
+	padding: calc(8px * 2);
+	margin: calc(8px * -2);
+	overflow-x: auto;
+}
+
+.item {
+	padding: calc(8px * 0.5);
+	border-radius: 4px;
+}
+
+.isCurrent {
+	background-color: var(--palette-gray-300);
+}

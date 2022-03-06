@@ -6,7 +6,7 @@ import { useStore } from '~/lib/global-store';
 import clsx from 'clsx';
 import { Link } from '~/components/Link';
 import { Icon } from '~/components/Icon';
-import * as styles from './Post.css';
+import styles from './Post.module.css';
 
 import HeartIcon from '~/icons/heart.svg';
 

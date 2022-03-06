@@ -1,7 +1,7 @@
 import { h } from 'preact';
 
 import clsx from 'clsx';
-import * as styles from './SideView.css';
+import styles from './SideView.module.css';
 
 
 export function SideView (props) {

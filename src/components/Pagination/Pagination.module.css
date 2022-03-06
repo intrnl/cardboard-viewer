@@ -1,0 +1,22 @@
+.pagination {
+	display: flex;
+	justify-content: center;
+	gap: calc(8px * 1);
+}
+
+.button {
+	composes: button from '~/components/Button/Button.module.css';
+	composes: isGhost from '~/components/Button/Button.module.css';
+}
+
+.isActive {
+	font-weight: 700;
+	color: var(--palette-blue-900);
+	background-color: var(--palette-blue-100);
+}
+
+@media (max-width: 530px) {
+	.isPage:not(.isActive), .isEllipsis {
+		display: none;
+	}
+}

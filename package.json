@@ -18,8 +18,10 @@
 		"@intrnl/cssom-utils": "^0.2.3",
 		"@intrnl/esbuild-plugin-build-analysis": "^0.1.2",
 		"@intrnl/esbuild-plugin-env": "^0.1.3",
+		"@intrnl/esbuild-plugin-postcss": "^0.4.1",
 		"@intrnl/esbuild-plugin-vanilla-extract": "^0.2.1",
 		"@vanilla-extract/css": "^1.6.8",
-		"esbuild": "^0.14.25"
+		"esbuild": "^0.14.25",
+		"postcss": "^8.4.7"
 	}
 }

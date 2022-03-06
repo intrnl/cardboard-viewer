@@ -1,0 +1,14 @@
+.interactable {
+	cursor: pointer;
+}
+
+.focusable {
+	outline-color: var(--palette-blue-600);
+	outline-offset: -1px;
+}
+
+.focusable:focus-visible {
+	outline-style: solid;
+	outline-width: 2px;
+	z-index: 1;
+}

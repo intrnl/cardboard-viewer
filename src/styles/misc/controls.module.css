@@ -1,0 +1,19 @@
+.control {
+	border-radius: 4px;
+}
+
+.isStart {
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+.isMiddle {
+	border-radius: 0px;
+	margin-left: -1px;
+}
+
+.isEnd {
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+	margin-left: -1px;
+}

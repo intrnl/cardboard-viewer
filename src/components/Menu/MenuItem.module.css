@@ -1,0 +1,16 @@
+.item {
+	composes: button from '~/components/Button/Button.module.css';
+	composes: isGhost from '~/components/Button/Button.module.css';
+
+	font-weight: 400;
+	line-height: 16px;
+	justify-content: flex-start;
+	height: auto;
+	border-radius: 0px;
+}
+
+.item:is(:hover, :active, :focus-visible) {
+	color: var(--palette-white);
+	background-color: var(--palette-blue-600);
+	outline-width: 0px;
+}

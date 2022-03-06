@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import { Link } from '~/components/Link';
 import { Post } from '~/components/Post';
 import { Card } from '~/components/Card';
-import * as styles from './PostsRelationship.css';
+import styles from './PostsRelationship.module.css';
 
 import { getPostList, getPostCount } from '~/api/assets';
 

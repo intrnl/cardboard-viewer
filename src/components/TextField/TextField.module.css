@@ -1,0 +1,29 @@
+.field {
+	composes: focusable from '~/styles/misc/interactions.module.css';
+	composes: control from '~/styles/misc/controls.module.css';
+
+	color: var(--palette-black);
+	background-color: var(--palette-white);
+	box-shadow: var(--shadow-small);
+	min-height: calc(8px * 4);
+	padding-inline: calc(8px * 1);
+	padding-block: calc(8px * 0.5);
+	border: 1px solid var(--palette-gray-300);
+}
+
+.field:disabled {
+	color: var(--palette-gray-400);
+	background-color: var(--palette-gray-100);
+}
+
+.field::placeholder {
+	color: var(--palette-gray-600);
+}
+
+.field::-webkit-search-cancel-button {
+	display: none;
+}
+
+.isFullwidth {
+	width: 100%;
+}

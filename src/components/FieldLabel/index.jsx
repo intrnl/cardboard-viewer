@@ -2,7 +2,7 @@ import { h } from 'preact';
 import { forwardRef } from 'preact/compat';
 
 import clsx from 'clsx';
-import * as styles from './FieldLabel.css';
+import styles from './FieldLabel.module.css';
 
 
 const FieldLabelRef = forwardRef(FieldLabel);

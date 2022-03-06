@@ -1,6 +1,6 @@
 import { h } from 'preact';
 
-import * as styles from './FlexSpacer.css';
+import styles from './FlexSpacer.module.css';
 
 
 export function FlexSpacer () {

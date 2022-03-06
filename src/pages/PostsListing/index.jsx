@@ -10,7 +10,7 @@ import { Post, PostFallback } from '~/components/Post';
 import { Pagination } from '~/components/Pagination';
 import { Tag } from '~/components/Tag';
 import { CircularProgress } from '~/components/CircularProgress';
-import * as styles from './PostsListing.css';
+import styles from './PostsListing.module.css';
 
 import { AuthStore } from '~/globals/auth';
 import { getPostList, getPostCount, getPopularTags, getRelatedTags } from '~/api/assets';

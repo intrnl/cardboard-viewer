@@ -7,7 +7,7 @@ import { Card } from '~/components/Card';
 import { FieldLabel } from '~/components/FieldLabel';
 import { TextField } from '~/components/TextField';
 import { Button } from '~/components/Button';
-import * as styles from './Login.css';
+import styles from './Login.module.css';
 
 import { AuthStore, login, STATUS_LOGGED_IN, STATUS_VERIFYING } from '~/globals/auth.js';
 

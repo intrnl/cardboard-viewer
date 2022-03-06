@@ -1,0 +1,33 @@
+.search {
+	width: 100%;
+	position: relative;
+}
+
+.container {
+	color: inherit;
+}
+
+.menu {
+	width: 100%;
+	margin-top: calc(8px * 0.5);
+	position: absolute;
+	top: 100%;
+}
+
+.search:not(:focus-within) .menu {
+	display: none;
+}
+
+/* Item */
+.item {
+	justify-content: space-between;
+}
+
+.isActive {
+	color: var(--palette-white);
+	background-color: var(--palette-blue-600);
+}
+
+.postCount {
+	opacity: 0.75;
+}

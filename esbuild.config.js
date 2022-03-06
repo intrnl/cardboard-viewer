@@ -1,7 +1,7 @@
 import * as esbuild from 'esbuild';
 
 import env from '@intrnl/esbuild-plugin-env';
-import vanillaExtract from '@intrnl/esbuild-plugin-vanilla-extract';
+import postcss from '@intrnl/esbuild-plugin-postcss';
 
 
 /** @type {esbuild.BuildOptions} */
@@ -21,6 +21,6 @@ export let config = {
 
 	plugins: [
 		env(),
-		vanillaExtract(),
+		postcss(),
 	],
 };

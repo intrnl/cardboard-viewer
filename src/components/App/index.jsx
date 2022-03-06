@@ -7,7 +7,7 @@ import { AppRouter } from './AppRouter';
 import { ErrorBoundary } from '~/components/ErrorBoundary';
 import { CircularProgress } from '~/components/CircularProgress';
 import { Button } from '~/components/Button';
-import * as styles from './App.css';
+import styles from './App.module.css';
 
 import { history } from '~/globals/history.js';
 

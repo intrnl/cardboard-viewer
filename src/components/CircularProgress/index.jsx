@@ -1,6 +1,6 @@
 import { h } from 'preact';
 
-import * as styles from './CircularProgress.css';
+import styles from './CircularProgress.module.css';
 
 
 export function CircularProgress (props) {

@@ -1,0 +1,21 @@
+.container {
+	position: relative;
+}
+
+.container[open] {
+	z-index: 4;
+}
+
+.container[open] .overlay {
+	display: block;
+	position: fixed;
+	inset: 0px;
+}
+
+.popup {
+	opacity: 0;
+	min-width: 250px;
+	max-width: calc(100vw - (16px * 2));
+	position: fixed;
+	z-index: 3;
+}

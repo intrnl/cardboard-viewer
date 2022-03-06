@@ -1,0 +1,35 @@
+.container {
+	--main-width: 850px;
+	--aside-width: 330px;
+	display: grid;
+	grid-template-areas: 'main' 'aside';
+	grid-template-columns: minmax(0, var(--main-width));
+	justify-content: center;
+	gap: calc(8px * 1);
+	padding: calc(8px * 1);
+}
+
+@media (min-width: 1024px) {
+	.container {
+		grid-template-areas: 'main aside';
+		grid-template-columns: minmax(0, var(--main-width)) var(--aside-width);
+	}
+
+	.isFlow {
+		--main-width: 1fr;
+	}
+}
+
+.area {
+	display: flex;
+	flex-direction: column;
+}
+
+.main {
+	composes: area;
+	grid-area: main;
+}
+
+.aside {
+	grid-area: aside;
+}

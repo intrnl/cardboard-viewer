@@ -1,0 +1,85 @@
+.post {
+	background-color: var(--palette-gray-200);
+	position: relative;
+}
+
+/* Content */
+.link {
+	composes: focusable from '~/styles/misc/interactions.module.css';
+	outline-offset: 2px;
+}
+
+.image {
+	color: transparent;
+}
+
+/* Status */
+.hasStatus {
+	border: 2px solid;
+}
+
+.isParent {
+	composes: hasStatus;
+	border-color: var(--palette-green-600);
+}
+
+.isChild {
+	composes: hasStatus;
+	border-color: var(--palette-yellow-500);
+}
+
+.isPending {
+	composes: hasStatus;
+	border-color: var(--palette-blue-400);
+}
+
+.isParent.isChild {
+	border-left-color: var(--palette-green-600);
+	border-right-color: var(--palette-yellow-500);
+	border-top-color: var(--palette-green-600);
+	border-bottom-color: var(--palette-yellow-500);
+}
+
+.isParent.isPending {
+	border-left-color: var(--palette-green-600);
+	border-right-color: var(--palette-blue-400);
+	border-top-color: var(--palette-green-600);
+	border-bottom-color: var(--palette-blue-400);
+}
+
+.isChild.isPending {
+	border-left-color: var(--palette-yellow-500);
+	border-right-color: var(--palette-blue-400);
+	border-top-color: var(--palette-yellow-500);
+	border-bottom-color: var(--palette-blue-400);
+}
+
+/* Favorites */
+.favorite {
+	all: unset;
+	appearance: unset;
+	cursor: pointer;
+	color: var(--palette-white);
+	padding: calc(8px * 0.5);
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 2;
+}
+
+.favorite:disabled {
+	opacity: 0.25;
+}
+
+.favorite:hover {
+	color: var(--palette-red-300);
+}
+
+.isFavorited, .isFavorited:hover {
+	color: var(--palette-red-600);
+}
+
+.favoriteIcon {
+	stroke: var(--palette-black);
+	stroke-width: 2px;
+}

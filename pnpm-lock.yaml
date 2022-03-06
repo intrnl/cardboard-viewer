@@ -4,6 +4,7 @@ specifiers:
   '@intrnl/cssom-utils': ^0.2.3
   '@intrnl/esbuild-plugin-build-analysis': ^0.1.2
   '@intrnl/esbuild-plugin-env': ^0.1.3
+  '@intrnl/esbuild-plugin-postcss': ^0.4.1
   '@intrnl/esbuild-plugin-vanilla-extract': ^0.2.1
   '@intrnl/rq': ^0.1.13
   '@intrnl/stable-stringify': ^0.1.1
@@ -12,6 +13,7 @@ specifiers:
   esbuild: ^0.14.25
   history: ^5.3.0
   nanopop: ^2.1.0
+  postcss: ^8.4.7
   preact: https://pkg.csb.dev/preactjs/preact/commit/424e4268/preact
   react-router-dom: ^6.2.2
 
@@ -28,9 +30,11 @@ devDependencies:
   '@intrnl/cssom-utils': 0.2.3
   '@intrnl/esbuild-plugin-build-analysis': 0.1.2_esbuild@0.14.25
   '@intrnl/esbuild-plugin-env': 0.1.3_esbuild@0.14.25
+  '@intrnl/esbuild-plugin-postcss': 0.4.1_esbuild@0.14.25+postcss@8.4.7
   '@intrnl/esbuild-plugin-vanilla-extract': 0.2.1_esbuild@0.14.25
   '@vanilla-extract/css': 1.6.8
   esbuild: 0.14.25
+  postcss: 8.4.7
 
 packages:
 
@@ -69,6 +73,18 @@ packages:
       escalade: 3.1.1
     dev: true
 
+  /@intrnl/esbuild-plugin-postcss/0.4.1_esbuild@0.14.25+postcss@8.4.7:
+    resolution: {integrity: sha512-Vbpf6CCjKOEMbDz6Jiv4wiu3eFFv33s8frcXZ1baRVnoe0GurnP5lWoJ8PUypYdYGch5xlKJwW0XptbqfeHTPw==}
+    peerDependencies:
+      esbuild: '>=0.14.8'
+      postcss: ^8.4.0
+    dependencies:
+      '@intrnl/fs-cache': 0.2.3
+      '@intrnl/postcss-modules': 0.2.1_postcss@8.4.7
+      esbuild: 0.14.25
+      postcss: 8.4.7
+    dev: true
+
   /@intrnl/esbuild-plugin-vanilla-extract/0.2.1_esbuild@0.14.25:
     resolution: {integrity: sha512-HEQj8RteOQCGryIFvyCapXdXFlTH5qhSM+8yWlqxmw/oogPOZblX1eh79ncu78RojaKyKZMcWebRt9dKnm2HJg==}
     peerDependencies:
@@ -85,6 +101,14 @@ packages:
       '@intrnl/xxhash64': 0.1.1
       escalade: 3.1.1
       stable-hash: 0.0.2
+    dev: true
+
+  /@intrnl/postcss-modules/0.2.1_postcss@8.4.7:
+    resolution: {integrity: sha512-7WDR8EMe3rAZp8x9p6KnII4SkPa2jfPXOm+8EBKOZliEuQmEhzP6cBeU5evLig96evLwdfZvg9cMmJ1a7N6kyQ==}
+    peerDependencies:
+      postcss: '>=8.4.7'
+    dependencies:
+      postcss: 8.4.7
     dev: true
 
   /@intrnl/rq/0.1.13_preact@10.5.13:
@@ -469,6 +493,12 @@ packages:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
     dev: true
 
+  /nanoid/3.3.1:
+    resolution: {integrity: sha512-n6Vs/3KGyxPQd6uO0eH4Bv0ojGSUvuLlIHtC3Y0kEO23YRge8H9x1GCzLn28YX0H66pMkxuaeESFq4tKISKwdw==}
+    engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
+    hasBin: true
+    dev: true
+
   /nanopop/2.1.0:
     resolution: {integrity: sha512-jGTwpFRexSH+fxappnGQtN9dspgE2ipa1aOjtR24igG0pv6JCxImIAmrLRHX+zUF5+1wtsFVbKyfP51kIGAVNw==}
     dev: false
@@ -496,6 +526,19 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /picocolors/1.0.0:
+    resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
+    dev: true
+
+  /postcss/8.4.7:
+    resolution: {integrity: sha512-L9Ye3r6hkkCeOETQX6iOaWZgjp3LL6Lpqm6EtgbKrgqGGteRMNb9vzBfRL96YOSu8o7x3MfIH9Mo5cPJFGrW6A==}
+    engines: {node: ^10 || ^12 || >=14}
+    dependencies:
+      nanoid: 3.3.1
+      picocolors: 1.0.0
+      source-map-js: 1.0.2
+    dev: true
+
   /react-router-dom/6.2.2:
     resolution: {integrity: sha512-AtYEsAST7bDD4dLSQHDnk/qxWLJdad5t1HFa1qJyUrCeGgEuCSw0VB/27ARbF9Fi/W5598ujvJOm3ujUCVzuYQ==}
     peerDependencies:
@@ -520,6 +563,11 @@ packages:
 
   /require-like/0.1.2:
     resolution: {integrity: sha1-rW8wwTvs15cBDEaK+ndcDAprR/o=}
+    dev: true
+
+  /source-map-js/1.0.2:
+    resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
+    engines: {node: '>=0.10.0'}
     dev: true
 
   /stable-hash/0.0.2:

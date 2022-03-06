@@ -1,0 +1,42 @@
+.tag {
+	display: flex;
+	gap: calc(8px * 1);
+}
+
+/* Content */
+.link {
+	color: inherit;
+	text-decoration: none;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.link:hover {
+	text-decoration: underline;
+}
+
+.count {
+	color: var(--palette-gray-400);
+}
+
+/* Category */
+.isGeneral {
+	color: var(--palette-blue-700);
+}
+
+.isArtist {
+	color: var(--palette-red-700);
+}
+
+.isCopyright {
+	color: var(--palette-pink-700);
+}
+
+.isCharacter {
+	color: var(--palette-green-700);
+}
+
+.isMeta {
+	color: var(--palette-yellow-600);
+}

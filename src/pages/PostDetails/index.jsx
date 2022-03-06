@@ -11,7 +11,7 @@ import { Button } from '~/components/Button';
 import { Icon } from '~/components/Icon';
 import { PostsRelationship } from '~/components/PostsRelationship';
 import { Tag } from '~/components/Tag';
-import * as styles from './PostDetails.css';
+import styles from './PostDetails.module.css';
 
 import HeartIcon from '~/icons/heart.svg';
 import DownloadIcon from '~/icons/download.svg';

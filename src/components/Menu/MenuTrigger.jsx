@@ -1,7 +1,7 @@
 import { h, cloneElement } from 'preact';
 
 import clsx from 'clsx';
-import * as styles from './MenuTrigger.css';
+import styles from './MenuTrigger.module.css';
 
 import { computeFloatingPosition, handleFocusTrapping, isFocusable } from '~/utils/element';
 

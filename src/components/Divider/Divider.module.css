@@ -1,0 +1,16 @@
+.divider {
+	align-self: stretch;
+	height: unset;
+	margin: 0;
+	border-top: 1px solid;
+	border-right: 1px solid;
+	border-color: var(--palette-gray-300);
+}
+
+.isGap.isVertical {
+	margin-inline: calc(8px * 1);
+}
+
+.isGap.isHorizontal {
+	margin-block: calc(8px * 1);
+}

@@ -1,0 +1,15 @@
+.fallback {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: calc(8px * 2);
+}
+
+.error {
+	composes: fallback;
+	max-width: 500px;
+	gap: calc(8px * 2);
+	margin-inline: auto;
+}

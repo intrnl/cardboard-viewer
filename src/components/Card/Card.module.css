@@ -1,0 +1,9 @@
+.card {
+	background-color: var(--palette-white);
+	box-shadow: var(--shadow-main);
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	border: 1px solid var(--palette-gray-300);
+	border-radius: 4px;
+}

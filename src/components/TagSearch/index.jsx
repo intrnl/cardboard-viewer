@@ -9,7 +9,7 @@ import { TextField } from '~/components/TextField';
 import { InputGroup } from '~/components/InputGroup';
 import { Menu, MenuItem } from '~/components/Menu';
 import { Icon } from '~/components/Icon';
-import * as styles from './TagSearch.css';
+import styles from './TagSearch.module.css';
 
 import SearchIcon from '~/icons/search.svg';
 

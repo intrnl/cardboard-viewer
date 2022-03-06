@@ -3,7 +3,7 @@ import { forwardRef } from 'preact/compat';
 
 import clsx from 'clsx';
 import { Button } from '~/components/Button';
-import * as styles from './Menu.css';
+import styles from './Menu.module.css';
 
 
 // <Menu />

@@ -1,0 +1,10 @@
+.menu {
+	background-color: var(--palette-white);
+	box-shadow: var(--shadow-large);
+	display: flex;
+	flex-direction: column;
+	padding-block: calc(8px * 0.5);
+	border: 1px solid var(--palette-gray-300);
+	border-radius: 4px;
+	z-index: 3;
+}

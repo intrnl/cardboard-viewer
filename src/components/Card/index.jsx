@@ -2,7 +2,7 @@ import { h } from 'preact';
 import { forwardRef } from 'preact/compat';
 
 import clsx from 'clsx';
-import * as styles from './Card.css';
+import styles from './Card.module.css';
 
 
 const CardRef = forwardRef(Card);

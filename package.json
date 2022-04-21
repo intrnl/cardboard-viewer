@@ -11,7 +11,7 @@
 		"clsx": "^1.1.1",
 		"history": "^5.3.0",
 		"nanopop": "^2.1.0",
-		"preact": "npm:@intrnl/preact@^11.0.0-trunk.ac88f1f7",
+		"preact": "https://pkg.csb.dev/preactjs/preact/commit/424e4268/preact",
 		"react-router-dom": "^6.3.0"
 	},
 	"devDependencies": {

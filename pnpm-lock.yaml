@@ -12,16 +12,16 @@ specifiers:
   esbuild: ^0.14.37
   history: ^5.3.0
   nanopop: ^2.1.0
-  preact: npm:@intrnl/preact@^11.0.0-trunk.ac88f1f7
+  preact: https://pkg.csb.dev/preactjs/preact/commit/424e4268/preact
   react-router-dom: ^6.3.0
 
 dependencies:
-  '@intrnl/rq': 0.1.13_2c47860fbbbc6eb6ead3243c0e30fb5b
+  '@intrnl/rq': 0.1.13_preact@10.5.13
   '@intrnl/stable-stringify': 0.1.1
   clsx: 1.1.1
   history: 5.3.0
   nanopop: 2.1.0
-  preact: /@intrnl/preact/11.0.0-trunk.ac88f1f7
+  preact: '@pkg.csb.dev/preactjs/preact/commit/424e4268/preact'
   react-router-dom: 6.3.0
 
 devDependencies:
@@ -87,19 +87,13 @@ packages:
       stable-hash: 0.0.2
     dev: true
 
-  /@intrnl/preact/11.0.0-trunk.ac88f1f7:
-    resolution: {integrity: sha512-OeiOiAtZhVtLs2Cv0/WApt1kkej2pv5SUWwSsGnN4RtjevObE8WB2pKROw7A/UHOkw2y3QMALooZD++HWRlzhg==}
-    dependencies:
-      pretty-format: 27.5.1
-    dev: false
-
-  /@intrnl/rq/0.1.13_2c47860fbbbc6eb6ead3243c0e30fb5b:
+  /@intrnl/rq/0.1.13_preact@10.5.13:
     resolution: {integrity: sha512-N53QTUIqaKZekWDEtFViW+ZWwC0P5sSfN3N1WGLwVfhXPhsH6hx+eFj1XOaMf/+99Hx71MVFhqhPOCBKPVcK4Q==}
     peerDependencies:
       preact: '>=10.5.0'
     dependencies:
       '@intrnl/stable-stringify': 0.1.1
-      preact: /@intrnl/preact/11.0.0-trunk.ac88f1f7
+      preact: '@pkg.csb.dev/preactjs/preact/commit/424e4268/preact'
     dev: false
 
   /@intrnl/stable-stringify/0.1.1:
@@ -146,22 +140,12 @@ packages:
     resolution: {integrity: sha512-17kVyLq3ePTKOkveHxXuIJZtGYs+cSoev7BlP+Lf4916qfDhk/HBjvlYDe8egrea7LNPHKwSZJK/bzZC+Q6AwQ==}
     dev: true
 
-  /ansi-regex/5.0.1:
-    resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
-    engines: {node: '>=8'}
-    dev: false
-
   /ansi-styles/4.3.0:
     resolution: {integrity: sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==}
     engines: {node: '>=8'}
     dependencies:
       color-convert: 2.0.1
     dev: true
-
-  /ansi-styles/5.2.0:
-    resolution: {integrity: sha512-Cxwpt2SfTzTtXcfOlzGEee8O+c+MmUgGrNiBcXnuWxuFJHe6a5Hz7qwhwe5OgaSYI0IJvkLqWX1ASG+cJOkEiA==}
-    engines: {node: '>=10'}
-    dev: false
 
   /chalk/4.1.2:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
@@ -521,19 +505,6 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /pretty-format/27.5.1:
-    resolution: {integrity: sha512-Qb1gy5OrP5+zDf2Bvnzdl3jsTf1qXVMazbvCoKhtKqVs4/YK4ozX4gKQJJVyNe+cajNPn0KoC0MC3FUmaHWEmQ==}
-    engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
-    dependencies:
-      ansi-regex: 5.0.1
-      ansi-styles: 5.2.0
-      react-is: 17.0.2
-    dev: false
-
-  /react-is/17.0.2:
-    resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
-    dev: false
-
   /react-router-dom/6.3.0:
     resolution: {integrity: sha512-uaJj7LKytRxZNQV8+RbzJWnJ8K2nPsOOEuX7aQstlMZKQT0164C+X2w6bnkqU3sjtLvpd5ojrezAyfZ1+0sStw==}
     peerDependencies:
@@ -575,3 +546,9 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  '@pkg.csb.dev/preactjs/preact/commit/424e4268/preact':
+    resolution: {tarball: https://pkg.csb.dev/preactjs/preact/commit/424e4268/preact}
+    name: preact
+    version: 10.5.13
+    dev: false

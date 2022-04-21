@@ -1,9 +1,9 @@
 import { h, Fragment } from 'preact';
 import { useMemo } from 'preact/hooks';
 import { Suspense } from 'preact/compat';
-import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { useStore } from '~/lib/global-store';
 
+import { Outlet, useNavigate, useLocation } from '~/components/Router';
 import { Link } from '~/components/Link';
 import { Button } from '~/components/Button';
 import { Menu, MenuItem, MenuTrigger } from '~/components/Menu';

@@ -3,7 +3,8 @@ import { useState, useRef,  useLayoutEffect } from 'preact/hooks';
 import { useQuery } from '@intrnl/rq';
 
 import clsx from 'clsx';
-import { Link, isLinkEvent } from '~/components/Link';
+import { Link } from '~/components/Link';
+import { isLinkEvent } from '~/components/Router';
 import { Button } from '~/components/Button';
 import { TextField } from '~/components/TextField';
 import { InputGroup } from '~/components/InputGroup';

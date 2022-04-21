@@ -2,8 +2,8 @@ import { h } from 'preact';
 import { useEffect } from 'preact/hooks';
 import { Suspense } from 'preact/compat';
 
-import { Router } from './Router';
 import { AppRouter } from './AppRouter';
+import { Router } from '~/components/Router';
 import { ErrorBoundary } from '~/components/ErrorBoundary';
 import { CircularProgress } from '~/components/CircularProgress';
 import { Button } from '~/components/Button';

@@ -1,8 +1,8 @@
 import { h } from 'preact';
 import { useEffect, useLayoutEffect } from 'preact/hooks';
-import { useNavigate } from 'react-router-dom';
 import { useStore } from '~/lib/global-store';
 
+import { useNavigate } from '~/components/Router';
 import { Card } from '~/components/Card';
 import { FieldLabel } from '~/components/FieldLabel';
 import { TextField } from '~/components/TextField';

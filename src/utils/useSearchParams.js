@@ -1,11 +1,11 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation } from '~/components/Router';
 
 import { useFactoryMemo } from '~/utils/useFactoryMemo.js';
 
 /**
  * @template {Record<string, string>} T
  * @param {T} init
- * @param {import('react-router-dom').NavigateOptions} options
+ * @param {*} options
  * @returns {[T, (next: Partial<T>) => void]}
  */
 export const useSearchParams = (init) => {

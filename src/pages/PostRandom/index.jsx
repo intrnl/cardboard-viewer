@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef } from 'preact/hooks';
-import { useNavigate } from 'react-router-dom';
 import { useMutate } from '@intrnl/rq';
+
+import { useNavigate } from '~/components/Router';
 
 import { fetcher } from '~/api/assets';
 

@@ -1,45 +1,16 @@
 import { h } from 'preact';
-import { useHref, useNavigate, useLocation, useResolvedPath } from 'react-router-dom';
-import { createPath } from 'history';
+
+import { useNavigateHandler, useHref } from '~/components/Router';
 
 
 export const Link = (props) => {
-	const { to, replace, onClick, ...rest } = props;
+	const { to, target, replace, state, onClick, ...rest } = props;
 
-	const location = useLocation();
-	const navigate = useNavigate();
-
+	const handle = useNavigateHandler(to, { target, replace, state, onClick })
 	const href = useHref(to);
-	const path = useResolvedPath(to);
 
-
-	const handleClick = (event) => {
-		onClick?.(event);
-
-		if (!event.defaultPrevented && isLinkEvent(event)) {
-			event.preventDefault();
-
-			const repl = replace || createPath(location) === createPath(path);
-			navigate(to, { replace: repl });
-			window.scrollTo({ top: 0, behavior: 'smooth' });
-		}
-	};
 
 	return (
-		<a {...rest} href={href} onClick={handleClick} />
+		<a {...rest} target={target} href={href} onClick={handle} />
 	);
-};
-
-export const isLinkEvent = (event) => {
-	const target = event.target.target;
-
-	return (
-		event.button === 0 &&
-		(!target || target === '_self') &&
-		!isModifiedEvent(event)
-	);
-};
-
-const isModifiedEvent = (event) => {
-	return event.metaKey || event.altKey || event.ctrlKey || event.shiftKey;
 };

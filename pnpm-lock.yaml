@@ -13,7 +13,6 @@ specifiers:
   history: ^5.3.0
   nanopop: ^2.1.0
   preact: https://pkg.csb.dev/preactjs/preact/commit/424e4268/preact
-  react-router-dom: ^6.3.0
 
 dependencies:
   '@intrnl/rq': 0.1.13_preact@10.5.13
@@ -22,7 +21,6 @@ dependencies:
   history: 5.3.0
   nanopop: 2.1.0
   preact: '@pkg.csb.dev/preactjs/preact/commit/424e4268/preact'
-  react-router-dom: 6.3.0
 
 devDependencies:
   '@intrnl/cssom-utils': 0.2.3
@@ -504,24 +502,6 @@ packages:
     resolution: {integrity: sha512-ak9Qy5Q7jYb2Wwcey5Fpvg2KoAc/ZIhLSLOSBmRmygPsGwkVVt0fZa0qrtMz+m6tJTAHfZQ8FnmB4MG4LWy7/w==}
     engines: {node: '>=8'}
     dev: true
-
-  /react-router-dom/6.3.0:
-    resolution: {integrity: sha512-uaJj7LKytRxZNQV8+RbzJWnJ8K2nPsOOEuX7aQstlMZKQT0164C+X2w6bnkqU3sjtLvpd5ojrezAyfZ1+0sStw==}
-    peerDependencies:
-      react: '>=16.8'
-      react-dom: '>=16.8'
-    dependencies:
-      history: 5.3.0
-      react-router: 6.3.0
-    dev: false
-
-  /react-router/6.3.0:
-    resolution: {integrity: sha512-7Wh1DzVQ+tlFjkeo+ujvjSqSJmkt1+8JO+T5xklPlgrh70y7ogx75ODRW0ThWhY7S+6yEDks8TYrtQe/aoboBQ==}
-    peerDependencies:
-      react: '>=16.8'
-    dependencies:
-      history: 5.3.0
-    dev: false
 
   /regenerator-runtime/0.13.9:
     resolution: {integrity: sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==}

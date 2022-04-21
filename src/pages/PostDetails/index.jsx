@@ -1,10 +1,10 @@
 import { h, Fragment } from 'preact';
 import { Suspense, lazy } from 'preact/compat';
-import { useParams, Navigate } from 'react-router-dom';
 import { useQuery, useMutation } from '@intrnl/rq';
 import { useStore } from '~/lib/global-store';
 
 import clsx from 'clsx';
+import { useParams, Navigate } from '~/components/Router';
 import { SideView, Main, Aside } from '~/layouts/SideView';
 import { Card } from '~/components/Card';
 import { Button } from '~/components/Button';

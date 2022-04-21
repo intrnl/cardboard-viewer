@@ -1,10 +1,10 @@
 import { h } from 'preact';
 import { Suspense } from 'preact/compat';
 import { useMemo, useState } from 'preact/hooks';
-import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@intrnl/rq';
 import { useStore } from '~/lib/global-store';
 
+import { useNavigate } from '~/components/Router';
 import { SideView, Main, Aside } from '~/layouts/SideView';
 import { Post, PostFallback } from '~/components/Post';
 import { Pagination } from '~/components/Pagination';

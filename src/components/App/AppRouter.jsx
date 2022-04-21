@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import { lazy } from 'preact/compat';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from '~/components/Router';
 
 
 const MainLayout = lazy(() => import('~/layouts/MainLayout'));
@@ -12,18 +12,20 @@ const PostDetails = lazy(() => import('~/pages/PostDetails'));
 const PostRandom = lazy(() => import('~/pages/PostRandom'));
 
 
-export const AppRouter = () => {
-	return (
-		<Routes>
-			<Route element={<MainLayout />}>
-				<Route path='/' element={<PostsListing />} />
-				<Route path='posts' element={<PostsListing />} />
-				<Route path='posts/:id' element={<PostDetails />} />
-				<Route path='posts/random' element={<PostRandom />} />
-				<Route path='*' element={<NotFound />} />
-			</Route>
+const routes = (
+	<Routes>
+		<Route element={<MainLayout attr='MainLayout' />}>
+			<Route path='/' element={<PostsListing attr='PostsListing' />} />
+			<Route path='posts' element={<PostsListing attr='PostsListing' />} />
+			<Route path='posts/:id' element={<PostDetails attr='PostDetails' />} />
+			<Route path='posts/random' element={<PostRandom attr='PostRandom' />} />
+			<Route path='*' element={<NotFound attr='NotFound' />} />
+		</Route>
 
-			<Route path='login' element={<Login />} />
-		</Routes>
-	);
+		<Route path='login' element={<Login attr='Login' />} />
+	</Routes>
+);
+
+export const AppRouter = () => {
+	return routes;
 };

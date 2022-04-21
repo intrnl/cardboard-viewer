@@ -1,7 +1,7 @@
 import { useState, useRef, useLayoutEffect } from 'preact/hooks';
 
 
-export function useDebouncedState (value, timeout) {
+export const useDebouncedState = (value, timeout) => {
 	const [state, setState] = useState(value);
 	const timeoutRef = useRef(value);
 
@@ -13,4 +13,4 @@ export function useDebouncedState (value, timeout) {
 	}, [state, value]);
 
 	return state;
-}
+};

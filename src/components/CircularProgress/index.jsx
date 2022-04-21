@@ -3,7 +3,7 @@ import { h } from 'preact';
 import * as styles from './CircularProgress.css';
 
 
-export function CircularProgress (props) {
+export const CircularProgress = (props) => {
 	const { size = 32 } = props;
 
 
@@ -12,4 +12,4 @@ export function CircularProgress (props) {
 			<circle cx={44} cy={44} r={20.2} />
 		</svg>
 	);
-}
+};

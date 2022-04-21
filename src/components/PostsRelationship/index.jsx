@@ -13,7 +13,7 @@ import { createMappedResource } from '~/utils/resource';
 import { qss } from '~/utils/qss';
 
 
-export function PostsRelationship (props) {
+export const PostsRelationship = (props) => {
 	const { parent, id = parent, className } = props;
 
 	const tags = `parent:${parent}`;
@@ -69,4 +69,4 @@ export function PostsRelationship (props) {
 			</div>
 		</Card>
 	);
-}
+};

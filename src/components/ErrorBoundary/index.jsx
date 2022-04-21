@@ -2,7 +2,7 @@ import { h } from 'preact';
 import { useState, useErrorBoundary } from 'preact/hooks';
 
 
-export function ErrorBoundary (props) {
+export const ErrorBoundary = (props) => {
 	const { children, fallback } = props;
 
 	const [error, setError] = useState();
@@ -13,9 +13,9 @@ export function ErrorBoundary (props) {
 	}
 
 	return children;
-}
+};
 
-export function useBoundError (givenError) {
+export const useBoundError = (givenError) => {
 	const [error, setError] = useState(givenError);
 
 	if (error) {
@@ -23,4 +23,4 @@ export function useBoundError (givenError) {
 	}
 
 	return setError;
-}
+};

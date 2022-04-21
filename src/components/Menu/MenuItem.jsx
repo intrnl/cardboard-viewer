@@ -6,9 +6,7 @@ import * as styles from './MenuItem.css';
 
 
 // <MenuItem />
-const MenuItemRef = forwardRef(MenuItem);
-
-function MenuItem (props, ref) {
+const MenuItem = (props, ref) => {
 	const {
 		as = 'button',
 		className,
@@ -19,6 +17,8 @@ function MenuItem (props, ref) {
 
 
 	return h(as, { ref, className: cn, ...rest });
-}
+};
+
+const MenuItemRef = forwardRef(MenuItem);
 
 export { MenuItemRef as MenuItem };

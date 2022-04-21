@@ -5,7 +5,7 @@ import { Link } from '~/components/Link';
 import * as styles from './NotFound.css';
 
 
-export default function NotFoundPage () {
+const NotFoundPage = () => {
 	return (
 		<div className={styles.container}>
 			<h3>Uh oh, seems like we're lost.</h3>
@@ -19,4 +19,6 @@ export default function NotFoundPage () {
 			</Button>
 		</div>
 	);
-}
+};
+
+export default NotFoundPage;

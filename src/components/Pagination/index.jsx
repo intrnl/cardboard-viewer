@@ -18,7 +18,7 @@ import {
 } from '~/utils/pagination.js';
 
 
-export function Pagination (props) {
+export const Pagination = (props) => {
 	const { page, total, onChangePage } = props;
 
 	const pagination = useFactoryMemo(createPagination, [page, total]);
@@ -77,9 +77,9 @@ export function Pagination (props) {
 			})}
 		</div>
 	);
-}
+};
 
-export function PaginationButton (props) {
+export const PaginationButton = (props) => {
 	const { value, active, disabled, onClick } = props;
 
 	const isNumber = typeof value === 'number';
@@ -102,18 +102,18 @@ export function PaginationButton (props) {
 			{isNumber ?	value.toString() : <Icon src={retrieveIcon(value)} />}
 		</button>
 	);
-}
+};
 
-function retrieveIcon (value) {
+const retrieveIcon = (value) => {
 	switch (value) {
 		case PAGINATION_DOT_START: return DotsHorizIcon;
 		case PAGINATION_DOT_END: return DotsHorizIcon;
 		case PAGINATION_PREVIOUS: return ChevronLeftIcon;
 		case PAGINATION_NEXT: return ChevronRightIcon;
 	}
-}
+};
 
-function retrieveLabel (value) {
+const retrieveLabel = (value) => {
 	switch (value) {
 		case PAGINATION_DOT_START: return;
 		case PAGINATION_DOT_END: return;
@@ -121,4 +121,4 @@ function retrieveLabel (value) {
 		case PAGINATION_NEXT: return 'Next page';
 		default: return `Page ${value}`;
 	}
-}
+};

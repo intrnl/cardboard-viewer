@@ -8,16 +8,16 @@ import { useFactoryMemo } from '~/utils/useFactoryMemo.js';
  * @param {import('react-router-dom').NavigateOptions} options
  * @returns {[T, (next: Partial<T>) => void]}
  */
-export function useSearchParams (init) {
+export const useSearchParams = (init) => {
 	const location = useLocation();
 
 	const search = location.search;
 	const params = useFactoryMemo(retrieveSearchParams, [search, init]);
 
 	return params;
-}
+};
 
-function retrieveSearchParams (search, init = null) {
+const retrieveSearchParams = (search, init = null) => {
 	const params = Object.fromEntries(new URLSearchParams(search));
 	return { ...init, ...params };
-}
+};

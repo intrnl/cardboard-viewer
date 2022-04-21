@@ -1,7 +1,7 @@
 import { useState, useLayoutEffect } from 'preact/hooks';
 
 
-export function useDerivedState (original) {
+export const useDerivedState = (original) => {
 	const [value, setValue] = useState(original);
 
 	useLayoutEffect(() => {
@@ -11,4 +11,4 @@ export function useDerivedState (original) {
 	}, [original]);
 
 	return [value, setValue];
-}
+};

@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import * as styles from './InputGroup.css';
 
 
-export function InputGroup (props) {
+export const InputGroup = (props) => {
 	const { as = 'div', children, className, ...rest } = props;
 
 	const length = children.length;
@@ -26,4 +26,4 @@ export function InputGroup (props) {
 	});
 
 	return h(as, { className: cn, ...rest}, mapped);
-}
+};

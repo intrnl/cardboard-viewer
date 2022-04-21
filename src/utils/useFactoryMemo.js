@@ -6,6 +6,6 @@ import { useMemo } from 'preact/hooks';
  * @param {Parameters<T>} args
  * @returns {ReturnType<T>}
  */
-export function useFactoryMemo (factory, args) {
+export const useFactoryMemo = (factory, args) => {
 	return useMemo(() => factory(...args), args);
-}
+};

@@ -1,7 +1,7 @@
 import { useState } from 'preact/hooks';
 
 
-export function useSuspense () {
+export const useSuspense = () => {
 	const [promise, setPromise] = useState();
 
 	if (promise) {
@@ -9,4 +9,4 @@ export function useSuspense () {
 	}
 
 	return setPromise;
-}
+};

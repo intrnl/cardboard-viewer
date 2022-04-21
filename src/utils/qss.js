@@ -1,6 +1,6 @@
 const enc = encodeURIComponent;
 
-export function qss (obj, nested = '') {
+export const qss = (obj, nested = '') => {
 	let res = '';
 
 	const prev = nested ? '[' : '';
@@ -34,4 +34,4 @@ export function qss (obj, nested = '') {
 	}
 
 	return res
-}
+};

@@ -17,7 +17,7 @@ import { POST_IMAGE_SMALL_SIZE, GET_IMAGE_SIZE } from '~/api/enums';
 
 
 // <Post />
-export function Post (props) {
+export const Post = (props) => {
 	const {
 		resource,
 		search,
@@ -59,9 +59,9 @@ export function Post (props) {
 			)}
 		</article>
 	);
-}
+};
 
-export function PostFallback (props) {
+export const PostFallback = (props) => {
 	const { className } = props;
 
 	const [width, height] = useMemo(retrieveRandomSize, []);
@@ -71,9 +71,9 @@ export function PostFallback (props) {
 			<div style={{ width, height }} />
 		</article>
 	);
-}
+};
 
-function retrieveRandomSize () {
+const retrieveRandomSize = () => {
 	const max = POST_IMAGE_SMALL_SIZE;
 	const min = POST_IMAGE_SMALL_SIZE / 2;
 
@@ -81,15 +81,15 @@ function retrieveRandomSize () {
 	const height = getRandomInclusive(min, max);
 
 	return GET_IMAGE_SIZE(width, height, POST_IMAGE_SMALL_SIZE);
-}
+};
 
-function getRandomInclusive (min, max) {
+const getRandomInclusive = (min, max) => {
 	return Math.floor(Math.random() * (max - min + 1) + min);
-}
+};
 
 
 // <Favorite />
-function Favorite (props) {
+const Favorite = (props) => {
 	const { postId, isInFavorite } = props;
 
 	const { status, data, mutate } = useQuery({
@@ -99,11 +99,11 @@ function Favorite (props) {
 	});
 
 	const mutation = useMutation(setFavoriteStatus, {
-		onMutate (variables) {
+		onMutate: (variables) => {
 			// Optimistic update
 			mutate(variables, false);
 		},
-		onSettled () {
+		onSettled: () => {
 			mutate();
 		},
 	});
@@ -126,4 +126,4 @@ function Favorite (props) {
 			<Icon size={20} src={HeartIcon} className={styles.favoriteIcon} />
 		</button>
 	);
-}
+};

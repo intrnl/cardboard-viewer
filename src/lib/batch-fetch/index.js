@@ -4,7 +4,7 @@ import { stableStringify } from '@intrnl/stable-stringify';
 const defaultKey = () => {};
 const defaultId = (x) => x.id;
 
-export function createBatchedFetch (options) {
+export const createBatchedFetch = (options) => {
 	const {
 		fetch,
 		limit = 100,
@@ -42,9 +42,9 @@ export function createBatchedFetch (options) {
 
 		return deferred.promise;
 	};
-}
+};
 
-async function perform (map, fetch, getId) {
+const perform = async (map, fetch, getId) => {
 	const { items, values } = map;
 	let errored = false;
 
@@ -74,9 +74,9 @@ async function perform (map, fetch, getId) {
 			deferred.reject(new Error('Requested batch does not contain specified resource'));
 		}
 	}
-}
+};
 
-function createMap (key) {
+const createMap = (key) => {
 	return {
 		values: [],
 		items: new Map(),
@@ -85,7 +85,7 @@ function createMap (key) {
 	};
 }
 
-function createDeferred () {
+const createDeferred = () => {
 	let deferred = {};
 
 	deferred.promise = new Promise((resolve, reject) => (

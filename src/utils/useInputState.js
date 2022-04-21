@@ -1,11 +1,11 @@
 import { useReducer } from 'preact/hooks';
 
 
-export function useInputState (initialState) {
+export const useInputState = (initialState) => {
 	return useReducer(inputReducer, initialState)
-}
+};
 
-function inputReducer (_, event) {
+const inputReducer = (_, event) => {
 	const target = event?.target;
 
 	if (!target) {
@@ -17,4 +17,4 @@ function inputReducer (_, event) {
 		case 'date': return target.valueAsDate;
 		default: return target.value;
 	}
-}
+};

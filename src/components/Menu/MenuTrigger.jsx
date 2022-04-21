@@ -6,7 +6,7 @@ import * as styles from './MenuTrigger.css';
 import { computeFloatingPosition, handleFocusTrapping, isFocusable } from '~/utils/element';
 
 
-export function MenuTrigger (props) {
+export const MenuTrigger = (props) => {
 	const {
 		children,
 		className,
@@ -41,9 +41,9 @@ export function MenuTrigger (props) {
 			})}
 		</details>
 	);
-}
+};
 
-async function handleToggle (event) {
+const handleToggle = async (event) => {
 	const details = event.currentTarget;
 
 	if (details.open) {
@@ -64,14 +64,14 @@ async function handleToggle (event) {
 
 		document.removeEventListener('scroll', details.$s, true);
 	}
-}
+};
 
-function handleOverlayClick (event) {
+const handleOverlayClick = (event) => {
 	const details = event.target.parentElement;
 	details.removeAttribute('open');
-}
+};
 
-function handleClick (event) {
+const handleClick = (event) => {
 	const details = event.currentTarget;
 	const target = event.target;
 
@@ -82,9 +82,9 @@ function handleClick (event) {
 	if (!target.hasAttribute('data-dialog-persist') && isFocusable(target)) {
 		details.removeAttribute('open');
 	}
-}
+};
 
-function handleKeyDown (event) {
+const handleKeyDown = (event) => {
 	const details = event.currentTarget;
 	const dialog = details.childNodes[2];
 
@@ -109,9 +109,9 @@ function handleKeyDown (event) {
 
 	event.preventDefault();
 	handleFocusTrapping(dialog, isReverse ? -1 : 1);
-}
+};
 
-function handleOutsideScroll (event, details) {
+const handleOutsideScroll = (event, details) => {
 	let target = event.target;
 
 	while (target) {
@@ -123,4 +123,4 @@ function handleOutsideScroll (event, details) {
 	}
 
 	details.removeAttribute('open');
-}
+};

@@ -12,6 +12,54 @@ const serverOptions = {
 	port: 3000,
 };
 
+
+const startServer = (server, options) => {
+	const { host, port } = options;
+
+	return new Promise((resolve, reject) => {
+		const handleError = (error) => {
+			if (error.code === 'EADDRINUSE') {
+				console.log(`port ${port} already in use, retrying...`);
+				server.listen(0, host);
+			}
+			else {
+				server.removeListener('error', handleError);
+				reject(error);
+			}
+		};
+
+		server.on('error', handleError);
+
+		server.listen(port, host, () => {
+			server.removeListener('error', handleError);
+
+			const { address: host, port } = server.address();
+			resolve({ host, port });
+		});
+	});
+};
+
+const printServerInfo = ({ host, port }) => {
+	if (host === '127.0.0.1') {
+		console.info(`> local: http://${host}:${port}`);
+		console.info(`> network: not exposed`);
+	}
+	else {
+		const addresses = Object.values(os.networkInterfaces())
+			.flatMap((intrf) => intrf ?? [])
+			.filter((address) => address.family === 'IPv4');
+
+		for (const address of addresses) {
+			const type = address.internal ? 'local' : 'network';
+			const hostname = address.internal ? 'localhost' : address.address;
+			console.info(`> ${type}: http://${hostname}:${port}`);
+		}
+	}
+
+	console.log('');
+};
+
+
 const internal = await esbuild.serve({
 	servedir: 'dist/',
 }, {
@@ -54,50 +102,3 @@ const server = http.createServer((request, response) => {
 
 const result = await startServer(server, serverOptions);
 printServerInfo(result);
-
-
-function startServer (server, options) {
-	const { host, port } = options;
-
-	return new Promise((resolve, reject) => {
-		const handleError = (error) => {
-			if (error.code === 'EADDRINUSE') {
-				console.log(`port ${port} already in use, retrying...`);
-				server.listen(0, host);
-			}
-			else {
-				server.removeListener('error', handleError);
-				reject(error);
-			}
-		};
-
-		server.on('error', handleError);
-
-		server.listen(port, host, () => {
-			server.removeListener('error', handleError);
-
-			const { address: host, port } = server.address();
-			resolve({ host, port });
-		});
-	});
-}
-
-function printServerInfo ({ host, port }) {
-	if (host === '127.0.0.1') {
-		console.info(`> local: http://${host}:${port}`);
-		console.info(`> network: not exposed`);
-	}
-	else {
-		const addresses = Object.values(os.networkInterfaces())
-			.flatMap((intrf) => intrf ?? [])
-			.filter((address) => address.family === 'IPv4');
-
-		for (const address of addresses) {
-			const type = address.internal ? 'local' : 'network';
-			const hostname = address.internal ? 'localhost' : address.address;
-			console.info(`> ${type}: http://${hostname}:${port}`);
-		}
-	}
-
-	console.log('');
-}

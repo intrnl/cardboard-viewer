@@ -6,9 +6,7 @@ import * as controls from '~/styles/misc/controls.css';
 import * as styles from './Button.css';
 
 
-const ButtonRef = forwardRef(Button);
-
-function Button (props, ref) {
+const Button = (props, ref) => {
 	const {
 		as = 'button',
 		variant = 'default',
@@ -28,6 +26,8 @@ function Button (props, ref) {
 
 
 	return h(as, { ref, className: cn, ...rest });
-}
+};
+
+const ButtonRef = forwardRef(Button);
 
 export { ButtonRef as Button };

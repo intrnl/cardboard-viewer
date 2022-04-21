@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import * as styles from './Icon.css';
 
 
-export function Icon (props) {
+export const Icon = (props) => {
 	const { src, size = 16, className } = props;
 
 	const cn = clsx(styles.icon, className);
@@ -15,4 +15,4 @@ export function Icon (props) {
 			<use href={src + '#icon'} />
 		</svg>
 	);
-}
+};

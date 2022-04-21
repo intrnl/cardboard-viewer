@@ -29,7 +29,7 @@ const DEFAULT_SEARCH_PARAMS = {
 	limit: '20',
 };
 
-export default function PostsListingPage () {
+const PostsListingPage = () => {
 	const { tags: query, page, limit } = useSearchParams(DEFAULT_SEARCH_PARAMS);
 	const navigate = useNavigate();
 
@@ -77,14 +77,17 @@ export default function PostsListingPage () {
 			</Aside>
 		</SideView>
 	);
-}
+};
 
-function normalizeTags (tags) {
+export default PostsListingPage;
+
+
+const normalizeTags = (tags) => {
 	return tags.trim().split(/ +/).sort((a, b) => a.localeCompare(b)).join(' ');
-}
+};
 
 // <TagsList />
-function TagsList (props) {
+const TagsList = (props) => {
 	const { tags } = props;
 
 	const [prevDate] = useState(() => {
@@ -121,12 +124,12 @@ function TagsList (props) {
 			</ul>
 		</div>
 	);
-}
+};
 
 // <PostsListing />
 const RE_ALLOW_DELETED = /\bstatus:(all|any|active|unmoderated|modqueue|deleted|appealed)\b/;
 
-function PostsListing (props) {
+const PostsListing = (props) => {
 	const { tags, page, limit, search, isInFavorite } = props;
 
 	const { status, data } = useQuery({
@@ -167,9 +170,9 @@ function PostsListing (props) {
 			)}
 		</div>
 	);
-}
+};
 
-function PostsListingFallback (props) {
+const PostsListingFallback = (props) => {
 	const { size } = props;
 
 
@@ -180,10 +183,10 @@ function PostsListingFallback (props) {
 			))}
 		</div>
 	);
-}
+};
 
 // <PostsPagination />
-function PostsPagination (props) {
+const PostsPagination = (props) => {
 	const { tags, page, maxPage, limit, onChangePage } = props
 
 	const { status, data } = useQuery({
@@ -207,4 +210,4 @@ function PostsPagination (props) {
 			onChangePage={onChangePage}
 		/>
 	);
-}
+};

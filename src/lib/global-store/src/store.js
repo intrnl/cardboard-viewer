@@ -36,7 +36,7 @@ export class Store {
 	}
 }
 
-export function useStore (store, selector) {
+export const useStore = (store, selector) => {
 	const selectorRef = useRef(selector);
 
 	const getSnapshot = (value = store.get()) => {
@@ -55,4 +55,4 @@ export function useStore (store, selector) {
 	}, [store]);
 
 	return value;
-}
+};

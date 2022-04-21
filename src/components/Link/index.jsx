@@ -3,7 +3,7 @@ import { useHref, useNavigate, useLocation, useResolvedPath } from 'react-router
 import { createPath } from 'history';
 
 
-export function Link (props) {
+export const Link = (props) => {
 	const { to, replace, onClick, ...rest } = props;
 
 	const location = useLocation();
@@ -28,9 +28,9 @@ export function Link (props) {
 	return (
 		<a {...rest} href={href} onClick={handleClick} />
 	);
-}
+};
 
-export function isLinkEvent (event) {
+export const isLinkEvent = (event) => {
 	const target = event.target.target;
 
 	return (
@@ -38,8 +38,8 @@ export function isLinkEvent (event) {
 		(!target || target === '_self') &&
 		!isModifiedEvent(event)
 	);
-}
+};
 
-function isModifiedEvent (event) {
+const isModifiedEvent = (event) => {
 	return event.metaKey || event.altKey || event.ctrlKey || event.shiftKey;
-}
+};

@@ -5,7 +5,7 @@ import { useMutate } from '@intrnl/rq';
 import { fetcher } from '~/api/assets';
 
 
-export default function PostRandomPage () {
+const PostRandomPage = () => {
 	const navigate = useNavigate();
 	const mutate = useMutate();
 
@@ -39,4 +39,6 @@ export default function PostRandomPage () {
 	});
 
 	return null;
-}
+};
+
+export default PostRandomPage;

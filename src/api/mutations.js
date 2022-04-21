@@ -4,7 +4,7 @@ import { PROXY_URL, ResponseError } from '~/api/base.js';
 import { qss } from '~/utils/qss.js';
 
 
-function request ({ method = 'POST', url, params, body }) {
+const request = ({ method = 'POST', url, params, body }) => {
 	const auth = AuthStore.get();
 	const query = qss({ api_key: auth.key, login: auth.user, ...params });
 
@@ -13,9 +13,9 @@ function request ({ method = 'POST', url, params, body }) {
 		body: body ? JSON.stringify(body) : undefined,
 		redirect: 'manual',
 	});
-}
+};
 
-export async function setFavoriteStatus ({ post_id, favorited }) {
+export const setFavoriteStatus = async ({ post_id, favorited }) => {
 	const response = await request({
 		method: favorited ? 'POST' : 'DELETE',
 		url: favorited ? `/favorites` : `/favorites/${post_id}`,
@@ -30,4 +30,4 @@ export async function setFavoriteStatus ({ post_id, favorited }) {
 	}
 
 	return favorited;
-}
+};

@@ -1,6 +1,6 @@
 const BASE_URL = 'https://danbooru.donmai.us';
 
-export async function onRequest ({ request, params }) {
+export const onRequest = async ({ request, params }) => {
 	const { pathname } = params;
 	const { search } = new URL(request.url);
 
@@ -15,4 +15,4 @@ export async function onRequest ({ request, params }) {
 	response.headers.delete('Set-Cookie');
 
 	return response;
-}
+};

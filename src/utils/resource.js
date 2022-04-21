@@ -1,6 +1,6 @@
 const map = new WeakMap();
 
-export function createMappedResource (data) {
+export const createMappedResource = (data) => {
 	let resource = map.get(data);
 
 	if (!resource) {
@@ -8,8 +8,8 @@ export function createMappedResource (data) {
 	}
 
 	return resource;
-}
+};
 
-export function createResource (read) {
+export const createResource = (read) => {
 	return { read };
-}
+};

@@ -3,7 +3,7 @@ import { useState, useLayoutEffect } from 'preact/hooks';
 import { Router as ReactRouter } from 'react-router-dom';
 
 
-export function Router (props) {
+export const Router = (props) => {
 	const { history, basename, children } = props;
 
 	const [state, setState] = useState({
@@ -22,4 +22,4 @@ export function Router (props) {
 			location={state.location}
 		/>
 	);
-}
+};

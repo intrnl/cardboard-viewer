@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import * as styles from './SideView.css';
 
 
-export function SideView (props) {
+export const SideView = (props) => {
 	const { children, flow, className } = props;
 
 	const cn = clsx(styles.container, {
@@ -17,9 +17,9 @@ export function SideView (props) {
 			{children}
 		</div>
 	);
-}
+};
 
-export function Main (props) {
+export const Main = (props) => {
 	const { children, className } = props;
 
 	const cn = clsx(styles.main, className);
@@ -30,9 +30,9 @@ export function Main (props) {
 			{children}
 		</main>
 	);
-}
+};
 
-export function Aside (props) {
+export const Aside = (props) => {
 	const { children, className } = props;
 
 	const cn = clsx(styles.aside, className);
@@ -43,4 +43,4 @@ export function Aside (props) {
 			{children}
 		</aside>
 	);
-}
+};

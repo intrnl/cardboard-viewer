@@ -5,9 +5,7 @@ import clsx from 'clsx';
 import * as styles from './FieldLabel.css';
 
 
-const FieldLabelRef = forwardRef(FieldLabel);
-
-function FieldLabel (props, ref) {
+const FieldLabel = (props, ref) => {
 	const {
 		as = 'label',
 		className,
@@ -18,6 +16,8 @@ function FieldLabel (props, ref) {
 
 
 	return h(as, { ref, className: cn, ...rest });
-}
+};
+
+const FieldLabelRef = forwardRef(FieldLabel);
 
 export { FieldLabelRef as FieldLabel };

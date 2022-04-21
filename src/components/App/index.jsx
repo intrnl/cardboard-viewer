@@ -12,7 +12,7 @@ import * as styles from './App.css';
 import { history } from '~/globals/history.js';
 
 
-export function App () {
+export const App = () => {
 	return (
 		<ErrorBoundary fallback={ErrorContainer}>
 			<Router history={history}>
@@ -22,17 +22,17 @@ export function App () {
 			</Router>
 		</ErrorBoundary>
 	);
-}
+};
 
-function AppFallback () {
+const AppFallback = () => {
 	return (
 		<div className={styles.fallback}>
 			<CircularProgress />
 		</div>
 	);
-}
+};
 
-function ErrorContainer (props) {
+const ErrorContainer = (props) => {
 	const { error, reset } = props;
 
 	const name = error?.name || 'Unspecified error';
@@ -56,4 +56,4 @@ function ErrorContainer (props) {
 			</Button>
 		</div>
 	);
-}
+};

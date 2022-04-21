@@ -6,9 +6,7 @@ import * as controls from '~/styles/misc/controls.css';
 import * as styles from './TextField.css';
 
 
-const TextFieldRef = forwardRef(TextField);
-
-function TextField (props, ref) {
+const TextField = (props, ref) => {
 	const {
 		as = 'input',
 		fullWidth,
@@ -26,6 +24,8 @@ function TextField (props, ref) {
 
 
 	return h(as, { ref, className: cn, ...rest });
-}
+};
+
+const TextFieldRef = forwardRef(TextField);
 
 export { TextFieldRef as TextField };

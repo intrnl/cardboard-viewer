@@ -3,7 +3,7 @@ export const PAGINATION_DOT_END = 'dots_end';
 export const PAGINATION_PREVIOUS = 'prev';
 export const PAGINATION_NEXT = 'next';
 
-export function createPagination (page, total, boundaryCount = 1, siblingCount = 1) {
+export const createPagination = (page, total, boundaryCount = 1, siblingCount = 1) => {
 	const pagesStart = range(1, Math.min(boundaryCount, total));
 	const pagesEnd = range(Math.max(total - boundaryCount + 1, boundaryCount + 1), total);
 
@@ -46,9 +46,9 @@ export function createPagination (page, total, boundaryCount = 1, siblingCount =
 		...pagesEnd,
 		PAGINATION_NEXT,
 	];
-}
+};
 
-function range (start, end) {
+const range = (start, end) => {
 	const length = end - start + 1;
 	return Array.from({ length }, (_, index) => start + index);
-}
+};

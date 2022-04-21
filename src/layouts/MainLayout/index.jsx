@@ -25,7 +25,7 @@ import { AuthStore, logout, STATUS_LOGGED_OUT, STATUS_LOGGED_IN } from '~/global
 
 
 // <NewLayout />
-export default function NewLayout () {
+const MainLayout = () => {
 	return (
 		<div className={styles.container}>
 			<Header />
@@ -34,18 +34,21 @@ export default function NewLayout () {
 			</Suspense>
 		</div>
 	);
-}
+};
 
-function OutletFallback () {
+export default MainLayout;
+
+
+const OutletFallback = () => {
 	return (
 		<div className={styles.fallback}>
 			<CircularProgress />
 		</div>
 	);
-}
+};
 
 // <Header />
-function Header () {
+const Header = () => {
 	return (
 		<div className={styles.header}>
 			<NavLink to='/' title='Home'>
@@ -58,14 +61,14 @@ function Header () {
 			<HeaderMobileOnly />
 		</div>
 	);
-}
+};
 
 // <HeaderSearch />
 const DEFAULT_SEARCH_PARAMS = {
 	query: '',
 };
 
-function HeaderSearch () {
+const HeaderSearch = () => {
 	const navigate = useNavigate();
 	const { tags: query } = useSearchParams(DEFAULT_SEARCH_PARAMS);
 
@@ -85,10 +88,10 @@ function HeaderSearch () {
 			onSearch={handleSearch}
 		/>
 	)
-}
+};
 
 // <HeaderDesktopOnly />
-function HeaderDesktopOnly () {
+const HeaderDesktopOnly = () => {
 	const auth = useStore(AuthStore);
 
 
@@ -141,10 +144,10 @@ function HeaderDesktopOnly () {
 			)}
 		</div>
 	);
-}
+};
 
 // <HeaderMobileOnly />
-function HeaderMobileOnly () {
+const HeaderMobileOnly = () => {
 	const auth = useStore(AuthStore);
 
 	return (
@@ -198,24 +201,24 @@ function HeaderMobileOnly () {
 			</MenuTrigger>
 		</div>
 	);
-}
+};
 
 // <NavLink />
-function NavLink (props) {
+const NavLink = (props) => {
 	return (
 		<Button as={Link} variant='ghost' {...props} />
 	);
-}
+};
 
 // <MenuLink />
-function MenuLink (props) {
+const MenuLink = (props) => {
 	return (
 		<MenuItem as={Link} {...props} />
 	);
-}
+};
 
 // <LinkTo />
-function LinkTo (props) {
+const LinkTo = (props) => {
 	const { as, to, ...rest } = props;
 
 	const location = useLocation();
@@ -226,4 +229,4 @@ function LinkTo (props) {
 
 
 	return h(as, { to: to + '?' + params, ...rest });
-}
+};

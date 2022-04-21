@@ -1,32 +1,32 @@
 import { reposition } from 'nanopop';
 
 
-export function computeFloatingPosition (reference, floating, placement) {
+export const computeFloatingPosition = (reference, floating, placement) => {
 	reposition(reference, floating, {
 		position: placement ?? 'bottom',
 		margin: 4,
 	});
 
 	floating.style.opacity = '1';
-}
+};
 
-export function isFocusable (el) {
+export const isFocusable = (el) => {
 	return (
 		el.tabIndex >= 0 &&
 		!el.disabled &&
 		isVisible(el)
 	);
-}
+};
 
-export function isVisible (el) {
+export const isVisible = (el) => {
 	return (
 		!el.hidden &&
 		(!el.type || el.type !== 'hidden') &&
 		(el.offsetWidth > 0 || el.offsetHeight > 0)
 	);
-}
+};
 
-export function handleFocusTrapping (container, move = 0) {
+export const handleFocusTrapping = (container, move = 0) => {
 	const elements = findFocusable(container);
 	const length = elements.length;
 
@@ -57,9 +57,9 @@ export function handleFocusTrapping (container, move = 0) {
 
 	const focusable = elements[target];
 	focusable.focus();
-}
+};
 
-export function findFocusable (container) {
+export const findFocusable = (container) => {
 	const matches = [];
 	const nodes = container.querySelectorAll('*');
 
@@ -72,4 +72,4 @@ export function findFocusable (container) {
 	}
 
 	return matches;
-}
+};

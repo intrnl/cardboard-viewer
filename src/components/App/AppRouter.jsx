@@ -12,7 +12,7 @@ const PostDetails = lazy(() => import('~/pages/PostDetails'));
 const PostRandom = lazy(() => import('~/pages/PostRandom'));
 
 
-export function AppRouter () {
+export const AppRouter = () => {
 	return (
 		<Routes>
 			<Route element={<MainLayout />}>
@@ -26,4 +26,4 @@ export function AppRouter () {
 			<Route path='login' element={<Login />} />
 		</Routes>
 	);
-}
+};

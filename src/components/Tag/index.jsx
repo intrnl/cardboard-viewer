@@ -19,7 +19,7 @@ const countFormatter = new Intl.NumberFormat(undefined, {
 	notation: 'compact',
 });
 
-export function Tag (props) {
+export const Tag = (props) => {
 	const { as = 'span', name, category, resource, className } = props;
 
 	const Component = as;
@@ -50,4 +50,4 @@ export function Tag (props) {
 			)}
 		</Component>
 	);
-}
+};

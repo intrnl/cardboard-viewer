@@ -19,7 +19,7 @@ const DEFAULT_SEARCH_PARAMS = {
 	to: '/',
 };
 
-export default function NewLoginPage () {
+const LoginPage = () => {
 	const auth = useStore(AuthStore);
 	const navigate = useNavigate();
 	const { to } = useSearchParams(DEFAULT_SEARCH_PARAMS);
@@ -116,4 +116,6 @@ export default function NewLoginPage () {
 			</Card>
 		</form>
 	);
-}
+};
+
+export default LoginPage;

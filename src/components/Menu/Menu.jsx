@@ -7,9 +7,7 @@ import * as styles from './Menu.css';
 
 
 // <Menu />
-const MenuRef = forwardRef(Menu);
-
-function Menu (props, ref) {
+const Menu = (props, ref) => {
 	const {
 		as = 'div',
 		className,
@@ -20,6 +18,8 @@ function Menu (props, ref) {
 
 
 	return h(as, { ref, className: cn, ...rest });
-}
+};
+
+const MenuRef = forwardRef(Menu);
 
 export { MenuRef as Menu };

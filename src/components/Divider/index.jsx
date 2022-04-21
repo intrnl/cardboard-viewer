@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import * as styles from './Divider.css';
 
 
-export function Divider (props) {
+export const Divider = (props) => {
 	const { orientation, gap } = props;
 
 	const cn = clsx(styles.divider, {
@@ -14,5 +14,7 @@ export function Divider (props) {
 	});
 
 
-	return h('div', { className: cn });
-}
+	return (
+		<div className={cn} />
+	);
+};

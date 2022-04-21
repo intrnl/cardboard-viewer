@@ -6,7 +6,7 @@ import { API_URL, ResponseError } from '~/api/base';
 import { qss } from '~/utils/qss';
 
 
-export async function fetcher (url, params) {
+export const fetcher = async (url, params) => {
 	await LOGIN_PROMISE;
 
 	const auth = AuthStore.get();
@@ -25,21 +25,21 @@ export async function fetcher (url, params) {
 	}
 
 	return response.json();
-}
+};
 
 
 // User
 // ['user', id]
-export function getUser (key, id) {
+export const getUser = (key, id) => {
 	return fetcher(`/users/${id}.json`);
-}
+};
 
 
 /// Posts
 // ['post', id]
-export function getPost (key, id) {
+export const getPost = (key, id) => {
 	return fetcher(`/posts/${id}.json`);
-}
+};
 
 // ['post/list', query]
 const POST_LIST_FIELDS = [
@@ -53,18 +53,18 @@ const POST_LIST_FIELDS = [
 	'image_height',
 ].join(',');
 
-export async function getPostList (key, params) {
+export const getPostList = async (key, params) => {
 	params = { only: POST_LIST_FIELDS, ...params };
 	return fetcher(`/posts.json`, params);
-}
+};
 
 // ['post/count', tags]
-export async function getPostCount (key, tags) {
+export const getPostCount = async (key, tags) => {
 	const params = { tags };
 	const result = await fetcher(`/counts/posts.json`, params);
 
 	return result.counts.posts;
-}
+};
 
 
 // Favorited posts
@@ -107,9 +107,9 @@ const batchFavoriteStatus = createBatchedFetch({
 });
 
 // ['favorite', post_id]
-export function getFavoriteStatus (key, post_id) {
+export const getFavoriteStatus = (key, post_id) => {
 	return batchFavoriteStatus({ post_id });
-}
+};
 
 
 /// Tags
@@ -125,29 +125,29 @@ const batchTags = createBatchedFetch({
 });
 
 // ['tag', name]
-export function getTag (key, name) {
+export const getTag = (key, name) => {
 	return batchTags(name);
-}
+};
 
 // ['tag/autocomplete', query]
-export function getTagCompletion (key, query) {
+export const getTagCompletion = (key, query) => {
 	const params = { search: { query, type: 'tag_query' }, limit: 10 };
 	return fetcher(`/autocomplete.json`, params);
-}
+};
 
 // ['tag/related', tags]
-export async function getRelatedTags (key, query) {
+export const getRelatedTags = async (key, query) => {
 	const params = { query };
 	const response = await fetcher(`/related_tag.json`, params);
 
 	// Array<[tag: string, type: TagType]>
 	return response.tags;
-}
+};
 
 // ['tag/popular', date]
-export function getPopularTags (key, specifiedDate) {
+export const getPopularTags = (key, specifiedDate) => {
 	const params = { date: specifiedDate };
 
 	// Array<[tag: string, popularity: number]>
 	return fetcher(`/explore/posts/searches.json`, params);
-}
+};

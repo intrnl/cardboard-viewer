@@ -18,7 +18,7 @@ import { getTagCompletion } from '~/api/assets';
 import { useDebouncedState } from '~/utils/useDebouncedState';
 
 
-export function SearchInput (props) {
+export const SearchInput = (props) => {
 	const { value, onChange, onSearch, className } = props;
 
 	const inputRef = useRef();
@@ -162,14 +162,14 @@ export function SearchInput (props) {
 			)}
 		</form>
 	);
-}
+};
 
 // <AutocompleteItem />
 const countFormatter = new Intl.NumberFormat(undefined, {
 	notation: 'compact',
 })
 
-function AutocompleteItem (props) {
+const AutocompleteItem = (props) => {
 	const { data, index, selected, onSelect } = props;
 
 	const handleClick = (event) => {
@@ -198,8 +198,8 @@ function AutocompleteItem (props) {
 			)}
 		</MenuItem>
 	);
-}
+};
 
-function splice (string, index, count, replace = '') {
+const splice = (string, index, count, replace = '') => {
 	return string.slice(0, index) + replace + string.slice(index + count);
-}
+};

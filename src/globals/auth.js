@@ -22,10 +22,7 @@ export const AuthStore = new Store({
 	profile: null,
 });
 
-login(JSON.parse(localStorage.getItem(localKey) || '{}'), false)
-	.catch((error) => console.log(`Not logged in: ${error.message}`));
-
-export function login ({ key, user }, write = true) {
+export const login = ({ key, user }, write = true) => {
 	AuthStore.update({ status: STATUS_VERIFYING });
 
 	const promise = verify({ key, user }).then(
@@ -51,9 +48,9 @@ export function login ({ key, user }, write = true) {
 
 	LOGIN_PROMISE = promise.then(noop, noop);
 	return promise;
-}
+};
 
-export function logout (write = true) {
+export const logout = (write = true) => {
 	AuthStore.update({
 		status: STATUS_LOGGED_OUT,
 		key: null,
@@ -66,9 +63,9 @@ export function logout (write = true) {
 	}
 
 	invalidateQueries(cache, []);
-}
+};
 
-export async function verify ({ key, user }) {
+export const verify = async ({ key, user }) => {
 	if (!key || !user) {
 		throw new Error('Missing auth credentials');
 	}
@@ -87,4 +84,8 @@ export async function verify ({ key, user }) {
 	}
 
 	return profile;
-}
+};
+
+
+login(JSON.parse(localStorage.getItem(localKey) || '{}'), false)
+	.catch((error) => console.log(`Not logged in: ${error.message}`));

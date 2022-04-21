@@ -34,7 +34,7 @@ import {
 const NotFound = lazy(() => import('~/pages/NotFound'));
 
 
-export default function PostDetailsPage () {
+const PostDetailsPage = () => {
 	const { id } = useParams();
 
 	const idNum = parseInt(id);
@@ -73,12 +73,15 @@ export default function PostDetailsPage () {
 			</Aside>
 		</SideView>
 	);
-}
+};
+
+export default PostDetailsPage;
+
 
 // <PostTags />
 const RE_TAG_DELIMITER = / +/g;
 
-function PostTags (props) {
+const PostTags = (props) => {
 	const { post } = props;
 
 
@@ -111,9 +114,9 @@ function PostTags (props) {
 			/>
 		</Card>
 	);
-}
+};
 
-function TagsList (props) {
+const TagsList = (props) => {
 	const { tags, header, category } = props;
 
 	const list = tags
@@ -141,14 +144,14 @@ function TagsList (props) {
 			</ul>
 		</div>
 	);
-}
+};
 
 // <PostDetails />
 const RE_EXT_IMAGE = /\.(png|jpe?g|gif|webp)$/i;
 const RE_EXT_VIDEO = /\.(mp4|webm)$/i;
 const RE_EXT = /(?<=\.)[a-z0-9.]+$/i;
 
-function PostDetails (props) {
+const PostDetails = (props) => {
 	const { post } = props;
 
 	const originalWidth = post.image_width;
@@ -217,9 +220,9 @@ function PostDetails (props) {
 			)}
 		</>
 	);
-}
+};
 
-function Favorite (props) {
+const Favorite = (props) => {
 	const { postId } = props;
 
 	const { status, data, mutate } = useQuery({
@@ -257,4 +260,4 @@ function Favorite (props) {
 			<Icon src={HeartIcon} />
 		</Button>
 	);
-}
+};

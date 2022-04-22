@@ -68,7 +68,7 @@
 }
 
 :where(button, input, select, textarea) {
-	font-family: inherit;
+	font: inherit;
 	margin: 0;
 }
 

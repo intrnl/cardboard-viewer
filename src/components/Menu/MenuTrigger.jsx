@@ -47,13 +47,12 @@ export const MenuTrigger = (props) => {
 
 		if (isOpen) {
 			dialog.returnValue = '';
-			document.body.style.overflow = 'hidden';
 
 			dialog.showModal();
+
 			computeFloatingPosition(trigger, dialog, placement);
 		}
 		else if (dialog.open) {
-			document.body.style.overflow = '';
 			dialog.close();
 		}
 	}, [isOpen]);
@@ -72,6 +71,8 @@ export const MenuTrigger = (props) => {
 				onClick={handleDialogClick}
 				onClose={handleClose}
 				oncancel={handleCancel}
+				onWheel={handleDialogScroll}
+				onTouchMove={handleDialogScroll}
 			>
 				{menu}
 			</dialog>
@@ -87,6 +88,15 @@ const handleDialogClick = (ev) => {
 		(target === dialog) ||
 		(isFocusable(target) && !target.hasAttribute('data-menu-persist'))
 	) {
+		dialog.dispatchEvent(new Event('cancel'));
+	}
+};
+
+const handleDialogScroll = (ev) => {
+	const dialog = ev.currentTarget;
+	const target = ev.target;
+
+	if (target === dialog) {
 		dialog.dispatchEvent(new Event('cancel'));
 	}
 };

@@ -24,7 +24,7 @@ export const header = style({
 	height: 48,
 	gap: 8,
 	paddingInline: 8,
-	borderWidth: 1,
+	borderBottomWidth: 1,
 	borderColor: theme.palette.gray[300],
 }, 'header');
 

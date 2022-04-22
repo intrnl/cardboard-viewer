@@ -1,6 +1,6 @@
 import { h, Fragment, createContext, isValidElement } from 'preact';
 import { useState, useCallback, useContext, useLayoutEffect, useMemo, useEffect } from 'preact/hooks';
-import { createPath, parsePath } from 'history';
+import { createPath, parsePath } from './history';
 
 
 const NavigatorContext = createContext(null);

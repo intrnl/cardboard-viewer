@@ -10,7 +10,6 @@ export const post = style({
 });
 
 const hasStatus = style({
-	borderStyle: 'solid',
 	borderWidth: 2,
 }, 'has-status');
 

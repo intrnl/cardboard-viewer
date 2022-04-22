@@ -1,6 +1,7 @@
 :where(*, *::before, *::after) {
 	box-sizing: border-box;
 	background-repeat: no-repeat;
+	border: 0 solid;
 }
 
 :where(*::before, *::after) {

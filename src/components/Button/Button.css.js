@@ -15,7 +15,6 @@ export const button = style([interactable, focusable, control, {
 	height: 32,
 	minWidth: 32,
 	padding: 8,
-	border: 0,
 
 	':disabled': {
 		color: theme.palette.gray[400],

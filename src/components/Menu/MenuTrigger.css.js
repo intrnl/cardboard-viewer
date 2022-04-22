@@ -1,33 +1,17 @@
 import { style } from '@vanilla-extract/css';
-import { vw, px, percent, mul, sub } from '@intrnl/cssom-utils';
-
-
-export const container = style({
-	position: 'relative',
-
-	selectors: {
-		'&[open]': {
-			zIndex: 4,
-		},
-	},
-});
 
 
 export const overlay = style({
+	background: 'transparent',
+	minWidth: 250,
+	padding: 0,
+	margin: 0,
+	border: 0,
+	overflow: 'visible',
+
 	selectors: {
-		[`${container}[open] &`]: {
-			display: 'block',
-			position: 'fixed',
-			inset: 0,
+		'&::backdrop': {
+			background: 'transparent',
 		},
 	},
 }, 'overlay');
-
-
-export const popup = style({
-	opacity: 0,
-	minWidth: 250,
-	maxWidth: sub(vw(100), mul(px(16), 2)),
-	position: 'fixed',
-	zIndex: 3,
-}, 'popup');

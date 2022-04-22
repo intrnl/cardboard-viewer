@@ -196,7 +196,7 @@ const createRoutesFromChildren = (children) => {
 		}
 
 		const route = {
-			path: child.props.path || '/',
+			path: child.props.path,
 			caseSensitive: !!child.props.caseSensitive,
 			element: child.props.element,
 		};
@@ -264,22 +264,24 @@ const matchRouteBranch = (branch, pathname) => {
 	for (let idx = 0; idx < length; idx++) {
 		const route = routes[idx];
 
-		const remainingPathname = matchedPathname === '/'
-			? pathname
-			: pathname.slice(matchedPathname.length) || '/';
+		if (route.path) {
+			const remaining = matchedPathname !== '/'
+				? pathname.slice(matchedPathname.length) || '/'
+				: pathname;
 
-		const caseSensitive = route.caseSensitive;
-		const end = idx === length - 1;
+			const casing = route.caseSensitive;
+			const end = idx === length - 1;
 
-		const matcher = route._match ||= compilePath(route.path, end, caseSensitive);
-		const match = remainingPathname.match(matcher);
+			const matcher = route._match ||= compilePath(route.path, end, casing);
+			const match = remaining.match(matcher);
 
-		if (!match) {
-			return [];
+			if (!match) {
+				return [];
+			}
+
+			matchedPathname = joinPath(matchedPathname, match[1]);
+			matchedParams = { ...matchedParams, ...(match.groups || null) };
 		}
-
-		matchedPathname = joinPath(matchedPathname, match[1]);
-		matchedParams = { ...matchedParams, ...(match.groups || null) };
 
 		matches.push({ route, pathname: matchedPathname, params: matchedParams });
 	}
@@ -303,11 +305,9 @@ const flattenRoutes = (
 			flattenRoutes(route.children, branches, path, routes, indexes);
 		}
 
-		if (!route.path) {
-			continue;
+		if (route.path) {
+			branches.push([path, routes, indexes]);
 		}
-
-		branches.push([path, routes, indexes]);
 	}
 
 	return branches;

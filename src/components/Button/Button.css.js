@@ -46,7 +46,6 @@ export const isDefault = style({
 	color: theme.palette.gray[800],
 	backgroundColor: theme.palette.white,
 	boxShadow: theme.shadow.small,
-	borderStyle: 'solid',
 	borderWidth: 1,
 	borderColor: theme.palette.gray[300],
 

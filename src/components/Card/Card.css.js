@@ -9,7 +9,6 @@ export const card = style({
 	display: 'flex',
 	flexDirection: 'column',
 	margin: 0,
-	borderStyle: 'solid',
 	borderWidth: 1,
 	borderColor: theme.palette.gray[300],
 	borderRadius: 4,

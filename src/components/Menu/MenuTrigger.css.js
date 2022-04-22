@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+import { percent } from '@intrnl/cssom-utils';
 
 
 export const overlay = style({
@@ -15,3 +16,9 @@ export const overlay = style({
 		},
 	},
 }, 'overlay');
+
+export const noScroll = style({
+	position: 'fixed',
+	overflowY: 'scroll',
+	width: percent(100),
+}, 'no-scroll');

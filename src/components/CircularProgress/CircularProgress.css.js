@@ -11,11 +11,14 @@ const rotate = keyframes({
 }, 'rotate');
 
 export const progress = style({
-	animation: `${rotate} 1.4s linear infinite`,
 	alignSelf: 'center',
 });
 
-globalStyle(`${progress} circle`, {
+export const progressAnimate = style([progress, {
+	animation: `${rotate} 1.4s linear infinite`,
+}], 'animate');
+
+globalStyle(`${progressAnimate} circle`, {
 	fill: 'none',
 	stroke: 'currentColor',
 	strokeWidth: 3.6,

@@ -1,5 +1,11 @@
-import { h, Fragment, cloneElement } from 'preact';
-import { useState, useRef, useLayoutEffect } from 'preact/hooks';
+import {
+	h,
+	cloneElement,
+	Fragment,
+	useState,
+	useRef,
+	useLayoutEffect,
+} from '@intrnl/freak';
 import { computeFloatingPosition, isFocusable } from '~/utils/element';
 
 import * as styles from './MenuTrigger.css';

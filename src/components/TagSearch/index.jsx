@@ -1,6 +1,5 @@
-import { h } from 'preact';
-import { useState, useRef,  useLayoutEffect } from 'preact/hooks';
-import { useQuery } from '@intrnl/rq';
+import { h, useState, useRef, useLayoutEffect } from '@intrnl/freak';
+import { useQuery } from '~/lib/rq';
 
 import clsx from 'clsx';
 import { Link } from '~/components/Link';

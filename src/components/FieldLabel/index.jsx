@@ -1,11 +1,10 @@
-import { h } from 'preact';
-import { forwardRef } from 'preact/compat';
+import { h } from '@intrnl/freak';
 
 import clsx from 'clsx';
 import * as styles from './FieldLabel.css';
 
 
-const FieldLabel = (props, ref) => {
+export const FieldLabel = (props) => {
 	const {
 		as = 'label',
 		className,
@@ -15,9 +14,5 @@ const FieldLabel = (props, ref) => {
 	const cn = clsx(styles.label, className);
 
 
-	return h(as, { ref, className: cn, ...rest });
+	return h(as, { className: cn, ...rest });
 };
-
-const FieldLabelRef = forwardRef(FieldLabel);
-
-export { FieldLabelRef as FieldLabel };

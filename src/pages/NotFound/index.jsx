@@ -1,4 +1,4 @@
-import { h } from 'preact';
+import { h } from '@intrnl/freak';
 
 import { Button } from '~/components/Button';
 import { Link } from '~/components/Link';

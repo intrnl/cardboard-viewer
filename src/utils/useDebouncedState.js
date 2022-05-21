@@ -1,4 +1,4 @@
-import { useState, useRef, useLayoutEffect } from 'preact/hooks';
+import { useState, useRef, useLayoutEffect } from '@intrnl/freak';
 
 
 export const useDebouncedState = (value, timeout) => {

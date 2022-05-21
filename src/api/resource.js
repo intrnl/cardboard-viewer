@@ -1,4 +1,4 @@
-import { useQuery } from '@intrnl/rq';
+import { useQuery } from '~/lib/rq';
 
 import { getTag } from '~/api/assets';
 

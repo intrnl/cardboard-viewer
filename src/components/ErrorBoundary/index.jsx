@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import { useState, useErrorBoundary } from 'preact/hooks';
+import { h, useState, useErrorBoundary } from '@intrnl/freak';
 
 
 export const ErrorBoundary = (props) => {

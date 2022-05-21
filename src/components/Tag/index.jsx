@@ -1,4 +1,4 @@
-import { h } from 'preact';
+import { h } from '@intrnl/freak';
 
 import clsx from 'clsx';
 import { Link } from '~/components/Link';

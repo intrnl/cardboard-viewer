@@ -1,4 +1,4 @@
-import { useState } from 'preact/hooks';
+import { useState } from '@intrnl/freak';
 
 
 export const useSuspense = () => {

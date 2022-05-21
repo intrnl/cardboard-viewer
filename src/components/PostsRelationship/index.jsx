@@ -1,5 +1,5 @@
-import { h } from 'preact';
-import { useQuery } from '@intrnl/rq';
+import { h } from '@intrnl/freak';
+import { useQuery } from '~/lib/rq';
 
 import clsx from 'clsx';
 import { Link } from '~/components/Link';

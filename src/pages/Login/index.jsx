@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import { useEffect, useLayoutEffect } from 'preact/hooks';
+import { h, useEffect, useLayoutEffect } from '@intrnl/freak';
 import { useStore } from '~/lib/global-store';
 
 import { useNavigate } from '~/components/Router';

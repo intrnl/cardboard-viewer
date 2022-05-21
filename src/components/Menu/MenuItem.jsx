@@ -1,12 +1,11 @@
-import { h } from 'preact';
-import { forwardRef } from 'preact/compat';
+import { h } from '@intrnl/freak';
 
 import clsx from 'clsx';
 import * as styles from './MenuItem.css';
 
 
 // <MenuItem />
-const MenuItem = (props, ref) => {
+export const MenuItem = (props) => {
 	const {
 		as = 'button',
 		className,
@@ -16,9 +15,5 @@ const MenuItem = (props, ref) => {
 	const cn = clsx(styles.item, className);
 
 
-	return h(as, { ref, className: cn, ...rest });
+	return h(as, { className: cn, ...rest });
 };
-
-const MenuItemRef = forwardRef(MenuItem);
-
-export { MenuItemRef as MenuItem };

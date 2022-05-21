@@ -1,12 +1,11 @@
-import { h } from 'preact';
-import { forwardRef } from 'preact/compat';
+import { h } from '@intrnl/freak';
 
 import clsx from 'clsx';
 import * as controls from '~/styles/misc/controls.css';
 import * as styles from './TextField.css';
 
 
-const TextField = (props, ref) => {
+export const TextField = (props) => {
 	const {
 		as = 'input',
 		fullWidth,
@@ -23,9 +22,5 @@ const TextField = (props, ref) => {
 	}, className);
 
 
-	return h(as, { ref, className: cn, ...rest });
+	return h(as, { className: cn, ...rest });
 };
-
-const TextFieldRef = forwardRef(TextField);
-
-export { TextFieldRef as TextField };

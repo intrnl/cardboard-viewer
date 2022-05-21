@@ -1,4 +1,4 @@
-import { h } from 'preact';
+import { h } from '@intrnl/freak';
 
 import { Icon } from '~/components/Icon';
 import * as styles from './CircularProgress.css';

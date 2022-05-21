@@ -1,12 +1,11 @@
-import { h } from 'preact';
-import { forwardRef } from 'preact/compat';
+import { h } from '@intrnl/freak';
 
 import clsx from 'clsx';
 import * as controls from '~/styles/misc/controls.css';
 import * as styles from './Button.css';
 
 
-const Button = (props, ref) => {
+export const Button = (props) => {
 	const {
 		as = 'button',
 		variant = 'default',
@@ -25,9 +24,5 @@ const Button = (props, ref) => {
 	}, className);
 
 
-	return h(as, { ref, className: cn, ...rest });
+	return h(as, { className: cn, ...rest });
 };
-
-const ButtonRef = forwardRef(Button);
-
-export { ButtonRef as Button };

@@ -1,11 +1,10 @@
-import { h } from 'preact';
-import { forwardRef } from 'preact/compat';
+import { h } from '@intrnl/freak';
 
 import clsx from 'clsx';
 import * as styles from './Card.css';
 
 
-const Card = (props, ref) => {
+export const Card = (props) => {
 	const {
 		as = 'div',
 		className,
@@ -15,9 +14,5 @@ const Card = (props, ref) => {
 	const cn = clsx(styles.card, className);
 
 
-	return h(as, { ref, className: cn, ...rest });
+	return h(as, { className: cn, ...rest });
 };
-
-const CardRef = forwardRef(Card);
-
-export { CardRef as Card };

@@ -1,6 +1,5 @@
-import { h } from 'preact';
-import { useMemo } from 'preact/hooks';
-import { useQuery, useMutation } from '@intrnl/rq';
+import { h , useMemo} from '@intrnl/freak';
+import { useQuery, useMutation } from '~/lib/rq';
 import { useStore } from '~/lib/global-store';
 
 import clsx from 'clsx';

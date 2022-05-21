@@ -1,4 +1,4 @@
-import { h } from 'preact';
+import { h } from '@intrnl/freak';
 
 import * as styles from './FlexSpacer.css';
 

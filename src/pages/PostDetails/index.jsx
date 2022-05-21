@@ -1,6 +1,5 @@
-import { h, Fragment } from 'preact';
-import { Suspense, lazy } from 'preact/compat';
-import { useQuery, useMutation } from '@intrnl/rq';
+import { h, Fragment, Suspense, lazy } from '@intrnl/freak';
+import { useQuery, useMutation } from '~/lib/rq';
 import { useStore } from '~/lib/global-store';
 
 import clsx from 'clsx';

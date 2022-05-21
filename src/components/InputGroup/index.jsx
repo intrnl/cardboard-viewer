@@ -1,4 +1,4 @@
-import { h, cloneElement } from 'preact';
+import { h, cloneElement } from '@intrnl/freak';
 
 import clsx from 'clsx';
 import * as styles from './InputGroup.css';

@@ -1,4 +1,4 @@
-import { useReducer } from 'preact/hooks';
+import { useReducer } from '@intrnl/freak';
 
 
 export const useInputState = (initialState) => {

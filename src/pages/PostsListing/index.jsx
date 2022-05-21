@@ -1,7 +1,5 @@
-import { h } from 'preact';
-import { Suspense } from 'preact/compat';
-import { useMemo, useState } from 'preact/hooks';
-import { useQuery } from '@intrnl/rq';
+import { h, Suspense, useMemo, useState } from '@intrnl/freak';
+import { useQuery } from '~/lib/rq';
 import { useStore } from '~/lib/global-store';
 
 import { useNavigate } from '~/components/Router';

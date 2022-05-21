@@ -1,6 +1,4 @@
-import { h, Fragment } from 'preact';
-import { useMemo } from 'preact/hooks';
-import { Suspense } from 'preact/compat';
+import { h, Fragment, Suspense, useMemo } from '@intrnl/freak';
 import { useStore } from '~/lib/global-store';
 
 import { Outlet, useNavigate, useLocation } from '~/components/Router';

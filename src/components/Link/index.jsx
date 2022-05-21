@@ -1,4 +1,4 @@
-import { h } from 'preact';
+import { h } from '@intrnl/freak';
 
 import { useNavigateHandler, useHref } from '~/components/Router';
 

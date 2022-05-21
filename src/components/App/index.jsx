@@ -1,6 +1,4 @@
-import { h } from 'preact';
-import { useEffect } from 'preact/hooks';
-import { Suspense } from 'preact/compat';
+import { h, Suspense, useEffect } from '@intrnl/freak';
 
 import { AppRouter } from './AppRouter';
 import { Router } from '~/components/Router';

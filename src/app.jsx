@@ -1,5 +1,5 @@
-import { h, render } from 'preact';
-import { defaultQueryOptions } from '@intrnl/rq';
+import { h, render } from '@intrnl/freak';
+import { defaultQueryOptions } from '~/lib/rq';
 
 import '~/styles/reset.css';
 import '~/styles/app.css';

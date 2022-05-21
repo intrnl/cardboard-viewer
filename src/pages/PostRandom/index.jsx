@@ -1,5 +1,5 @@
-import { useLayoutEffect, useRef } from 'preact/hooks';
-import { useMutate } from '@intrnl/rq';
+import { useLayoutEffect, useRef } from '@intrnl/freak';
+import { useMutate } from '~/lib/rq';
 
 import { useNavigate } from '~/components/Router';
 

@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect } from 'preact/hooks';
+import { useState, useLayoutEffect } from '@intrnl/freak';
 
 
 export const useDerivedState = (original) => {

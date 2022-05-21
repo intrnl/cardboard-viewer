@@ -1,4 +1,4 @@
-import { useMemo } from 'preact/hooks';
+import { useMemo } from '@intrnl/freak';
 
 /**
  * @template {((...args: any[]) => any)} T

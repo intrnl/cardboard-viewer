@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import { lazy } from 'preact/compat';
+import { h, lazy } from '@intrnl/freak';
 import { Routes, Route } from '~/components/Router';
 
 

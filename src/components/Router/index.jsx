@@ -1,5 +1,16 @@
-import { h, Fragment, createContext, isValidElement } from 'preact';
-import { useState, useCallback, useContext, useLayoutEffect, useMemo, useEffect } from 'preact/hooks';
+import {
+	h,
+	Fragment,
+	Provider,
+	createContext,
+	isValidElement,
+	useState,
+	useCallback,
+	useContext,
+	useLayoutEffect,
+	useMemo,
+	useEffect,
+} from '@intrnl/freak';
 import { createPath, parsePath } from './history';
 
 
@@ -111,7 +122,8 @@ export const useRoutes = (routes, basename) => {
 	), [routes, location, base]);
 
 	return matches.reduceRight((outlet, { route, pathname, params }) => (
-		<RouteContext.Provider
+		<Provider
+			context={RouteContext}
 			children={route.element}
 			value={{
 				outlet,
@@ -138,9 +150,9 @@ export const Router = (props) => {
 	), [history]);
 
 	return (
-		<NavigatorContext.Provider value={{ ...state, history }}>
+		<Provider context={NavigatorContext} value={{ ...state, history }}>
 			{children}
-		</NavigatorContext.Provider>
+		</Provider>
 	);
 };
 

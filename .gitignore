@@ -2,3 +2,10 @@ dist/_assets/
 node_modules/
 
 *.local
+
+.npm-*.log
+.pnpm-*.log
+.yarn-*.log
+npm-*.log
+pnpm-*.log
+yarn-*.log

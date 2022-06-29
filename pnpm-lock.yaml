@@ -11,14 +11,14 @@ specifiers:
   clsx: ^1.1.1
   esbuild: ^0.14.47
   nanopop: ^2.1.0
-  preact: https://pkg.csb.dev/preactjs/preact/commit/424e4268/preact
+  preact: ^10.8.2
 
 dependencies:
-  '@intrnl/rq': 0.1.14_preact@10.5.13
+  '@intrnl/rq': 0.1.14_preact@10.8.2
   '@intrnl/stable-stringify': 0.1.2
   clsx: 1.1.1
   nanopop: 2.1.0
-  preact: '@pkg.csb.dev/preactjs/preact/commit/424e4268/preact'
+  preact: 10.8.2
 
 devDependencies:
   '@intrnl/cssom-utils': 0.2.3
@@ -83,13 +83,13 @@ packages:
       stable-hash: 0.0.2
     dev: true
 
-  /@intrnl/rq/0.1.14_preact@10.5.13:
+  /@intrnl/rq/0.1.14_preact@10.8.2:
     resolution: {integrity: sha512-l3+yNDj8pE9Fj15YI3MLb30Sd/BcvnBdpdHJnCmH4g1XC/j/q0RyjsfpkfO0oY62FV7YLnSMva9Kdz1SNjMWnQ==}
     peerDependencies:
       preact: '>=10.5.0'
     dependencies:
       '@intrnl/stable-stringify': 0.1.2
-      preact: '@pkg.csb.dev/preactjs/preact/commit/424e4268/preact'
+      preact: 10.8.2
     dev: false
 
   /@intrnl/stable-stringify/0.1.2:
@@ -497,6 +497,10 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /preact/10.8.2:
+    resolution: {integrity: sha512-AKGt0BsDSiAYzVS78jZ9qRwuorY2CoSZtf1iOC6gLb/3QyZt+fLT09aYJBjRc/BEcRc4j+j3ggERMdNE43i1LQ==}
+    dev: false
+
   /regenerator-runtime/0.13.9:
     resolution: {integrity: sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==}
     dev: true
@@ -520,9 +524,3 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
-
-  '@pkg.csb.dev/preactjs/preact/commit/424e4268/preact':
-    resolution: {tarball: https://pkg.csb.dev/preactjs/preact/commit/424e4268/preact}
-    name: preact
-    version: 10.5.13
-    dev: false

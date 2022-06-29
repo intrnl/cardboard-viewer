@@ -10,7 +10,7 @@
 		"@intrnl/stable-stringify": "^0.1.2",
 		"clsx": "^1.1.1",
 		"nanopop": "^2.1.0",
-		"preact": "https://pkg.csb.dev/preactjs/preact/commit/424e4268/preact"
+		"preact": "^10.8.2"
 	},
 	"devDependencies": {
 		"@intrnl/cssom-utils": "^0.2.3",

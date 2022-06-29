@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { useState, useRef,  useLayoutEffect } from 'preact/hooks';
+import { useState, useRef } from 'preact/hooks';
 import { useQuery } from '@intrnl/rq';
 
 import clsx from 'clsx';
@@ -26,7 +26,7 @@ export const SearchInput = (props) => {
 
 	/// Retrieve "pending" input
 	// Pending input is when the last tag hasn't been ended with a space.
-	const [pendingInput, setPendingInput] = useState('');
+	const [pendingInput, setPendingInputRaw] = useState('');
 	const [pendingIndex, setPendingIndex] = useState(0);
 
 	const deferredInput = useDebouncedState(pendingInput, 500);
@@ -34,8 +34,6 @@ export const SearchInput = (props) => {
 	/// Autocomplete selection index
 	// We should reset the index if the pending input changes.
 	const [selection, setSelection] = useState(-1);
-
-	useLayoutEffect(() => setSelection(-1), [pendingInput]);
 
 	/// Autocomplete data
 	const { status, data } = useQuery({
@@ -45,6 +43,11 @@ export const SearchInput = (props) => {
 	});
 
 	/// Handle events
+	const setPendingInput = (next) => {
+		setPendingInputRaw(next);
+		setSelection(-1);
+	};
+
 	const applySelection = (selected) => {
 		let padIndex = pendingIndex + pendingInput.length;
 		let pad = 0;
